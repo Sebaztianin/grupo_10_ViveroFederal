@@ -25,3 +25,9 @@ Este es el e-commerce de ***Vivero Federal***!
 - Vivero Spinelli (https://www.viverospinelli.com.ar/): es la página del rubro más completa en cuanto a funcionalidades, aunque estéticamente no resalta mucho. De aquí podemos sacar ideas de funcionalidades útiles para el usuario, como filtros.
 - Di Fiore Plantas (https://midifiore.mitiendanube.com/): al igual que Vivero Spinelli, es muy completa en cuanto a funcionalidades, pero mejora la parte estética.
 - MercadoLibre (https://www.mercadolibre.com.ar/): elegido por ser un referente dentro de los e-commerce en general.
+
+
+
+#### Tablero de Scrum:
+
+https://github.com/users/sebastianbragam/projects/1 
