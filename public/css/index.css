@@ -9,6 +9,7 @@
 
 body {
     font-family: 'Roboto', sans-serif;
+    background-color: antiquewhite;
 }
 
 
@@ -18,6 +19,7 @@ header div.top-header {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 2%;
 }
 
 header div.top-header div.first-row {
@@ -30,6 +32,7 @@ header div.top-header div.first-row {
 header div.top-header div.first-row img {
     width: 20%;
     margin-right: auto;
+    border-radius: 5px;
 }
 
 header div.top-header div.first-row a {
@@ -47,7 +50,8 @@ header div.top-header nav.navbar {
 header div.top-header nav.navbar ul.nav-menu {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-evenly;
+    align-items: center;
     padding: 2%;
     list-style: none;
     width: 100%;
@@ -55,6 +59,28 @@ header div.top-header nav.navbar ul.nav-menu {
 
 header div.top-header nav.navbar ul.nav-menu li a {
     text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+header div.top-header form.search-form {
+    padding: 1%;
+    margin: 10px;
+    background-color: white;
+    width: 95%;
+    text-align: center;
+    border-radius: 5px;
+}
+
+header div.top-header form.search-form input {
+    width: 90%;
+    border: none;
+}
+
+header div.top-header form.search-form button {
+    width: 5%;
+    border: none;
+    background-color: white;
 }
 
 
@@ -62,4 +88,122 @@ header div.top-header nav.navbar ul.nav-menu li a {
 
 .banner img {
     width: 100%;
+}
+
+
+/* Categorías */
+
+main section.categories h3 {
+    margin: 10px;
+    margin-top: 14px;
+    text-align: center;
+}
+
+main section.categories div.categories-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 5% 3%;
+}
+
+main section.categories div.categories-list article {
+    width: 30%;
+    text-align: center;
+}
+
+main section.categories div.categories-list img {
+    border-radius: 50%;
+    width: 100%;
+}
+
+main section.categories div.categories-list p {
+    margin: 5%;
+    font-weight: bold;
+}
+
+
+/* Más vendidos */
+
+main section.top-sellers div.products {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+main section.top-sellers h3 {
+    margin: 10px;
+    margin-top: 14px;
+    text-align: center;
+}
+
+main section.top-sellers article {
+    padding: 2% 5%;
+    width: 100%;
+    text-align: center;
+}
+
+main section.top-sellers img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+main section.top-sellers p, h4 {
+    padding-top: 8px;
+}
+
+
+/* Contacto */
+
+main section.contact h3 {
+    margin: 10px;
+    margin-top: 14px;
+    text-align: center;
+}
+
+main section.contact form.contact {
+    display: flex;
+    flex-direction: column;
+}
+
+main section.contact form.contact input, textarea {
+    padding: 5px;
+    margin: 2%;
+    border: none;
+    border-radius: 5px;
+}
+
+main section.contact form.contact button {
+    padding: 5px;
+    margin: 2%;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    color: white;
+    background-color: cadetblue;
+}
+
+
+/* Footer */
+
+footer {
+    margin-top: 16px;
+}
+
+footer section.navigation {
+    text-align: center;
+}
+
+footer section.navigation ul.nav-menu {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+footer section.navigation ul.nav-menu li {
+    margin: 8px;
+}
+
+footer section.navigation ul.nav-menu a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
 }

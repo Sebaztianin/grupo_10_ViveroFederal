@@ -25,9 +25,11 @@
                 <!-- Menú de la barra superior -->
                 <nav class="navbar">
                     <ul class="nav-menu" type="none">
-                        <li><a href="/views/products.html">Productos</a></li>
-                        <li><a href="#contact">Contacto</a></li>
-                        <li><a href="#categories">Categorías</a></li>
+                        <li><a href="/views/products.html">Productos <i class="fas fa-seedling"></i></a></li>
+                        <p>|</p>
+                        <li><a href="#categories">Categorías <i class="fas fa-bars"></i></i></a></li>
+                        <p>|</p>
+                        <li><a href="#contact">Contacto <i class="fas fa-inbox"></i></a></li>
                     </ul>
                 </nav>
                 <!-- Barra de búsqueda -->
@@ -47,67 +49,102 @@
         <main>
 
             <section class="categories" id="categories">
-
+                <!-- Categorías -->
                 <h3>Categorías</h3>
+                <!-- Listado -->
+                <div class="categories-list">
+                    <article>
+                        <img src="images/categories/sucycac.jpg" alt="Suculentas y Cactus" class="category-img">
+                        <p class="category-name">Suculentas y Cactus</p>
+                    </article>
+                    <article>
+                        <img src="images/categories/deinterior.jpg" alt="De interior" class="category-img">
+                        <p class="category-name">De interior</p>
+                    </article>
+                    <article>
+                        <img src="images/categories/deexterior.jpg" alt="De exterior" class="category-img">
+                        <p class="category-name">De exterior</p>
+                    </article>
+                </div>
 
             </section>
 
             <section class="top-sellers">
-
+                <!-- Productos más vendidos -->
                 <h3>Más vendidos</h3>
-
+                <!-- Productos -->
                 <div class="products">
                     <article>
-                        <img src="images/img-cafetera-moulinex.jpg" alt="Cafetera" class="product_img">
+                        <img src="images/products/suculenta.jpg" alt="Suculenta" class="product_img">
                         <div class="main-article">
-                            <i class="fas fa-truck"></i>
-                            <p class="price">$6.770</p>
-                            <p class="discount">40% off</p>
-                            <h4 class="description">Cafetera Moulinex</h4>
+                            <h4 class="description">Suculenta</h4>
+                            <p class="price">$550</p>
                         </div>
                     </article>
                     <article>
-                        <img src="images/img-macbook-pro-2019.jpg" alt="MacBook" class="product_img">
+                        <img src="images/products/cactus.jpg" alt="Cactus" class="product_img">
                         <div class="main-article">
-                            <i class="fas fa-truck"></i>
-                            <p class="price">$230.000</p>
-                            <p class="discount">20% off</p>
-                            <h4 class="description">MacBook Pro 2019</h4>
+                            <h4 class="description">Cactus</h4>
+                            <p class="price">$800</p>
                         </div>
                     </article>
                     <article>
-                        <img src="images/img-samsung-galaxy-s10.jpg" alt="Teléfono Móvil Samsung Galaxy" class="product_img">
+                        <img src="images/products/palita.jpg" alt="Pala de jardín" class="product_img">
                         <div class="main-article">
-                            <i class="fas fa-truck"></i>
-                            <p class="price">$70.500</p>
-                            <p class="discount">10% off</p>
-                            <h4 class="description">Samsung Galaxy S10</h4>
+                            <h4 class="description">Pala de jardín</h4>
+                            <p class="price">$2.800</p>
                         </div>
                     </article>
                     <article>
-                        <img src="images/img-tv-samsung-smart.jpg" alt="SmartTv Samsung" class="product_img">
+                        <img src="images/products/maceta.jpg" alt="Maceta" class="product_img">
                         <div class="main-article">
-                            <i class="fas fa-truck"></i>
-                            <p class="price">$23.200</p>
-                            <p class="discount">5% off</p>
-                            <h4 class="description">SmartTv Samsung 43"</h4>
+                            <h4 class="description">Maceta</h4>
+                            <p class="price">$1.200</p>
                         </div>
                     </article>
                 </div>
             </section>
 
             <section class="contact" id="contact">
-
+                <!-- Contacto -->
                 <h3>Contacto</h3>
-                
+                <!-- Formulario de contacto -->
+                <form class="contact" action="#" method="GET">
+                    <input type="text" name="name" id="name" placeholder="Nombre" minlength="2" required>
+                    <input type="email" name="email" id="email" placeholder="E-mail" required>
+                    <input type="number" name="phone" id="phone" placeholder="Celular" minlength="8" required>
+                    <textarea name="message" id="message" placeholder="Dejanos un mensaje" required></textarea>
+                    <button class="send-button" type="submit">Enviar</button>
+                </form>
             </section>
 
         </main>
 
         <footer>
 
+            <section class="navigation">
+                <!-- Navegación -->
+                <h4>Navegación</h4>
+                <!-- Lista -->
+                <ul class="nav-menu" type="none">
+                    <li><a href="/views/products.html">Productos</a></li>
+                    <li><a href="#categories">Categorías</a></li>
+                    <li><a href="#contact">Contacto</a></li>
+                </ul>
+            </section>
+
+            <section class="payment-options">
+                
+            </section>
             
+            <section class="contact">
+                
+            </section>
             
+            <section class="social-media">
+                
+            </section>
+
         </footer>
         
     </body>
