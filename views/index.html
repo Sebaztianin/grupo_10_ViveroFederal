@@ -3,56 +3,59 @@
 
     <head>
         <meta charset="UTF-8">
-        <title>Bienvenidxs a MercadoLiebre</title>
+        <title>Vivero Federal: Home</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
-        <link rel="stylesheet" href="css/home.css">
+        <link rel="stylesheet" href="css/index.css">
     </head>
 
     <body>
 
         <header>
-
             <!-- Barra de navegación superior -->
-        
             <div class="top-header">
-                <!-- Logo -->
-                <div class="logo"> 
-                    <img src="images/logo.svg" alt="Logo de ViveroFederal">   
+                <!-- Logo, login y carrito -->
+                <div class="first-row"> 
+                    <img src="images/logo.png" alt="Logo de ViveroFederal">   
                     <!-- Falta agregar la imagen del logo -->
-                    <a><i class="fas fa-user"></i></a>
-                    <a><i class="fas fa-cart-plus"></i></a>
+                    <a href="/views/login.html"><i class="fas fa-user"></i></a>
+                    <a href="/views/productCart.html"><i class="fas fa-cart-plus"></i></a>
                 </div>
                 <!-- Menú de la barra superior -->
                 <nav class="navbar">
-                    <ul class="nav-menu">
-                        <li><a href="#">Productos</a></li>
-                        <li><a href="#">Contacto</a></li>
-                        <li><a href="#">Categorías</a></li>
+                    <ul class="nav-menu" type="none">
+                        <li><a href="/views/products.html">Productos</a></li>
+                        <li><a href="#contact">Contacto</a></li>
+                        <li><a href="#categories">Categorías</a></li>
                     </ul>
                 </nav>
+                <!-- Barra de búsqueda -->
                 <form class="search-form" action="#" method="GET">
-                    <input class="search-input" type="text" name="search" placeholder="Buscar productos, marcas y más..." required>
+                    <input class="search-input" type="text" name="search" placeholder="Buscar plantas o accesorios..." required>
                     <button class="search-button" type="submit"><i class="fa fa-search"></i></button>
                 </form>
             </div>
         </header>
 
         <section class="banner">
+            
             <img src="images/img-home-banner.jpg" alt="Banner de ofertas">
+
         </section>
 
         <main>
 
-            <section class="categories">
+            <section class="categories" id="categories">
 
-
+                <h3>Categorías</h3>
 
             </section>
 
             <section class="top-sellers">
+
                 <h3>Más vendidos</h3>
+
                 <div class="products">
                     <article>
                         <img src="images/img-cafetera-moulinex.jpg" alt="Cafetera" class="product_img">
@@ -93,7 +96,8 @@
                 </div>
             </section>
 
-            <section class="contact">
+            <section class="contact" id="contact">
+
                 <h3>Contacto</h3>
                 
             </section>
@@ -102,30 +106,7 @@
 
         <footer>
 
-            <section class="announcements">
-                <div class="announcement">
-                    <div class="icon-announcement"><i class="fas fa-credit-card"></i></div>
-                    <p class="title-announcement">Pagá con tarjeta o en efectivo</p>
-                    <p class="text-announcement">
-                        Con Mercado Liebre Cash, tenés cuotas sin interés con tarjeta o efectivo en puntos de pago. ¡Y siempre es seguro!
-                    </p>
-                </div>
-                <div class="announcement">
-                    <div class="icon-announcement"><i class="fas fa-gift"></i></div>
-                    <p class="title-announcement">Envío gratis desde $ 2.500</p>
-                    <p class="text-announcement">
-                        Solo por estar registrad@ en Mercado Liebre tenés envíos gratis en miles de productos. Es un beneficio de Mercado Puntos.
-                    </p>
-                </div>
-                <div class="announcement">
-                    <div class="icon-announcement"><i class="fas fa-user-shield"></i></div>
-                    <p class="title-announcement">Seguridad, de principio a fin</p>
-                    <p class="text-announcement">
-                        ¿No te gusta? ¡Devolvelo! En Mercado Liebre, no hay nada que no puedas hacer, porque estás siempre protegid@.
-                    </p>
-                </div>
-
-            </section>
+            
             
         </footer>
         
