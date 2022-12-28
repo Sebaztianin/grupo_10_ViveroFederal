@@ -50,7 +50,7 @@
 
             <section class="categories" id="categories">
                 <!-- Categorías -->
-                <h3>Categorías</h3>
+                <h3 class="section-title">Categorías</h3>
                 <!-- Listado -->
                 <div class="categories-list">
                     <article>
@@ -65,13 +65,21 @@
                         <img src="images/categories/deexterior.jpg" alt="De exterior" class="category-img">
                         <p class="category-name">De exterior</p>
                     </article>
+                    <article>
+                        <img src="images/categories/macetas.jpg" alt="Macetas" class="category-img">
+                        <p class="category-name">Macetas</p>
+                    </article>
+                    <article>
+                        <img src="images/categories/accesorios.jpg" alt="Accesorios" class="category-img">
+                        <p class="category-name">Accesorios</p>
+                    </article>
                 </div>
 
             </section>
 
             <section class="top-sellers">
                 <!-- Productos más vendidos -->
-                <h3>Más vendidos</h3>
+                <h3 class="section-title">Más vendidos</h3>
                 <!-- Productos -->
                 <div class="products">
                     <article>
@@ -107,15 +115,28 @@
 
             <section class="contact" id="contact">
                 <!-- Contacto -->
-                <h3>Contacto</h3>
+                <h3 class="section-title">Contacto</h3>
                 <!-- Formulario de contacto -->
-                <form class="contact" action="#" method="GET">
-                    <input type="text" name="name" id="name" placeholder="Nombre" minlength="2" required>
-                    <input type="email" name="email" id="email" placeholder="E-mail" required>
-                    <input type="number" name="phone" id="phone" placeholder="Celular" minlength="8" required>
-                    <textarea name="message" id="message" placeholder="Dejanos un mensaje" required></textarea>
-                    <button class="send-button" type="submit">Enviar</button>
-                </form>
+                <div class="contact-div">
+                    <!-- Formulario -->
+                    <form class="contact" action="#" method="GET">
+                        <input type="text" name="name" id="name" placeholder="Nombre" minlength="2" required>
+                        <input type="email" name="email" id="email" placeholder="E-mail" required>
+                        <input type="number" name="phone" id="phone" placeholder="Celular" minlength="8" required>
+                        <textarea name="message" id="message" placeholder="Dejanos un mensaje" required></textarea>
+                        <button class="send-button" type="submit">Enviar</button>
+                    </form>
+                    <!-- Datos de contacto -->
+                    <ul class="list" type="none">
+                        <li><i class="fas fa-phone"></i></i> +54 9 387 4522805</i></li>
+                        <li><i class="fas fa-envelope"></i> info@viverofederal.com.ar</li>
+                        <li><i class="fab fa-instagram"></i> viverofederal</i></li>
+                        <li><i class="fab fa-facebook"></i> viverofederal.ok</li>
+                        <li><i class="fab fa-twitter"></i> viverofederal.ok</li>
+                        <li><i class="fas fa-map-pin"></i> Entre Ríos 1156, Salta</li>
+                        <li><i class="fas fa-map-pin"></i> Caseros 2354, Córdoba</li>
+                    </ul>
+                </div>
             </section>
 
         </main>
@@ -124,25 +145,47 @@
 
             <section class="navigation">
                 <!-- Navegación -->
-                <h4>Navegación</h4>
+                <h4 class="footer-title">Navegación</h4>
                 <!-- Lista -->
                 <ul class="nav-menu" type="none">
-                    <li><a href="/views/products.html">Productos</a></li>
-                    <li><a href="#categories">Categorías</a></li>
-                    <li><a href="#contact">Contacto</a></li>
+                    <li><a href="/views/products.html"><i class="fas fa-seedling"></i> Productos</a></li>
+                    <li><a href="#categories"><i class="fas fa-bars"></i> Categorías</a></li>
+                    <li><a href="#contact"><i class="fas fa-inbox"></i> Contacto</a></li>
                 </ul>
             </section>
 
             <section class="payment-options">
-                
+                <!-- Medios de pago -->
+                <h4 class="footer-title">Medios de pago</h4>
+                <!-- Lista -->
+                <ul class="list" type="none">
+                    <li><i class="fas fa-money-check"></i> Tarjetas de crédito y débito</i></li>
+                    <li><i class="fas fa-exchange-alt"></i> Transferencia</li>
+                    <li><i class="fas fa-money-bill"></i> Efectivo en puntos de pago</li>
+                </ul>
             </section>
             
             <section class="contact">
-                
+                <!-- Contacto -->
+                <h4 class="footer-title">Contacto</h4>
+                <!-- Lista -->
+                <ul class="list" type="none">
+                    <li><i class="fas fa-phone"></i></i> +54 9 387 4522805</i></li>
+                    <li><i class="fas fa-envelope"></i> info@viverofederal.com.ar</li>
+                    <li><i class="fas fa-map-pin"></i> Entre Ríos 1156, Salta</li>
+                    <li><i class="fas fa-map-pin"></i> Caseros 2354, Córdoba</li>
+                </ul>
             </section>
             
             <section class="social-media">
-                
+                <!-- Redes sociales -->
+                <h4 class="footer-title">Redes sociales</h4>
+                <!-- Lista -->
+                <ul class="list" type="none">
+                    <li><i class="fab fa-instagram"></i> viverofederal</i></li>
+                    <li><i class="fab fa-facebook"></i> viverofederal.ok</li>
+                    <li><i class="fab fa-twitter"></i> viverofederal.ok</li>
+                </ul>
             </section>
 
         </footer>
