@@ -1,5 +1,5 @@
 
-/* Global settings */
+/* Global settings*/
 
 * {
     margin: 0px;
@@ -134,99 +134,15 @@ main h3.section-title:after {
     margin: 8px;
 }
 
-
-/* Banner */
-
-main section.banner img {
-    width: 100%;
-}
-
-
-/* Categorías */
-
-main section.categories div.categories-list {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    padding: 0px 5px;
-}
-
-main section.categories div.categories-list article {
-    width: 20%;
-    text-align: center;
-    padding: 5px;
-}
-
-main section.categories div.categories-list img {
-    border-radius: 50%;
-    width: 100%;
-}
-
-main section.categories div.categories-list p {
-    margin: 5%;
-    font-weight: bold;
-    font-size: 12px;
-}
-
-
-/* Más vendidos */
-
-main section.top-sellers div.products {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-main section.top-sellers article {
-    padding: 15px;
-    width: 100%;
-    text-align: center;
-}
-
-main section.top-sellers img {
-    width: 100%;
-    border-radius: 10px;
-}
-
-main section.top-sellers p, h4 {
-    padding-top: 8px;
-}
-
-
-/* Contacto */
-
-main section.contact div.contact-div {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-}
-
-main section.contact form.contact {
+main section.products div.products-list {
     display: flex;
     flex-direction: column;
-    padding: 15px;
-    width: 100%;
 }
 
-main section.contact form.contact input, main section.contact form.contact textarea {
-    padding: 5px;
-    margin: 5px;
-    border: none;
-    border-radius: 5px;
+main section.products div.products-list article {
+    padding: 10px;
 }
 
-main section.contact form.contact button {
-    padding: 5px;
-    margin: 5px;
-    border: none;
-    border-radius: 5px;
-    font-weight: bold;
-    color: white;
-    background-color: cadetblue;
-}
-
-main section.contact ul.list {
-    display: none;
-}
 
 
 /* Footer */
@@ -286,35 +202,7 @@ footer section.navigation ul.nav-menu a {
 
     /* Main */
 
-    main section.categories div.categories-list p {
-        font-size: 14px;
-    }
-
-    main section.top-sellers article {
-        width: 50%;
-    }
-
-    main section.contact form.contact {
-        flex-direction: column;
-    }
-
-    main section.contact ul.list {
-        display: flex;
-        flex-direction: column;
-        padding: 15px;
-    }
-
-    main section.contact ul.list li {
-        font-size: 16px;
-        margin-bottom: 6px;
-        margin-left: 4px;
-        white-space: nowrap;
-    }
-
-    main section.contact ul.list li i {
-        text-align: center;
-        min-width: 15px;
-    }
+   
     
 
     /* Footer */
@@ -360,17 +248,8 @@ footer section.navigation ul.nav-menu a {
 
     /* Main */
 
-    main section.categories div.categories-list p {
-        font-size: 16px;
-    }
-
-    main section.top-sellers article {
-        width: 25%;
-    }
-
-    main section.contact form.contact input {
-        font-size: 14px;
-    }
+    
+    
 
 
     /* Footer */

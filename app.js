@@ -12,22 +12,18 @@ app.get('/', (req, res)=>{
     res.sendFile(__dirname + '/views/index.html');
 });
 
-app.get('/login', (req, res)=>{
+app.get('/login.html', (req, res)=>{
     res.sendFile(__dirname + '/views/login.html');
 });
 
-app.get('/products', (req, res)=>{
+app.get('/products.html', (req, res)=>{
     res.sendFile(__dirname + '/views/products.html');
 });
 
-app.get('/productDetail', (req, res)=>{
+app.get('/productDetail.html', (req, res)=>{
     res.sendFile(__dirname + '/views/productDetail.html');
 });
 
-app.get('/productCart', (req, res)=>{
+app.get('/productCart.html', (req, res)=>{
     res.sendFile(__dirname + '/views/productCart.html');
-});
-
-app.get('/login', (req, res)=>{
-    res.sendFile(__dirname + '/views/login.html');
 });
