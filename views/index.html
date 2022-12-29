@@ -17,10 +17,20 @@
             <div class="top-header">
                 <!-- Logo, login y carrito -->
                 <div class="first-row"> 
-                    <img src="images/logo.png" alt="Logo de ViveroFederal">   
-                    <!-- Falta agregar la imagen del logo -->
-                    <a href="/views/login.html"><i class="fas fa-user"></i></a>
-                    <a href="/views/productCart.html"><i class="fas fa-cart-plus"></i></a>
+                    <img src="images/logo.png" alt="Logo de ViveroFederal"> 
+                    <!-- Menú (escondido por defecto) -->                      
+                    <ul class="nav-menu-top" type="none">
+                        <li><a href="/views/products.html">Productos <i class="fas fa-seedling"></i></a></li>
+                        <p>|</p>
+                        <li><a href="#categories">Categorías <i class="fas fa-bars"></i></i></a></li>
+                        <p>|</p>
+                        <li><a href="#contact">Contacto <i class="fas fa-inbox"></i></a></li>
+                    </ul>
+                    <!-- Íconos derecha -->
+                    <div class="right-icons">                        
+                        <a href="/views/login.html"><i class="fas fa-user"></i></a>
+                        <a href="/views/productCart.html"><i class="fas fa-cart-plus"></i></a>
+                    </div>
                 </div>
                 <!-- Menú de la barra superior -->
                 <nav class="navbar">
@@ -40,13 +50,13 @@
             </div>
         </header>
 
-        <section class="banner">
-            
-            <img src="images/img-home-banner.jpg" alt="Banner de ofertas">
-
-        </section>
-
         <main>
+
+            <section class="banner">
+            
+                <img src="images/img-home-banner.jpg" alt="Banner de ofertas">
+    
+            </section>
 
             <section class="categories" id="categories">
                 <!-- Categorías -->
@@ -143,50 +153,52 @@
 
         <footer>
 
-            <section class="navigation">
-                <!-- Navegación -->
-                <h4 class="footer-title">Navegación</h4>
-                <!-- Lista -->
-                <ul class="nav-menu" type="none">
-                    <li><a href="/views/products.html"><i class="fas fa-seedling"></i> Productos</a></li>
-                    <li><a href="#categories"><i class="fas fa-bars"></i> Categorías</a></li>
-                    <li><a href="#contact"><i class="fas fa-inbox"></i> Contacto</a></li>
-                </ul>
-            </section>
-
-            <section class="payment-options">
-                <!-- Medios de pago -->
-                <h4 class="footer-title">Medios de pago</h4>
-                <!-- Lista -->
-                <ul class="list" type="none">
-                    <li><i class="fas fa-money-check"></i> Tarjetas de crédito y débito</i></li>
-                    <li><i class="fas fa-exchange-alt"></i> Transferencia</li>
-                    <li><i class="fas fa-money-bill"></i> Efectivo en puntos de pago</li>
-                </ul>
-            </section>
-            
-            <section class="contact">
-                <!-- Contacto -->
-                <h4 class="footer-title">Contacto</h4>
-                <!-- Lista -->
-                <ul class="list" type="none">
-                    <li><i class="fas fa-phone"></i></i> +54 9 387 4522805</i></li>
-                    <li><i class="fas fa-envelope"></i> info@viverofederal.com.ar</li>
-                    <li><i class="fas fa-map-pin"></i> Entre Ríos 1156, Salta</li>
-                    <li><i class="fas fa-map-pin"></i> Caseros 2354, Córdoba</li>
-                </ul>
-            </section>
-            
-            <section class="social-media">
-                <!-- Redes sociales -->
-                <h4 class="footer-title">Redes sociales</h4>
-                <!-- Lista -->
-                <ul class="list" type="none">
-                    <li><i class="fab fa-instagram"></i> viverofederal</i></li>
-                    <li><i class="fab fa-facebook"></i> viverofederal.ok</li>
-                    <li><i class="fab fa-twitter"></i> viverofederal.ok</li>
-                </ul>
-            </section>
+            <div class="footer">
+                <section class="navigation">
+                    <!-- Navegación -->
+                    <h4 class="footer-title">Navegación</h4>
+                    <!-- Lista -->
+                    <ul class="nav-menu" type="none">
+                        <li><a href="/views/products.html"><i class="fas fa-seedling"></i> Productos</a></li>
+                        <li><a href="#categories"><i class="fas fa-bars"></i> Categorías</a></li>
+                        <li><a href="#contact"><i class="fas fa-inbox"></i> Contacto</a></li>
+                    </ul>
+                </section>
+    
+                <section class="payment-options">
+                    <!-- Medios de pago -->
+                    <h4 class="footer-title">Medios de pago</h4>
+                    <!-- Lista -->
+                    <ul class="list" type="none">
+                        <li><i class="fas fa-money-check"></i> Tarjetas de crédito y débito</i></li>
+                        <li><i class="fas fa-exchange-alt"></i> Transferencia</li>
+                        <li><i class="fas fa-money-bill"></i> Efectivo en puntos de pago</li>
+                    </ul>
+                </section>
+                
+                <section class="contact">
+                    <!-- Contacto -->
+                    <h4 class="footer-title">Contacto</h4>
+                    <!-- Lista -->
+                    <ul class="list" type="none">
+                        <li><i class="fas fa-phone"></i></i> +54 9 387 4522805</i></li>
+                        <li><i class="fas fa-envelope"></i> info@viverofederal.com.ar</li>
+                        <li><i class="fas fa-map-pin"></i> Entre Ríos 1156, Salta</li>
+                        <li><i class="fas fa-map-pin"></i> Caseros 2354, Córdoba</li>
+                    </ul>
+                </section>
+                
+                <section class="social-media">
+                    <!-- Redes sociales -->
+                    <h4 class="footer-title">Redes sociales</h4>
+                    <!-- Lista -->
+                    <ul class="list" type="none">
+                        <li><i class="fab fa-instagram"></i> viverofederal</i></li>
+                        <li><i class="fab fa-facebook"></i> viverofederal.ok</li>
+                        <li><i class="fab fa-twitter"></i> viverofederal.ok</li>
+                    </ul>
+                </section>
+            </div>
 
         </footer>
         
