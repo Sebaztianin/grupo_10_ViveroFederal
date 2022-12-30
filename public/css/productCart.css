@@ -8,9 +8,12 @@
 }
 
 body {
+    display: flex;
+    flex-direction: column;
     font-family: 'Roboto', sans-serif;
     color: #3C6255;
     background-color: #FFFBE9;
+    min-height: 100vh;
 }
 
 
@@ -107,18 +110,18 @@ header div.top-header form.search-form button {
 
 /* Main */
 
-main section {
+main form.cart section {
     max-width: 1280px;
     margin: auto;
 }
 
-main h3.section-title {
+main form.cart h3.section-title {
     margin: 10px;
     margin-top: 14px;
     text-align: center;
 }
 
-main h3.section-title:before {
+main form.cart h3.section-title:before {
     content: "";
     display: inline-block;
     border-top: 1px solid #3C6255;
@@ -126,7 +129,7 @@ main h3.section-title:before {
     margin: 8px;
 }
 
-main h3.section-title:after {
+main form.cart h3.section-title:after {
     content: "";
     display: inline-block;
     border-top: 1px solid #3C6255;
@@ -134,21 +137,185 @@ main h3.section-title:after {
     margin: 8px;
 }
 
-main section.products div.products-list {
+main form.cart section.products div.products-list {
     display: flex;
     flex-direction: column;
-}
-
-main section.products div.products-list article {
+    align-items: center;
+    width: 100%;
     padding: 10px;
+    border-radius: 5px;
 }
 
+main form.cart section.products div.products-list article {
+    display: flex;
+    flex-direction: row;
+    background-color: #DAE2B6;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    width: 100%;
+}
+
+main form.cart section.products div.products-list article img {
+    width: 15%;
+    border-radius: 5px;
+}
+
+main form.cart section.products div.products-list article div.article {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    padding-inline: 10px;
+}
+
+main form.cart section.products div.products-list article div.article p.description {
+    font-weight: bold;
+    margin-bottom: auto;
+}
+
+main form.cart section.products div.products-list article div.article div.article-details {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+    width: 100%;
+    padding: 5px;
+    margin-bottom: auto;
+}
+
+main form.cart section.products div.products-list article div.article div.article-details div.quantity input {
+    width: 30px;
+    height: 85%;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    background-color: #CCD6A6;
+    margin: 2px;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+}
+
+main form.cart section.products div.products-list article div.article div.article-details div.quantity button {
+    height: 85%;
+    text-align: center;
+    color: #3C6255;
+    background-color: #CCD6A6;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+}
+
+main form.cart section.products div.products-list article div.article div.article-details div.total {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: auto;
+}
+
+main form.cart section.products div.products-list article div.article div.article-details div.total p {
+    font-weight: bold;
+    margin-inline: 10px;
+}
+
+main form.cart section.products div.products-list article div.article div.article-details div.total button {
+    word-wrap: normal;
+    text-align: center;
+    color: #a84d36;
+    background-color: #ec9a8b;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+}
+
+main form.cart section.delivery {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    margin-bottom: 15px;
+}
+
+main form.cart section.delivery label {
+    font-weight: bold;
+    color: #3C6255;
+    margin-left: 20px;
+    padding: 10px;   
+}
+
+main form.cart section.delivery input {
+    border: none;
+    border-radius: 5px;
+    background-color: white;
+    padding: 10px;   
+}
+
+main form.cart section.delivery button {
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;   
+    margin-inline: 10px 30px;
+    color: #3C6255;
+    background-color: #CCD6A6;
+}
+
+main form.cart section.subtotal {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    margin-bottom: 15px;
+}
+
+main form.cart section.subtotal p.title {
+    font-weight: bold;
+    margin-left: 20px;
+    padding: 10px;
+    border-top: 1px solid #3C6255;
+    border-bottom: 1px solid #3C6255;
+}
+
+main form.cart section.subtotal p.value {
+    font-weight: bold;
+    margin-right: 20px;
+    padding: 10px;
+    border-top: 1px solid #3C6255;
+    border-bottom: 1px solid #3C6255;
+}
+
+main form.cart section.submit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+main form.cart section.submit button {
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;   
+    margin-inline: 30px;
+    width: 95%;
+    color: #3C6255;
+    background-color: #CCD6A6;
+}
+
+main form.cart section.submit a {
+    font-size: 14px;
+    text-align: center;
+    margin: 15px 0px;
+    color: #3C6255;
+}
 
 
 /* Footer */
 
 footer {
     background-color: #F4EAD5;
+    margin-top: auto;
 }
 
 footer div.footer {

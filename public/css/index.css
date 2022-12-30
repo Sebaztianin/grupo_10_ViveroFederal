@@ -8,9 +8,12 @@
 }
 
 body {
+    display: flex;
+    flex-direction: column;
     font-family: 'Roboto', sans-serif;
     color: #3C6255;
     background-color: #FFFBE9;
+    min-height: 100vh;
 }
 
 
@@ -149,6 +152,7 @@ main section.categories div.categories-list {
     flex-direction: row;
     justify-content: space-around;
     padding: 0px 5px;
+    margin-inline: 5px;
 }
 
 main section.categories div.categories-list article {
@@ -174,12 +178,16 @@ main section.categories div.categories-list p {
 main section.top-sellers div.products {
     display: flex;
     flex-wrap: wrap;
+    margin-inline: 5px;
 }
 
-main section.top-sellers article {
-    padding: 15px;
-    width: 100%;
-    text-align: center;
+main section.top-sellers div.products article {
+    padding: 10px;
+    width: 98%;
+    margin: 2%;
+    align-self: center;
+    background-color: #DAE2B6;
+    border-radius: 5px;
 }
 
 main section.top-sellers img {
@@ -233,6 +241,7 @@ main section.contact ul.list {
 
 footer {
     background-color: #F4EAD5;
+    margin-top: auto;
 }
 
 footer div.footer {
@@ -290,8 +299,9 @@ footer section.navigation ul.nav-menu a {
         font-size: 14px;
     }
 
-    main section.top-sellers article {
-        width: 50%;
+    main section.top-sellers div.products article {
+        width: 48%;
+        margin: 1%;
     }
 
     main section.contact form.contact {
@@ -364,8 +374,9 @@ footer section.navigation ul.nav-menu a {
         font-size: 16px;
     }
 
-    main section.top-sellers article {
-        width: 25%;
+    main section.top-sellers div.products article {
+        width: 24%;
+        margin: 0.5%;
     }
 
     main section.contact form.contact input {

@@ -1,140 +1,173 @@
 <!DOCTYPE html>
 <html>
 
-    <head>
-        <meta charset="UTF-8">
-        <title>Vivero Federal: Carrito</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
-        <link rel="stylesheet" href="css/productCart.css">
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <title>Vivero Federal: Carrito</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <link rel="stylesheet" href="css/productCart.css">
+</head>
 
-    <body>
+<body>
 
-        <header>
-            <!-- Barra de navegación superior -->
-            <div class="top-header">
-                <!-- Logo, login y carrito -->
-                <div class="first-row"> 
-                    <a href="/"><img src="images/logo.png" alt="Logo de ViveroFederal"></a> 
-                    <!-- Menú (escondido por defecto) -->                      
-                    <ul class="nav-menu-top" type="none">
-                        <li><a href="/products.html">Productos <i class="fas fa-seedling"></i></a></li>
-                        <p>|</p>
-                        <li><a href="/#categories">Categorías <i class="fas fa-bars"></i></i></a></li>
-                        <p>|</p>
-                        <li><a href="/#contact">Contacto <i class="fas fa-inbox"></i></a></li>
-                    </ul>
-                    <!-- Íconos derecha -->
-                    <div class="right-icons">                        
-                        <a href="/login.html"><i class="fas fa-user"></i></a>
-                        <a href="/productCart.html"><i class="fas fa-cart-plus"></i></a>
-                    </div>
+    <header>
+        <!-- Barra de navegación superior -->
+        <div class="top-header">
+            <!-- Logo, login y carrito -->
+            <div class="first-row">
+                <a href="/"><img src="images/logo.png" alt="Logo de ViveroFederal"></a>
+                <!-- Menú (escondido por defecto) -->
+                <ul class="nav-menu-top" type="none">
+                    <li><a href="/products.html">Productos <i class="fas fa-seedling"></i></a></li>
+                    <p>|</p>
+                    <li><a href="/#categories">Categorías <i class="fas fa-bars"></i></i></a></li>
+                    <p>|</p>
+                    <li><a href="/#contact">Contacto <i class="fas fa-inbox"></i></a></li>
+                </ul>
+                <!-- Íconos derecha -->
+                <div class="right-icons">
+                    <a href="/login.html"><i class="fas fa-user"></i></a>
+                    <a href="/productCart.html"><i class="fas fa-cart-plus"></i></a>
                 </div>
-                <!-- Menú de la barra superior -->
-                <nav class="navbar">
-                    <ul class="nav-menu" type="none">
-                        <li><a href="/views/products.html">Productos <i class="fas fa-seedling"></i></a></li>
-                        <p>|</p>
-                        <li><a href="/#categories">Categorías <i class="fas fa-bars"></i></i></a></li>
-                        <p>|</p>
-                        <li><a href="/#contact">Contacto <i class="fas fa-inbox"></i></a></li>
-                    </ul>
-                </nav>
-                <!-- Barra de búsqueda -->
-                <form class="search-form" action="#" method="GET">
-                    <input class="search-input" type="text" name="search" placeholder="Buscar plantas o accesorios..." required>
-                    <button class="search-button" type="submit"><i class="fa fa-search"></i></button>
-                </form>
             </div>
-        </header>
+            <!-- Menú de la barra superior -->
+            <nav class="navbar">
+                <ul class="nav-menu" type="none">
+                    <li><a href="/products.html">Productos <i class="fas fa-seedling"></i></a></li>
+                    <p>|</p>
+                    <li><a href="/#categories">Categorías <i class="fas fa-bars"></i></i></a></li>
+                    <p>|</p>
+                    <li><a href="/#contact">Contacto <i class="fas fa-inbox"></i></a></li>
+                </ul>
+            </nav>
+            <!-- Barra de búsqueda -->
+            <form class="search-form" action="#" method="GET">
+                <input class="search-input" type="text" name="search" placeholder="Buscar plantas o accesorios..."
+                    required>
+                <button class="search-button" type="submit"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+    </header>
 
-        <main>
+    <main>
+
+        <form class="cart" action="#" method="GET">
 
             <section class="products">
-                <!-- Productos -->                
+                <!-- Productos -->
                 <h3 class="section-title">Carrito de compras</h3>
                 <!-- Listado -->
                 <div class="products-list">
                     <article>
                         <img src="images/products/suculenta.jpg" alt="Suculenta" class="product_img">
                         <div class="article">
-                            <h4 class="description">Suculenta</h4>
-                            <p class="quantity">2</p>
-                        </div>
-                        <div class="total">
-                            <button type="submit"><i class="fas fa-trash"></i></button>
-                            <p class="price">$550</p>
+                            <p class="description">Suculenta</p>
+                            <div class="article-details">
+                                <div class="quantity">
+                                    <button type="button" name="more"><i class="fas fa-minus"></i></button>
+                                    <input class="quantity-input" type="text" name="quantity" id="quantity" value="15">
+                                    <button type="button" name="less"><i class="fas fa-plus"></i></button>
+                                </div>
+                                <div class="total">
+                                    <p class="price">$550</p>
+                                    <button type="button" name="delete"><i class="fas fa-trash"></i></button>
+                                </div>
+                            </div>
                         </div>
                     </article>
                     <article>
                         <img src="images/products/cactus.jpg" alt="Cactus" class="product_img">
                         <div class="article">
-                            <h4 class="description">Cactus</h4>
-                            <p class="quantity">1</p>
-                        </div>
-                        <div class="total">
-                            <button type="submit"><i class="fas fa-trash"></i></button>
-                            <p class="price">$800</p>
+                            <p class="description">Cactus</p>
+                            <div class="article-details">
+                                <div class="quantity">
+                                    <button type="button" name="more"><i class="fas fa-minus"></i></button>
+                                    <input class="quantity-input" type="text" name="quantity" id="quantity" value="20">
+                                    <button type="button" name="less"><i class="fas fa-plus"></i></button>
+                                </div>
+                                <div class="total">
+                                    <p class="price">$800</p>
+                                    <button type="button" name="delete"><i class="fas fa-trash"></i></button>
+                                </div>
+                            </div>
                         </div>
                     </article>
-                </div>   
+                </div>
             </section>
 
-            
-        </main>
+            <section class="delivery">
+                <label id="cp">Envío: </label>
+                <input class="cp" type="number" name="cp" id="cp" placeholder="Código postal">
+                <button type="menu" name="calculate">Calcular</button>
+            </section>
 
-        <footer>
+            <section class="subtotal">
+                <p class="title">Subtotal: </p>
+                <p class="value">$ 1.350</p>
+            </section>
 
-            <div class="footer">
-                <section class="navigation">
-                    <!-- Navegación -->
-                    <h4 class="footer-title">Navegación</h4>
-                    <!-- Lista -->
-                    <ul class="nav-menu" type="none">
-                        <li><a href="/products.html"><i class="fas fa-seedling"></i> Productos</a></li>
-                        <li><a href="/#categories"><i class="fas fa-bars"></i> Categorías</a></li>
-                        <li><a href="/#contact"><i class="fas fa-inbox"></i> Contacto</a></li>
-                    </ul>
-                </section>
-    
-                <section class="payment-options">
-                    <!-- Medios de pago -->
-                    <h4 class="footer-title">Medios de pago</h4>
-                    <!-- Lista -->
-                    <ul class="list" type="none">
-                        <li><i class="fas fa-money-check"></i> Tarjetas de crédito y débito</i></li>
-                        <li><i class="fas fa-exchange-alt"></i> Transferencia</li>
-                        <li><i class="fas fa-money-bill"></i> Efectivo en puntos de pago</li>
-                    </ul>
-                </section>
-                
-                <section class="contact">
-                    <!-- Contacto -->
-                    <h4 class="footer-title">Contacto</h4>
-                    <!-- Lista -->
-                    <ul class="list" type="none">
-                        <li><i class="fas fa-phone"></i></i> +54 9 387 4522805</i></li>
-                        <li><i class="fas fa-envelope"></i> info@viverofederal.com.ar</li>
-                        <li><i class="fas fa-map-pin"></i> Entre Ríos 1156, Salta</li>
-                        <li><i class="fas fa-map-pin"></i> Caseros 2354, Córdoba</li>
-                    </ul>
-                </section>
-                
-                <section class="social-media">
-                    <!-- Redes sociales -->
-                    <h4 class="footer-title">Redes sociales</h4>
-                    <!-- Lista -->
-                    <ul class="list" type="none">
-                        <li><i class="fab fa-instagram"></i> viverofederal</i></li>
-                        <li><i class="fab fa-facebook"></i> viverofederal.ok</li>
-                        <li><i class="fab fa-twitter"></i> viverofederal.ok</li>
-                    </ul>
-                </section>
-            </div>
+            <section class="submit">
+                <button type="submit" name="buy">Comprar</button>
+                <a href="/products.html">Ver más productos</a>
+            </section>
 
-        </footer>
-        
-    </body>
+        </form>
+
+    </main>
+
+    <footer>
+
+        <div class="footer">
+            <section class="navigation">
+                <!-- Navegación -->
+                <h4 class="footer-title">Navegación</h4>
+                <!-- Lista -->
+                <ul class="nav-menu" type="none">
+                    <li><a href="/products.html"><i class="fas fa-seedling"></i> Productos</a></li>
+                    <li><a href="/#categories"><i class="fas fa-bars"></i> Categorías</a></li>
+                    <li><a href="/#contact"><i class="fas fa-inbox"></i> Contacto</a></li>
+                </ul>
+            </section>
+
+            <section class="payment-options">
+                <!-- Medios de pago -->
+                <h4 class="footer-title">Medios de pago</h4>
+                <!-- Lista -->
+                <ul class="list" type="none">
+                    <li><i class="fas fa-money-check"></i> Tarjetas de crédito y débito</i></li>
+                    <li><i class="fas fa-exchange-alt"></i> Transferencia</li>
+                    <li><i class="fas fa-money-bill"></i> Efectivo en puntos de pago</li>
+                </ul>
+            </section>
+
+            <section class="contact">
+                <!-- Contacto -->
+                <h4 class="footer-title">Contacto</h4>
+                <!-- Lista -->
+                <ul class="list" type="none">
+                    <li><i class="fas fa-phone"></i></i> +54 9 387 4522805</i></li>
+                    <li><i class="fas fa-envelope"></i> info@viverofederal.com.ar</li>
+                    <li><i class="fas fa-map-pin"></i> Entre Ríos 1156, Salta</li>
+                    <li><i class="fas fa-map-pin"></i> Caseros 2354, Córdoba</li>
+                </ul>
+            </section>
+
+            <section class="social-media">
+                <!-- Redes sociales -->
+                <h4 class="footer-title">Redes sociales</h4>
+                <!-- Lista -->
+                <ul class="list" type="none">
+                    <li><i class="fab fa-instagram"></i> viverofederal</i></li>
+                    <li><i class="fab fa-facebook"></i> viverofederal.ok</li>
+                    <li><i class="fab fa-twitter"></i> viverofederal.ok</li>
+                </ul>
+            </section>
+        </div>
+
+    </footer>
+
+</body>
+
 </html>
