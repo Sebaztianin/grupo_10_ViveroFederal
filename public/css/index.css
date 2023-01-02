@@ -1,4 +1,3 @@
-
 /* Global settings */
 
 * {
@@ -20,6 +19,10 @@ body {
 /* Header */
 
 header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 165px;
     background-color: #F4EAD5;
 }
 
@@ -40,13 +43,8 @@ header div.top-header div.first-row {
     width: 95%;
 }
 
-header div.top-header div.first-row a {
-    width: 20%;
-    max-width: 170px;
-}
-
 header div.top-header div.first-row a img {
-    width: 100%;
+    width: 100px;
     border-radius: 5px;
 }
 
@@ -88,22 +86,23 @@ header div.top-header nav.navbar ul.nav-menu li a {
 }
 
 header div.top-header form.search-form {
-    padding: 1%;
-    margin: 10px;
-    background-color: white;
-    width: 95%;
+    width: 100%;
     text-align: center;
-    border-radius: 5px;
 }
 
 header div.top-header form.search-form input {
+    padding: 5px;
     width: 90%;
     border: none;
+    border-radius: 5px;
+    background-color: white;
 }
 
 header div.top-header form.search-form button {
-    width: 5%;
+    padding: 5px;
+    width: 7%;
     border: none;
+    border-radius: 5px;
     background-color: white;
 }
 
@@ -142,6 +141,7 @@ main h3.section-title:after {
 
 main section.banner img {
     width: 100%;
+    margin-top: 165px;
 }
 
 
@@ -195,7 +195,8 @@ main section.top-sellers img {
     border-radius: 10px;
 }
 
-main section.top-sellers p, h4 {
+main section.top-sellers p,
+h4 {
     padding-top: 8px;
 }
 
@@ -215,7 +216,8 @@ main section.contact form.contact {
     width: 100%;
 }
 
-main section.contact form.contact input, main section.contact form.contact textarea {
+main section.contact form.contact input,
+main section.contact form.contact textarea {
     padding: 5px;
     margin: 5px;
     border: none;
@@ -250,7 +252,7 @@ footer div.footer {
     justify-content: space-around;
     margin-top: 16px;
     max-width: 1280px;
-    margin: auto;    
+    margin: auto;
 }
 
 footer h4.footer-title {
@@ -325,7 +327,7 @@ footer section.navigation ul.nav-menu a {
         text-align: center;
         min-width: 15px;
     }
-    
+
 
     /* Footer */
 
@@ -344,7 +346,47 @@ footer section.navigation ul.nav-menu a {
 
 @media (min-width: 769px) {
 
+    /* Main */
+
+    main section.categories div.categories-list p {
+        font-size: 16px;
+    }
+
+    main section.top-sellers div.products article {
+        width: 24%;
+        margin: 0.5%;
+    }
+
+    main section.contact form.contact input {
+        font-size: 14px;
+    }
+
+
+    /* Footer */
+
+    footer section.navigation,
+    footer section.social-media {
+        width: 20%;
+    }
+
+    footer section.payment-options,
+    footer section.contact {
+        width: 30%;
+    }
+
+}
+
+
+/* Notebooks */
+
+@media (min-width: 1024px) {
+
     /* Header */
+
+    header {
+        background-color: #F4EAD5;
+        height: 115px;
+    }
 
     header div.top-header div.first-row ul.nav-menu-top {
         display: flex;
@@ -370,37 +412,11 @@ footer section.navigation ul.nav-menu a {
 
     /* Main */
 
-    main section.categories div.categories-list p {
-        font-size: 16px;
+    /* Banner */
+
+    main section.banner img {
+        width: 100%;
+        margin-top: 115px;
     }
-
-    main section.top-sellers div.products article {
-        width: 24%;
-        margin: 0.5%;
-    }
-
-    main section.contact form.contact input {
-        font-size: 14px;
-    }
-
-
-    /* Footer */
-
-    footer section.navigation, footer section.social-media {
-        width: 20%;
-    }
-    
-    footer section.payment-options, footer section.contact {
-        width: 30%;
-    }
-
-}
-
-
-/* Notebooks */
-
-@media (min-width: 1024px) {
-
-    /* Header */
 
 }
