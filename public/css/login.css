@@ -105,8 +105,18 @@ header div.top-header form.search-form button {
     border-radius: 5px;
     background-color: white;
 }
+/* Main */
 
 
+main form.login section {
+    max-width: 1280px;
+    margin: auto;
+}
+main form.cart h3.section-title {
+    margin: 10px;
+    margin-top: 179px;
+    text-align: center;
+}
 
 /* Footer */
 

@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Vivero Federal: Carrito</title>
+    <title>Vivero Federal: Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
@@ -53,12 +53,13 @@
     </header>
 
     <main>
+        <!--LOGIN-->
         <form class="cart" action="/login" method="POST">
 
             <section class="products">
-                <h3 class="section-title">Inicia sesion en tu cuenta</h3>
+                <h3 class="section-title">Inicia sesión en tu cuenta</h3>
        
-                <!--Campos-->
+        <!--Campos-->
             <div>
                 <label for="usuario">Nombre de Usuario</label>
                 <input type="text" name="nombreDeUsuario" id="usuario" placeholder="Ej: CamiQuispe" required></input>
@@ -67,10 +68,13 @@
                 <label for="pass">Contraseña</label>
                 <input type="password" name="clave" id="pass" placeholder="********" required></input>
             </div>
+            <div>
+                <input type="radio"> Recordar mi contraseña</input>
+            </div>
 
             <div>
             <section class="submit">
-                <button type="sbmit" name="Inicia">INICIAR SESIÓN</button>
+                <button type="submit" name="Inicia">INICIAR SESIÓN</button>
                 <a href="/register.html"><h5>¿Olvidaste tu contraseña?</h5></a>
             </section>
             </div>
