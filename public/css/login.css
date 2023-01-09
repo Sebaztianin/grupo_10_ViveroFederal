@@ -159,7 +159,7 @@ footer section.navigation ul.nav-menu a {
     width: 100%;
 }
 
-
+/* Celus más grandes */
 @media (min-width: 481px) {
 
     /* Footer */
@@ -173,9 +173,7 @@ footer section.navigation ul.nav-menu a {
     }
 
 }
-
-
-
+/* Tablets y netbooks */
 
 @media (min-width: 769px) {
 
@@ -193,6 +191,8 @@ footer section.navigation ul.nav-menu a {
 
 }
 
+
+/* Notebooks */
 
 @media (min-width: 1024px) {
 
@@ -223,7 +223,6 @@ footer section.navigation ul.nav-menu a {
     header div.top-header nav.navbar {
         display: none;
     }
-
 
     /* Main */
 
