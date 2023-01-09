@@ -1,0 +1,236 @@
+/* Global settings*/
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Roboto', sans-serif;
+    color: #3C6255;
+    background-color: #FFFBE9;
+    min-height: 100vh;
+}
+
+
+/* Header */
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 165px;
+    background-color: #F4EAD5;
+}
+
+header div.top-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px;
+    max-width: 1280px;
+    margin: auto;
+}
+
+header div.top-header div.first-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px;
+    width: 95%;
+}
+
+header div.top-header div.first-row a img {
+    width: 100px;
+    border-radius: 5px;
+}
+
+header div.top-header div.first-row div.right-icons {
+    display: inline-block;
+}
+
+header div.top-header div.first-row div.right-icons a {
+    scale: 1.3;
+    padding-inline: 10px;
+    color: #3C6255;
+    display: inline-block;
+}
+
+header div.top-header nav.navbar {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin: 15px 10px;
+}
+
+header div.top-header div.first-row ul.nav-menu-top {
+    display: none;
+}
+
+header div.top-header nav.navbar ul.nav-menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    list-style: none;
+    width: 100%;
+}
+
+header div.top-header nav.navbar ul.nav-menu li a {
+    text-decoration: none;
+    color: #3C6255;
+    font-weight: bold;
+}
+
+header div.top-header form.search-form {
+    width: 100%;
+    text-align: center;
+}
+
+header div.top-header form.search-form input {
+    padding: 5px;
+    width: 90%;
+    border: none;
+    border-radius: 5px;
+    background-color: white;
+}
+
+header div.top-header form.search-form button {
+    padding: 5px;
+    width: 7%;
+    border: none;
+    border-radius: 5px;
+    background-color: white;
+}
+
+
+
+/* Footer */
+
+footer {
+    background-color: #F4EAD5;
+    margin-top: auto;
+}
+
+footer div.footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 16px;
+    max-width: 1280px;
+    margin: auto;
+}
+
+footer h4.footer-title {
+    font-size: 16px;
+    padding: 16px 16px 8px;
+}
+
+footer section {
+    margin-bottom: 16px;
+    width: 100%;
+}
+
+footer section.navigation ul.nav-menu {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    text-align: left;
+}
+
+footer section.navigation ul.nav-menu li {
+    padding: 8px;
+    padding-left: 24px;
+}
+
+footer section ul.list li {
+    padding: 8px;
+    padding-left: 24px;
+    font-size: 14px;
+}
+
+footer section.navigation ul.nav-menu a {
+    text-decoration: none;
+    color: #3C6255;
+    font-size: 14px;
+    width: 100%;
+}
+
+
+@media (min-width: 481px) {
+
+    /* Footer */
+
+    footer section {
+        width: 50%;
+    }
+
+    footer section.navigation ul.nav-menu {
+        flex-direction: column;
+    }
+
+}
+
+
+
+
+@media (min-width: 769px) {
+
+    /* Footer */
+
+    footer section.navigation,
+    footer section.social-media {
+        width: 20%;
+    }
+
+    footer section.payment-options,
+    footer section.contact {
+        width: 30%;
+    }
+
+}
+
+
+@media (min-width: 1024px) {
+
+    /* Header */
+
+    header {
+        background-color: #F4EAD5;
+        height: 115px;
+    }
+
+    header div.top-header div.first-row ul.nav-menu-top {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        list-style: none;
+        width: 80%;
+        max-width: 500px;
+        padding-inline: 10px;
+    }
+
+    header div.top-header div.first-row ul.nav-menu-top li a {
+        text-decoration: none;
+        color: #3C6255;
+        font-weight: bold;
+    }
+
+    header div.top-header nav.navbar {
+        display: none;
+    }
+
+
+    /* Main */
+
+    main form.cart h3.section-title {
+        margin: 10px;
+        margin-top: 130px;
+        text-align: center;
+    }
+
+}
