@@ -54,6 +54,7 @@
 
     <main>
         <!--LOGIN-->
+        <div>
         <form class="cart" action="/login" method="POST">
 
             <section class="products">
@@ -68,26 +69,24 @@
                 <label for="pass">Contraseña</label>
                 <input type="password" name="clave" id="pass" placeholder="********" required></input>
             </div>
-            <div>
-                <input type="radio"> Recordar mi contraseña</input>
+            <div class="sin_flex">
+                <label for="remember">Recordar mi contraseña</label>
+                <input type="radio" name="opcion" id="remember"></input>
+                
             </div>
 
             <div>
             <section class="submit">
                 <button type="submit" name="Inicia">INICIAR SESIÓN</button>
-                <a href="/register.html"><h5>¿Olvidaste tu contraseña?</h5></a>
+                <a href="/index.html"><h5>¿Olvidaste tu contraseña?</h5></a>
             </section>
             </div>
         </section>
         </form>
-
-
-
-
-
+    </div>
             <!--REGISTRO-->
-        
-        <form class= cart action="/register" method="POST">
+        <div>
+        <form class="cart" action="/register" method="POST">
 
             <section class="products">
             <h3 class="section-title">Puedes registrarte aquí</h3>
@@ -121,6 +120,7 @@
 
          </section>
         </form>
+    </div>  
     </main>
     
     <footer>

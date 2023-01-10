@@ -105,18 +105,42 @@ header div.top-header form.search-form button {
     border-radius: 5px;
     background-color: white;
 }
+
 /* Main */
 
+main form.cart div{
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+    padding-left: 24px;
+    font-size: 14px;  
+    align-items: center;
+    
+}
 
-main form.login section {
-    max-width: 1280px;
-    margin: auto;
+main form.cart div.sin_flex{
+    display: flex;
+    align-items: center;
 }
-main form.cart h3.section-title {
-    margin: 10px;
-    margin-top: 179px;
-    text-align: center;
+
+main form.cart div input.radio {
+    display: inline;
+    font-size: 14px;
 }
+ 
+main input {
+    margin-top: 5px;
+    padding: 8px;
+    padding-left: 24px;
+    font-size: 14px;
+    width: 30%;
+    border: none;
+    border-radius: 5px;
+    background-color: white;
+}
+
+
+
 
 /* Footer */
 
