@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Vivero Federal: Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <link rel="stylesheet" href="css/products.css">
+</head>
+
+<body>                   
+    <header>
+        <!-- Barra de navegación superior -->
+        <div class="top-header">
+            <!-- Logo, login y carrito -->
+            <div class="first-row">
+                <a href="/"><img src="images/logo.png" alt="Logo de ViveroFederal"></a>
+                <!-- Menú (escondido por defecto) -->
+                <ul class="nav-menu-top" type="none">
+                    <li><a href="/views/products.html">Productos <i class="fas fa-seedling"></i></a></li>
+                    <p>|</p>
+                    <li><a href="#categories">Categorías <i class="fas fa-bars"></i></i></a></li>
+                    <p>|</p>
+                    <li><a href="#contact">Contacto <i class="fas fa-inbox"></i></a></li>
+                </ul>
+                <!-- Íconos derecha -->
+                <div class="right-icons">
+                    <a href="/login.html"><i class="fas fa-user"></i></a>
+                    <a href="/productCart.html"><i class="fas fa-cart-plus"></i></a>
+                </div>
+            </div>
+            <!-- Menú de la barra superior -->
+            <nav class="navbar">
+                <ul class="nav-menu" type="none">
+                    <li><a href="/products.html">Productos <i class="fas fa-seedling"></i></a></li>
+                    <p>|</p>
+                    <li><a href="#categories">Categorías <i class="fas fa-bars"></i></i></a></li>
+                    <p>|</p>
+                    <li><a href="#contact">Contacto <i class="fas fa-inbox"></i></a></li>
+                </ul>
+            </nav>
+            <!-- Barra de búsqueda -->
+            <form class="search-form" action="#" method="GET">
+                <input class="search-input" type="text" name="search" placeholder="Buscar plantas o accesorios..."
+                    required>
+                <button class="search-button" type="submit"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+    </header>
+
+    
+     <main>           
+        <div class="index">
+            <a href="/views/index.html">INCIO/PRODUCTOS</a>
+        </div>
+
+        
+
+        <div class="mas-vendidos">   
+            
+    <select name="Mas vendidos">
+        <option value="Precio Mayor">Mayor a Menor</option>
+        <option value="Precio Menor">Menor a Mayor</option>
+        <option value="A-Z">A - Z</option>
+        <option value="Z - A">Z - A</option>
+        <option value="Mas nuevo al mas viejo">Mas nuevo al mas viejo</option>
+        <option value="Mas viejo al mas nuevo">Mas viejo al mas nuevo</option>
+        <option value="Mas vendidos">Mas vendidos</option>
+    </select>
+    <h5>Ordenar por:</h5>
+    </div>
+
+    <div class="filtrar">
+    <a href="Det-Prod">Filtrar</a>
+</div>
+
+        <div class="Det-Prod">
+        <nav> 
+            
+            <div class="nav-bar">
+            <ul>                
+            <div class="Categorias">
+                <div class="negrita"> 
+                <label for="Categorias">Categorias</label>   
+            </div>
+                <a href="#">Suculentas y Cactus</a>
+                <a href="#">De interior</a>
+                <a href="#">De exterior</a>
+                <a href="#">Macetas</a>
+                <a href="#">Accesorios</a>
+            </div>
+            </ul>
+            <br><br>
+
+            <ul>                
+                <div class="Filtros">
+                    <div class="negrita">
+                    <label for="Filtros">Filtros</label>
+                </div>
+                    <br>
+                    <div class="negrita1">
+                    <label for="Color">Color</label>
+                </div>
+                    <br>
+                    <div class="box">
+                    <input type="checkbox" name="Color" value="Beige">Beige
+                    <br>
+                    <br>
+                    <input type="checkbox" name="Color" value="Blanco">Blanco
+                    <br>
+                    <br>
+                    <input type="checkbox" name="Color" value="Celeste">Celeste
+                    <br>
+                    <br>
+                    <input type="checkbox" name="Color" value="Fucsia">Fucsia
+                    <br>
+                    <br>
+                    <input type="checkbox" name="Color" value="Gris">Gris
+                    <br>
+                    <br>
+                    <input type="checkbox" name="Color" value="Marron">Marron
+                    <br>
+                    <br>
+                    <input type="checkbox" name="Color" value="Negro">Negro
+                </div>
+                    <br>
+                    <br>                                    
+                    <hr>
+                    <br><br>  
+                    <div class="negrita1">               
+                    <label for="Talle">Talle</label>
+                </div>   
+                    <br>
+                    <div class="box">
+                    <input type="checkbox" name="Talle" value="Sex X3">Sex X3
+                    <br>
+                    <br>
+                    <input type="checkbox" name="Talle" value="Xs">Xs   
+                    <br>
+                    <br>
+                    <input type="checkbox" name="Talle" value="S">S
+                    <br>
+                    <br>
+                    <input type="checkbox" name="Talle" value="M">M
+                    <br>
+                    <br>
+                    <input type="checkbox" name="Talle" value="L">L
+                    <br>
+                    <br>
+                    <input type="checkbox" name="Talle" value="XI">XI
+                    <br>
+                    <br>
+                    <input type="checkbox" name="Talle" value="Xxl">Xxl
+                </div>
+                    <br>
+                    <br>                                    
+                    <hr>
+                    <br><br> 
+                    <div class="negrita1">
+                    <label for="Cantidad">Cantidad</label>
+                </div> 
+                    <br>
+                    <div class="box">
+                    <input type="checkbox" name="Cantidad" value="1 Vara">1 Vara
+                    <br>
+                    <br>
+                    <input type="checkbox" name="Cantidad" value="2 Varas">2 Varas
+                    <br>
+                    <br>
+                    <input type="checkbox" name="Cantidad" value="X4">X4
+                    <br>
+                    <br>
+                    <input type="checkbox" name="Cantidad" value="X9">X9
+                </div>
+                    <br>
+                    <br>                                    
+                    <hr>
+                    <br><br>  
+                    <div class="negrita1">
+                    <label for="Color Maceta">Color Maceta</label>
+                </div>
+                    <br>
+                    <div class="box">
+                    <input type="checkbox" name="Color Maceta" value="Maceta Amarillo Pastel">Maceta Amarillo Pastel
+                    <br>
+                    <br>
+                    <input type="checkbox" name="Color Maceta" value="Maceta Arena">Maceta Arena
+                    <br>
+                    <br>
+                    <input type="checkbox" name="Color Maceta" value="Maceta Blanca">Maceta Blanca
+                    <br>
+                    <br>
+                    <input type="checkbox" name="Color Maceta" value="Maceta Negra">Maceta Negra
+                </div>
+                    <br>
+                    <br>                                    
+                    <hr>
+                    <br><br> 
+                    <div class="negrita1">
+                    <label for="Tamaño">Tamaño</label>
+                </div> 
+                    <br>
+                    <div class="box">
+                    <input type="checkbox" name="Tamaño" value="10 L">10 L
+                    <br>
+                    <br>
+                    <input type="checkbox" name="Tamaño" value="12 L">12 L
+                    <br>
+                    <br>
+                    <input type="checkbox" name="Tamaño" value="14 L">14 L
+                    <br>
+                    <br>
+                    <input type="checkbox" name="Tamaño" value="15 L">15 L
+                    <br>
+                    <br>
+                    <input type="checkbox" name="Tamaño" value="18 L">18 L
+                    <br>
+                    <br>
+                    <input type="checkbox" name="Tamaño" value="10 L">10 L
+                    <br>
+                    <br>
+                    <input type="checkbox" name="Tamaño" value="20 L">20 L
+                    <br>
+                    <br>
+                    <input type="checkbox" name="Tamaño" value="22 L">22 L
+                    <br>
+                    <br>
+                    <input type="checkbox" name="Tamaño" value="10 L">10 L
+                </div>
+                    <br>
+                    <br>                                    
+                    <hr>
+                    <br><br>  
+                    <div class="negrita1">
+                    <label for="Tamaño Cuadrada">Tamaño Cuadrada</label>
+                </div>
+                    <br>
+                    <div class="box">
+                    <input type="checkbox" name="Tamaño Cuadrada" value="Nro 8">Nro 8
+                    <br>
+                    <br>
+                    <input type="checkbox" name="Tamaño Cuadrada" value="Nro 12">Nro 12
+                    <br>
+                    <br>
+                    <input type="checkbox" name="Tamaño Cuadrada" value="Nro 16">Nro 16
+                    <br>
+                    <br>
+                    <input type="checkbox" name="Tamaño Cuadrada" value="Nro 20">Nro 20
+                </div>
+                    <br>
+                    <br>                                    
+                    <hr>
+                    <br><br> 
+                    <div class="negrita1">
+                    <label for="Tamaño Redonda">Tamaño Redonda</label>
+                </div> 
+                    <br>
+                    <div class="box">
+                    <input type="checkbox" name="Tamaño Redonda" value="Nro 8">Nro 8
+                    <br>
+                    <br>
+                    <input type="checkbox" name="Tamaño Redonda" value="Nro 12">Nro 12
+                    <br>
+                    <br>
+                    <input type="checkbox" name="Tamaño Redonda" value="Nro 16">Nro 16
+                    <br>
+                    <br>
+                    <input type="checkbox" name="Tamaño Redonda" value="Nro 18">Nro 18
+                    <br>
+                    <br>
+                    <input type="checkbox" name="Tamaño Redonda" value="Nro 20">Nro 20
+                    <br>
+                    <br>
+                    <input type="checkbox" name="Tamaño Redonda" value="Nro 27">Nro 27
+                </div>
+                    <br>
+                    <br>                                    
+                    <hr>
+                    <br><br> 
+                    <div class="negrita1">
+                    <label for="Tipo">Tipo</label>
+                </div>
+                    <br>
+                    <div class="box">
+                    <input type="checkbox" name="Tipo" value="2 Litros">2 Litros
+                    <br>
+                    <br>
+                    <input type="checkbox" name="Tipo" value="5 Litros">5 Litros
+                    <br>
+                    <br>
+                    <input type="checkbox" name="Tipo" value="Combo L">Combo L
+                    <br>
+                    <br>
+                    <input type="checkbox" name="Tipo" value="Combo M">Combo M
+                    <br>
+                    <br>
+                    <input type="checkbox" name="Tipo" value="Combo S">Combo S
+                    <br>
+                    <br>
+                    <input type="checkbox" name="Tipo" value="Combo X3">Combo X3
+                </div>
+                    <br>
+                    <br><br>
+
+                    <a href="#">Ver todos</a>                  
+            </ul>
+        </div>
+            
+         </nav>          
+
+       
+            <div class="products">
+                <article> 
+                    <img src="/images/categories/sucycac.jpg" alt="sucycac" class="product img"> 
+                    <div class="main-article"> 
+                    <h4 class="description"><a href="#">Suculenta</a></h4> 
+                    <h4 class="precio">$ 550</h4>
+                    <button><a href="/carrito">Agregar al carrito</a></button>                         
+                </div>
+                </article>                                         
+                <article> 
+                    <img src="/images/categories/deinterior.jpg" alt="deinterior" class="product img"> 
+                    <div class="main-article">    
+                        <h4 class="description"><a href="#">De interior</a></h4> 
+                    <h4 class="precio">$ 800</h4> 
+                    <button><a href="/carrito">Agregar al carrito</a></button>             
+                    </div>
+                </article>
+                <article> 
+                    <img src="/images/categories/deexterior.jpg" alt="deexterior" class="product img">                 
+                    <div class="main-article">    
+                        <h4 class="description"><a href="#"></a>De exterior</h4>  
+                    <h4 class="precio">$ 1100</h4>    
+                    <button><a href="/carrito">Agregar al carrito</a></button>                  
+                    </div>
+                </article>
+                <article> 
+                    <img src="/images/categories/macetas.jpg" alt="maceta" class="product img"> 
+                    <div class="main-article">    
+                        <h4 class="description"><a href="#">Maceta</a></h4> 
+                    <h4 class="precio">$ 1200</h4>   
+                    <button><a href="/carrito">Agregar al carrito</a></button>                    
+                    </div>
+                </article>     
+                <article> 
+                    <img src="/images/categories/sucycac.jpg" alt="sucycac" class="product img"> 
+                    <div class="main-article"> 
+                    <h4 class="description"><a href="#">Suculenta</a></h4> 
+                    <h4 class="precio">$ 550</h4>
+                    <button><a href="/carrito">Agregar al carrito</a></button>                         
+                </div>
+                </article>                                         
+                <article> 
+                    <img src="/images/categories/deinterior.jpg" alt="deinterior" class="product img"> 
+                    <div class="main-article">    
+                        <h4 class="description"><a href="#">De interior</a></h4> 
+                    <h4 class="precio">$ 800</h4> 
+                    <button><a href="/carrito">Agregar al carrito</a></button>             
+                    </div>
+                </article>
+                <article> 
+                    <img src="/images/categories/deexterior.jpg" alt="deexterior" class="product img">                 
+                    <div class="main-article">    
+                        <h4 class="description"><a href="#"></a>De exterior</h4>  
+                    <h4 class="precio">$ 1100</h4>    
+                    <button><a href="/carrito">Agregar al carrito</a></button>                  
+                    </div>
+                </article>
+                <article> 
+                    <img src="/images/categories/macetas.jpg" alt="maceta" class="product img"> 
+                    <div class="main-article">    
+                        <h4 class="description"><a href="#">Maceta</a></h4> 
+                    <h4 class="precio">$ 1200</h4>   
+                    <button><a href="/carrito">Agregar al carrito</a></button>                    
+                    </div>
+                </article>
+                <article> 
+                    <img src="/images/categories/sucycac.jpg" alt="sucycac" class="product img"> 
+                    <div class="main-article"> 
+                    <h4 class="description"><a href="#">Suculenta</a></h4> 
+                    <h4 class="precio">$ 550</h4>
+                    <button><a href="/carrito">Agregar al carrito</a></button>                         
+                </div>
+                </article>                                         
+                <article> 
+                    <img src="/images/categories/deinterior.jpg" alt="deinterior" class="product img"> 
+                    <div class="main-article">    
+                        <h4 class="description"><a href="#">De interior</a></h4> 
+                    <h4 class="precio">$ 800</h4> 
+                    <button><a href="/carrito">Agregar al carrito</a></button>             
+                    </div>
+                </article>
+                <article> 
+                    <img src="/images/categories/deexterior.jpg" alt="deexterior" class="product img">                 
+                    <div class="main-article">    
+                        <h4 class="description"><a href="#"></a>De exterior</h4>  
+                    <h4 class="precio">$ 1100</h4>    
+                    <button><a href="/carrito">Agregar al carrito</a></button>                  
+                    </div>
+                </article>
+                <article> 
+                    <img src="/images/categories/macetas.jpg" alt="maceta" class="product img"> 
+                    <div class="main-article">    
+                        <h4 class="description"><a href="#">Maceta</a></h4> 
+                    <h4 class="precio">$ 1200</h4>   
+                    <button><a href="/carrito">Agregar al carrito</a></button>                    
+                    </div>
+                </article>
+                <article> 
+                    <img src="/images/categories/sucycac.jpg" alt="sucycac" class="product img"> 
+                    <div class="main-article"> 
+                    <h4 class="description"><a href="#">Suculenta</a></h4> 
+                    <h4 class="precio">$ 550</h4>
+                    <button><a href="/carrito">Agregar al carrito</a></button>                         
+                </div>
+                </article>                                         
+                <article> 
+                    <img src="/images/categories/deinterior.jpg" alt="deinterior" class="product img"> 
+                    <div class="main-article">    
+                        <h4 class="description"><a href="#">De interior</a></h4> 
+                    <h4 class="precio">$ 800</h4> 
+                    <button><a href="/carrito">Agregar al carrito</a></button>             
+                    </div>
+                </article>
+                <article> 
+                    <img src="/images/categories/deexterior.jpg" alt="deexterior" class="product img">                 
+                    <div class="main-article">    
+                        <h4 class="description"><a href="#"></a>De exterior</h4>  
+                    <h4 class="precio">$ 1100</h4>    
+                    <button><a href="/carrito">Agregar al carrito</a></button>                  
+                    </div>
+                </article>
+                <article> 
+                    <img src="/images/categories/macetas.jpg" alt="maceta" class="product img"> 
+                    <div class="main-article">    
+                        <h4 class="description"><a href="#">Maceta</a></h4> 
+                    <h4 class="precio">$ 1200</h4>   
+                    <button><a href="/carrito">Agregar al carrito</a></button>                    
+                    </div>
+                </article>
+                <article> 
+                    <img src="/images/categories/sucycac.jpg" alt="sucycac" class="product img"> 
+                    <div class="main-article"> 
+                    <h4 class="description"><a href="#">Suculenta</a></h4> 
+                    <h4 class="precio">$ 550</h4>
+                    <button><a href="/carrito">Agregar al carrito</a></button>                         
+                </div>
+                </article>                                         
+                <article> 
+                    <img src="/images/categories/deinterior.jpg" alt="deinterior" class="product img"> 
+                    <div class="main-article">    
+                        <h4 class="description"><a href="#">De interior</a></h4> 
+                    <h4 class="precio">$ 800</h4> 
+                    <button><a href="/carrito">Agregar al carrito</a></button>             
+                    </div>
+                </article>
+                <article> 
+                    <img src="/images/categories/deexterior.jpg" alt="deexterior" class="product img">                 
+                    <div class="main-article">    
+                        <h4 class="description"><a href="#"></a>De exterior</h4>  
+                    <h4 class="precio">$ 1100</h4>    
+                    <button><a href="/carrito">Agregar al carrito</a></button>                  
+                    </div>
+                </article>
+                <article> 
+                    <img src="/images/categories/macetas.jpg" alt="maceta" class="product img"> 
+                    <div class="main-article">    
+                        <h4 class="description"><a href="#">Maceta</a></h4> 
+                    <h4 class="precio">$ 1200</h4>   
+                    <button><a href="/carrito">Agregar al carrito</a></button>                    
+                    </div>
+                </article>
+                <article> 
+                    <img src="/images/categories/sucycac.jpg" alt="sucycac" class="product img"> 
+                    <div class="main-article"> 
+                    <h4 class="description"><a href="#">Suculenta</a></h4> 
+                    <h4 class="precio">$ 550</h4>
+                    <button><a href="/carrito">Agregar al carrito</a></button>                         
+                </div>
+                </article>                                         
+                <article> 
+                    <img src="/images/categories/deinterior.jpg" alt="deinterior" class="product img"> 
+                    <div class="main-article">    
+                        <h4 class="description"><a href="#">De interior</a></h4> 
+                    <h4 class="precio">$ 800</h4> 
+                    <button><a href="/carrito">Agregar al carrito</a></button>             
+                    </div>
+                </article>
+                <article> 
+                    <img src="/images/categories/deexterior.jpg" alt="deexterior" class="product img">                 
+                    <div class="main-article">    
+                        <h4 class="description"><a href="#"></a>De exterior</h4>  
+                    <h4 class="precio">$ 1100</h4>    
+                    <button><a href="/carrito">Agregar al carrito</a></button>                  
+                    </div>
+                </article>
+                <article> 
+                    <img src="/images/categories/macetas.jpg" alt="maceta" class="product img"> 
+                    <div class="main-article">    
+                        <h4 class="description"><a href="#">Maceta</a></h4> 
+                    <h4 class="precio">$ 1200</h4>   
+                    <button><a href="/carrito">Agregar al carrito</a></button>                    
+                    </div>
+                </article>
+                <article> 
+                    <img src="/images/categories/sucycac.jpg" alt="sucycac" class="product img"> 
+                    <div class="main-article"> 
+                    <h4 class="description"><a href="#">Suculenta</a></h4> 
+                    <h4 class="precio">$ 550</h4>
+                    <button><a href="/carrito">Agregar al carrito</a></button>                         
+                </div>
+                </article>                                         
+                <article> 
+                    <img src="/images/categories/deinterior.jpg" alt="deinterior" class="product img"> 
+                    <div class="main-article">    
+                        <h4 class="description"><a href="#">De interior</a></h4> 
+                    <h4 class="precio">$ 800</h4> 
+                    <button><a href="/carrito">Agregar al carrito</a></button>             
+                    </div>
+                </article>
+                <article> 
+                    <img src="/images/categories/deexterior.jpg" alt="deexterior" class="product img">                 
+                    <div class="main-article">    
+                        <h4 class="description"><a href="#"></a>De exterior</h4>  
+                    <h4 class="precio">$ 1100</h4>    
+                    <button><a href="/carrito">Agregar al carrito</a></button>                  
+                    </div>
+                </article>
+                <article> 
+                    <img src="/images/categories/macetas.jpg" alt="maceta" class="product img"> 
+                    <div class="main-article">    
+                        <h4 class="description"><a href="#">Maceta</a></h4> 
+                    <h4 class="precio">$ 1200</h4>   
+                    <button><a href="/carrito">Agregar al carrito</a></button>                    
+                    </div>
+                </article>
+                <article> 
+                    <img src="/images/categories/sucycac.jpg" alt="sucycac" class="product img"> 
+                    <div class="main-article"> 
+                    <h4 class="description"><a href="#">Suculenta</a></h4> 
+                    <h4 class="precio">$ 550</h4>
+                    <button><a href="/carrito">Agregar al carrito</a></button>                         
+                </div>
+                </article>                                         
+                <article> 
+                    <img src="/images/categories/deinterior.jpg" alt="deinterior" class="product img"> 
+                    <div class="main-article">    
+                        <h4 class="description"><a href="#">De interior</a></h4> 
+                    <h4 class="precio">$ 800</h4> 
+                    <button><a href="/carrito">Agregar al carrito</a></button>             
+                    </div>
+                </article>
+                <article> 
+                    <img src="/images/categories/deexterior.jpg" alt="deexterior" class="product img">                 
+                    <div class="main-article">    
+                        <h4 class="description"><a href="#"></a>De exterior</h4>  
+                    <h4 class="precio">$ 1100</h4>    
+                    <button><a href="/carrito">Agregar al carrito</a></button>                  
+                    </div>
+                </article>
+                <article> 
+                    <img src="/images/categories/macetas.jpg" alt="maceta" class="product img"> 
+                    <div class="main-article">    
+                        <h4 class="description"><a href="#">Maceta</a></h4> 
+                    <h4 class="precio">$ 1200</h4>   
+                    <button><a href="/carrito">Agregar al carrito</a></button>                    
+                    </div>
+                </article>
+                <article> 
+                    <img src="/images/categories/sucycac.jpg" alt="sucycac" class="product img"> 
+                    <div class="main-article"> 
+                    <h4 class="description"><a href="#">Suculenta</a></h4> 
+                    <h4 class="precio">$ 550</h4>
+                    <button><a href="/carrito">Agregar al carrito</a></button>                         
+                </div>
+                </article>                                         
+                <article> 
+                    <img src="/images/categories/deinterior.jpg" alt="deinterior" class="product img"> 
+                    <div class="main-article">    
+                        <h4 class="description"><a href="#">De interior</a></h4> 
+                    <h4 class="precio">$ 800</h4> 
+                    <button><a href="/carrito">Agregar al carrito</a></button>             
+                    </div>
+                </article>
+                <article> 
+                    <img src="/images/categories/deexterior.jpg" alt="deexterior" class="product img">                 
+                    <div class="main-article">    
+                        <h4 class="description"><a href="#"></a>De exterior</h4>  
+                    <h4 class="precio">$ 1100</h4>    
+                    <button><a href="/carrito">Agregar al carrito</a></button>                  
+                    </div>
+                </article>
+                <article> 
+                    <img src="/images/categories/macetas.jpg" alt="maceta" class="product img"> 
+                    <div class="main-article">    
+                        <h4 class="description"><a href="#">Maceta</a></h4> 
+                    <h4 class="precio">$ 1200</h4>   
+                    <button><a href="/carrito">Agregar al carrito</a></button>                    
+                    </div>
+                </article>
+                <article> 
+                    <img src="/images/categories/sucycac.jpg" alt="sucycac" class="product img"> 
+                    <div class="main-article"> 
+                    <h4 class="description"><a href="#">Suculenta</a></h4> 
+                    <h4 class="precio">$ 550</h4>
+                    <button><a href="/carrito">Agregar al carrito</a></button>                         
+                </div>
+                </article>                                         
+                <article> 
+                    <img src="/images/categories/deinterior.jpg" alt="deinterior" class="product img"> 
+                    <div class="main-article">    
+                        <h4 class="description"><a href="#">De interior</a></h4> 
+                    <h4 class="precio">$ 800</h4> 
+                    <button><a href="/carrito">Agregar al carrito</a></button>             
+                    </div>
+                </article>
+                <article> 
+                    <img src="/images/categories/deexterior.jpg" alt="deexterior" class="product img">                 
+                    <div class="main-article">    
+                        <h4 class="description"><a href="#"></a>De exterior</h4>  
+                    <h4 class="precio">$ 1100</h4>    
+                    <button><a href="/carrito">Agregar al carrito</a></button>                  
+                    </div>
+                </article>
+                <article> 
+                    <img src="/images/categories/macetas.jpg" alt="maceta" class="product img"> 
+                    <div class="main-article">    
+                        <h4 class="description"><a href="#">Maceta</a></h4> 
+                    <h4 class="precio">$ 1200</h4>   
+                    <button><a href="/carrito">Agregar al carrito</a></button>                    
+                    </div>
+                </article>
+                
+            <br>
+            <br>
+            <br>
+            <br>
+            <div class="boton-mas-prod">
+            <button><a href="/Productos">Mostrar mas productos</a></button>  
+        </div>          
+            </div>
+        </div>
+    </main>
+    <footer>
+
+        <div class="footer">
+            <section class="navigation">
+                <!-- Navegación -->
+                <h4 class="footer-title">Navegación</h4>
+                <!-- Lista -->
+                <ul class="nav-menu" type="none">
+                    <li><a href="/products.html"><i class="fas fa-seedling"></i> Productos</a></li>
+                    <li><a href="#categories"><i class="fas fa-bars"></i> Categorías</a></li>
+                    <li><a href="#contact"><i class="fas fa-inbox"></i> Contacto</a></li>
+                </ul>
+            </section>
+
+            <section class="payment-options">
+                <!-- Medios de pago -->
+                <h4 class="footer-title">Medios de pago</h4>
+                <!-- Lista -->
+                <ul class="list" type="none">
+                    <li><i class="fas fa-money-check"></i> Tarjetas de crédito y débito</i></li>
+                    <li><i class="fas fa-exchange-alt"></i> Transferencia</li>
+                    <li><i class="fas fa-money-bill"></i> Efectivo en puntos de pago</li>
+                </ul>
+            </section>
+
+            <section class="contact">
+                <!-- Contacto -->
+                <h4 class="footer-title">Contacto</h4>
+                <!-- Lista -->
+                <ul class="list" type="none">
+                    <li><i class="fas fa-phone"></i></i> +54 9 387 4522805</i></li>
+                    <li><i class="fas fa-envelope"></i> info@viverofederal.com.ar</li>
+                    <li><i class="fas fa-map-pin"></i> Entre Ríos 1156, Salta</li>
+                    <li><i class="fas fa-map-pin"></i> Caseros 2354, Córdoba</li>
+                </ul>
+            </section>
+
+            <section class="social-media">
+                <!-- Redes sociales -->
+                <h4 class="footer-title">Redes sociales</h4>
+                <!-- Lista -->
+                <ul class="list" type="none">
+                    <li><i class="fab fa-instagram"></i> viverofederal</i></li>
+                    <li><i class="fab fa-facebook"></i> viverofederal.ok</li>
+                    <li><i class="fab fa-twitter"></i> viverofederal.ok</li>
+                </ul>
+            </section>
+        </div>
+
+    </footer>
+
+</body>
+
+</html>
+    
+    
