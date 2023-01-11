@@ -121,6 +121,7 @@ main form.cart div{
 main form.cart div.sin_flex{
     display: flex;
     align-items: center;
+    align-items: left;
 }
 
 main form.cart div input.radio {
@@ -137,6 +138,7 @@ main input {
     border: none;
     border-radius: 5px;
     background-color: white;
+    align-items: center;
 }
 
 
