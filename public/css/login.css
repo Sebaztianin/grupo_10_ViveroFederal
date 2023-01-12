@@ -235,6 +235,7 @@ footer section.navigation ul.nav-menu a {
     /* Header */
 
     header {
+        margin-top: 10px;
         background-color: #F4EAD5;
         height: 115px;
     }
