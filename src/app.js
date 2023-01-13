@@ -10,7 +10,11 @@ const productsRoutes = require('../routers/products')
 const usersRoutes = require('../routers/users')
 
 /* Declaramos carpeta static */
-app.use(express.static('public'));
+app.use(express.static('./public'));
+
+/* Configuramos EJS como el motor de vistas y cambiamos la carpeta de vistas a /src/views */
+app.set('view engine', 'ejs')
+app.set('views', './src/views')
 
 /* Levantamos server */
 app.listen(port, ()=>{
