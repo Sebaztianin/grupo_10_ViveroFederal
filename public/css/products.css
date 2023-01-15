@@ -161,6 +161,8 @@ footer section.navigation ul.nav-menu a {
 /* main */
 
 
+
+
 a:link {
     text-decoration: none;
     color: #3C6255;
@@ -203,7 +205,7 @@ h4 {
 .products article{ 
     width: 20%;
     margin: 8px;
-    
+    margin-bottom: 40px;
     background-color:#DAE2B6;
     text-align: center;
     
@@ -233,11 +235,32 @@ h4 {
 
 }
 
-article img {
+.products article .main-article .fas  {
+    display: none;
+    color: #3C6255;
+    
+}
+
+.products article:hover .fas {
+    display: block;
+    
+
+}
+
+.products article:hover {
+    box-shadow: 0px 0px 10px rgb(100, 100, 100);
+    transition: 100ms;
+    } 
+
+/* .products article:hover img {
+    box-shadow: 0px 0px 10px rgb(100, 100, 100);
+} */
+
+.products article img {
     width: 100%;
     align-items: center;
     padding: 5px;
-    
+    border-radius: 20px;    
 }
 
 .Filtros {
@@ -266,16 +289,12 @@ article img {
     font-size: 20px;
 }
 
-.box {
-    font-size: 14px;
+.box  {
+    font-size: 16px; 
+    flex-direction: column;     
+      
 }
 
-.boton-mas-prod {
-    margin-top: 30px;
-    margin-left: 100px; 
-    margin-bottom: 20px;
-    
-}
 
 .nav-bar {
     display: none;
@@ -286,10 +305,40 @@ article img {
     flex-direction: row-reverse;
 }
 
+main .button-prod .submit a { 
+    display: flex; 
+    justify-content: center; 
+    font-size: 14px;   
+    margin: 20px 0px;
+    color: #3C6255;
+     }
+
+.index a {
+    color: #3C6255;
+}
+
+@media (min-width: 361px) {
+
+    main { 
+        margin-top: 160px;
+    }
+    
+
+    .products article {
+        width: 40%
+    }
+ }
+
+
+
 /* Celus más grandes */
 
 @media (min-width: 481px) {
 
+    main { 
+        margin-top: 160px;
+    }
+    
     
     /* Footer */
 
@@ -311,6 +360,11 @@ article img {
 /* Tablets y netbooks */
 
 @media (min-width: 769px)  {
+
+    main { 
+        margin-top: 160px;
+    }
+
 
     .nav-bar {
         display: block;
@@ -338,6 +392,11 @@ article img {
 /* Notebooks */
 
 @media (min-width: 1024px)   {
+
+    main { 
+        margin-top: 120px;
+    }
+
     
     .products article {
         width: 20%;
