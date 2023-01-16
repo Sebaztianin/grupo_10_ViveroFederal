@@ -5,9 +5,9 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 /* Importamos módulos propios de ruteo */
-const mainRoutes = require('../routers/main')
-const productsRoutes = require('../routers/products')
-const usersRoutes = require('../routers/users')
+const mainRoutes = require('./routers/main')
+const productsRoutes = require('./routers/products')
+const usersRoutes = require('./routers/users')
 
 /* Declaramos carpeta static */
 app.use(express.static('./public'));
