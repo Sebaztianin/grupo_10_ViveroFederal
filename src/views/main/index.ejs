@@ -12,196 +12,110 @@
 
 <body>
 
-    <header>
-        <!-- Barra de navegación superior -->
-        <div class="top-header">
-            <!-- Logo, login y carrito -->
-            <div class="first-row">
-                <a href="/"><img src="../images/logo.png" alt="Logo de ViveroFederal"></a>
-                <!-- Menú (escondido por defecto) -->
-                <ul class="nav-menu-top" type="none">
-                    <li><a href="/products">Productos <i class="fas fa-seedling"></i></a></li>
-                    <p>|</p>
-                    <li><a href="#categories">Categorías <i class="fas fa-bars"></i></i></a></li>
-                    <p>|</p>
-                    <li><a href="#contact">Contacto <i class="fas fa-inbox"></i></a></li>
-                </ul>
-                <!-- Íconos derecha -->
-                <div class="right-icons">
-                    <a href="/users/login"><i class="fas fa-user"></i></a>
-                    <a href="/products/productCart"><i class="fas fa-cart-plus"></i></a>
+    <%- include('../partials/header.ejs') %>
+
+        <main>
+
+            <section class="banner">
+
+                <img src="../images/main/img-home-banner.jpg" alt="Banner de ofertas">
+
+            </section>
+
+            <section class="categories" id="categories">
+                <!-- Categorías -->
+                <h3 class="section-title">Categorías</h3>
+                <!-- Listado -->
+                <div class="categories-list">
+                    <article>
+                        <img src="../images/categories/sucycac.jpg" alt="Suculentas y Cactus" class="category-img">
+                        <p class="category-name">Suculentas y Cactus</p>
+                    </article>
+                    <article>
+                        <img src="../images/categories/deinterior.jpg" alt="De interior" class="category-img">
+                        <p class="category-name">De interior</p>
+                    </article>
+                    <article>
+                        <img src="../images/categories/deexterior.jpg" alt="De exterior" class="category-img">
+                        <p class="category-name">De exterior</p>
+                    </article>
+                    <article>
+                        <img src="../images/categories/macetas.jpg" alt="Macetas" class="category-img">
+                        <p class="category-name">Macetas</p>
+                    </article>
+                    <article>
+                        <img src="../images/categories/accesorios.jpg" alt="Accesorios" class="category-img">
+                        <p class="category-name">Accesorios</p>
+                    </article>
                 </div>
-            </div>
-            <!-- Menú de la barra superior -->
-            <nav class="navbar">
-                <ul class="nav-menu" type="none">
-                    <li><a href="/products">Productos <i class="fas fa-seedling"></i></a></li>
-                    <p>|</p>
-                    <li><a href="#categories">Categorías <i class="fas fa-bars"></i></i></a></li>
-                    <p>|</p>
-                    <li><a href="#contact">Contacto <i class="fas fa-inbox"></i></a></li>
-                </ul>
-            </nav>
-            <!-- Barra de búsqueda -->
-            <form class="search-form" action="#" method="GET">
-                <input class="search-input" type="text" name="search" placeholder="Buscar plantas o accesorios..."
-                    required>
-                <button class="search-button" type="submit"><i class="fa fa-search"></i></button>
-            </form>
-        </div>
-    </header>
 
-    <main>
-
-        <section class="banner">
-
-            <img src="../images/main/img-home-banner.jpg" alt="Banner de ofertas">
-
-        </section>
-
-        <section class="categories" id="categories">
-            <!-- Categorías -->
-            <h3 class="section-title">Categorías</h3>
-            <!-- Listado -->
-            <div class="categories-list">
-                <article>
-                    <img src="../images/categories/sucycac.jpg" alt="Suculentas y Cactus" class="category-img">
-                    <p class="category-name">Suculentas y Cactus</p>
-                </article>
-                <article>
-                    <img src="../images/categories/deinterior.jpg" alt="De interior" class="category-img">
-                    <p class="category-name">De interior</p>
-                </article>
-                <article>
-                    <img src="../images/categories/deexterior.jpg" alt="De exterior" class="category-img">
-                    <p class="category-name">De exterior</p>
-                </article>
-                <article>
-                    <img src="../images/categories/macetas.jpg" alt="Macetas" class="category-img">
-                    <p class="category-name">Macetas</p>
-                </article>
-                <article>
-                    <img src="../images/categories/accesorios.jpg" alt="Accesorios" class="category-img">
-                    <p class="category-name">Accesorios</p>
-                </article>
-            </div>
-
-        </section>
-
-        <section class="top-sellers">
-            <!-- Productos más vendidos -->
-            <h3 class="section-title">Más vendidos</h3>
-            <!-- Productos -->
-            <div class="products">
-                <article>
-                    <img src="../images/products/suculenta.jpg" alt="Suculenta" class="product_img">
-                    <div class="main-article">
-                        <h4 class="description">Suculenta</h4>
-                        <p class="price">$550</p>
-                    </div>
-                </article>
-                <article>
-                    <img src="../images/products/cactus.jpg" alt="Cactus" class="product_img">
-                    <div class="main-article">
-                        <h4 class="description">Cactus</h4>
-                        <p class="price">$800</p>
-                    </div>
-                </article>
-                <article>
-                    <img src="../images/products/palita.jpg" alt="Pala de jardín" class="product_img">
-                    <div class="main-article">
-                        <h4 class="description">Pala de jardín</h4>
-                        <p class="price">$2.800</p>
-                    </div>
-                </article>
-                <article>
-                    <img src="../images/products/maceta.jpg" alt="Maceta" class="product_img">
-                    <div class="main-article">
-                        <h4 class="description">Maceta</h4>
-                        <p class="price">$1.200</p>
-                    </div>
-                </article>
-            </div>
-        </section>
-
-        <section class="contact" id="contact">
-            <!-- Contacto -->
-            <h3 class="section-title">Contacto</h3>
-            <!-- Formulario de contacto -->
-            <div class="contact-div">
-                <!-- Formulario -->
-                <form class="contact" action="#" method="GET">
-                    <input type="text" name="name" id="name" placeholder="Nombre" minlength="2" required>
-                    <input type="email" name="email" id="email" placeholder="E-mail" required>
-                    <input type="number" name="phone" id="phone" placeholder="Celular" minlength="8" required>
-                    <textarea name="message" id="message" placeholder="Dejanos un mensaje" required></textarea>
-                    <button class="send-button" type="submit">Enviar</button>
-                </form>
-                <!-- Datos de contacto -->
-                <ul class="list" type="none">
-                    <li><i class="fas fa-phone"></i></i> +54 9 387 4522805</i></li>
-                    <li><i class="fas fa-envelope"></i> info@viverofederal.com.ar</li>
-                    <li><i class="fab fa-instagram"></i> viverofederal</i></li>
-                    <li><i class="fab fa-facebook"></i> viverofederal.ok</li>
-                    <li><i class="fab fa-twitter"></i> viverofederal.ok</li>
-                    <li><i class="fas fa-map-pin"></i> Entre Ríos 1156, Salta</li>
-                    <li><i class="fas fa-map-pin"></i> Caseros 2354, Córdoba</li>
-                </ul>
-            </div>
-        </section>
-
-    </main>
-
-    <footer>
-
-        <div class="footer">
-            <section class="navigation">
-                <!-- Navegación -->
-                <h4 class="footer-title">Navegación</h4>
-                <!-- Lista -->
-                <ul class="nav-menu" type="none">
-                    <li><a href="/products"><i class="fas fa-seedling"></i> Productos</a></li>
-                    <li><a href="#categories"><i class="fas fa-bars"></i> Categorías</a></li>
-                    <li><a href="#contact"><i class="fas fa-inbox"></i> Contacto</a></li>
-                </ul>
             </section>
 
-            <section class="payment-options">
-                <!-- Medios de pago -->
-                <h4 class="footer-title">Medios de pago</h4>
-                <!-- Lista -->
-                <ul class="list" type="none">
-                    <li><i class="fas fa-money-check"></i> Tarjetas de crédito y débito</i></li>
-                    <li><i class="fas fa-exchange-alt"></i> Transferencia</li>
-                    <li><i class="fas fa-money-bill"></i> Efectivo en puntos de pago</li>
-                </ul>
+            <section class="top-sellers">
+                <!-- Productos más vendidos -->
+                <h3 class="section-title">Más vendidos</h3>
+                <!-- Productos -->
+                <div class="products">
+                    <article>
+                        <img src="../images/products/suculenta.jpg" alt="Suculenta" class="product_img">
+                        <div class="main-article">
+                            <h4 class="description">Suculenta</h4>
+                            <p class="price">$550</p>
+                        </div>
+                    </article>
+                    <article>
+                        <img src="../images/products/cactus.jpg" alt="Cactus" class="product_img">
+                        <div class="main-article">
+                            <h4 class="description">Cactus</h4>
+                            <p class="price">$800</p>
+                        </div>
+                    </article>
+                    <article>
+                        <img src="../images/products/palita.jpg" alt="Pala de jardín" class="product_img">
+                        <div class="main-article">
+                            <h4 class="description">Pala de jardín</h4>
+                            <p class="price">$2.800</p>
+                        </div>
+                    </article>
+                    <article>
+                        <img src="../images/products/maceta.jpg" alt="Maceta" class="product_img">
+                        <div class="main-article">
+                            <h4 class="description">Maceta</h4>
+                            <p class="price">$1.200</p>
+                        </div>
+                    </article>
+                </div>
             </section>
 
-            <section class="contact">
+            <section class="contact" id="contact">
                 <!-- Contacto -->
-                <h4 class="footer-title">Contacto</h4>
-                <!-- Lista -->
-                <ul class="list" type="none">
-                    <li><i class="fas fa-phone"></i></i> +54 9 387 4522805</i></li>
-                    <li><i class="fas fa-envelope"></i> info@viverofederal.com.ar</li>
-                    <li><i class="fas fa-map-pin"></i> Entre Ríos 1156, Salta</li>
-                    <li><i class="fas fa-map-pin"></i> Caseros 2354, Córdoba</li>
-                </ul>
+                <h3 class="section-title">Contacto</h3>
+                <!-- Formulario de contacto -->
+                <div class="contact-div">
+                    <!-- Formulario -->
+                    <form class="contact" action="#" method="GET">
+                        <input type="text" name="name" id="name" placeholder="Nombre" minlength="2" required>
+                        <input type="email" name="email" id="email" placeholder="E-mail" required>
+                        <input type="number" name="phone" id="phone" placeholder="Celular" minlength="8" required>
+                        <textarea name="message" id="message" placeholder="Dejanos un mensaje" required></textarea>
+                        <button class="send-button" type="submit">Enviar</button>
+                    </form>
+                    <!-- Datos de contacto -->
+                    <ul class="list" type="none">
+                        <li><i class="fas fa-phone"></i></i> +54 9 387 4522805</i></li>
+                        <li><i class="fas fa-envelope"></i> info@viverofederal.com.ar</li>
+                        <li><i class="fab fa-instagram"></i> viverofederal</i></li>
+                        <li><i class="fab fa-facebook"></i> viverofederal.ok</li>
+                        <li><i class="fab fa-twitter"></i> viverofederal.ok</li>
+                        <li><i class="fas fa-map-pin"></i> Entre Ríos 1156, Salta</li>
+                        <li><i class="fas fa-map-pin"></i> Caseros 2354, Córdoba</li>
+                    </ul>
+                </div>
             </section>
 
-            <section class="social-media">
-                <!-- Redes sociales -->
-                <h4 class="footer-title">Redes sociales</h4>
-                <!-- Lista -->
-                <ul class="list" type="none">
-                    <li><i class="fab fa-instagram"></i> viverofederal</i></li>
-                    <li><i class="fab fa-facebook"></i> viverofederal.ok</li>
-                    <li><i class="fab fa-twitter"></i> viverofederal.ok</li>
-                </ul>
-            </section>
-        </div>
+        </main>
 
-    </footer>
+        <%- include('../partials/footer') %>
 
 </body>
 

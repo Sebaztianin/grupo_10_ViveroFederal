@@ -12,165 +12,82 @@
 
 <body>
 
-    <header>
-        <!-- Barra de navegación superior -->
-        <div class="top-header">
-            <!-- Logo, login y carrito -->
-            <div class="first-row">
-                <a href="/"><img src="../images/logo.png" alt="Logo de ViveroFederal"></a>
-                <!-- Menú (escondido por defecto) -->
-                <ul class="nav-menu-top" type="none">
-                    <li><a href="/products">Productos <i class="fas fa-seedling"></i></a></li>
-                    <p>|</p>
-                    <li><a href="/#categories">Categorías <i class="fas fa-bars"></i></i></a></li>
-                    <p>|</p>
-                    <li><a href="/#contact">Contacto <i class="fas fa-inbox"></i></a></li>
-                </ul>
-                <!-- Íconos derecha -->
-                <div class="right-icons">
-                    <a href="/users/login"><i class="fas fa-user"></i></a>
-                    <a href="/products/productCart"><i class="fas fa-cart-plus"></i></a>
-                </div>
-            </div>
-            <!-- Menú de la barra superior -->
-            <nav class="navbar">
-                <ul class="nav-menu" type="none">
-                    <li><a href="/products">Productos <i class="fas fa-seedling"></i></a></li>
-                    <p>|</p>
-                    <li><a href="/#categories">Categorías <i class="fas fa-bars"></i></i></a></li>
-                    <p>|</p>
-                    <li><a href="/#contact">Contacto <i class="fas fa-inbox"></i></a></li>
-                </ul>
-            </nav>
-            <!-- Barra de búsqueda -->
-            <form class="search-form" action="#" method="GET">
-                <input class="search-input" type="text" name="search" placeholder="Buscar plantas o accesorios..."
-                    required>
-                <button class="search-button" type="submit"><i class="fa fa-search"></i></button>
-            </form>
-        </div>
-    </header>
+    <%- include('../partials/header.ejs') %>
 
-    <main>
-        <!--LOGIN-->
-        <div>
-        <form class="cart" action="/login" method="POST">
+        <main>
+            <!--LOGIN-->
+            <div>
+                <form class="cart" action="/login" method="POST">
 
-            <section class="products">
-                <h3 class="section-title">Inicia sesión en tu cuenta</h3>
-       
-        <!--Campos-->
-            <div>
-                <label for="usuario">Nombre de Usuario</label>
-                <input type="text" name="nombreDeUsuario" id="usuario" placeholder="Ej: CamiQuispe" required></input>
-            </div>
-            <div>
-                <label for="pass">Contraseña</label>
-                <input type="password" name="clave" id="pass" placeholder="********" required></input>
-            </div>
-            <div class="sin_flex">
-                <label for="remember">Recordar mi contraseña</label>
-                <input type="radio" name="opcion" id="remember"></input>
-                
-            </div>
+                    <section class="products">
+                        <h3 class="section-title">Inicia sesión en tu cuenta</h3>
 
-            <div>
-            <section class="submit">
-                <button type="submit" name="Inicia">INICIAR SESIÓN</button>
-                <a href="/users/login"><h5>¿Olvidaste tu contraseña?</h5></a>
-            </section>
+                        <!--Campos-->
+                        <div>
+                            <label for="usuario">Nombre de Usuario</label>
+                            <input type="text" name="nombreDeUsuario" id="usuario" placeholder="Ej: CamiQuispe"
+                                required></input>
+                        </div>
+                        <div>
+                            <label for="pass">Contraseña</label>
+                            <input type="password" name="clave" id="pass" placeholder="********" required></input>
+                        </div>
+                        <div class="sin_flex">
+                            <label for="remember">Recordar mi contraseña</label>
+                            <input type="radio" name="opcion" id="remember"></input>
+
+                        </div>
+
+                        <div>
+                            <section class="submit">
+                                <button type="submit" name="Inicia">INICIAR SESIÓN</button>
+                                <a href="/users/login">
+                                    <h5>¿Olvidaste tu contraseña?</h5>
+                                </a>
+                            </section>
+                        </div>
+                    </section>
+                </form>
             </div>
-        </section>
-        </form>
-    </div>
             <!--REGISTRO-->
-        <div>
-        <form class="cart" action="/register" method="POST">
-
-            <section class="products">
-            <h3 class="section-title">Puedes registrarte aquí</h3>
-            <!--Campos-->
             <div>
-                <label for="nombre">Nombre:</label>
-                <input type="text" name="name" id="nombre" required>
+                <form class="cart" action="/register" method="POST">
+
+                    <section class="products">
+                        <h3 class="section-title">Puedes registrarte aquí</h3>
+                        <!--Campos-->
+                        <div>
+                            <label for="nombre">Nombre:</label>
+                            <input type="text" name="name" id="nombre" required>
+                        </div>
+                        <div>
+                            <label for="apellido">Apellido:</label>
+                            <input type="text" name="Lastname" id="apellido" required>
+                        </div>
+                        <div>
+                            <label for="email">Email:</label>
+                            <input type="email" name="email" id="email" required>
+                        </div>
+                        <div>
+                            <label for="pass">Contraseña:</label>
+                            <input type="password" name="contraseña" id="pass" required>
+                        </div>
+                        <div>
+                            <label for="confirmarPass">Confirma tu contraseña</label>
+                            <input type="password" name="confirmarContraseña" id="confirmarPass" required>
+                        </div>
+                        <div>
+                            <section class="submit">
+                                <button type="sbmit" name="Inicia">REGISTRARME</button>
+                            </section>
+                        </div>
+
+                    </section>
+                </form>
             </div>
-            <div>
-                <label for="apellido">Apellido:</label>
-                <input type="text" name="Lastname" id="apellido" required>
-            </div>
-            <div>
-                <label for="email">Email:</label>
-                <input type="email" name="email" id="email" required>
-            </div>
-            <div>
-                <label for="pass">Contraseña:</label>
-                <input type="password" name="contraseña" id="pass" required>
-            </div>
-            <div>
-                <label for="confirmarPass">Confirma tu contraseña</label>
-                <input type="password" name="confirmarContraseña" id="confirmarPass" required>
-            </div>
-            <div>
-                <section class="submit">
-                    <button type="sbmit" name="Inicia">REGISTRARME</button>
-                </section>
-                </div>
+        </main>
 
-         </section>
-        </form>
-    </div>  
-    </main>
-    
-    <footer>
-
-        <div class="footer">
-            <section class="navigation">
-                <!-- Navegación -->
-                <h4 class="footer-title">Navegación</h4>
-                <!-- Lista -->
-                <ul class="nav-menu" type="none">
-                    <li><a href="/products"><i class="fas fa-seedling"></i> Productos</a></li>
-                    <li><a href="/#categories"><i class="fas fa-bars"></i> Categorías</a></li>
-                    <li><a href="/#contact"><i class="fas fa-inbox"></i> Contacto</a></li>
-                </ul>
-            </section>
-
-            <section class="payment-options">
-                <!-- Medios de pago -->
-                <h4 class="footer-title">Medios de pago</h4>
-                <!-- Lista -->
-                <ul class="list" type="none">
-                    <li><i class="fas fa-money-check"></i> Tarjetas de crédito y débito</i></li>
-                    <li><i class="fas fa-exchange-alt"></i> Transferencia</li>
-                    <li><i class="fas fa-money-bill"></i> Efectivo en puntos de pago</li>
-                </ul>
-            </section>
-
-            <section class="contact">
-                <!-- Contacto -->
-                <h4 class="footer-title">Contacto</h4>
-                <!-- Lista -->
-                <ul class="list" type="none">
-                    <li><i class="fas fa-phone"></i></i> +54 9 387 4522805</i></li>
-                    <li><i class="fas fa-envelope"></i> info@viverofederal.com.ar</li>
-                    <li><i class="fas fa-map-pin"></i> Entre Ríos 1156, Salta</li>
-                    <li><i class="fas fa-map-pin"></i> Caseros 2354, Córdoba</li>
-                </ul>
-            </section>
-
-            <section class="social-media">
-                <!-- Redes sociales -->
-                <h4 class="footer-title">Redes sociales</h4>
-                <!-- Lista -->
-                <ul class="list" type="none">
-                    <li><i class="fab fa-instagram"></i> viverofederal</i></li>
-                    <li><i class="fab fa-facebook"></i> viverofederal.ok</li>
-                    <li><i class="fab fa-twitter"></i> viverofederal.ok</li>
-                </ul>
-            </section>
-        </div>
-
-    </footer>
+        <%- include('../partials/footer.ejs') %>
 
 </body>
 

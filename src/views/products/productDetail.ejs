@@ -12,257 +12,182 @@
 
 <body>
 
-    <header>
-        <!-- Barra de navegación superior -->
-        <div class="top-header">
-            <!-- Logo, login y carrito -->
-            <div class="first-row">
-                <a href="/"><img src="../images/logo.png" alt="Logo de ViveroFederal"></a>
-                <!-- Menú (escondido por defecto) -->
-                <ul class="nav-menu-top" type="none">
-                    <li><a href="/products">Productos <i class="fas fa-seedling"></i></a></li>
-                    <p>|</p>
-                    <li><a href="/#categories">Categorías <i class="fas fa-bars"></i></i></a></li>
-                    <p>|</p>
-                    <li><a href="/#contact">Contacto <i class="fas fa-inbox"></i></a></li>
-                </ul>
-                <!-- Íconos derecha -->
-                <div class="right-icons">
-                    <a href="/users/login"><i class="fas fa-user"></i></a>
-                    <a href="/products/productCart"><i class="fas fa-cart-plus"></i></a>
-                </div>
-            </div>
-            <!-- Menú de la barra superior -->
-            <nav class="navbar">
-                <ul class="nav-menu" type="none">
-                    <li><a href="/products.html">Productos <i class="fas fa-seedling"></i></a></li>
-                    <p>|</p>
-                    <li><a href="/#categories">Categorías <i class="fas fa-bars"></i></i></a></li>
-                    <p>|</p>
-                    <li><a href="/#contact">Contacto <i class="fas fa-inbox"></i></a></li>
-                </ul>
-            </nav>
-            <!-- Barra de búsqueda -->
-            <form class="search-form" action="#" method="GET">
-                <input class="search-input" type="text" name="search" placeholder="Buscar plantas o accesorios..."
-                    required>
-                <button class="search-button" type="submit"><i class="fa fa-search"></i></button>
-            </form>
-        </div>
-    </header>
+    <%- include('../partials/header.ejs') %>
 
-    <main>
+        <main>
 
-        <h3 class="section-title">Detalle del Producto</h3>
-        <section class="main-product">
-            <div class="images-main-product">
-                <div class="product-second-img">
-                    <img src="../images/productDetail/croton-2.jpg" alt="img croton" class="product-img">
-                </div>
-                <div class="product-third-img">
-                    <img src="../images/productDetail/croton-3.jpg" alt="img croton" class="product-img">
-                </div>
-                <div class="product-first-img">
-                    <img src="../images/productDetail/croton-1.jpg" alt="img croton" class="product_main_img">
-                </div>
-            </div>
-            <div class="product-description-price">
-                <div class="product-description">
-                    <h4 class="description">CROTON</h4>
-                </div>
-                <div class="product-price">
-                    <h5 class="price">$ 2.250</h5>
-                </div>
-            </div>
-            <div class="methods">
-                <div class="shipping-means">
-                    <div class="shipping-means-icon">
-                        <i class="fas fa-truck"></i>
+            <h3 class="section-title">Detalle del Producto</h3>
+            <section class="main-product">
+                <div class="images-main-product">
+                    <div class="product-second-img">
+                        <img src="../images/productDetail/croton-2.jpg" alt="img croton" class="product-img">
                     </div>
-                    <div class="shipping-means-text">
-                        <a href="#">MEDIOS DE ENVÍO</a>
+                    <div class="product-third-img">
+                        <img src="../images/productDetail/croton-3.jpg" alt="img croton" class="product-img">
+                    </div>
+                    <div class="product-first-img">
+                        <img src="../images/productDetail/croton-1.jpg" alt="img croton" class="product_main_img">
                     </div>
                 </div>
-                <div class="payment-methods">
-                    <div class="payment-methods-icon">
-                        <p><i class="fab fa-cc-visa"></i> <i class="fab fa-cc-mastercard"></i> <i class="fab fa-cc-amex"></i> <i class="fas fa-credit-card"></i> +</p>
+                <div class="product-description-price">
+                    <div class="product-description">
+                        <h4 class="description">CROTON</h4>
                     </div>
-                    <div class="payment-methods-text"><p> VER MEDIOS DE PAGO</p></div>
-                    <div class="payment-methods-subtitle"><p><strong>detalle de descuento</strong> medio de pago vigente</p></div>
+                    <div class="product-price">
+                        <h5 class="price">$ 2.250</h5>
+                    </div>
                 </div>
-            </div>
-            <div class="line"></div>
-            <div class="customer-selection">
-                <form class="product-detail" action="#" method="GET">
-                    <label class="size" for="tamaño">Tamaño</label>
+                <div class="methods">
+                    <div class="shipping-means">
+                        <div class="shipping-means-icon">
+                            <i class="fas fa-truck"></i>
+                        </div>
+                        <div class="shipping-means-text">
+                            <a href="#">MEDIOS DE ENVÍO</a>
+                        </div>
+                    </div>
+                    <div class="payment-methods">
+                        <div class="payment-methods-icon">
+                            <p><i class="fab fa-cc-visa"></i> <i class="fab fa-cc-mastercard"></i> <i
+                                    class="fab fa-cc-amex"></i> <i class="fas fa-credit-card"></i> +</p>
+                        </div>
+                        <div class="payment-methods-text">
+                            <p> VER MEDIOS DE PAGO</p>
+                        </div>
+                        <div class="payment-methods-subtitle">
+                            <p><strong>detalle de descuento</strong> medio de pago vigente</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="line"></div>
+                <div class="customer-selection">
+                    <form class="product-detail" action="#" method="GET">
+                        <label class="size" for="tamaño">Tamaño</label>
                         <select name="tamaño" id="tamaño">
                             <option>Mediana</option>
                             <option>Grande</option>
-                    <!-- <div class="color">
+                            <!-- <div class="color">
                         selección del color ¿?
                     </div> -->
-                    <label class="quantity" for="cantidad">Cantidad</label>
-                        <input type="number" min="1" max="6" name="cantidad" id="cantidad">
-                    <button class="add-to-cart-button" type="submit">AGREGAR AL CARRITO</button>
-                </form>
-            </div>
-            <div class="extra-selections">
-                <div class="share-product">
-                    <div class="share-product-icon">
-                        <i class="fas fa-share-alt"></i>
+                            <label class="quantity" for="cantidad">Cantidad</label>
+                            <input type="number" min="1" max="6" name="cantidad" id="cantidad">
+                            <button class="add-to-cart-button" type="submit">AGREGAR AL CARRITO</button>
+                    </form>
+                </div>
+                <div class="extra-selections">
+                    <div class="share-product">
+                        <div class="share-product-icon">
+                            <i class="fas fa-share-alt"></i>
+                        </div>
+                        <div class="share-product-text">
+                            <a href="#"> compartir producto</a>
+                        </div>
                     </div>
-                    <div class="share-product-text">
-                        <a href="#"> compartir producto</a>
+                    <div class="favorite-product">
+                        <div class="favorite-product-icon">
+                            <i class="far fa-heart"></i>
+                        </div>
+                        <div class="favorite-product-text">
+                            <a href="#"> añadir a favoritos</a>
+                        </div>
                     </div>
                 </div>
-                <div class="favorite-product">
-                    <div class="favorite-product-icon">
-                        <i class="far fa-heart"></i>
+                <div class="line"></div>
+                <div class="postcode">
+                    <div class="postcode-nav">
+                        <p>Lorem ipsum dolor</p>
                     </div>
-                    <div class="favorite-product-text">
-                        <a href="#"> añadir a favoritos</a>
+                    <div class="postcode-button">
+                        <p>Lorem ipsum dolor</p>
+                    </div>
+                    <div class="postcode-subtitle">
+                        <a href="#">No sé mi codigo postal</a>
                     </div>
                 </div>
-            </div>
-            <div class="line"></div>
-            <div class="postcode">
-                <div class="postcode-nav"><p>Lorem ipsum dolor</p></div>
-                <div class="postcode-button"><p>Lorem ipsum dolor</p></div>
-                <div class="postcode-subtitle">
-                    <a href="#">No sé mi codigo postal</a>
+            </section>
+
+
+
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <section class="information">
+                <div>
+                    <ul>
+                        <li>DESCRIPCIÓN</li>
+                        <p> bla bla </p>
+                        <li>INFORMACIÓN ADICIONAL</li>
+                        <p> bla bla </p>
+                        <li>VALORACIONES</li>
+                        <p> bla bla </p>
+                    </ul>
                 </div>
-            </div>
-        </section>
-
-
-
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <section class="information">        
-            <div>
-                <ul>
-                    <li>DESCRIPCIÓN</li>
-                        <p> bla bla </p>
-                    <li>INFORMACIÓN ADICIONAL</li>
-                        <p> bla bla </p>
-                    <li>VALORACIONES</li>
-                        <p> bla bla </p>
-                </ul>
-            </div>
-        </section>
-        <section class="related-products">
-            <!-- Productos Relacionados -->
-            <h3 class="section-title">Productos Relacionados</h3>
-            <!-- Listado -->
-            <div class="categories-list">
-                <article>
-                    <img src="../images/categories/sucycac.jpg" alt="Suculentas y Cactus" class="category-img">
+            </section>
+            <section class="related-products">
+                <!-- Productos Relacionados -->
+                <h3 class="section-title">Productos Relacionados</h3>
+                <!-- Listado -->
+                <div class="categories-list">
+                    <article>
+                        <img src="../images/categories/sucycac.jpg" alt="Suculentas y Cactus" class="category-img">
                         <h4 class="description">CROTON</h4>
                         <h5 class="precio">$2.250</h5>
                         <form class="producto-relacionado" action="#" method="GET">
-                            <button type="submit">AGREGAR AL CARRITO</button></form>
-                </article>
-                <article>
-                    <img src="../images/categories/deinterior.jpg" alt="De interior" class="category-img">
+                            <button type="submit">AGREGAR AL CARRITO</button>
+                        </form>
+                    </article>
+                    <article>
+                        <img src="../images/categories/deinterior.jpg" alt="De interior" class="category-img">
                         <h4 class="description">CROTON</h4>
                         <h5 class="precio">$2.250</h5>
                         <form class="producto-relacionado" action="#" method="GET">
-                            <button type="submit">AGREGAR AL CARRITO</button></form>
-                </article>
-                <article>
-                    <img src="../images/categories/deexterior.jpg" alt="De exterior" class="category-img">
+                            <button type="submit">AGREGAR AL CARRITO</button>
+                        </form>
+                    </article>
+                    <article>
+                        <img src="../images/categories/deexterior.jpg" alt="De exterior" class="category-img">
                         <h4 class="description">CROTON</h4>
                         <h5 class="precio">$2.250</h5>
                         <form class="producto-relacionado" action="#" method="GET">
-                            <button type="submit">AGREGAR AL CARRITO</button></form>
-                </article>
-                <article>
-                    <img src="../images/categories/accesorios.jpg" alt="Accesorios" class="category-img">
+                            <button type="submit">AGREGAR AL CARRITO</button>
+                        </form>
+                    </article>
+                    <article>
+                        <img src="../images/categories/accesorios.jpg" alt="Accesorios" class="category-img">
                         <h4 class="description">CROTON</h4>
                         <h5 class="precio">$2.250</h5>
                         <form class="producto-relacionado" action="#" method="GET">
-                            <button type="submit">AGREGAR AL CARRITO</button></form>
-                </article>
-            </div>
-        </section>
-        <section class="additional-information">
-            <div class="anuncio-2">
-                <article>
-                    <div class="icono-anuncio-complementario"><i class="fas fa-phone-alt"></i></i></div>
-                    <h4>ASESORAMIENTO Y VENTAS</h4>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda vitae</p>
-                </article>
-                <article>
-                    <div class="icono-anuncio-complementario"><i class="fas fa-truck"></i></div>
-                    <h4>ENVÍOS A DOMICILIO</h4>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                </article>
-                <article>
-                    <div class="icono-anuncio-complementario"><i class="fas fa-shield-alt"></i></div>
-                    <h4>PAGOS Y COMPRAS SEGURAS</h4>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae ab ducimus, suscipit</p>
-                </article>
-            </div>
-        </section>
-
-    </main>
-
-    <footer>
-
-        <div class="footer">
-            <section class="navigation">
-                <!-- Navegación -->
-                <h4 class="footer-title">Navegación</h4>
-                <!-- Lista -->
-                <ul class="nav-menu" type="none">
-                    <li><a href="/products.html"><i class="fas fa-seedling"></i> Productos</a></li>
-                    <li><a href="/#categories"><i class="fas fa-bars"></i> Categorías</a></li>
-                    <li><a href="/#contact"><i class="fas fa-inbox"></i> Contacto</a></li>
-                </ul>
+                            <button type="submit">AGREGAR AL CARRITO</button>
+                        </form>
+                    </article>
+                </div>
+            </section>
+            <section class="additional-information">
+                <div class="anuncio-2">
+                    <article>
+                        <div class="icono-anuncio-complementario"><i class="fas fa-phone-alt"></i></i></div>
+                        <h4>ASESORAMIENTO Y VENTAS</h4>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda vitae</p>
+                    </article>
+                    <article>
+                        <div class="icono-anuncio-complementario"><i class="fas fa-truck"></i></div>
+                        <h4>ENVÍOS A DOMICILIO</h4>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    </article>
+                    <article>
+                        <div class="icono-anuncio-complementario"><i class="fas fa-shield-alt"></i></div>
+                        <h4>PAGOS Y COMPRAS SEGURAS</h4>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae ab ducimus, suscipit</p>
+                    </article>
+                </div>
             </section>
 
-            <section class="payment-options">
-                <!-- Medios de pago -->
-                <h4 class="footer-title">Medios de pago</h4>
-                <!-- Lista -->
-                <ul class="list" type="none">
-                    <li><i class="fas fa-money-check"></i> Tarjetas de crédito y débito</i></li>
-                    <li><i class="fas fa-exchange-alt"></i> Transferencia</li>
-                    <li><i class="fas fa-money-bill"></i> Efectivo en puntos de pago</li>
-                </ul>
-            </section>
+        </main>
 
-            <section class="contact">
-                <!-- Contacto -->
-                <h4 class="footer-title">Contacto</h4>
-                <!-- Lista -->
-                <ul class="list" type="none">
-                    <li><i class="fas fa-phone"></i></i> +54 9 387 4522805</i></li>
-                    <li><i class="fas fa-envelope"></i> info@viverofederal.com.ar</li>
-                    <li><i class="fas fa-map-pin"></i> Entre Ríos 1156, Salta</li>
-                    <li><i class="fas fa-map-pin"></i> Caseros 2354, Córdoba</li>
-                </ul>
-            </section>
-
-            <section class="social-media">
-                <!-- Redes sociales -->
-                <h4 class="footer-title">Redes sociales</h4>
-                <!-- Lista -->
-                <ul class="list" type="none">
-                    <li><i class="fab fa-instagram"></i> viverofederal</i></li>
-                    <li><i class="fab fa-facebook"></i> viverofederal.ok</li>
-                    <li><i class="fab fa-twitter"></i> viverofederal.ok</li>
-                </ul>
-            </section>
-        </div>
-
-    </footer>
+        <%- include('../partials/footer.ejs') %>
 
 </body>
 
 </html>
-
-
