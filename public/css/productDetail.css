@@ -177,7 +177,8 @@ main section.main-product {
 .shipping-means { 
     width: 40%;
     display: flex;
-    border: #3C6255 solid 2px;
+    background-color: #FFFFFF;
+    border: none;
     border-radius: 5%;
     margin-right: 60%;
     margin-bottom: 2%;
@@ -186,7 +187,7 @@ main section.main-product {
 }
 
 .shipping-means-icon {
-    color: black;
+    color: #3C6255;
     font-size: 1rem;
 }
 
@@ -218,7 +219,7 @@ main section.main-product {
 
 .payment-methods-subtitle {
     font-size: 0.60rem;
-    font-style: italic
+    font-style: italic;
 }
 
 .line {
@@ -231,8 +232,11 @@ main section.main-product {
 
 form.product-detail {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     width: 100%;
+    align-items: baseline;
+    justify-content: space-between;
 }
 
 .customer-selection {
@@ -240,13 +244,60 @@ form.product-detail {
     display: flex;
     }
 
-label.size {
-    width: 40%;
+div.product-size {
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    height: 20%;
 }
 
-select#tamaño {}
+label.size {
+    width: 30%;
+    font-size: 0.875rem;
+    font-weight: bold;
+    text-align: center;
+}
 
-input#cantidad {}
+select#tamaño {
+    width: 70%;
+    border: none;
+    border-radius: 5px;
+    background-color: white;
+    padding: 0px;
+    font-size: 0.625rem;
+    text-align: center;
+    color: #3C6255;
+}
+
+div.quantity {
+    width: 50%;
+    display: block;
+    text-align: center;
+}
+
+div.quantity button {
+    height: 85%;
+    text-align: center;
+    color: #3C6255;
+    background-color: #CCD6A6;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+}
+
+div.quantity input {
+    width: 30px;
+    height: 85%;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    background-color: #CCD6A6;
+    margin: 2px;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+}
 
 .add-to-cart-button {
     width: 100%;
@@ -261,7 +312,7 @@ input#cantidad {}
 
 .extra-selections {
     width: 100%;
-    margin-top: 5%;
+    margin-top: 3%;
     display: flex;
     flex-direction: column;
 }
@@ -272,21 +323,55 @@ input#cantidad {}
 
 .share-product-icon, .favorite-product-icon {
     color: black;
-    padding: 1%;
+    padding: 0.75%;
 }
 
 .share-product-text, .favorite-product-text {
-    padding: 1%;
+    padding: 0.75%;
     margin: 0% 1%;
 }
 
 .share-product-text a, .favorite-product-text a {
     color: #3C6255;
+    font-size: 0.75rem;
     text-decoration: none;
 }
 
+.postcode { width: 100%; }
 
+.delivery {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+}
 
+.delivery #cp.cp {
+    border: none;
+    border-radius: 5px;
+    background-color: white;
+    padding: 10px;
+}
+
+.delivery button {
+    font-size: 0.875rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    margin-inline: 10px 30px;
+    color: #3C6255;
+    background-color: #CCD6A6;
+}
+
+.postcode-subtitle {
+    margin: 5px 0px;
+}
+
+.postcode-subtitle a {
+    font-size: 0.60rem;
+    font-style: italic;
+    color: #3C6255;
+}
 
 
 
