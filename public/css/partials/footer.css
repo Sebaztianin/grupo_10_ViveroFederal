@@ -1,0 +1,100 @@
+/* Global settings */
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+
+/* Footer */
+
+footer {
+    background-color: #F4EAD5;
+    margin-top: auto;
+}
+
+footer div.footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 16px;
+    max-width: 1280px;
+    margin: auto;
+}
+
+footer h4.footer-title {
+    font-size: 16px;
+    padding: 16px 16px 8px;
+}
+
+footer section {
+    margin-bottom: 16px;
+    width: 100%;
+}
+
+footer section.navigation ul.nav-menu {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    text-align: left;
+}
+
+footer section.navigation ul.nav-menu li {
+    padding: 8px;
+    padding-left: 24px;
+}
+
+footer section ul.list li {
+    padding: 8px;
+    padding-left: 24px;
+    font-size: 14px;
+}
+
+footer section.navigation ul.nav-menu a {
+    text-decoration: none;
+    color: #3C6255;
+    font-size: 14px;
+    width: 100%;
+}
+
+
+/* Celus más grandes */
+
+@media (min-width: 481px) {
+
+    /* Footer */
+
+    footer section {
+        width: 50%;
+    }
+
+    footer section.navigation ul.nav-menu {
+        flex-direction: column;
+    }
+
+}
+
+
+/* Tablets y netbooks */
+
+@media (min-width: 769px) {
+
+    /* Footer */
+
+    footer section.navigation,
+    footer section.social-media {
+        width: 20%;
+    }
+
+    footer section.payment-options,
+    footer section.contact {
+        width: 30%;
+    }
+
+}
+
+
+/* Notebooks */
+
+@media (min-width: 1024px) { }
