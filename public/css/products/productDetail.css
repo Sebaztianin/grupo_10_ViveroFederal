@@ -133,8 +133,9 @@ h3.section-title:after {
 }
 
 main section.main-product {
-    width: 98%;
-    margin: 2%;
+    width: 90%;
+    margin: auto;
+    margin-top: 5%;
     background-color: #DAE2B6;
     color: #3C6255;
     padding: 10px 10px 30px;
@@ -373,16 +374,90 @@ div.quantity input {
     color: #3C6255;
 }
 
+main section.information {
+    width: 90%;
+    margin: auto;
+    margin-top: 5%;
+    background-color: #DAE2B6;
+    color: #3C6255;
+    padding: 10px 10px 30px;
+    border-radius: 5px;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+}
 
 
 
+/* productos relacionados */
 
+section.related-products {
+    margin: auto;
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    text-align: center;
+    padding: 5px;
+    color: #3C6255;
+    border-radius: 5px;
+}
 
+section.related-products h3.section-title {
+    margin: 10px;
+    text-align: center;
+    color: #3C6255;
+}
 
+div.categories-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 0px 5px;
+    margin-inline: 5px;
+}
 
+div.categories-list article {
+    width: 22.5%;
+    text-align: center;
+    padding: 5px;
+    background-color: #DAE2B6;
+    color: #3C6255;
+    border-radius: 5px;
+}
 
+div.categories-list article img {
+    width: 100%;
+    border-radius: 5px;
+}
 
+/* info adicional */
 
+section.additional-information {
+    margin: auto;
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    text-align: center;
+    padding: 5px;
+    color: #3C6255;
+    border-radius: 5px;
+}
+
+section.additional-information article {
+    margin: 2% 0%;
+}
+
+section.additional-information article .icono-anuncio-complementario {
+    font-size: 1.5rem;
+    padding: 2%;
+}
+
+section.additional-information article h4, section.additional-information article p {
+    padding: 1%;
+}
 
 
 
