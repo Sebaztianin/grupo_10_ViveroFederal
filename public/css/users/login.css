@@ -16,254 +16,359 @@ body {
 }
 
 
-/* Header */
 
-header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    height: 165px;
-    background-color: #F4EAD5;
-}
+/*Main Login*/
 
-header div.top-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 5px;
+main.login {
+    background-color: #FFFBE9;
     max-width: 1280px;
-    margin: auto;
+    margin-left: 30%;
+    margin-top: 0px;
+    margin-right: 30%;
 }
 
-header div.top-header div.first-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 10px;
-    width: 95%;
-}
-
-header div.top-header div.first-row a img {
-    width: 100px;
-    border-radius: 5px;
-}
-
-header div.top-header div.first-row div.right-icons {
-    display: inline-block;
-}
-
-header div.top-header div.first-row div.right-icons a {
-    scale: 1.3;
-    padding-inline: 10px;
-    color: #3C6255;
-    display: inline-block;
-}
-
-header div.top-header nav.navbar {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    margin: 15px 10px;
-}
-
-header div.top-header div.first-row ul.nav-menu-top {
-    display: none;
-}
-
-header div.top-header nav.navbar ul.nav-menu {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-    list-style: none;
-    width: 100%;
-}
-
-header div.top-header nav.navbar ul.nav-menu li a {
-    text-decoration: none;
-    color: #3C6255;
-    font-weight: bold;
-}
-
-header div.top-header form.search-form {
-    width: 100%;
+main.login h3.section-title { 
+    margin-top: 179px;
     text-align: center;
+    display: flex;
+  
 }
 
-header div.top-header form.search-form input {
-    padding: 5px;
-    width: 90%;
-    border: none;
-    border-radius: 5px;
-    background-color: white;
+main.login h3.section-title:before {
+    content: " ";
+    display: inline-block;
+    border-top: 1px solid #3C6255;
+    width: 25%;
+    margin: 8px;
 }
 
-header div.top-header form.search-form button {
-    padding: 5px;
-    width: 7%;
-    border: none;
-    border-radius: 5px;
-    background-color: white;
+main.login h3.section-title:after {
+    content: " ";
+    display: inline-block;
+    border-top: 1px solid #3C6255;
+    width: 25%;
+    margin: 8px;
 }
 
-/* Main */
+main.login form.userOne{
+    border: 1px solid #CCD6A6;  
+    background-color: #CCD6A6;
+}
 
-main form.cart div{
+main.login form.userOne div.name {
     display: flex;
     flex-direction: column;
     padding: 8px;
     padding-left: 24px;
     font-size: 14px;  
     align-items: center;
+    box-sizing: border-box;
+
+
+}
+
+main.login form.userOne div.name label{
+    align-self: left;
+    margin-bottom: -4px;
+}
+
+div.name input {
+    margin-top: 10px;
+    border:none;
+    margin-bottom: -1px;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 14px;
+    border-radius: 5px;
+    padding: 0px;
+    margin-inline: 30px;
+    width: 95%;
+}
+
+main.login form.userOne div.pass {
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+    padding-left: 24px;
+    font-size: 14px;  
+    align-items: center;
+}
+
+div.pass label{
+    text-align: left;   
+    margin-bottom: -5px;
+}
+
+div.pass input {
+    margin-top: 10px;
+    border:none;
+    margin-bottom: -1px;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 14px;
+    border-radius: 5px;
+    padding: 0px;
+    margin-inline: 30px;
+    width: 95%;
     
 }
 
-main form.cart div.sin_flex{
+main.login form.userOne div.checkbox{
     display: flex;
-    align-items: center;
-    align-items: left;
-}
-
-main form.cart div input.radio {
-    display: inline;
-    font-size: 14px;
-}
- 
-main input {
-    margin-top: 5px;
+    flex-direction: row-reverse;
     padding: 8px;
     padding-left: 24px;
-    font-size: 14px;
-    width: 30%;
+    font-size: 14px;  
+    align-items: left;
+    justify-content: center;
+   
+}
+
+.checkbox {
+font-weight: normal;
+}
+
+main form.userOne section.submit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+main.login form.userOne section.submit button{
+    font-size: 16px;
+    font-weight: bold;
     border: none;
     border-radius: 5px;
-    background-color: white;
-    align-items: center;
-}
-
-
-
-
-/* Footer */
-
-footer {
-    background-color: #F4EAD5;
-    margin-top: auto;
-}
-
-footer div.footer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    margin-top: 16px;
-    max-width: 1280px;
-    margin: auto;
-}
-
-footer h4.footer-title {
-    font-size: 16px;
-    padding: 16px 16px 8px;
-}
-
-footer section {
-    margin-bottom: 16px;
-    width: 100%;
-}
-
-footer section.navigation ul.nav-menu {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    text-align: left;
-}
-
-footer section.navigation ul.nav-menu li {
-    padding: 8px;
-    padding-left: 24px;
-}
-
-footer section ul.list li {
-    padding: 8px;
-    padding-left: 24px;
-    font-size: 14px;
-}
-
-footer section.navigation ul.nav-menu a {
-    text-decoration: none;
+    padding: 10px;
+    margin-inline: 30px;
+    width: 95%;
     color: #3C6255;
-    font-size: 14px;
-    width: 100%;
+    background-color: #FFFBE9;
 }
+
+main form.userOne section.submit a {
+    font-size: 14px;
+    text-align: center;
+    margin: 15px 0px;
+    color: #3C6255;
+}
+
+
+/*Main Register*/
+
+main.register {
+    max-width: 1280px;
+    margin-left: 30%;
+    margin-top: 0px;
+    margin-right: 30%;
+    background-color: #FFFBE9;
+}
+
+main.register h3.section-title { 
+    margin-top: 0px;
+    text-align: center;
+    display: flex;
+  
+}
+main.register h3.section-title:before {
+    content: " ";
+    display: inline-block;
+    border-top: 1px solid #3C6255;
+    width: 25%;
+    margin: 8px;
+}
+
+main.register h3.section-title:after {
+    content: " ";
+    display: inline-block;
+    border-top: 1px solid #3C6255;
+    width: 25%;
+    margin: 8px;
+}
+main.register form.userTwo {
+    border: 1px solid #CCD6A6;  
+    background-color: #CCD6A6;
+}
+main.register form.userTwo div.name{
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+    padding-left: 24px;
+    font-size: 14px;  
+    align-items: center;
+    box-sizing: border-box;
+}
+main.register form.userTwo div.name label{
+    text-align: left;
+    margin-bottom: -4px;
+}
+
+div.name input {
+    margin-top: 10px;
+    border:none;
+    margin-bottom: -1px;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 14px;
+    border-radius: 5px;
+    padding: 0px;
+    margin-inline: 30px;
+    width: 95%;
+}
+
+main.register form.userTwo div.lastName{
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+    padding-left: 24px;
+    font-size: 14px;  
+    align-items: center;
+    box-sizing: border-box;
+}
+div.lastName label{
+    text-align: left;
+    margin-bottom: -4px;
+}
+
+div.lastName input {
+    margin-top: 10px;
+    border:none;
+    margin-bottom: -1px;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 14px;
+    border-radius: 5px;
+    padding: 0px;
+    margin-inline: 30px;
+    width: 95%;
+}
+main.register form.userTwo div.email{
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+    padding-left: 24px;
+    font-size: 14px;  
+    align-items: center;
+    box-sizing: border-box;
+}
+div.email label{
+    text-align: left;
+    margin-bottom: -4px;
+}
+
+div.email input {
+    margin-top: 10px;
+    border:none;
+    margin-bottom: -1px;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 14px;
+    border-radius: 5px;
+    padding: 0px;
+    margin-inline: 30px;
+    width: 95%;
+}
+
+main.register form.userTwo div.pass{
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+    padding-left: 24px;
+    font-size: 14px;  
+    align-items: center;
+    box-sizing: border-box;
+}
+
+div.pass label{
+    align-self: left;
+    margin-bottom: -4px;
+}
+
+div.pass input {
+    margin-top: 10px;
+    border:none;
+    margin-bottom: -1px;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 14px;
+    border-radius: 5px;
+    padding: 0px;
+    margin-inline: 30px;
+    width: 95%;
+}
+
+main.register form.userTwo div.confirmPass{
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+    padding-left: 24px;
+    font-size: 14px;  
+    align-items: center;
+    box-sizing: border-box;
+}
+div.confirmPpass label{
+    text-align: left;
+    margin-bottom: -4px;
+}
+
+div.confirmPass input {
+    margin-top: 10px;
+    border:none;
+    margin-bottom: -1px;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 14px;
+    border-radius: 5px;
+    padding: 0px;
+    margin-inline: 30px;
+    width: 95%;
+}
+main.register form.userTwo section.submit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 15px;
+    margin-top:5px
+}
+
+main.register form.userTwo section.submit button{
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    margin-inline: 30px;
+    width: 95%;
+    color: #3C6255;
+    background-color: #FFFBE9;
+}
+
+main.register form.userTwo section.submit a {
+    font-size: 14px;
+    text-align: center;
+    margin: 15px 0px;
+    color: #3C6255;
+}
+
+
 
 /* Celus más grandes */
-@media (min-width: 481px) {
-
-    /* Footer */
-
-    footer section {
-        width: 50%;
-    }
-
-    footer section.navigation ul.nav-menu {
-        flex-direction: column;
-    }
-
-}
+@media (min-width: 481px) {}
 /* Tablets y netbooks */
 
-@media (min-width: 769px) {
-
-    /* Footer */
-
-    footer section.navigation,
-    footer section.social-media {
-        width: 20%;
-    }
-
-    footer section.payment-options,
-    footer section.contact {
-        width: 30%;
-    }
-
-}
+@media (min-width: 769px) {}
 
 
-/* Notebooks */
+/* Notebooks*/
 
 @media (min-width: 1024px) {
 
-    /* Header */
-
-    header {
-        margin-top: 10px;
-        background-color: #F4EAD5;
-        height: 115px;
-    }
-
-    header div.top-header div.first-row ul.nav-menu-top {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
-        align-items: center;
-        list-style: none;
-        width: 80%;
-        max-width: 500px;
-        padding-inline: 10px;
-    }
-
-    header div.top-header div.first-row ul.nav-menu-top li a {
-        text-decoration: none;
-        color: #3C6255;
-        font-weight: bold;
-    }
-
-    header div.top-header nav.navbar {
-        display: none;
-    }
+   
 
     /* Main */
 
-    main form.cart h3.section-title {
+    main.login h3.section-title {
         margin: 10px;
         margin-top: 130px;
         text-align: center;
