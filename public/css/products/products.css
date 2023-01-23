@@ -161,9 +161,12 @@ footer section.navigation ul.nav-menu a {
 /* main */
 
 
+.far  {
+    color: black;
+    padding: 0.75%;
+}
 
-
-a:link {
+a {
     text-decoration: none;
     color: #3C6255;
     font-weight: bold;
@@ -282,6 +285,7 @@ h4 {
 .negrita {
     font-weight: bolder;
     font-size: 22px;
+    
 }
 
 .negrita1 {
@@ -291,10 +295,14 @@ h4 {
 
 .box  {
     font-size: 16px; 
-    flex-direction: column;     
-      
-}
+    display: contents;
+    flex-direction: column;    
+ }
 
+ input {
+    vertical-align: middle;
+
+ }
 
 .nav-bar {
     display: none;
