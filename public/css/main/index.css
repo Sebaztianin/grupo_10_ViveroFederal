@@ -141,6 +141,8 @@ main section.contact form.contact button {
     font-weight: bold;
     color: white;
     background-color: cadetblue;
+    font-family: 'Roboto', sans-serif;
+    font-weight: normal;
 }
 
 main section.contact ul.list {

@@ -17,344 +17,56 @@ body {
 
 
 
-/*Main Login*/
+/* Main */
 
-main.login {
-    background-color: #FFFBE9;
+main {
+    margin-top: 165px;
+}
+
+main section {
     max-width: 1280px;
-    margin-left: 30%;
-    margin-top: 0px;
-    margin-right: 30%;
+    margin: auto;
 }
 
-main.login h3.section-title { 
-    margin-top: 179px;
+main h3.section-title {
+    margin: 10px;
+    margin-top: 14px;
     text-align: center;
-    display: flex;
-  
 }
 
-main.login h3.section-title:before {
-    content: " ";
+main h3.section-title:before {
+    content: "";
     display: inline-block;
     border-top: 1px solid #3C6255;
-    width: 25%;
+    width: 20%;
     margin: 8px;
 }
 
-main.login h3.section-title:after {
-    content: " ";
+main h3.section-title:after {
+    content: "";
     display: inline-block;
     border-top: 1px solid #3C6255;
-    width: 25%;
+    width: 20%;
     margin: 8px;
 }
 
-main.login form.userOne{
-    border: 1px solid #CCD6A6;  
-    background-color: #CCD6A6;
-}
 
-main.login form.userOne div.name {
-    display: flex;
-    flex-direction: column;
-    padding: 8px;
-    padding-left: 24px;
-    font-size: 14px;  
-    align-items: center;
-    box-sizing: border-box;
+/* Login */
 
-
-}
-
-main.login form.userOne div.name label{
-    align-self: left;
-    margin-bottom: -4px;
-}
-
-div.name input {
-    margin-top: 10px;
-    border:none;
-    margin-bottom: -1px;
-    box-sizing: border-box;
-    text-align: center;
-    font-size: 14px;
-    border-radius: 5px;
-    padding: 0px;
-    margin-inline: 30px;
-    width: 95%;
-}
-
-main.login form.userOne div.pass {
-    display: flex;
-    flex-direction: column;
-    padding: 8px;
-    padding-left: 24px;
-    font-size: 14px;  
-    align-items: center;
-}
-
-div.pass label{
-    text-align: left;   
-    margin-bottom: -5px;
-}
-
-div.pass input {
-    margin-top: 10px;
-    border:none;
-    margin-bottom: -1px;
-    box-sizing: border-box;
-    text-align: center;
-    font-size: 14px;
-    border-radius: 5px;
-    padding: 0px;
-    margin-inline: 30px;
-    width: 95%;
-    
-}
-
-main.login form.userOne div.checkbox{
-    display: flex;
-    flex-direction: row-reverse;
-    padding: 8px;
-    padding-left: 24px;
-    font-size: 14px;  
-    align-items: left;
-    justify-content: center;
-   
-}
-
-.checkbox {
-font-weight: normal;
-}
-
-main form.userOne section.submit {
+main section.login form.login {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 15px;
+    width: 90%;
+    max-width: 700px;
 }
-
-main.login form.userOne section.submit button{
-    font-size: 16px;
-    font-weight: bold;
-    border: none;
-    border-radius: 5px;
-    padding: 10px;
-    margin-inline: 30px;
-    width: 95%;
-    color: #3C6255;
-    background-color: #FFFBE9;
-}
-
-main form.userOne section.submit a {
-    font-size: 14px;
-    text-align: center;
-    margin: 15px 0px;
-    color: #3C6255;
-}
-
-
-/*Main Register*/
-
-main.register {
-    max-width: 1280px;
-    margin-left: 30%;
-    margin-top: 0px;
-    margin-right: 30%;
-    background-color: #FFFBE9;
-}
-
-main.register h3.section-title { 
-    margin-top: 0px;
-    text-align: center;
-    display: flex;
-  
-}
-main.register h3.section-title:before {
-    content: " ";
-    display: inline-block;
-    border-top: 1px solid #3C6255;
-    width: 25%;
-    margin: 8px;
-}
-
-main.register h3.section-title:after {
-    content: " ";
-    display: inline-block;
-    border-top: 1px solid #3C6255;
-    width: 25%;
-    margin: 8px;
-}
-main.register form.userTwo {
-    border: 1px solid #CCD6A6;  
-    background-color: #CCD6A6;
-}
-main.register form.userTwo div.name{
-    display: flex;
-    flex-direction: column;
-    padding: 8px;
-    padding-left: 24px;
-    font-size: 14px;  
-    align-items: center;
-    box-sizing: border-box;
-}
-main.register form.userTwo div.name label{
-    text-align: left;
-    margin-bottom: -4px;
-}
-
-div.name input {
-    margin-top: 10px;
-    border:none;
-    margin-bottom: -1px;
-    box-sizing: border-box;
-    text-align: center;
-    font-size: 14px;
-    border-radius: 5px;
-    padding: 0px;
-    margin-inline: 30px;
-    width: 95%;
-}
-
-main.register form.userTwo div.lastName{
-    display: flex;
-    flex-direction: column;
-    padding: 8px;
-    padding-left: 24px;
-    font-size: 14px;  
-    align-items: center;
-    box-sizing: border-box;
-}
-div.lastName label{
-    text-align: left;
-    margin-bottom: -4px;
-}
-
-div.lastName input {
-    margin-top: 10px;
-    border:none;
-    margin-bottom: -1px;
-    box-sizing: border-box;
-    text-align: center;
-    font-size: 14px;
-    border-radius: 5px;
-    padding: 0px;
-    margin-inline: 30px;
-    width: 95%;
-}
-main.register form.userTwo div.email{
-    display: flex;
-    flex-direction: column;
-    padding: 8px;
-    padding-left: 24px;
-    font-size: 14px;  
-    align-items: center;
-    box-sizing: border-box;
-}
-div.email label{
-    text-align: left;
-    margin-bottom: -4px;
-}
-
-div.email input {
-    margin-top: 10px;
-    border:none;
-    margin-bottom: -1px;
-    box-sizing: border-box;
-    text-align: center;
-    font-size: 14px;
-    border-radius: 5px;
-    padding: 0px;
-    margin-inline: 30px;
-    width: 95%;
-}
-
-main.register form.userTwo div.pass{
-    display: flex;
-    flex-direction: column;
-    padding: 8px;
-    padding-left: 24px;
-    font-size: 14px;  
-    align-items: center;
-    box-sizing: border-box;
-}
-
-div.pass label{
-    align-self: left;
-    margin-bottom: -4px;
-}
-
-div.pass input {
-    margin-top: 10px;
-    border:none;
-    margin-bottom: -1px;
-    box-sizing: border-box;
-    text-align: center;
-    font-size: 14px;
-    border-radius: 5px;
-    padding: 0px;
-    margin-inline: 30px;
-    width: 95%;
-}
-
-main.register form.userTwo div.confirmPass{
-    display: flex;
-    flex-direction: column;
-    padding: 8px;
-    padding-left: 24px;
-    font-size: 14px;  
-    align-items: center;
-    box-sizing: border-box;
-}
-div.confirmPpass label{
-    text-align: left;
-    margin-bottom: -4px;
-}
-
-div.confirmPass input {
-    margin-top: 10px;
-    border:none;
-    margin-bottom: -1px;
-    box-sizing: border-box;
-    text-align: center;
-    font-size: 14px;
-    border-radius: 5px;
-    padding: 0px;
-    margin-inline: 30px;
-    width: 95%;
-}
-main.register form.userTwo section.submit {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 15px;
-    margin-top:5px
-}
-
-main.register form.userTwo section.submit button{
-    font-size: 16px;
-    font-weight: bold;
-    border: none;
-    border-radius: 5px;
-    padding: 10px;
-    margin-inline: 30px;
-    width: 95%;
-    color: #3C6255;
-    background-color: #FFFBE9;
-}
-
-main.register form.userTwo section.submit a {
-    font-size: 14px;
-    text-align: center;
-    margin: 15px 0px;
-    color: #3C6255;
-}
-
 
 
 /* Celus más grandes */
+
 @media (min-width: 481px) {}
+
+
 /* Tablets y netbooks */
 
 @media (min-width: 769px) {}
@@ -364,14 +76,9 @@ main.register form.userTwo section.submit a {
 
 @media (min-width: 1024px) {
 
-   
-
     /* Main */
-
-    main.login h3.section-title {
-        margin: 10px;
-        margin-top: 130px;
-        text-align: center;
+    main {
+        margin-top: 115px;
     }
 
 }
