@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <%- include('../partials/head.ejs') %>
+    <title>Vivero Federal: Admin</title>
+    <link rel="stylesheet" href="../css/main/admin.css">
+</head>
+
+<body>
+
+    <%- include('../partials/header.ejs') %>
+
+        <main>
+
+            <h3 class="section-title">Administrador</h3>
+            
+            <form class="product-name" action="#" method="POST">
+
+                <section class="new-edit">
+                    <label class="label-new-edit" for="new-edit">Publicar</label>
+                        <select name="new-edit" id="new-edit">Nuevo producto
+                            <option>Nuevo producto</option>
+                            <option>Editar producto existente</option>
+                        </select>
+
+                </section>
+
+                <section class="product-name">
+            
+                    <label class="label-category" for="category">Categorías</label>
+                        <input type="checkbox" name="category" id="category" value="Plantas de Exterior">
+                        <input type="checkbox" name="category" id="category" value="Plantas de Interior">
+                        <input type="checkbox" name="category" id="category" value="Plaguicidas y Fertilizantes">
+                        <input type="checkbox" name="category" id="category" value="Accesorios">
+
+                    <label class="label-name" for="name">Nombre del producto</label>
+                        <input type="text" name="name" id="name" placeholder="Ej: Suculentas">
+
+                    <label class="label-price" for="price">Precio</label>
+                        <input type="number" name="price" id="price" placeholder="AR$">
+
+                    <label class="label-discount-detail" for="discount-detail">Detalle de descuento</label>
+                        <input type="checkbox" name="dicount-detail">
+                        <input type="text" name="discount-detail" id="discount-detail" placeholder="Ej: 15 % off">
+                        <input type="text" name="payment-methods" id="discount-detail" placeholder="Ej: mediante transferencia">
+
+                </section>
+
+                <section class="product-specifications">
+            
+                    <label class="label-size" for="size">Tamaño</label>
+                        <input type="checkbox" name="size" id="size" value="Pequeño">
+                        <input type="checkbox" name="size" id="size" value="Mediano">
+                        <input type="checkbox" name="size" id="size" value="Grande">
+                        <input type="checkbox" name="size" id="size" value="Único">
+                    
+                    <label class="label-color" for="color">Color</label>
+                        <input type="checkbox" name="color" id="color" value="Azul">
+                        <input type="checkbox" name="color" id="color" value="Rojo">
+                        <input type="checkbox" name="color" id="color" value="Amarillo">
+
+                    <label class="label-images" for="images">Imagenes</label>
+                        <input type="file" name="images" id="images" accept=".jpg" multiple>
+
+                </section>
+
+                <section class="product-description">
+            
+                    <label class="label-description" for="description">Descripción del producto</label>
+                        <input type="text" name="description" id="description" placeholder="máx. 100 caracteres">
+
+                    <label class="label-extra-info" for="extra-info">Información Adicional</label>
+                    <input type="text" name="extra-info" id="extra-info" placeholder="máx. 100 caracteres">
+
+                </section>
+
+                <section class="buttons">
+
+                    <button class="reset-product" type="reset">Eliminar cambios</button>
+                    <button class="post-product" type="submit">PUBLICAR PRODUCTO</button>
+
+                </section>
+
+            </form>
+
+        </main>
+
+    <%- include('../partials/footer') %>
+
+</body>
+
+</html>
+
+
+
+
+            

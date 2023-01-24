@@ -10,5 +10,6 @@ const mainController = require('../controllers/mainController');
 let router = express.Router();
 
 router.get('/', mainController.index);
+router.get('/admin', mainController.admin);
 
 module.exports = router;
