@@ -79,24 +79,23 @@ header div.top-header nav.navbar ul.nav-menu li a {
 header div.top-header form.search-form {
     width: 100%;
     text-align: center;
+    position: relative;
 }
 
 header div.top-header form.search-form input {
     padding: 5px;
-    width: 90%;
+    width: 95%;
     border: none;
     border-radius: 5px;
     background-color: white;
 }
 
 header div.top-header form.search-form button {
-    padding: 5px;
-    width: 7%;
     border: none;
-    border-radius: 5px;
-    background-color: white;
+    background: none;
+    position: relative;
+    right: 25px;
 }
-
 
 
 /* Celus más grandes */
@@ -139,6 +138,10 @@ header div.top-header form.search-form button {
 
     header div.top-header nav.navbar {
         display: none;
+    }
+
+    header div.top-header form.search-form input {
+        font-size: 14px;
     }
 
 }

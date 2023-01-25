@@ -20,12 +20,17 @@ body {
 /* Main */
 
 main {
+    margin: auto;
     margin-top: 165px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 main section {
     max-width: 1280px;
-    margin: auto;
+    width: 100%;
 }
 
 main h3.section-title {
@@ -59,6 +64,84 @@ main section.login form.login {
     align-items: center;
     width: 90%;
     max-width: 700px;
+    margin: auto;
+}
+
+main section.login form.login input {
+    padding: 5px;
+    margin: 5px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+}
+
+main section.login form.login div.remember-me {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 5px;
+}
+
+main section.login form.login div.remember-me label {
+    font-size: 13px;
+}
+
+main section.login form.login div.remember-me input {
+    width: 15px;
+}
+
+main section.login form.login button {
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    width: 100%;
+    color: #3C6255;
+    background-color: #CCD6A6;
+}
+
+main section.login form.login a {
+    font-size: 14px;
+    text-align: center;
+    margin: 10px 0px;
+    color: #3C6255;
+}
+
+
+/* Registro */
+
+main section.register form.register {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    max-width: 700px;
+    margin: auto;
+    margin-bottom: 15px;
+}
+
+main section.register form.register input {
+    padding: 5px;
+    margin: 5px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+}
+
+main section.register form.register button {
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 15px;
+    width: 100%;
+    color: #3C6255;
+    background-color: #CCD6A6;
 }
 
 
@@ -69,7 +152,34 @@ main section.login form.login {
 
 /* Tablets y netbooks */
 
-@media (min-width: 769px) {}
+@media (min-width: 769px) {
+
+    /* Login */
+
+    main section.login form.login input {
+        font-size: 14px;
+    }
+
+    main section.login form.login button {
+        font-size: 14px;
+    }
+    
+    main section.login form.login div.remember-me label {
+        font-size: 14px;
+    }
+
+
+    /* Registro */
+    
+    main section.register form.register input {
+        font-size: 14px;
+    }
+
+    main section.register form.register button {
+        font-size: 14px;
+    }
+
+}
 
 
 /* Notebooks*/
