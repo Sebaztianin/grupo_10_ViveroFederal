@@ -20,16 +20,16 @@
                 <form class="login" action="#" method="POST">
 
                     <!-- Campos -->
-                    <input type="text" name="userName" id="userName" placeholder="Usuario" required="">
-                    <input type="password" name="password" id="password" placeholder="Contraseña" required>
+                    <input type="text" id="username" placeholder="Usuario" required="">
+                    <input type="password" id="password" placeholder="Contraseña" required>
 
                     <div class="remember-me">
-                        <input type="checkbox" value="rememberMe" id="rememberMe" name="rememberMe">
-                        <label for="rememberMe"> Recordarme</label>
+                        <input type="checkbox" id="remember-me">
+                        <label for="remember-me"> Recordarme</label>
                     </div>
 
                     <!-- Botón -->
-                    <button type="submit" name="login">Iniciar sesión</button>
+                    <button type="submit" id="login">Iniciar sesión</button>
                     <a href="/users/login">
                         <p>¿Olvidaste tu contraseña?</p>
                     </a>
@@ -45,14 +45,13 @@
                 <form class="register" action="/register" method="POST">
 
                     <!-- Campos -->
-                    <input type="text" name="userName" id="userName" placeholder="Usuario" required>
-                    <input type="email" name="email" id="email" placeholder="Correo" required>
-                    <input type="password" name="password" id="password" placeholder="Contraseña" required>
-                    <input type="password" name="passwordConfirmation" id="passwordConfirmation"
-                        placeholder="Confirmar contraseña" required>
+                    <input type="text" id="username" placeholder="Usuario" required>
+                    <input type="email" id="email" placeholder="Correo" required>
+                    <input type="password" id="password" placeholder="Contraseña" required>
+                    <input type="password" id="password-confirmation" placeholder="Confirmar contraseña" required>
 
                     <!-- Botón -->
-                    <button type="submit" name="register">Registrarme</button>
+                    <button type="submit" id="register">Registrarme</button>
 
                 </form>
 

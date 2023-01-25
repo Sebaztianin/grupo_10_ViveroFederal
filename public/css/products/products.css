@@ -18,179 +18,229 @@ body {
 
 /* Main */
 
-
-.far {
-    color: black;
-    padding: 0.75%;
-}
-
-a {
-    text-decoration: none;
-    color: #3C6255;
-    font-weight: bold;
-}
-
-.description,
-.precio {
-    font-size: 16px;
-    color: #3C6255;
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-button {
-    background-color: #FFFBE9;
-    color: #3C6255;
-}
-
 main {
-    width: 90%;
-    margin-top: 140px;
-    padding: 5px;
-    margin-left: 10px;
-
+    margin-top: 165px;
 }
 
-.Det-Prod {
-    display: flex;
-    font-size: 12 px;
-
+main section {
+    max-width: 1280px;
+    margin: auto;
 }
 
-
-h4 {
+main h3.section-title {
+    margin: 10px;
+    margin-top: 14px;
     text-align: center;
-    font-size: 16px;
 }
 
-
-.products article {
+main h3.section-title:before {
+    content: "";
+    display: inline-block;
+    border-top: 1px solid #3C6255;
     width: 20%;
     margin: 8px;
-    margin-bottom: 40px;
-    background-color: #DAE2B6;
-    text-align: center;
-
 }
 
-.boton-products {
-    display: flex;
-    flex-wrap: wrap;
-    text-align: center;
+main h3.section-title:after {
+    content: "";
+    display: inline-block;
+    border-top: 1px solid #3C6255;
+    width: 20%;
+    margin: 8px;
 }
 
-.products {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    text-align: center;
-    height: 15%;
-    padding: 5px;
-}
 
-.mas-vendidos {
-    margin-bottom: 20px;
-    font-weight: bold;
-    display: flex;
-    flex-direction: row-reverse;
-    align-items: center;
+/* Ordenador*/
 
-}
-
-.products article .main-article .fas {
+main section.all-products div.order-by {
     display: none;
+} 
+
+main section.all-products div.order-by label {
+    font-weight: bold;
+} 
+
+main section.all-products div.order-by select {
+    border: #3C6255 solid 2px;
+    border-radius: 5px;
+    padding: 3px;
+    margin-inline: 3px;
+    font-weight: bold;
     color: #3C6255;
+} 
 
-}
-
-.products article:hover .fas {
-    display: block;
-
-
-}
-
-.products article:hover {
-    box-shadow: 0px 0px 10px rgb(100, 100, 100);
-    transition: 100ms;
-}
+main section.all-products div.list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 15px;
+} 
 
 
-.products article img {
-    width: 100%;
+/* Botón filtrar */
+
+main section.all-products div.filter-button {
+    display: flex;
+    flex-direction: row;
     align-items: center;
-    padding: 5px;
-    border-radius: 20px;
-}
+    justify-content: right;
+    margin: 15px 30px;
+} 
 
-.Filtros {
+main section.all-products div.filter-button a {
+    text-decoration: none;
     font-weight: bold;
+} 
 
-}
-
-
-.Categorias {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 10px;
-    align-items: stretch;
-
-}
-
-.negrita {
-    font-weight: bolder;
-    font-size: 22px;
-
-}
-
-.negrita1 {
+main section.all-products div.filter-button label {
     font-weight: bold;
-    font-size: 20px;
-}
+} 
 
-.box {
-    font-size: 16px;
-    display: contents;
-    flex-direction: column;
-}
 
-input {
-    vertical-align: middle;
+/* Filtros */
 
-}
-
-.nav-bar {
+main section.all-products div.list div.filters {
     display: none;
-}
+} 
 
-.filtrar {
-    display: flex;
-    flex-direction: row-reverse;
-}
+main section.all-products div.list div.filters div {
+    margin-block: 30px;
+} 
 
-main .button-prod .submit a {
-    display: flex;
-    justify-content: center;
+main section.all-products div.list div.filters p {
+    font-weight: bold;
+    margin-block: 5px;
+} 
+
+main section.all-products div.list div.filters ul {
+    list-style: none;
+} 
+
+main section.all-products div.list div.filters li {
+    margin-block: 5px;
+} 
+
+main section.all-products div.list div.filters a {
+    text-decoration: none;
     font-size: 14px;
-    margin: 20px 0px;
+} 
+
+
+/* Productos */
+
+main section.all-products div.list div.products {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+} 
+
+main section.all-products div.list div.products article {
+    padding: 10px;
+    width: 100%;
+    margin: 2%;
+    align-self: center;
+    background-color: #DAE2B6;
+    border-radius: 5px;
+} 
+
+main section.all-products div.list div.products article img {
+    width: 100%;
+    border-radius: 10px;
+} 
+
+main section.all-products div.list div.products article a {
+    text-decoration: none;
+} 
+
+main section.all-products div.list div.products article p,
+main section.all-products div.list div.products article h4 {
+    padding-top: 8px;
+}
+
+main section.all-products div.list div.products article div.main-article {
+    position: relative;
+}
+
+main section.all-products div.list div.products article button {
+    opacity: 0.25;
+    background-color: #FFFBE9;
+    border: none;
+    border-radius: 5px;
+    transition: all 0.5s;
+}
+
+main section.all-products div.list div.products article:hover button {
+    opacity: 1;
+    z-index: 900;
+} 
+
+main section.all-products div.list div.products article button.favorite {
+    position: absolute;
+    right: 42px;
+    bottom: 63px;
+}
+
+main section.all-products div.list div.products article button.cart {
+    position: absolute;
+    right: 5px;
+    bottom: 63px;
+}
+
+main section.all-products div.list div.products article i {
+    padding: 5px;
+    font-size: 20px;
     color: #3C6255;
 }
 
-.index a {
+
+/* Más productos */
+
+main section.all-products div.more-products {
+    width: 100%;
+    text-align: center;
+    margin-block: 15px;
+}
+
+main section.all-products div.more-products a {
+    font-size: 14px;
+    text-align: center;
+    margin: 15px 0px;
     color: #3C6255;
 }
+
 
 
 /* Celus más grandes */
 
 @media (min-width: 481px) {
 
-    /* Main */
+    /* Ordenador */
 
-    main {
-        margin-top: 160px;
-    }
+    main section.all-products div.order-by {
+        display: block;
+        text-align: right;
+        margin: 15px 30px;
+    } 
+
+
+    /* Botón filtrar */
+
+    main section.all-products div.filter-button {
+        display: none;
+    } 
+
+
+    /* Filtros */
+
+    main section.all-products div.list div.filters {
+        display: block;
+        width: 15%;
+    } 
+
+    main section.all-products div.list div.products {
+        width: 80%;
+    } 
 
 }
 
@@ -199,23 +249,22 @@ main .button-prod .submit a {
 
 @media (min-width: 769px) {
 
-    /* Main */
+    /* Productos */
 
-    main {
-        margin-top: 160px;
-    }
-
-
-    .nav-bar {
-        display: block;
-    }
+    main section.all-products div.list div.products article {
+        width: 30%;
+        margin: 5px;
+    } 
 
 
-    .filtrar {
-        display: none;
+    /* Más productos */
+    
+    main section.all-products div.more-products a {
+        font-size: 16px;
     }
 
 }
+
 
 /* Notebooks */
 
@@ -224,12 +273,15 @@ main .button-prod .submit a {
     /* Main */
 
     main {
-        margin-top: 120px;
+        margin-top: 115px;
     }
 
+    
+    /* Productos */
 
-    .products article {
-        width: 20%;
-    }
+    main section.all-products div.list div.products article {
+        width: 23%;
+        margin: 5px;
+    } 
 
 }

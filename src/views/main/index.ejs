@@ -3,8 +3,8 @@
 
 <head>
     <%- include('../partials/head.ejs') %>
-    <title>Vivero Federal: Home</title>
-    <link rel="stylesheet" href="../css/main/index.css">
+        <title>Vivero Federal: Home</title>
+        <link rel="stylesheet" href="../css/main/index.css">
 </head>
 
 <body>
@@ -55,39 +55,24 @@
                 <h3 class="section-title">Más vendidos</h3>
                 <!-- Productos -->
                 <div class="products">
-                    <article>
-                        <img src="../images/products/suculenta.jpg" alt="Suculenta" class="product_img">
-                        <div class="main-article">
-                            <h4 class="description">Suculenta</h4>
-                            <p class="price">$550</p>
-                        </div>
-                    </article>
-                    <article>
-                        <img src="../images/products/cactus.jpg" alt="Cactus" class="product_img">
-                        <div class="main-article">
-                            <h4 class="description">Cactus</h4>
-                            <p class="price">$800</p>
-                        </div>
-                    </article>
-                    <article>
-                        <img src="../images/products/palita.jpg" alt="Pala de jardín" class="product_img">
-                        <div class="main-article">
-                            <h4 class="description">Pala de jardín</h4>
-                            <p class="price">$2.800</p>
-                        </div>
-                    </article>
-                    <article>
-                        <img src="../images/products/maceta.jpg" alt="Maceta" class="product_img">
-                        <div class="main-article">
-                            <h4 class="description">Maceta</h4>
-                            <p class="price">$1.200</p>
-                        </div>
-                    </article>
+                    <% for (i=0; i < 16; i++) { %>
+                        <article>
+                            <a href="/products/1">
+                                <img src="../images/products/suculenta.jpg" alt="Suculenta" class="product-img">
+                                <div class="main-article">
+                                    <h4 class="description">Suculenta</h4>
+                                    <p class="price">$550</p>
+                                    <button class="favorite"><a href="/products/1"><i class="far fa-heart"></i></a></i></button>
+                                    <button class="cart"><a href="/products/productCart"><i class="fas fa-cart-plus"></i></a></button>
+                                </div>
+                            </a>
+                        </article>
+                        <% } %>
                 </div>
 
             </section>
 
-            <section class="contact" id="contact">
+            <section class="contact">
 
                 <!-- Contacto -->
                 <h3 class="section-title">Contacto</h3>
@@ -95,11 +80,11 @@
                 <div class="contact-div">
                     <!-- Formulario -->
                     <form class="contact" action="#" method="POST">
-                        <input type="text" name="name" id="name" placeholder="Nombre" minlength="2" required>
-                        <input type="email" name="email" id="email" placeholder="E-mail" required>
-                        <input type="number" name="phone" id="phone" placeholder="Celular" minlength="8" required>
-                        <textarea name="message" id="message" placeholder="Dejanos un mensaje" required></textarea>
-                        <button class="send-button" type="submit">Enviar</button>
+                        <input type="text" id="name" placeholder="Nombre" minlength="2" required>
+                        <input type="email" id="email" placeholder="E-mail" required>
+                        <input type="number" id="phone" placeholder="Celular" minlength="8" required>
+                        <textarea name="message" placeholder="Dejanos un mensaje" required></textarea>
+                        <button id="send" type="submit">Enviar</button>
                     </form>
                     <!-- Datos de contacto -->
                     <ul class="list" type="none">
