@@ -2,9 +2,6 @@
 let mainController = {
     index: function(req, res) {
         res.render('main/index');
-    },
-    admin: function(req,res) {
-        res.render('main/admin');
     }
 };
 
