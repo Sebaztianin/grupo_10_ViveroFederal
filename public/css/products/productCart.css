@@ -77,7 +77,7 @@ main form.cart section.products div.products-list article div.article {
     padding-inline: 10px;
 }
 
-main form.cart section.products div.products-list article div.article p.description {
+main form.cart section.products div.products-list article div.article p.name {
     font-weight: bold;
     margin-bottom: auto;
 }
