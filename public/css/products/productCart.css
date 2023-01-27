@@ -25,6 +25,10 @@ main a:visited {
 
 /* Main */
 
+main {
+    margin-top: 165px;
+}
+
 main form.cart section {
     max-width: 1280px;
     margin: auto;
@@ -32,7 +36,7 @@ main form.cart section {
 
 main form.cart h3.section-title {
     margin: 10px;
-    margin-top: 179px;
+    margin-block: 25px;
     text-align: center;
 }
 
@@ -303,9 +307,13 @@ main form.cart section.submit a {
 
     /* Main */
 
-    main form.cart h3.section-title {
+    main {
+        margin-top: 115px;
+    }
+
+    main form.cart h3.section-title {    
         margin: 10px;
-        margin-top: 130px;
+        margin-block: 25px;
         text-align: center;
     }
 

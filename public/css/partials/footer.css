@@ -167,6 +167,8 @@ footer section.whatsapp {
         justify-content: center;
         text-decoration: none;
         transition: all 0.5s;
+        animation: move-up-whatsapp 2s 1;
+        animation-delay: 8s;
     }
 
     footer section.whatsapp i {
@@ -189,3 +191,20 @@ footer section.whatsapp {
 /* Notebooks */
 
 @media (min-width: 1024px) { }
+
+
+/* Animaciones */
+
+@keyframes move-up-whatsapp {
+    0% {
+        bottom: 40px;
+    }
+
+    50% {
+        bottom: 60px;
+    }
+
+    100% {
+        bottom: 40px;
+    }
+}
