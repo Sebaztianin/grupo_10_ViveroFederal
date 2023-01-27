@@ -152,12 +152,6 @@ main section.all-products div.list div.products article {
     align-self: center;
     background-color: #DAE2B6;
     border-radius: 5px;
-    box-shadow: 0px 0px 0px rgb(100, 100, 100);
-    transition: all 0.5s;
-} 
-
-main section.all-products div.list div.products article:hover {
-    box-shadow: 0px 0px 10px rgb(100, 100, 100);
 } 
 
 main section.all-products div.list div.products article img {
@@ -179,17 +173,11 @@ main section.all-products div.list div.products article div.main-article {
 }
 
 main section.all-products div.list div.products article button {
-    opacity: 0.25;
+    opacity: 0.7;
     background-color: #FFFBE9;
     border: none;
     border-radius: 5px;
-    transition: all 0.5s;
 }
-
-main section.all-products div.list div.products article:hover button {
-    opacity: 1;
-    z-index: 900;
-} 
 
 main section.all-products div.list div.products article button.favorite {
     position: absolute;
@@ -201,10 +189,6 @@ main section.all-products div.list div.products article button.cart {
     position: absolute;
     right: 5px;
     bottom: 63px;
-}
-
-main section.all-products div.list div.products article button:hover {
-    bottom: 68px;
 }
 
 main section.all-products div.list div.products article i {
@@ -275,6 +259,28 @@ main section.all-products div.more-products a {
         width: 30%;
         margin: 5px;
     } 
+
+    main section.all-products div.list div.products article {
+        box-shadow: 0px 0px 0px rgb(100, 100, 100);
+        transition: all 0.5s;
+    } 
+    
+    main section.all-products div.list div.products article:hover {
+        box-shadow: 0px 0px 10px rgb(100, 100, 100);
+    } 
+
+    main section.all-products div.list div.products article button {
+        opacity: 0.25;
+        transition: all 0.5s;
+    }
+    
+    main section.all-products div.list div.products article:hover button {
+        opacity: 1;
+    } 
+        
+    main section.all-products div.list div.products article button:hover {
+        bottom: 68px;
+    }
 
 
     /* Más productos */
