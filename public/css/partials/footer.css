@@ -7,6 +7,22 @@
 }
 
 
+/* Eliminamos colores en los links visitados */
+
+footer a:visited {
+    color: #3C6255;
+}
+
+/* Transición general */
+
+footer i {
+    transition: all 0.5s;
+}
+
+footer a:hover i {
+    transform: rotate(360deg);
+}
+
 /* Footer */
 
 footer {
@@ -59,6 +75,43 @@ footer section.navigation ul.nav-menu a {
     width: 100%;
 }
 
+footer section.navigation i {
+    position: relative;
+    bottom: 0px;
+    transition: all 0.3s;
+}
+
+footer section.navigation a:hover i {
+    bottom: 3px;
+    transform: rotate(0deg);
+}
+
+footer section.contact ul.list i {
+    text-decoration: none;
+    color: #3C6255;
+    font-size: 14px;
+    min-width: 16px;
+    text-align: center;
+}
+
+footer section.contact ul.list a {
+    text-decoration: none;
+    color: #3C6255;
+    font-size: 14px;
+    width: 100%;
+}
+
+footer section.social-media ul.list a {
+    text-decoration: none;
+    color: #3C6255;
+    font-size: 14px;
+    width: 100%;
+}
+
+footer section.whatsapp {
+    display: none;
+}
+
 
 /* Celus más grandes */
 
@@ -91,6 +144,43 @@ footer section.navigation ul.nav-menu a {
     footer section.payment-options,
     footer section.contact {
         width: 30%;
+    }
+
+    footer section.whatsapp {
+        display: block;
+    }
+    
+    footer section.whatsapp a {
+        position: fixed;
+        width: 60px;
+        height: 60px;
+        bottom: 40px;
+        right: 40px;
+        background-color: #25d366;
+        color: #fff;
+        border-radius: 50px;
+        font-size: 30px;
+        box-shadow: 2px 2px 3px #999;
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        transition: all 0.5s;
+    }
+
+    footer section.whatsapp i {
+        margin: auto;
+    }
+    
+    /* Anulo rotación del ícono y habilito movimiento del link */
+
+    footer section.whatsapp a:hover i { 
+        transform: rotate(0deg);
+    }
+
+    footer section.whatsapp a:hover {
+        bottom: 50px;
     }
 
 }

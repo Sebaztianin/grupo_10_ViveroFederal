@@ -16,6 +16,13 @@ body {
 }
 
 
+/* Eliminamos colores en los links visitados */
+
+main a:visited {
+    color: #3C6255;
+}
+
+
 /* Main */
 
 main {
@@ -67,6 +74,7 @@ main section.all-products div.order-by select {
     margin-inline: 3px;
     font-weight: bold;
     color: #3C6255;
+    cursor: pointer;
 } 
 
 main section.all-products div.list {
@@ -142,6 +150,12 @@ main section.all-products div.list div.products article {
     align-self: center;
     background-color: #DAE2B6;
     border-radius: 5px;
+    box-shadow: 0px 0px 0px rgb(100, 100, 100);
+    transition: all 0.5s;
+} 
+
+main section.all-products div.list div.products article:hover {
+    box-shadow: 0px 0px 10px rgb(100, 100, 100);
 } 
 
 main section.all-products div.list div.products article img {
@@ -185,6 +199,10 @@ main section.all-products div.list div.products article button.cart {
     position: absolute;
     right: 5px;
     bottom: 63px;
+}
+
+main section.all-products div.list div.products article button:hover {
+    bottom: 68px;
 }
 
 main section.all-products div.list div.products article i {

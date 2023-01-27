@@ -16,6 +16,13 @@ body {
 }
 
 
+/* Eliminamos colores en los links visitados */
+
+main a:visited {
+    color: #3C6255;
+}
+
+
 /* Main */
 
 main {
@@ -29,7 +36,7 @@ main section {
 
 main h3.section-title {
     margin: 10px;
-    margin-top: 14px;
+    margin-top: 25px;
     text-align: center;
 }
 
@@ -71,6 +78,17 @@ main section.categories div.categories-list article {
     width: 20%;
     text-align: center;
     padding: 5px;
+    position: relative;
+    bottom: 0px;
+    transition: all 0.5s;
+}
+
+main section.categories div.categories-list article:hover {
+    bottom: 7px;
+}
+
+main section.categories div.categories-list article a {
+    text-decoration: none;
 }
 
 main section.categories div.categories-list img {
@@ -100,6 +118,12 @@ main section.top-sellers div.products article {
     align-self: center;
     background-color: #DAE2B6;
     border-radius: 5px;
+    box-shadow: 0px 0px 0px rgb(100, 100, 100);
+    transition: all 0.5s;
+}
+
+main section.top-sellers div.products article:hover {
+    box-shadow: 0px 0px 10px rgb(100, 100, 100);
 }
 
 main section.top-sellers div.products article a {
@@ -145,6 +169,10 @@ main section.top-sellers div.products article button.cart {
     bottom: 63px;
 }
 
+main section.top-sellers div.products article button:hover {
+    bottom: 68px;
+}
+
 main section.top-sellers div.products article div.main-article i {
     padding: 5px;
     font-size: 20px;
@@ -184,6 +212,17 @@ main section.contact form.contact button {
     margin: 10px 5px;
     color: #3C6255;
     background-color: #CCD6A6;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.5s;
+}
+
+main section.contact form.contact button:hover {
+    filter: brightness(85%);
+}
+
+main section.contact form.contact button:active {
+    top: 2px;
 }
 
 main section.contact ul.list {
@@ -215,6 +254,18 @@ main section.contact ul.list {
         display: flex;
         flex-direction: column;
         padding: 15px;
+    }
+
+    main section.contact ul.list a {
+        text-decoration: none;
+    }
+
+    main section.contact ul.list a i {
+        transition: all 0.5s;
+    }
+
+    main section.contact ul.list a:hover i {
+        transform: rotate(360deg);
     }
 
     main section.contact ul.list li {

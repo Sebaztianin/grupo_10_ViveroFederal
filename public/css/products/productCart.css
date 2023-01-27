@@ -16,6 +16,13 @@ body {
 }
 
 
+/* Eliminamos colores en los links visitados */
+
+main a:visited {
+    color: #3C6255;
+}
+
+
 /* Main */
 
 main form.cart section {
@@ -82,6 +89,10 @@ main form.cart section.products div.products-list article div.article p.name {
     margin-bottom: auto;
 }
 
+main form.cart section.products div.products-list article div.article a {
+    text-decoration: none;
+}
+
 main form.cart section.products div.products-list article div.article div.article-details {
     display: flex;
     flex-direction: row;
@@ -113,6 +124,21 @@ main form.cart section.products div.products-list article div.article div.articl
     padding: 5px;
     border: none;
     border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.5s;
+}
+
+main form.cart section.products div.products-list article div.article div.article-details div.quantity button:hover {
+    filter: brightness(85%);
+}
+
+main form.cart section.products div.products-list article div.article div.article-details div.quantity button.more:active {
+    bottom: 2px;
+}
+
+main form.cart section.products div.products-list article div.article div.article-details div.quantity button.less:active {
+    top: 2px;
 }
 
 main form.cart section.products div.products-list article div.article div.article-details div.total {
@@ -135,6 +161,17 @@ main form.cart section.products div.products-list article div.article div.articl
     padding: 5px;
     border: none;
     border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.5s;
+}
+
+main form.cart section.products div.products-list article div.article div.article-details div.total button:hover {
+    filter: brightness(85%);
+}
+
+main form.cart section.products div.products-list article div.article div.article-details div.total button:active {
+    top: 2px;
 }
 
 main form.cart section.delivery {
@@ -167,6 +204,17 @@ main form.cart section.delivery button {
     margin-inline: 10px 30px;
     color: #3C6255;
     background-color: #CCD6A6;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.5s;
+}
+
+main form.cart section.delivery button:hover {
+    filter: brightness(85%);
+}
+
+main form.cart section.delivery button:active {
+    top: 2px;
 }
 
 main form.cart section.subtotal {
@@ -209,6 +257,17 @@ main form.cart section.submit button {
     width: 95%;
     color: #3C6255;
     background-color: #CCD6A6;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.5s;
+}
+
+main form.cart section.submit button:hover {
+    filter: brightness(85%);
+}
+
+main form.cart section.submit button:active {
+    top: 2px;
 }
 
 main form.cart section.submit a {

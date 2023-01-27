@@ -16,6 +16,13 @@ body {
 }
 
 
+/* Eliminamos colores en los links visitados */
+
+main a:visited {
+    color: #3C6255;
+}
+
+
 /* Main */
 
 main {
@@ -119,10 +126,21 @@ main section.product-details div.details div.product-name-price p.price {
 main section.product-details div.details div.product-name-price div.payment-methods {
     display: flex;
     flex-direction: row;
+    margin: 0px 10px 10px 0px;
+    width: fit-content;
+}
+
+main section.product-details div.details div.product-name-price div.payment-methods div.icons i {
+    margin-inline: 0px; 
+    transition: all 0.5s;
+}
+
+main section.product-details div.details div.product-name-price div.payment-methods:hover div.icons i {
+    margin-inline: 2px; 
 }
 
 main section.product-details div.details div.product-name-price div.payment-methods a {
-    margin: 0px 10px 10px 0px;
+    margin-right: 10px;
     text-decoration: none;
     font-size: 14px;
     color: #3C6255;
@@ -154,6 +172,7 @@ main section.product-details div.details div.product-name-price form div.selecti
     margin-inline: 3px;
     font-weight: bold;
     color: #3C6255;
+    cursor: pointer;
 }
 
 main section.product-details div.details div.product-name-price form div.quantity {
@@ -181,16 +200,42 @@ main section.product-details div.details div.product-name-price form div.quantit
     padding: 5px;
     border: none;
     border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.5s;
+}
+
+main section.product-details div.details div.product-name-price form div.quantity button:hover {
+    filter: brightness(85%);
+}
+
+main section.product-details div.details div.product-name-price form div.quantity button.more:active {
+    bottom: 2px;
+}
+
+main section.product-details div.details div.product-name-price form div.quantity button.less:active {
+    top: 2px;
 }
 
 main section.product-details div.details div.product-name-price form div.shipping {
     display: flex;
     flex-direction: row;
     margin-block: 10px;
+    width: fit-content;
 }
 
 main section.product-details div.details div.product-name-price form div.shipping a {
     margin-right: 10px;
+}
+
+main section.product-details div.details div.product-name-price form div.shipping i {
+    position: relative;
+    left: 0px;
+    transition: all 1s;
+}
+
+main section.product-details div.details div.product-name-price form div.shipping:hover i {
+    left: 30px;
 }
 
 main section.product-details div.details div.product-name-price form a {
@@ -208,11 +253,32 @@ main section.product-details div.details div.product-name-price form button {
     margin-block: 10px;
     color: #3C6255;
     background-color: #CCD6A6;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.5s;
+}
+
+main section.product-details div.details div.product-name-price form button:hover {
+    filter: brightness(85%);
+}
+
+main section.product-details div.details div.product-name-price form button.add-to-cart:active {
+    top: 2px;
 }
 
 main section.product-details div.details div.product-name-price form a.favorite {
     text-align: center;
     margin-block: 10px;
+}
+
+main section.product-details div.details div.product-name-price form a.favorite i {
+    position: relative;
+    bottom: 0px;
+    transition: all 0.5s;
+}
+
+main section.product-details div.details div.product-name-price form a.favorite:hover i {
+    bottom: 5px;
 }
 
 main section.product-details div.details div.product-name-price div.share {
@@ -228,7 +294,13 @@ main section.product-details div.details div.product-name-price div.share p {
 
 main section.product-details div.details div.product-name-price div.share i {
     margin: 5px;
+    transition: all 0.5s;
 }
+
+main section.product-details div.details div.product-name-price div.share i:hover {
+    transform: rotate(360deg);
+}
+
 
 /* Descripción */
 
@@ -263,6 +335,12 @@ main section.related-products div.products article {
     align-self: center;
     background-color: #DAE2B6;
     border-radius: 5px;
+    box-shadow: 0px 0px 0px rgb(100, 100, 100);
+    transition: all 0.5s;
+} 
+
+main section.related-products div.products article:hover {
+    box-shadow: 0px 0px 10px rgb(100, 100, 100);
 } 
 
 main section.related-products div.products article img {

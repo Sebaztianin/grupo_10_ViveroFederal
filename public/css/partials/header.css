@@ -7,6 +7,13 @@
 }
 
 
+/* Eliminamos colores en los links visitados */
+
+header a:visited {
+    color: #3C6255;
+}
+
+
 /* Header */
 
 header {
@@ -16,6 +23,19 @@ header {
     height: 165px;
     background-color: #F4EAD5;
     z-index: 1000;
+}
+
+
+/* Transición general para íconos */
+
+header i {
+    position: relative;
+    bottom: 0px;
+    transition: all 0.3s;
+}
+
+header a:hover i {
+    bottom: 3px;
 }
 
 header div.top-header {
@@ -97,6 +117,7 @@ header div.top-header form.search-form button {
     position: absolute;
     right: 3.5%;
     top: 5px;
+    cursor: pointer;
 }
 
 

@@ -16,6 +16,13 @@ body {
 }
 
 
+/* Eliminamos colores en los links visitados */
+
+main a:visited {
+    color: #3C6255;
+}
+
+
 /* Main */
 
 main {
@@ -101,6 +108,17 @@ main section.login form.login button {
     width: 100%;
     color: #3C6255;
     background-color: #CCD6A6;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.5s;
+}
+
+main section.login form.login button:hover {
+    filter: brightness(85%);
+}
+
+main section.login form.login button:active {
+    top: 2px;
 }
 
 main section.login form.login a {
@@ -141,6 +159,17 @@ main section.register form.register button {
     width: 100%;
     color: #3C6255;
     background-color: #CCD6A6;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.5s;
+}
+
+main section.register form.register button:hover {
+    filter: brightness(85%);
+}
+
+main section.register form.register button:active {
+    top: 2px;
 }
 
 
