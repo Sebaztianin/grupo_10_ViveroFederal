@@ -226,6 +226,7 @@ main section.product-details div.details div.product-name-price form div.shippin
 
 main section.product-details div.details div.product-name-price form div.shipping a {
     margin-right: 10px;
+    color: #3C6255;
 }
 
 main section.product-details div.details div.product-name-price form div.shipping i {
@@ -350,6 +351,7 @@ main section.related-products div.products article img {
 
 main section.related-products div.products article a {
     text-decoration: none;
+    color: #3C6255;
 } 
 
 main section.related-products div.products article p,

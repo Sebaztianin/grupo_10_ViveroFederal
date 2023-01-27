@@ -89,6 +89,7 @@ main section.categories div.categories-list article:hover {
 
 main section.categories div.categories-list article a {
     text-decoration: none;
+    color: #3C6255;
 }
 
 main section.categories div.categories-list img {
@@ -128,6 +129,7 @@ main section.top-sellers div.products article:hover {
 
 main section.top-sellers div.products article a {
     text-decoration: none;
+    color: #3C6255;
 }
 
 main section.top-sellers img {
@@ -258,6 +260,7 @@ main section.contact ul.list {
 
     main section.contact ul.list a {
         text-decoration: none;
+        color: #3C6255;
     }
 
     main section.contact ul.list a i {

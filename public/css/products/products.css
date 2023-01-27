@@ -98,6 +98,7 @@ main section.all-products div.filter-button {
 main section.all-products div.filter-button a {
     text-decoration: none;
     font-weight: bold;
+    color: #3C6255;
 } 
 
 main section.all-products div.filter-button label {
@@ -131,6 +132,7 @@ main section.all-products div.list div.filters li {
 main section.all-products div.list div.filters a {
     text-decoration: none;
     font-size: 14px;
+    color: #3C6255;
 } 
 
 
@@ -279,6 +281,7 @@ main section.all-products div.more-products a {
     
     main section.all-products div.more-products a {
         font-size: 16px;
+        color: #3C6255;
     }
 
 }
