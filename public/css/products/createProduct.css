@@ -101,6 +101,7 @@ main section.create-product form.new-product div.data textarea {
     width: 100%;
     border: none;
     border-radius: 5px;
+    font-family: 'Roboto', sans-serif;
 }
 
 main section.create-product form.new-product button {
