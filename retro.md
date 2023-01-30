@@ -59,5 +59,45 @@ Archivo login.html junto con todos los recursos necesarios,
 estilos de CSS e imágenes contiene formularios de Registro y Login, realizado por Camila , entregado en plazos establecidos, falta ajustes en CSS. 
 
 
+SPRINT 3 y 4 (30/1/23)
+
+1. Que hicimos bien
+Nos ponemos de acuerdo muy rapido en la distribución de tareas
+Utilizamos la parte teorica y las clases del curso para poder realizar las tareas del trabajo grupal
+Respetamos los tiempos que nos propusimos en las tareas
+
+2. Que hicimos mal
+No realizar en tiempo la retro del Sprint 3
+
+3. Que deberiamos empezar a hacer
+Cumplir con las reuniones acordadas
+
+4. Que deberiamos dejar de hacer
+No posponer reuniones
+
+Se entrego del Sprint 3
+Archivo retro.md con el resultado de la retrospectiva.
+Tablero de trabajo actualizado.
+Aplicacion Node,js + Express + EJS con:
+- Archivos Partials (head, header, footer, etc)
+- Home
+- Listado de productos
+- Detalle de producto
+- Carrito de productos
+- Formulario de registro y login
+- Formulario de carga y edicion de productos
+
+
+Se entrego del Sprint 4
+Archivo retro.md con el resultado de la retrospectiva.
+Tablero de trabajo actualizado.
+Archivos products.json y users.json con datos de productos y usuarios
+
+Falta del Sprint Administracion completa de productos con
+- Listado
+- Detalle
+- Creacion
+- Edicion
+- Eliminacion
 
 
