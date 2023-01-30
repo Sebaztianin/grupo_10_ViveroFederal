@@ -1,0 +1,47 @@
+[
+    {
+        "id": 1,
+        "firstName": "Sebastián",
+        "lastName": "Braga",
+        "email": "sebabraga01@gmail.com",
+        "password": "123456",
+        "category": "cliente",
+        "image": "avatar.jpg"
+    },
+    {
+        "id": 2,
+        "firstName": "Camila Luz",
+        "lastName": "Quispe",
+        "email": "quispeluzcami@gmail.com",
+        "password": "123456",
+        "category": "cliente",
+        "image": "avatar.jpg"
+    },
+    {
+        "id": 3,
+        "firstName": "Gustavo Fabian",
+        "lastName": "Buscalia",
+        "email": "buscaliag@gmail.com",
+        "password": "123456",
+        "category": "cliente",
+        "image": "avatar.jpg"
+    },
+    {
+        "id": 4,
+        "firstName": "Valentino",
+        "lastName": "Becerine",
+        "email": "valentinobecerine@gmail.com",
+        "password": "123456",
+        "category": "cliente",
+        "image": "avatar.jpg"
+    },
+    {
+        "id": 5,
+        "firstName": "Admin",
+        "lastName": "del Sitio",
+        "email": "sebabraga01@gmail.com",
+        "password": "123456",
+        "category": "admin",
+        "image": "avatar.jpg"
+    }
+]

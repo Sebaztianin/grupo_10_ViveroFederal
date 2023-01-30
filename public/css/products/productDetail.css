@@ -295,7 +295,11 @@ main section.product-details div.details div.product-name-price div.share p {
 
 main section.product-details div.details div.product-name-price div.share i {
     margin: 5px;
-    transition: all 0.5s;
+    transition: all 0.5s
+}
+
+main section.product-details div.details div.product-name-price div.share i {
+    color: #3C6255;
 }
 
 main section.product-details div.details div.product-name-price div.share i:hover {

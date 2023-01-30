@@ -22,16 +22,6 @@
                 <form class="new-product" action="#" method="POST">
 
                     <div class="data">
-
-                        <label for="category">Categoría: </label>
-                        <select id="category" required>
-                            <option value="" disabled selected>Elige una opción</option>
-                            <option value="suc-cac">Suculentas y cactus</option>
-                            <option value="interior">De interior</option>
-                            <option value="exterior">De exterior</option>
-                            <option value="pots">Macetas</option>
-                            <option value="accesories">Accesorios</option>
-                        </select>
     
                         <label for="name">Nombre del producto: </label>
                         <input type="text" name="name" id="name" placeholder="Ej: Suculenta" required>
@@ -45,7 +35,16 @@
                         <label for="image">Imagen: </label>
                         <input type="file" name="image" id="image" required>
     
-    
+                        <label for="category">Categoría: </label>
+                        <select id="category" required>
+                            <option value="" disabled selected>Elige una opción</option>
+                            <option value="suc-cac">Suculentas y cactus</option>
+                            <option value="interior">De interior</option>
+                            <option value="exterior">De exterior</option>
+                            <option value="pots">Macetas</option>
+                            <option value="accesories">Accesorios</option>
+                        </select>
+
                         <label for="description">Descripción: </label>
                         <textarea name="description" id="description" placeholder="Descripción larga del producto" required></textarea>
 
