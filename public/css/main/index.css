@@ -191,6 +191,7 @@ main section.contact form.contact textarea {
 }
 
 main section.contact form.contact button {
+    font-family: 'Roboto', sans-serif;
     font-size: 13px;
     font-weight: bold;
     border: none;

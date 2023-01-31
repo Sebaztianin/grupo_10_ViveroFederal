@@ -57,7 +57,7 @@ main h3.section-title:after {
 }
 
 
-/* Product details */ 
+/* Detalles del producto */ 
 
 main section.product-details div.details {
     display: flex;
@@ -69,6 +69,7 @@ main section.product-details div.details {
     background-color: #DAE2B6;
     border-radius: 10px;
 }
+
 
 /* Imágenes */
 
@@ -99,6 +100,7 @@ main section.product-details div.details div.product-images div.big-image img {
     width: 100%;
     border-radius: 10px;
 }
+
 
 /* Detalles */
 
@@ -164,6 +166,7 @@ main section.product-details p.line {
     width: 100%;
 }
 
+
 /* Tipo y cantidad */
 
 main section.product-details div.details div.product-name-price form {
@@ -227,6 +230,9 @@ main section.product-details div.details div.product-name-price form div.quantit
     top: 2px;
 }
 
+
+/* Envío */
+
 main section.product-details div.details div.product-name-price form div.shipping {
     display: flex;
     flex-direction: row;
@@ -256,7 +262,7 @@ main section.product-details div.details div.product-name-price form a {
 }
 
 main section.product-details div.details div.product-name-price form button {
-    font-family: 'Roboto', sans-serif;;
+    font-family: 'Roboto', sans-serif;
     font-size: 14px;
     font-weight: bold;
     border: none;
@@ -290,6 +296,14 @@ main section.product-details div.details div.product-name-price form button:hove
 }
 
 main section.product-details div.details div.product-name-price form button.add-to-cart:active {
+    top: 2px;
+}
+
+main section.product-details div.details div.product-name-price form a.edit-product:hover {
+    filter: brightness(85%);
+}
+
+main section.product-details div.details div.product-name-price form a.edit-product:active {
     top: 2px;
 }
 

@@ -201,6 +201,7 @@ main form.cart section.delivery input {
 }
 
 main form.cart section.delivery button {
+    font-family: 'Roboto', sans-serif;
     font-size: 14px;
     font-weight: bold;
     border: none;
@@ -253,6 +254,7 @@ main form.cart section.submit {
 }
 
 main form.cart section.submit button {
+    font-family: 'Roboto', sans-serif;
     font-size: 14px;
     font-weight: bold;
     border: none;

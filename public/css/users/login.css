@@ -99,6 +99,7 @@ main section.login form.login div.remember-me input {
 }
 
 main section.login form.login button {
+    font-family: 'Roboto', sans-serif;
     font-size: 14px;
     font-weight: bold;
     border: none;
@@ -150,6 +151,7 @@ main section.register form.register input {
 }
 
 main section.register form.register button {
+    font-family: 'Roboto', sans-serif;
     font-size: 14px;
     font-weight: bold;
     border: none;
