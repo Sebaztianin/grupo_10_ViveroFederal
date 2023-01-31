@@ -84,14 +84,14 @@
 
                     <!-- Productos -->
                     <div class="products">
-                        <% for (i=0; i < 16; i++) { %>
+                        <% for (i = 0; i < products.length; i++) { %>
                             <article>
-                                <a href="/products/1">
-                                    <img src="../images/products/suculenta.jpg" alt="Suculenta" class="product-img">
+                                <a href="/products/<%= products[i].id %>">
+                                    <img src="../images/products/<%= products[i].image %>" alt="Imagen de <%= products[i].name %>" class="product-img">
                                     <div class="main-article">
-                                        <h4 class="name">Suculenta</h4>
-                                        <p class="price">$550</p>
-                                        <button class="favorite"><a href="/products/1"><i
+                                        <h4 class="name"><%= products[i].name %></h4>
+                                        <p class="price">$<%= toThousand(products[i].price) %></p>
+                                        <button class="favorite"><a href="/products/<%= products[i].id %>"><i
                                                     class="far fa-heart"></i></a></i></button>
                                         <button class="cart"><a href="/products/productCart"><i
                                                     class="fas fa-cart-plus"></i></a></button>

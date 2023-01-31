@@ -3,7 +3,7 @@
 
 <head>
     <%- include('../partials/head.ejs') %>
-        <title>Vivero Federal: Producto</title>
+        <title>Vivero Federal: <%= product.name %></title>
         <link rel="stylesheet" href="../css/products/productDetail.css">
 </head>
 
@@ -24,11 +24,11 @@
                     <!-- Imágenes -->
                     <div class="product-images">
                         <div class="side-images">
-                            <img src="../images/products/suculenta.jpg" alt="Imagen Suculenta" class="product-img">
-                            <img src="../images/products/suculenta.jpg" alt="Imagen Suculenta" class="product-img">
+                            <img src="../images/products/<%= product.image %>" alt="Imagen de <%= product.name %>" class="product-img">
+                            <img src="../images/products/<%= product.image %>" alt="Imagen de <%= product.name %>" class="product-img">
                         </div>
                         <div class="big-image">
-                            <img src="../images/products/suculenta.jpg" alt="Imagen Suculenta" class="product_main_img">
+                            <img src="../images/products/<%= product.image %>" alt="Imagen de <%= product.name %>" class="product_main_img">
                         </div>
                     </div>
 
@@ -36,8 +36,14 @@
                     <div class="product-name-price">
 
                         <!-- Nombre y precio -->
-                        <p class="name">Croton</p>
-                        <p class="price">$2.250</p>
+                        <p class="name"><%= product.name %></p>
+                        <% if (product.discount != 0) { %>
+                        <p class="price">
+                            <span>$<%= toThousand(product.price) %></span>
+                            <b><%= product.discount %>% OFF</b>
+                        </p>
+                        <% } %>
+                        <h2 class="final-price">$<%= toThousand(product.price - (product.price * product.discount/100)) %></h2>
 
                         <!-- Medios de pago -->
                         <div class="payment-methods">
@@ -84,6 +90,9 @@
                             <!-- Agregar al carrito -->
                             <button class="add-to-cart" type="submit" name="add-to-cart" id="add-to-cart">Añadir al carrito</button>
 
+                            <!-- Editar producto -->
+                            <a class="edit-product" href="/products/<%= product.id %>/editProduct">Editar el producto</a>
+
                             <!-- Añadir a favoritos -->
                             <a class="favorite" href="#">Añadir a favoritos <i class="far fa-heart"></i></a>
 
@@ -108,9 +117,7 @@
                 <!-- Descripción -->
                 <div class="description">
                     <p class="title">Descripción</p>
-                    <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, iusto
-                        repellendus, nulla at, numquam optio illum facilis harum accusamus nesciunt alias. Ipsum harum
-                        quis necessitatibus laudantium inventore quas dolorum omnis.</p>
+                    <p class="text"><%= product.description %></p>
                 </div>
 
             </section>

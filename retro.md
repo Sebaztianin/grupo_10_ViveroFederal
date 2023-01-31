@@ -1,4 +1,5 @@
 Sprint 1 - retro
+
 1. Qué hicimos bien:
 
 - Nos organizamos y pusimos de acuerdo rápido.
@@ -21,7 +22,7 @@ Sprint 1 - retro
 - No posponer reuniones.
 - No procrastinar. 
 
-sprint 2 - retro 12/1/2023 
+Sprint 2 (12/1/2023)
 
 1. Qué hicimos bien:
 
@@ -59,7 +60,7 @@ Archivo login.html junto con todos los recursos necesarios,
 estilos de CSS e imágenes contiene formularios de Registro y Login, realizado por Camila , entregado en plazos establecidos, falta ajustes en CSS. 
 
 
-SPRINT 3 y 4 (30/1/23)
+Sprint 3 y 4 (30/1/23)
 
 1. Que hicimos bien
 Nos ponemos de acuerdo muy rapido en la distribución de tareas
@@ -75,7 +76,7 @@ Cumplir con las reuniones acordadas
 4. Que deberiamos dejar de hacer
 No posponer reuniones
 
-Se entrego del Sprint 3
+Se entrego del Sprint 3:
 Archivo retro.md con el resultado de la retrospectiva.
 Tablero de trabajo actualizado.
 Aplicacion Node,js + Express + EJS con:
@@ -88,10 +89,10 @@ Aplicacion Node,js + Express + EJS con:
 - Formulario de carga y edicion de productos
 
 
-Se entrego del Sprint 4
-Archivo retro.md con el resultado de la retrospectiva.
-Tablero de trabajo actualizado.
-Archivos products.json y users.json con datos de productos y usuarios
+Se entrego del Sprint 4:
+- Archivo retro.md con el resultado de la retrospectiva.
+- Tablero de trabajo actualizado.
+- Archivos products.json y users.json con datos de productos y usuarios
 
 Falta del Sprint Administracion completa de productos con
 - Listado

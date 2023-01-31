@@ -118,8 +118,17 @@ main section.product-details div.details div.product-name-price p.name {
 
 main section.product-details div.details div.product-name-price p.price {
     font-size: 20px;
+    margin-block: 10px;
+}
+
+main section.product-details div.details div.product-name-price p.price span {
+    text-decoration: line-through;
+}
+
+main section.product-details div.details div.product-name-price h2 {
     margin-block-end: 10px;
 }
+
 
 /* Medios de pago */
 
@@ -166,7 +175,7 @@ main section.product-details div.details div.product-name-price form div.selecti
 }
 
 main section.product-details div.details div.product-name-price form div.selection select {
-    border: #3C6255 solid 1px;
+    border: #3C6255 solid 2px;
     border-radius: 5px;
     padding: 2px;
     margin-inline: 3px;
@@ -246,8 +255,24 @@ main section.product-details div.details div.product-name-price form a {
 }
 
 main section.product-details div.details div.product-name-price form button {
+    font-family: 'Roboto', sans-serif;;
     font-size: 14px;
     font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    margin-block: 10px;
+    color: #3C6255;
+    background-color: #CCD6A6;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.5s;
+}
+
+main section.product-details div.details div.product-name-price form a.edit-product {
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
     border: none;
     border-radius: 5px;
     padding: 10px;

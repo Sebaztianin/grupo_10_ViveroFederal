@@ -1,11 +1,19 @@
+const fs = require('fs');
+const path = require('path');
+
+const productsFilePath = path.join(__dirname, '../data/products.json');
+const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
+
+const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+
 /* Creamos el módulo y exportamos */
 let productsController = {
     index: function(req, res) {
-        res.render('products/products');
+        res.render('products/products', {products: products, toThousand: toThousand});
     },
     detail: function(req, res) {
-        /* No usamos req.params.id todavía, porque no tenemos varios productos, así que mandamos todo a la misma página */
-        res.render('products/productDetail');
+        let product = products.find(product => product.id == req.params.id);
+        res.render('products/productDetail', {product: product, toThousand: toThousand});
     },
     cart: function(req, res) {
         res.render('products/productCart');
@@ -13,6 +21,10 @@ let productsController = {
     create: function(req, res) {
         res.render('products/createProduct');
     },
+    edit: function(req, res) {
+        let product = products.find(product => product.id == req.params.id);
+        res.render('products/editProduct', {product: product, toThousand: toThousand});
+    }
 };
 
 module.exports = productsController;
