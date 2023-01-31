@@ -15,7 +15,7 @@
 
             <section class="banner">
 
-                <a href="#"><img src="../images/main/img-home-banner.jpg" alt="Banner de ofertas"></a>
+                <a href="#"><img src="/images/main/img-home-banner.jpg" alt="Banner de ofertas"></a>
 
             </section>
 
@@ -27,31 +27,31 @@
                 <div class="categories-list">
                     <article>
                         <a href="#">
-                            <img src="../images/categories/sucycac.jpg" alt="Suculentas y Cactus" class="category-img">
+                            <img src="/images/categories/sucycac.jpg" alt="Suculentas y Cactus" class="category-img">
                             <p class="category-name">Suculentas y Cactus</p>
                         </a>
                     </article>
                     <article>
                         <a href="#">
-                            <img src="../images/categories/deinterior.jpg" alt="De interior" class="category-img">
+                            <img src="/images/categories/deinterior.jpg" alt="De interior" class="category-img">
                             <p class="category-name">De interior</p>
                         </a>
                     </article>
                     <article>
                         <a href="#">
-                            <img src="../images/categories/deexterior.jpg" alt="De exterior" class="category-img">
+                            <img src="/images/categories/deexterior.jpg" alt="De exterior" class="category-img">
                             <p class="category-name">De exterior</p>
                         </a>
                     </article>
                     <article>
                         <a href="#">
-                            <img src="../images/categories/macetas.jpg" alt="Macetas" class="category-img">
+                            <img src="/images/categories/macetas.jpg" alt="Macetas" class="category-img">
                             <p class="category-name">Macetas</p>
                         </a>
                     </article>
                     <article>
                         <a href="#">
-                            <img src="../images/categories/accesorios.jpg" alt="Accesorios" class="category-img">
+                            <img src="/images/categories/accesorios.jpg" alt="Accesorios" class="category-img">
                             <p class="category-name">Accesorios</p>
                         </a>
                     </article>
@@ -68,7 +68,7 @@
                     <% for (i = 0; i < products.length; i++) { %>
                         <article>
                             <a href="/products/<%= products[i].id %>">
-                                <img src="../images/products/<%= products[i].image %>" alt="Imagen de <%= products[i].name %>" class="product-img">
+                                <img src="/images/products/<%= products[i].image %>" alt="Imagen de <%= products[i].name %>" class="product-img">
                                 <div class="main-article">
                                     <h4 class="name"><%= products[i].name %></h4>
                                     <p class="price">$<%= toThousand(products[i].price) %></p>

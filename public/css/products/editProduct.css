@@ -104,6 +104,10 @@ main section.create-product form.new-product div.data textarea {
     font-family: 'Roboto', sans-serif;
 }
 
+main section.create-product form.new-product div.data textarea {
+    height: 150px;
+}
+
 main section.create-product form.new-product button {
     font-size: 14px;
     font-weight: bold;
