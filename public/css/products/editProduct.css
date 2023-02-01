@@ -132,6 +132,19 @@ main section.create-product form.new-product button:active {
     top: 2px;
 }
 
+main section.create-product form.new-product div.errors {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-block: 20px 10px;
+}
+
+main section.create-product form.new-product div.errors p.error {
+    margin: 3px 20px;
+    font-size: 14px;
+    color: #a84d36;
+}
+
 
 /* Celus más grandes */
 

@@ -78,7 +78,7 @@ let productsController = {
             }
 
             // Volvemos al formulario con los errores y los datos viejos
-            res.render('products/createProduct', { errors: errors.array(), old: req.body });
+            res.render('products/createProduct', {errors: errors.array(), old: req.body});
 
         }
 
@@ -87,59 +87,81 @@ let productsController = {
     // Formulario de edición de producto
     edit: function (req, res) {
         let product = products.find(product => product.id == req.params.id);
-        res.render('products/editProduct', { product: product, toThousand: toThousand });
+        res.render('products/editProduct', {product: product, toThousand: toThousand});
     },
 
     // Editar producto
     update: function (req, res) {
 
-        // Validar si hay una imagen seleccionada
-        if (req.file) {
+        // Recuperamos resultados de la validación
+        let errors = validationResult(req);
 
-            // Encontrar objeto en array y actualizar sus datos.
-            let newProducts = products;
-            let imageOld = '';
-            for (i = 0; i < newProducts.length; i++) {
-                if (newProducts[i].id == req.params.id) {
-                    newProducts[i].name = req.body.name;
-                    newProducts[i].description = req.body.description;
-                    newProducts[i].price = req.body.price;
-                    newProducts[i].discount = req.body.discount;
-                    newProducts[i].category = req.body.category;
-                    imageOld = newProducts[i].image;    // Obtengo nombre de imagen vieja para eliminarla luego
-                    newProducts[i].image = req.file.filename;
+        // Consultamos si no existen errores
+        if (errors.isEmpty()) {   // No hay errores, continuamos...
+
+            // Validar si hay una imagen seleccionada
+            if (req.file) {
+
+                // Encontrar objeto en array y actualizar sus datos.
+                let newProducts = products;
+                let imageOld = '';
+                for (i = 0; i < newProducts.length; i++) {
+                    if (newProducts[i].id == req.params.id) {
+                        newProducts[i].name = req.body.name;
+                        newProducts[i].description = req.body.description;
+                        newProducts[i].price = req.body.price;
+                        newProducts[i].discount = req.body.discount;
+                        newProducts[i].category = req.body.category;
+                        imageOld = newProducts[i].image;    // Obtengo nombre de imagen vieja para eliminarla luego
+                        newProducts[i].image = req.file.filename;
+                    }
+                }
+
+                // Validar si imagen existe y eliminarla (unlink)
+                if (fs.existsSync(path.join(__dirname, '../../public/images/products/', imageOld))) {
+                    fs.unlinkSync(path.join(__dirname, '../../public/images/products/', imageOld));
+                }
+
+                // Sobreescribir JSON con producto editado
+                fs.writeFileSync(productsFilePath, JSON.stringify(newProducts));
+
+            } else {
+
+                // Encontrar objeto en array y actualizar sus datos
+                let newProducts = products;
+                for (i = 0; i < newProducts.length; i++) {
+                    if (newProducts[i].id == req.params.id) {
+                        newProducts[i].name = req.body.name;
+                        newProducts[i].description = req.body.description;
+                        newProducts[i].price = req.body.price;
+                        newProducts[i].discount = req.body.discount;
+                        newProducts[i].category = req.body.category;
+                    }
+                }
+
+                // Sobreescribir JSON con producto editado
+                fs.writeFileSync(productsFilePath, JSON.stringify(newProducts));
+
+            }
+
+            // Redireccionamos al detalle del producto
+            res.redirect('/products/detail/' + req.params.id);
+
+        } else {// Hay errores, volvemos al formulario
+
+            // Eliminamos archivo mal cargado si es que se seleccionó un archivo en el formulario y existe tal archivo
+            if (req.file) {
+                if (fs.existsSync(path.join(__dirname, '../../public/images/products/', req.file.filename))) {
+                    fs.unlinkSync(path.join(__dirname, '../../public/images/products/', req.file.filename));
                 }
             }
 
-            // Validar si imagen existe y eliminarla (unlink)
-            if (fs.existsSync(path.join(__dirname, '../../public/images/products/', imageOld))) {
-                fs.unlinkSync(path.join(__dirname, '../../public/images/products/', imageOld));
-            }
-
-            // Sobreescribir JSON con producto editado
-            fs.writeFileSync(productsFilePath, JSON.stringify(newProducts));
-
-        } else {
-
-            // Encontrar objeto en array y actualizar sus datos
-            let newProducts = products;
-            for (i = 0; i < newProducts.length; i++) {
-                if (newProducts[i].id == req.params.id) {
-                    newProducts[i].name = req.body.name;
-                    newProducts[i].description = req.body.description;
-                    newProducts[i].price = req.body.price;
-                    newProducts[i].discount = req.body.discount;
-                    newProducts[i].category = req.body.category;
-                }
-            }
-
-            // Sobreescribir JSON con producto editado
-            fs.writeFileSync(productsFilePath, JSON.stringify(newProducts));
+            // Volvemos al formulario con los errores y los datos viejos
+            let product = products.find(product => product.id == req.params.id);
+            res.render('products/editProduct', {errors: errors.array(), old: req.body, product: product, toThousand: toThousand});
 
         }
 
-        // Redireccionamos al detalle del producto
-        res.redirect('/products/detail/' + req.params.id);
     },
 
     // Eliminar producto
