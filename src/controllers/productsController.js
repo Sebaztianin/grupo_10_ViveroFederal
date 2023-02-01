@@ -1,9 +1,15 @@
+/* Importamos los módulos a utilizar */
 const fs = require('fs');
 const path = require('path');
 
+/* Creamos el path de productos y recuperamos el JSON parseado en products */
 const productsFilePath = path.join(__dirname, '../data/products.json');
 const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 
+/* Importamos las validaciones */
+const {validationResult} = require('express-validator')
+
+/* Separador de miles para los números */
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
 /* Creamos el módulo y exportamos */
@@ -32,6 +38,9 @@ let productsController = {
 
     // Crear producto
     store: function (req, res) {
+
+        // Recuperamos resultados de la validación
+        let errors = validationResult(req);
 
         // Obtener id
         let id = products[products.length - 1].id + 1;
@@ -84,8 +93,10 @@ let productsController = {
 				}
 			}
 
-			// Eliminar (unlink) la imagen vieja.
-			fs.unlinkSync(path.join(__dirname, '../../public/images/products/', imageOld));
+			// Validar si imagen existe y eliminarla (unlink)
+            if (fs.existsSync(path.join(__dirname, '../../public/images/products/', imageOld))) {
+                fs.unlinkSync(path.join(__dirname, '../../public/images/products/', imageOld));
+            }
 	
 			// Sobreescribir JSON con producto editado
 			fs.writeFileSync(productsFilePath, JSON.stringify(newProducts));
@@ -124,8 +135,10 @@ let productsController = {
 			}
 		}
 
-		// Eliminar (unlink) imagen
-		fs.unlinkSync(path.join(__dirname, '../../public/images/products/', imageName));
+		// Validar si imagen existe y eliminarla (unlink)
+        if (fs.existsSync(path.join(__dirname, '../../public/images/products/', imageName))) {
+            fs.unlinkSync(path.join(__dirname, '../../public/images/products/', imageName));
+        }
 
 		// Sacar producto del array
 		let productsNew = products.filter(product => product.id != req.params.id);
