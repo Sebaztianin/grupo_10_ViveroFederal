@@ -3,62 +3,62 @@
 
 <head>
     <%- include('../partials/head.ejs') %>
-        <title>Vivero Federal: Nuevo producto</title>
-        <link rel="stylesheet" href="/css/products/createProduct.css">
+    <title>Vivero Federal: Nuevo producto</title>
+    <link rel="stylesheet" href="/css/products/createProduct.css">
 </head>
 
 <body>
 
     <%- include('../partials/header.ejs') %>
 
-        <main>
+    <main>
 
-            <section class="create-product">
+        <section class="create-product">
 
-                <!-- Título de la sección -->
-                <h3 class="section-title">Crear producto</h3>
+            <!-- Título de la sección -->
+            <h3 class="section-title">Crear producto</h3>
 
-                <!-- Formulario -->
-                <form class="new-product" action="/products/" method="POST" enctype="multipart/form-data">
+            <!-- Formulario -->
+            <form class="new-product" action="/products/" method="POST" enctype="multipart/form-data">
 
-                    <div class="data">
-    
-                        <label for="name">Nombre del producto: </label>
-                        <input type="text" name="name" id="name" placeholder="Ej: Suculenta">
-    
-                        <label for="price">Precio: </label>
-                        <input type="number" name="price" id="price" placeholder="AR$">
-    
-                        <label for="discount">Descuento: </label>
-                        <input type="number" name="discount" id="discount" placeholder="Ej: 15">
-    
-                        <label for="image">Imagen: </label>
-                        <input type="file" name="image" id="image">
-    
-                        <label for="category">Categoría: </label>
-                        <select name="category"  id="category">
-                            <option value="" disabled selected>Elige una opción</option>
-                            <option value="suc-cac">Suculentas y cactus</option>
-                            <option value="interior">De interior</option>
-                            <option value="exterior">De exterior</option>
-                            <option value="pots">Macetas</option>
-                            <option value="accesories">Accesorios</option>
-                        </select>
-                        
-                        <label for="description">Descripción: </label>
-                        <textarea name="description" id="description" placeholder="Descripción larga del producto"></textarea>
+                <div class="data">
 
-                    </div>
-                    
-                    <button type="submit">Crear producto</button>
+                    <label for="name">Nombre del producto: </label>
+                    <input type="text" name="name" id="name" placeholder="Ej: Suculenta">
 
-                </form>
+                    <label for="price">Precio: </label>
+                    <input type="number" name="price" id="price" placeholder="AR$">
 
-            </section>
+                    <label for="discount">Descuento: </label>
+                    <input type="number" name="discount" id="discount" placeholder="Ej: 15">
 
-        </main>
+                    <label for="image">Imagen: </label>
+                    <input type="file" name="image" id="image">
 
-        <%- include('../partials/footer') %>
+                    <label for="category">Categoría: </label>
+                    <select name="category" id="category">
+                        <option value="" disabled selected>Elige una opción</option>
+                        <option value="suc-cac">Suculentas y cactus</option>
+                        <option value="interior">De interior</option>
+                        <option value="exterior">De exterior</option>
+                        <option value="pots">Macetas</option>
+                        <option value="accesories">Accesorios</option>
+                    </select>
+
+                    <label for="description">Descripción: </label>
+                    <textarea name="description" id="description" placeholder="Descripción larga del producto"></textarea>
+
+                </div>
+
+                <button type="submit">Crear producto</button>
+
+            </form>
+
+        </section>
+
+    </main>
+
+    <%- include('../partials/footer') %>
 
 </body>
 

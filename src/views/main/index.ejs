@@ -3,118 +3,127 @@
 
 <head>
     <%- include('../partials/head.ejs') %>
-        <title>Vivero Federal: Home</title>
-        <link rel="stylesheet" href="/css/main/index.css">
+    <title>Vivero Federal: Home</title>
+    <link rel="stylesheet" href="/css/main/index.css">
 </head>
 
 <body>
 
     <%- include('../partials/header.ejs') %>
 
-        <main>
+    <main>
 
-            <section class="banner">
+        <section class="banner">
 
-                <a href="#"><img src="/images/main/img-home-banner.jpg" alt="Banner de ofertas"></a>
+            <a href="#"><img src="/images/main/img-home-banner.jpg" alt="Banner de ofertas"></a>
 
-            </section>
+        </section>
 
-            <section class="categories" id="categories">
+        <section class="categories" id="categories">
 
-                <!-- Categorías -->
-                <h3 class="section-title">Categorías</h3>
-                <!-- Listado -->
-                <div class="categories-list">
-                    <article>
-                        <a href="#">
-                            <img src="/images/categories/sucycac.jpg" alt="Suculentas y Cactus" class="category-img">
-                            <p class="category-name">Suculentas y Cactus</p>
-                        </a>
-                    </article>
-                    <article>
-                        <a href="#">
-                            <img src="/images/categories/deinterior.jpg" alt="De interior" class="category-img">
-                            <p class="category-name">De interior</p>
-                        </a>
-                    </article>
-                    <article>
-                        <a href="#">
-                            <img src="/images/categories/deexterior.jpg" alt="De exterior" class="category-img">
-                            <p class="category-name">De exterior</p>
-                        </a>
-                    </article>
-                    <article>
-                        <a href="#">
-                            <img src="/images/categories/macetas.jpg" alt="Macetas" class="category-img">
-                            <p class="category-name">Macetas</p>
-                        </a>
-                    </article>
-                    <article>
-                        <a href="#">
-                            <img src="/images/categories/accesorios.jpg" alt="Accesorios" class="category-img">
-                            <p class="category-name">Accesorios</p>
-                        </a>
-                    </article>
-                </div>
+            <!-- Categorías -->
+            <h3 class="section-title">Categorías</h3>
 
-            </section>
+            <!-- Listado -->
+            <div class="categories-list">
+                <article>
+                    <a href="#">
+                        <img src="/images/categories/sucycac.jpg" alt="Suculentas y Cactus" class="category-img">
+                        <p class="category-name">Suculentas y Cactus</p>
+                    </a>
+                </article>
+                <article>
+                    <a href="#">
+                        <img src="/images/categories/deinterior.jpg" alt="De interior" class="category-img">
+                        <p class="category-name">De interior</p>
+                    </a>
+                </article>
+                <article>
+                    <a href="#">
+                        <img src="/images/categories/deexterior.jpg" alt="De exterior" class="category-img">
+                        <p class="category-name">De exterior</p>
+                    </a>
+                </article>
+                <article>
+                    <a href="#">
+                        <img src="/images/categories/macetas.jpg" alt="Macetas" class="category-img">
+                        <p class="category-name">Macetas</p>
+                    </a>
+                </article>
+                <article>
+                    <a href="#">
+                        <img src="/images/categories/accesorios.jpg" alt="Accesorios" class="category-img">
+                        <p class="category-name">Accesorios</p>
+                    </a>
+                </article>
+            </div>
 
-            <section class="top-sellers">
+        </section>
 
-                <!-- Productos más vendidos -->
-                <h3 class="section-title">Más vendidos</h3>
-                <!-- Productos -->
-                <div class="products">
-                    <% for (i = 0; i < products.length; i++) { %>
-                        <article>
-                            <a href="/products/detail/<%= products[i].id %>">
-                                <img src="/images/products/<%= products[i].image %>" alt="Imagen de <%= products[i].name %>" class="product-img">
-                                <div class="main-article">
-                                    <h4 class="name"><%= products[i].name %></h4>
-                                    <p class="price">$<%= toThousand(products[i].price) %></p>
-                                    <button class="favorite"><a href="/products/detail/<%= products[i].id %>"><i
-                                                class="far fa-heart"></i></a></i></button>
-                                    <button class="cart"><a href="/products/productCart"><i
-                                                class="fas fa-cart-plus"></i></a></button>
-                                </div>
-                            </a>
-                        </article>
-                        <% } %>
-                </div>
+        <section class="top-sellers">
 
-            </section>
+            <!-- Productos más vendidos -->
+            <h3 class="section-title">Más vendidos</h3>
 
-            <section class="contact" id="contact">
+            <!-- Productos -->
+            <div class="products">
+                <% for (i = 0; i < products.length; i++) { %>
+                <article>
+                    <a href="/products/detail/<%= products[i].id %>">
+                        <img src="/images/products/<%= products[i].image %>" alt="Imagen de <%= products[i].name %>" class="product-img">
+                        <div class="main-article">
+                            <h4 class="name"><%= products[i].name %></h4>
+                            <div class="price">
+                                <p class="price">$<%= toThousand(products[i].price) %></p>
+                                <% if (products[i].discount !=0) { %>
+                                <p class="discount"><%= products[i].discount %>% OFF</p>
+                                <% } %>
+                            </div>
+                            <button class="favorite"><a href="/products/detail/<%= products[i].id %>"><i class="far fa-heart"></i></a></i></button>
+                            <button class="cart"><a href="/products/productCart"><i class="fas fa-cart-plus"></i></a></button>
+                        </div>
+                    </a>
+                </article>
+                <% } %>
+            </div>
 
-                <!-- Contacto -->
-                <h3 class="section-title">Contacto</h3>
-                <!-- Formulario de contacto -->
-                <div class="contact-div">
-                    <!-- Formulario -->
-                    <form class="contact" action="#" method="POST">
-                        <input type="text" id="name" placeholder="Nombre" minlength="2" required>
-                        <input type="email" id="email" placeholder="E-mail" required>
-                        <input type="number" id="phone" placeholder="Celular" minlength="8" required>
-                        <textarea name="message" placeholder="Dejanos un mensaje" required></textarea>
-                        <button id="send" type="submit">Enviar</button>
-                    </form>
-                    <!-- Datos de contacto -->
-                    <ul class="list" type="none">
-                        <li><a href="#"><i class="fas fa-phone"></i> +54 9 387 4522805</a></li>
-                        <li><a href="#"><i class="fas fa-envelope"></i> info@viverofederal.com.ar</a></li>
-                        <li><a href="#"><i class="fab fa-instagram"></i> viverofederal</a></li>
-                        <li><a href="#"><i class="fab fa-facebook"></i> viverofederal.ok</a></li>
-                        <li><a href="#"><i class="fab fa-twitter"></i> viverofederal.ok</a></li>
-                        <li><a href="#"><i class="fas fa-map-pin"></i> Entre Ríos 1156, Salta</a></li>
-                        <li><a href="#"><i class="fas fa-map-pin"></i> Caseros 2354, Córdoba</a></li>
-                    </ul>
-                </div>
+        </section>
 
-            </section>
+        <section class="contact" id="contact">
 
-        </main>
+            <!-- Contacto -->
+            <h3 class="section-title">Contacto</h3>
 
-        <%- include('../partials/footer') %>
+            <!-- Formulario de contacto -->
+            <div class="contact-div">
+
+                <!-- Formulario -->
+                <form class="contact" action="#" method="POST">
+                    <input type="text" id="name" placeholder="Nombre" minlength="2" required>
+                    <input type="email" id="email" placeholder="E-mail" required>
+                    <input type="number" id="phone" placeholder="Celular" minlength="8" required>
+                    <textarea name="message" placeholder="Dejanos un mensaje" required></textarea>
+                    <button id="send" type="submit">Enviar</button>
+                </form>
+
+                <!-- Datos de contacto -->
+                <ul class="list" type="none">
+                    <li><a href="#"><i class="fas fa-phone"></i> +54 9 387 4522805</a></li>
+                    <li><a href="#"><i class="fas fa-envelope"></i> info@viverofederal.com.ar</a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i> viverofederal</a></li>
+                    <li><a href="#"><i class="fab fa-facebook"></i> viverofederal.ok</a></li>
+                    <li><a href="#"><i class="fab fa-twitter"></i> viverofederal.ok</a></li>
+                    <li><a href="#"><i class="fas fa-map-pin"></i> Entre Ríos 1156, Salta</a></li>
+                    <li><a href="#"><i class="fas fa-map-pin"></i> Caseros 2354, Córdoba</a></li>
+                </ul>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <%- include('../partials/footer') %>
 
 </body>
 

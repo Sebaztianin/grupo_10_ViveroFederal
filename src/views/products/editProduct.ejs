@@ -3,63 +3,63 @@
 
 <head>
     <%- include('../partials/head.ejs') %>
-        <title>Vivero Federal: Editar producto</title>
-        <link rel="stylesheet" href="/css/products/editProduct.css">
+    <title>Vivero Federal: Editar producto</title>
+    <link rel="stylesheet" href="/css/products/editProduct.css">
 </head>
 
 <body>
 
     <%- include('../partials/header.ejs') %>
 
-        <main>
+    <main>
 
-            <section class="create-product">
+        <section class="create-product">
 
-                <!-- Título de la sección -->
-                <h3 class="section-title">Editar producto</h3>
+            <!-- Título de la sección -->
+            <h3 class="section-title">Editar producto</h3>
 
-                <!-- Formulario -->
-                <form class="new-product" action="/products/<%= product.id %>/edit?_method=PUT" method="POST" enctype="multipart/form-data">
+            <!-- Formulario -->
+            <form class="new-product" action="/products/<%= product.id %>/edit?_method=PUT" method="POST" enctype="multipart/form-data">
 
-                    <div class="data">
-    
-                        <label for="name">Nombre del producto: </label>
-                        <input type="text" name="name" id="name" value="<%= product.name %>">
-    
-                        <label for="price">Precio: </label>
-                        <input type="number" name="price" id="price" value="<%= product.price %>">
-    
-                        <label for="discount">Descuento: </label>
-                        <input type="number" name="discount" id="discount" value="<%= product.discount %>">
-    
-                        <label for="image">Imagen: </label>
-                        <input type="file" name="image" id="image">
-    
-    
-                        <label for="category">Categoría: </label>
-                        <select name="category" id="category">
-                            <option value="" disabled>Elige una opción</option>
-                            <option value="suc-cac" <%= product.category == 'suc-cac' ? 'selected' : null %>>Suculentas y cactus</option>
-                            <option value="interior" <%= product.category == 'interior' ? 'selected' : null %>>De interior</option>
-                            <option value="exterior" <%= product.category == 'exterior' ? 'selected' : null %>>De exterior</option>
-                            <option value="pots" <%= product.category == 'pots' ? 'selected' : null %>>Macetas</option>
-                            <option value="accesories" <%= product.category == 'accesories' ? 'selected' : null %>>Accesorios</option>
-                        </select>
-                        
-                        <label for="description">Descripción: </label>
-                        <textarea name="description" id="description" required><%= product.description %></textarea>
+                <div class="data">
 
-                    </div>
-                    
-                    <button type="submit">Editar producto</button>
+                    <label for="name">Nombre del producto: </label>
+                    <input type="text" name="name" id="name" value="<%= product.name %>">
 
-                </form>
+                    <label for="price">Precio: </label>
+                    <input type="number" name="price" id="price" value="<%= product.price %>">
 
-            </section>
+                    <label for="discount">Descuento: </label>
+                    <input type="number" name="discount" id="discount" value="<%= product.discount %>">
 
-        </main>
+                    <label for="image">Imagen: </label>
+                    <input type="file" name="image" id="image">
 
-        <%- include('../partials/footer') %>
+
+                    <label for="category">Categoría: </label>
+                    <select name="category" id="category">
+                        <option value="" disabled>Elige una opción</option>
+                        <option value="suc-cac" <%= product.category == 'suc-cac' ? 'selected' : null %>>Suculentas y cactus</option>
+                        <option value="interior" <%= product.category == 'interior' ? 'selected' : null %>>De interior</option>
+                        <option value="exterior" <%= product.category == 'exterior' ? 'selected' : null %>>De exterior</option>
+                        <option value="pots" <%= product.category == 'pots' ? 'selected' : null %>>Macetas</option>
+                        <option value="accesories" <%= product.category == 'accesories' ? 'selected' : null %>>Accesorios</option>
+                    </select>
+
+                    <label for="description">Descripción: </label>
+                    <textarea name="description" id="description" required><%= product.description %></textarea>
+
+                </div>
+
+                <button type="submit">Editar producto</button>
+
+            </form>
+
+        </section>
+
+    </main>
+
+    <%- include('../partials/footer') %>
 
 </body>
 

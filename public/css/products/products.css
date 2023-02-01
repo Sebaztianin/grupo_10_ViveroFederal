@@ -164,13 +164,25 @@ main section.all-products div.list div.products article a {
     color: #3C6255;
 } 
 
-main section.all-products div.list div.products article p,
-main section.all-products div.list div.products article h4 {
-    padding-top: 8px;
+
+main section.all-products div.list div.products div.main-article {
+    position: relative;
 }
 
-main section.all-products div.list div.products article div.main-article {
-    position: relative;
+main section.all-products div.list div.products div.price {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+main section.all-products div.list div.products p.discount {
+    font-weight: bold;
+    margin-right: 10px;
+    color: #57917c;
+}
+
+main section.all-products div.list div.products h4 {
+    margin-block: 8px;
 }
 
 main section.all-products div.list div.products article button {

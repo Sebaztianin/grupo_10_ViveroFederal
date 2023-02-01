@@ -11,78 +11,86 @@
 
     <%- include('../partials/header.ejs') %>
 
-        <main>
+    <main>
 
-            <form class="cart" action="#" method="GET">
+        <form class="cart" action="#" method="GET">
 
-                <section class="products">
-                    <!-- Título -->
-                    <h3 class="section-title">Carrito de compras</h3>
-                    <!-- Listado -->
-                    <div class="products-list">
-                        <article>
-                            <img src="/images/products/suculenta.jpg" alt="Suculenta" class="product_img">
-                            <div class="article">
-                                <a href="/products/detail/1"><p class="name">Suculenta</p></a>
-                                <div class="article-details">
-                                    <div class="quantity">
-                                        <button class="less" type="button" name="less" id="less"><i class="fas fa-minus"></i></button>
-                                        <input class="quantity-input" type="text" name="quantity" id="quantity"
-                                            value="15">
-                                        <button class="more" type="button" name="more" id="more"><i class="fas fa-plus"></i></button>
-                                    </div>
-                                    <div class="total">
-                                        <p class="price">$550</p>
-                                        <button type="button" name="delete"><i class="fas fa-trash"></i></button>
-                                    </div>
+            <section class="products">
+
+                <!-- Título -->
+                <h3 class="section-title">Carrito de compras</h3>
+
+                <!-- Listado -->
+                <div class="products-list">
+
+                    <article>
+                        <img src="/images/products/suculenta.jpg" alt="Suculenta" class="product_img">
+                        <div class="article">
+                            <a href="/products/detail/1">
+                                <p class="name">Suculenta</p>
+                            </a>
+                            <div class="article-details">
+                                <div class="quantity">
+                                    <button class="less" type="button" name="less" id="less"><i class="fas fa-minus"></i></button>
+                                    <input class="quantity-input" type="text" name="quantity" id="quantity" value="15">
+                                    <button class="more" type="button" name="more" id="more"><i class="fas fa-plus"></i></button>
+                                </div>
+                                <div class="total">
+                                    <p class="price">$550</p>
+                                    <button type="button" name="delete"><i class="fas fa-trash"></i></button>
                                 </div>
                             </div>
-                        </article>
-                        <article>
-                            <img src="/images/products/cactus.jpg" alt="Cactus" class="product_img">
-                            <div class="article">
-                                <a href="/products/detail/1"><p class="name">Cactus</p></a>
-                                <div class="article-details">
-                                    <div class="quantity">
-                                        <button type="button" name="more"><i class="fas fa-minus"></i></button>
-                                        <input class="quantity-input" type="text" name="quantity" id="quantity"
-                                            value="20">
-                                        <button type="button" name="less"><i class="fas fa-plus"></i></button>
-                                    </div>
-                                    <div class="total">
-                                        <p class="price">$800</p>
-                                        <button type="button" name="delete"><i class="fas fa-trash"></i></button>
-                                    </div>
+                        </div>
+                    </article>
+
+                    <article>
+                        <img src="/images/products/cactus.jpg" alt="Cactus" class="product_img">
+                        <div class="article">
+                            <a href="/products/detail/1">
+                                <p class="name">Cactus</p>
+                            </a>
+                            <div class="article-details">
+                                <div class="quantity">
+                                    <button type="button" name="more"><i class="fas fa-minus"></i></button>
+                                    <input class="quantity-input" type="text" name="quantity" id="quantity" value="20">
+                                    <button type="button" name="less"><i class="fas fa-plus"></i></button>
+                                </div>
+                                <div class="total">
+                                    <p class="price">$800</p>
+                                    <button type="button" name="delete"><i class="fas fa-trash"></i></button>
                                 </div>
                             </div>
-                        </article>
-                    </div>
-                </section>
+                        </div>
+                    </article>
 
-                <!-- Calcular envío -->
-                <section class="delivery">
-                    <label id="cp">Envío: </label>
-                    <input class="cp" type="number" name="cp" id="cp" placeholder="Código postal">
-                    <button type="menu" name="calculate">Calcular</button>
-                </section>
+                </div>
 
-                <!-- Subtotal -->
-                <section class="subtotal">
-                    <p class="title">Subtotal: </p>
-                    <p class="value">$ 1.350</p>
-                </section>
+            </section>
 
-                <!-- Botón -->
-                <section class="submit">
-                    <button type="submit" name="buy">Comprar</button>
-                    <a href="/products">Ver más productos</a>
-                </section>
+            <!-- Calcular envío -->
+            <section class="delivery">
+                <label id="cp">Envío: </label>
+                <input class="cp" type="number" name="cp" id="cp" placeholder="Código postal">
+                <button type="menu" name="calculate">Calcular</button>
+            </section>
 
-            </form>
+            <!-- Subtotal -->
+            <section class="subtotal">
+                <p class="title">Subtotal: </p>
+                <p class="value">$ 1.350</p>
+            </section>
 
-        </main>
+            <!-- Botón -->
+            <section class="submit">
+                <button type="submit" name="buy">Comprar</button>
+                <a href="/products">Ver más productos</a>
+            </section>
 
-        <%- include('../partials/footer.ejs') %>
+        </form>
+
+    </main>
+
+    <%- include('../partials/footer.ejs') %>
 
 </body>
 

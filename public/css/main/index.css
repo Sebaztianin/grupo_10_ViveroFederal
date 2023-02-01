@@ -131,13 +131,24 @@ main section.top-sellers img {
     border-radius: 10px;
 }
 
-main section.top-sellers div.products article p,
-main section.top-sellers div.products article h4 {
-    padding-top: 8px;
-}
-
 main section.top-sellers div.products article div.main-article {
     position: relative;
+}
+
+main section.top-sellers div.products article div.price {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+main section.top-sellers div.products article p.discount {
+    font-weight: bold;
+    margin-right: 10px;
+    color: #57917c;
+}
+
+main section.top-sellers div.products article h4 {
+    margin-block: 8px;
 }
 
 main section.top-sellers div.products article button {

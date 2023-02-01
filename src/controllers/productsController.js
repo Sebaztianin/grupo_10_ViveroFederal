@@ -136,7 +136,7 @@ let productsController = {
         // Redireccionar a productos
 		res.redirect('/products');
 
-    },
+    }
 
 };
 
