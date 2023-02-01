@@ -3,7 +3,8 @@
 
 <head>
     <%- include('../partials/head.ejs') %>
-        <title>Vivero Federal: <%= product.name %></title>
+        <title>Vivero Federal: <%= product.name %>
+        </title>
         <link rel="stylesheet" href="/css/products/productDetail.css">
 </head>
 
@@ -24,11 +25,14 @@
                     <!-- Imágenes -->
                     <div class="product-images">
                         <div class="side-images">
-                            <img src="/images/products/<%= product.image %>" alt="Imagen de <%= product.name %>" class="product-img">
-                            <img src="/images/products/<%= product.image %>" alt="Imagen de <%= product.name %>" class="product-img">
+                            <img src="/images/products/<%= product.image %>" alt="Imagen de <%= product.name %>"
+                                class="product-img">
+                            <img src="/images/products/<%= product.image %>" alt="Imagen de <%= product.name %>"
+                                class="product-img">
                         </div>
                         <div class="big-image">
-                            <img src="/images/products/<%= product.image %>" alt="Imagen de <%= product.name %>" class="product_main_img">
+                            <img src="/images/products/<%= product.image %>" alt="Imagen de <%= product.name %>"
+                                class="product_main_img">
                         </div>
                     </div>
 
@@ -36,101 +40,106 @@
                     <div class="product-name-price">
 
                         <!-- Descripción de la categoría -->
-                        <% let categoryDescription = '';
-                        switch (product.category) {
-                            case 'suc-cac': 
-                                categoryDescription = 'Suculentas y cactus';
-                                break;
-                            case 'interior': 
-                                categoryDescription = 'De interior';
-                                break;
-                            case 'exterior': 
-                                categoryDescription = 'De exterior';
-                                break;
-                            case 'accesories': 
-                                categoryDescription = 'Accesorios';
-                                break;
-                            case 'pots': 
-                                categoryDescription = 'Macetas';
-                                break;
-                            default:
-                                categoryDescription = 'Sin categoría';
-                        } %> 
+                        <% let categoryDescription='' ; switch (product.category) { case 'suc-cac' :
+                            categoryDescription='Suculentas y cactus' ; break; case 'interior' :
+                            categoryDescription='De interior' ; break; case 'exterior' :
+                            categoryDescription='De exterior' ; break; case 'accesories' :
+                            categoryDescription='Accesorios' ; break; case 'pots' : categoryDescription='Macetas' ;
+                            break; default: categoryDescription='Sin categoría' ; } %>
 
-                        <!-- Nombre y precio -->
-                        <p class="name"><%= product.name %> - <%= categoryDescription %></p>
-                        <% if (product.discount != 0) { %>
-                        <p class="price">
-                            <span>$<%= toThousand(product.price) %></span>
-                            <b><%= product.discount %>% OFF</b>
-                        </p>
-                        <% } %>
-                        <h2 class="final-price">$<%= toThousand(product.price - (product.price * product.discount/100)) %></h2>
+                            <!-- Nombre y precio -->
+                            <p class="name">
+                                <%= product.name %> - <%= categoryDescription %>
+                            </p>
+                            <% if (product.discount !=0) { %>
+                                <p class="price">
+                                    <span>$<%= toThousand(product.price) %></span>
+                                    <b>
+                                        <%= product.discount %>% OFF
+                                    </b>
+                                </p>
+                                <% } %>
+                                    <h2 class="final-price">$<%= toThousand(product.price - (product.price *
+                                            product.discount/100)) %>
+                                    </h2>
 
-                        <!-- Medios de pago -->
-                        <div class="payment-methods">
-                            <a href="#">Ver medios de pago</a>
-                            <div class="icons">
-                                <i class="fab fa-cc-visa"></i>
-                                <i class="fab fa-cc-mastercard"></i>
-                                <i class="fab fa-cc-amex"></i>
-                                <i class="fas fa-credit-card"></i>
-                            </div>
-                        </div>
+                                    <!-- Medios de pago -->
+                                    <div class="payment-methods">
+                                        <a href="#">Ver medios de pago</a>
+                                        <div class="icons">
+                                            <i class="fab fa-cc-visa"></i>
+                                            <i class="fab fa-cc-mastercard"></i>
+                                            <i class="fab fa-cc-amex"></i>
+                                            <i class="fas fa-credit-card"></i>
+                                        </div>
+                                    </div>
 
-                        <p class="line"></p>
+                                    <p class="line"></p>
 
-                        <!-- Tipo y cantidad -->
-                        <form class="add-to-cart" action="#" method="GET">
+                                    <!-- Tipo y cantidad -->
+                                    <form class="add-to-cart" action="#" method="GET">
 
-                            <div class="selection">
-                                <label for="type">Tamaño:</label>
-                                <select id="type">
-                                    <option value="very-large">Muy grande</option>
-                                    <option value="large">Grande</option>
-                                    <option value="medium">Mediano</option>
-                                    <option value="small">Chico</option>
-                                    <option value="very small">Muy chico</option>
-                                </select>
-                            </div>
+                                        <div class="selection">
+                                            <label for="type">Tamaño:</label>
+                                            <select id="type">
+                                                <option value="very-large">Muy grande</option>
+                                                <option value="large">Grande</option>
+                                                <option value="medium">Mediano</option>
+                                                <option value="small">Chico</option>
+                                                <option value="very small">Muy chico</option>
+                                            </select>
+                                        </div>
 
-                            <div class="quantity">
-                                <label>Cantidad: </label>
-                                <button class="less" type="button" name="less" id="less"><i class="fas fa-minus"></i></button>
-                                <input class="quantity-input" type="text" name="quantity" id="quantity" value="20">
-                                <button class="more" type="button" name="more" id="more"><i class="fas fa-plus"></i></button>
-                            </div>
+                                        <div class="quantity">
+                                            <label>Cantidad: </label>
+                                            <button class="less" type="button" name="less" id="less"><i
+                                                    class="fas fa-minus"></i></button>
+                                            <input class="quantity-input" type="text" name="quantity" id="quantity"
+                                                value="20">
+                                            <button class="more" type="button" name="more" id="more"><i
+                                                    class="fas fa-plus"></i></button>
+                                        </div>
 
-                            <!-- Medios de envío -->
-                            <div class="shipping">
-                                <a href="#">Ver medios de envío</a>
-                                <i class="fas fa-truck"></i>
-                            </div>
+                                        <!-- Medios de envío -->
+                                        <div class="shipping">
+                                            <a href="#">Ver medios de envío</a>
+                                            <i class="fas fa-truck"></i>
+                                        </div>
 
-                            <p class="line"></p>
+                                        <p class="line"></p>
 
-                            <!-- Agregar al carrito -->
-                            <button class="add-to-cart" type="submit" name="add-to-cart" id="add-to-cart">Añadir al carrito</button>
+                                        <!-- Agregar al carrito -->
+                                        <button class="add-to-cart" type="submit" name="add-to-cart"
+                                            id="add-to-cart">Añadir al carrito</button>
 
-                            <!-- Editar producto -->
-                            <a class="edit-product" href="/products/<%= product.id %>/editProduct">Editar el producto</a>
+                                        <!-- Añadir a favoritos -->
+                                        <a class="favorite" href="#">Añadir a favoritos <i class="far fa-heart"></i></a>
 
-                            <!-- Añadir a favoritos -->
-                            <a class="favorite" href="#">Añadir a favoritos <i class="far fa-heart"></i></a>
+                                    </form>
 
-                        </form>
+                                    <p class="line"></p>
 
-                        <p class="line"></p>
+                                    <!-- Formulario de edición/eliminación -->
+                                    <form class="edit" action="/products/<%= product.id %>?_method=DELETE" method="POST">
+                                        <!-- Editar -->
+                                        <a class="edit-product" href="/products/<%= product.id %>/editProduct">Editar el
+                                            producto</a>
+                                        <!-- Eliminar -->
+                                        <button type="submit" class="delete">Eliminar el producto</button>
+                                    </form>
 
-                        <!-- Compartir -->
-                        <div class="share">
-                            <p>Compartir: </p>
-                            <div class="share-icons">
-                                <a href="#"><i class="fab fa-facebook"></i></a>
-                                <a href="#"><i class="fab fa-twitter"></i></a>
-                                <a href="#"><i class="fas fa-share-alt"></i></a>
-                            </div>
-                        </div>
+                                    <p class="line"></p>
+
+
+                                    <!-- Compartir -->
+                                    <div class="share">
+                                        <p>Compartir: </p>
+                                        <div class="share-icons">
+                                            <a href="#"><i class="fab fa-facebook"></i></a>
+                                            <a href="#"><i class="fab fa-twitter"></i></a>
+                                            <a href="#"><i class="fas fa-share-alt"></i></a>
+                                        </div>
+                                    </div>
 
                     </div>
 
@@ -139,7 +148,9 @@
                 <!-- Descripción -->
                 <div class="description">
                     <p class="title">Descripción</p>
-                    <p class="text"><%= product.description %></p>
+                    <p class="text">
+                        <%= product.description %>
+                    </p>
                 </div>
 
             </section>
@@ -162,7 +173,7 @@
                             </a>
                         </article>
                         <% } %>
-                        
+
                 </div>
 
                 <div class="more-products">

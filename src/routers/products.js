@@ -41,5 +41,8 @@ router.post('/', uploadFile.single('image'), productsController.store);
 router.get('/:id/editProduct', productsController.edit);
 router.put('/:id/edit', uploadFile.single('image'), productsController.update);
 
+// Eliminar producto
+router.delete('/:id', productsController.destroy); 
+
 
 module.exports = router;

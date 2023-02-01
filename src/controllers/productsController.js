@@ -111,7 +111,14 @@ let productsController = {
 
         // Redireccionamos al detalle del producto
         res.redirect('/products/detail/' + req.params.id);
-    }
+    },
+
+    // Formulario de edición de producto
+    destroy: function (req, res) {
+        let product = products.find(product => product.id == req.params.id);
+        res.render('products/productDetail', { product: product, toThousand: toThousand });
+    },
+
 };
 
 module.exports = productsController;

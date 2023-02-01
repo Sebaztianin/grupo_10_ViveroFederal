@@ -276,21 +276,6 @@ main section.product-details div.details div.product-name-price form button {
     transition: all 0.5s;
 }
 
-main section.product-details div.details div.product-name-price form a.edit-product {
-    font-size: 14px;
-    font-weight: bold;
-    text-align: center;
-    border: none;
-    border-radius: 5px;
-    padding: 10px;
-    margin-block: 10px;
-    color: #3C6255;
-    background-color: #CCD6A6;
-    cursor: pointer;
-    position: relative;
-    transition: all 0.5s;
-}
-
 main section.product-details div.details div.product-name-price form button:hover {
     filter: brightness(85%);
 }
@@ -299,13 +284,8 @@ main section.product-details div.details div.product-name-price form button.add-
     top: 2px;
 }
 
-main section.product-details div.details div.product-name-price form a.edit-product:hover {
-    filter: brightness(85%);
-}
 
-main section.product-details div.details div.product-name-price form a.edit-product:active {
-    top: 2px;
-}
+/* Añadir a favorito */
 
 main section.product-details div.details div.product-name-price form a.favorite {
     text-align: center;
@@ -321,6 +301,48 @@ main section.product-details div.details div.product-name-price form a.favorite 
 main section.product-details div.details div.product-name-price form a.favorite:hover i {
     bottom: 5px;
 }
+
+
+/* Editar y eliminar producto */
+
+main section.product-details div.details div.product-name-price form.edit {
+    margin-block: 5px;
+}
+
+main section.product-details div.details div.product-name-price form.edit a.edit-product {
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    margin-block: 5px;
+    color: #8b4810;
+    background-color: #e0a574;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.5s;
+}
+
+main section.product-details div.details div.product-name-price form.edit a.edit-product:hover {
+    filter: brightness(85%);
+}
+
+main section.product-details div.details div.product-name-price form.edit a.edit-product:active {
+    top: 2px;
+}
+
+main section.product-details div.details div.product-name-price form button.delete {
+    color: #a84d36;
+    background-color: #ec9a8b;
+}
+
+main section.product-details div.details div.product-name-price form button.delete:active {
+    top: 2px;
+}
+
+
+/* Compartir */
 
 main section.product-details div.details div.product-name-price div.share {
     text-align: center;
