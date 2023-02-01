@@ -12,6 +12,10 @@ const usersRoutes = require('./routers/users')
 /* Declaramos carpeta static */
 app.use(express.static('./public'));
 
+/* Middlewares */
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+
 /* Configuramos EJS como el motor de vistas y cambiamos la carpeta de vistas a /src/views */
 app.set('view engine', 'ejs')
 app.set('views', './src/views')

@@ -19,25 +19,24 @@
                 <h3 class="section-title">Crear producto</h3>
 
                 <!-- Formulario -->
-                <form class="new-product" action="#" method="POST">
+                <form class="new-product" action="/products/" method="post" enctype="multipart/form-data">
 
                     <div class="data">
     
                         <label for="name">Nombre del producto: </label>
-                        <input type="text" name="name" id="name" placeholder="Ej: Suculenta" required>
+                        <input type="text" name="name" id="name" placeholder="Ej: Suculenta">
     
                         <label for="price">Precio: </label>
-                        <input type="number" name="price" id="price" placeholder="AR$" required>
+                        <input type="number" name="price" id="price" placeholder="AR$">
     
                         <label for="discount">Descuento: </label>
-                        <input type="number" name="discount" id="discount" placeholder="Ej: 15" required>
+                        <input type="number" name="discount" id="discount" placeholder="Ej: 15">
     
                         <label for="image">Imagen: </label>
-                        <input type="file" name="image" id="image" required>
-    
+                        <input type="file" name="image" id="image">
     
                         <label for="category">Categoría: </label>
-                        <select id="category" required>
+                        <select id="category">
                             <option value="" disabled selected>Elige una opción</option>
                             <option value="suc-cac">Suculentas y cactus</option>
                             <option value="interior">De interior</option>
@@ -47,11 +46,11 @@
                         </select>
                         
                         <label for="description">Descripción: </label>
-                        <textarea name="description" id="description" placeholder="Descripción larga del producto" required></textarea>
+                        <textarea name="description" id="description" placeholder="Descripción larga del producto"></textarea>
 
                     </div>
                     
-                    <button type="submit" id="submit">Crear producto</button>
+                    <button type="submit">Crear producto</button>
 
                 </form>
 
