@@ -7,7 +7,7 @@ const productsFilePath = path.join(__dirname, '../data/products.json');
 const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 
 /* Importamos las validaciones */
-const {validationResult} = require('express-validator')
+const { validationResult } = require('express-validator');
 
 /* Separador de miles para los números */
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
@@ -42,28 +42,46 @@ let productsController = {
         // Recuperamos resultados de la validación
         let errors = validationResult(req);
 
-        // Obtener id
-        let id = products[products.length - 1].id + 1;
-        let newProduct = {};
+        // Consultamos si no existen errores
+        if (errors.isEmpty()) {   // No hay errores, continuamos...
 
-        // Agregar datos del producto a la variable
-        newProduct.id = id;
-        newProduct.name = req.body.name;
-        newProduct.description = req.body.description;
-        newProduct.price = req.body.price;
-        newProduct.discount = req.body.discount;
-        newProduct.category = req.body.category;
-        newProduct.image = req.file.filename;
+            // Obtener id
+            let id = products[products.length - 1].id + 1;
+            let newProduct = {};
 
-        // Agregar producto a la lista de productos
-        let productsNew = products;
-        productsNew.push(newProduct);
+            // Agregar datos del producto a la variable
+            newProduct.id = id;
+            newProduct.name = req.body.name;
+            newProduct.description = req.body.description;
+            newProduct.price = req.body.price;
+            newProduct.discount = req.body.discount;
+            newProduct.category = req.body.category;
+            newProduct.image = req.file.filename;
 
-        // Sobreescribir JSON con producto agregado
-        fs.writeFileSync(productsFilePath, JSON.stringify(productsNew));
+            // Agregar producto a la lista de productos
+            let productsNew = products;
+            productsNew.push(newProduct);
 
-        // Redireccionamos al detalle del producto
-        res.redirect('/products/detail/' + id);
+            // Sobreescribir JSON con producto agregado
+            fs.writeFileSync(productsFilePath, JSON.stringify(productsNew));
+
+            // Redireccionamos al detalle del producto
+            res.redirect('/products/detail/' + id);
+
+        } else {   // Hay errores, volvemos al formulario
+
+            // Eliminamos archivo mal cargado si es que se seleccionó un archivo en el formulario y existe tal archivo
+            if (req.file) {
+                if (fs.existsSync(path.join(__dirname, '../../public/images/products/', req.file.filename))) {
+                    fs.unlinkSync(path.join(__dirname, '../../public/images/products/', req.file.filename));
+                }
+            }
+
+            // Volvemos al formulario con los errores y los datos viejos
+            res.render('products/createProduct', { errors: errors.array(), old: req.body });
+
+        }
+
     },
 
     // Formulario de edición de producto
@@ -76,34 +94,34 @@ let productsController = {
     update: function (req, res) {
 
         // Validar si hay una imagen seleccionada
-		if (req.file) {
+        if (req.file) {
 
-			// Encontrar objeto en array y actualizar sus datos. 
-			let newProducts = products;
-			let imageOld = '';
-			for (i = 0; i < newProducts.length; i++) {
-				if (newProducts[i].id == req.params.id) {
-					newProducts[i].name = req.body.name;
-					newProducts[i].description = req.body.description;
-					newProducts[i].price = req.body.price;
-					newProducts[i].discount = req.body.discount;
-					newProducts[i].category = req.body.category;
-					imageOld = newProducts[i].image;    // Obtengo nombre de imagen vieja para eliminarla luego.
-					newProducts[i].image = req.file.filename;
-				}
-			}
+            // Encontrar objeto en array y actualizar sus datos.
+            let newProducts = products;
+            let imageOld = '';
+            for (i = 0; i < newProducts.length; i++) {
+                if (newProducts[i].id == req.params.id) {
+                    newProducts[i].name = req.body.name;
+                    newProducts[i].description = req.body.description;
+                    newProducts[i].price = req.body.price;
+                    newProducts[i].discount = req.body.discount;
+                    newProducts[i].category = req.body.category;
+                    imageOld = newProducts[i].image;    // Obtengo nombre de imagen vieja para eliminarla luego
+                    newProducts[i].image = req.file.filename;
+                }
+            }
 
-			// Validar si imagen existe y eliminarla (unlink)
+            // Validar si imagen existe y eliminarla (unlink)
             if (fs.existsSync(path.join(__dirname, '../../public/images/products/', imageOld))) {
                 fs.unlinkSync(path.join(__dirname, '../../public/images/products/', imageOld));
             }
-	
-			// Sobreescribir JSON con producto editado
-			fs.writeFileSync(productsFilePath, JSON.stringify(newProducts));
 
-		} else {
+            // Sobreescribir JSON con producto editado
+            fs.writeFileSync(productsFilePath, JSON.stringify(newProducts));
 
-			// Encontrar objeto en array y actualizar sus datos
+        } else {
+
+            // Encontrar objeto en array y actualizar sus datos
             let newProducts = products;
             for (i = 0; i < newProducts.length; i++) {
                 if (newProducts[i].id == req.params.id) {
@@ -114,11 +132,11 @@ let productsController = {
                     newProducts[i].category = req.body.category;
                 }
             }
-    
+
             // Sobreescribir JSON con producto editado
             fs.writeFileSync(productsFilePath, JSON.stringify(newProducts));
 
-		}
+        }
 
         // Redireccionamos al detalle del producto
         res.redirect('/products/detail/' + req.params.id);
@@ -126,28 +144,28 @@ let productsController = {
 
     // Eliminar producto
     destroy: function (req, res) {
-        
-		// Obtener nombre de la imagen
-		let imageName;
-		for (i = 0; i < products.length; i++) {
-			if (products[i].id == req.params.id) {
-				imageName = products[i].image;
-			}
-		}
 
-		// Validar si imagen existe y eliminarla (unlink)
+        // Obtener nombre de la imagen
+        let imageName;
+        for (i = 0; i < products.length; i++) {
+            if (products[i].id == req.params.id) {
+                imageName = products[i].image;
+            }
+        }
+
+        // Validar si imagen existe y eliminarla (unlink)
         if (fs.existsSync(path.join(__dirname, '../../public/images/products/', imageName))) {
             fs.unlinkSync(path.join(__dirname, '../../public/images/products/', imageName));
         }
 
-		// Sacar producto del array
-		let productsNew = products.filter(product => product.id != req.params.id);
+        // Sacar producto del array
+        let productsNew = products.filter(product => product.id != req.params.id);
 
-		// Sobreescribir JSON sin el producto
-		fs.writeFileSync(productsFilePath, JSON.stringify(productsNew));
+        // Sobreescribir JSON sin el producto
+        fs.writeFileSync(productsFilePath, JSON.stringify(productsNew));
 
         // Redireccionar a productos
-		res.redirect('/products');
+        res.redirect('/products');
 
     }
 
