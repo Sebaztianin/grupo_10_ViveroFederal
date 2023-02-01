@@ -113,10 +113,29 @@ let productsController = {
         res.redirect('/products/detail/' + req.params.id);
     },
 
-    // Formulario de edición de producto
+    // Eliminar producto
     destroy: function (req, res) {
-        let product = products.find(product => product.id == req.params.id);
-        res.render('products/productDetail', { product: product, toThousand: toThousand });
+        
+		// Obtener nombre de la imagen
+		let imageName;
+		for (i = 0; i < products.length; i++) {
+			if (products[i].id == req.params.id) {
+				imageName = products[i].image;
+			}
+		}
+
+		// Eliminar (unlink) imagen
+		fs.unlinkSync(path.join(__dirname, '../../public/images/products/', imageName));
+
+		// Sacar producto del array
+		let productsNew = products.filter(product => product.id != req.params.id);
+
+		// Sobreescribir JSON sin el producto
+		fs.writeFileSync(productsFilePath, JSON.stringify(productsNew));
+
+        // Redireccionar a productos
+		res.redirect('/products');
+
     },
 
 };
