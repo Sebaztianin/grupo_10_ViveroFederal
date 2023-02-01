@@ -19,26 +19,26 @@
                 <h3 class="section-title">Editar producto</h3>
 
                 <!-- Formulario -->
-                <form class="new-product" action="#" method="POST">
+                <form class="new-product" action="/products/<%= product.id %>/edit?_method=PUT" method="POST" enctype="multipart/form-data">
 
                     <div class="data">
     
                         <label for="name">Nombre del producto: </label>
-                        <input type="text" name="name" id="name" value="<%= product.name %>" required>
+                        <input type="text" name="name" id="name" value="<%= product.name %>">
     
                         <label for="price">Precio: </label>
-                        <input type="number" name="price" id="price" value="<%= product.price %>" required>
+                        <input type="number" name="price" id="price" value="<%= product.price %>">
     
                         <label for="discount">Descuento: </label>
-                        <input type="number" name="discount" id="discount" value="<%= product.discount %>" required>
+                        <input type="number" name="discount" id="discount" value="<%= product.discount %>">
     
                         <label for="image">Imagen: </label>
-                        <input type="file" name="image" id="image" required>
+                        <input type="file" name="image" id="image">
     
     
                         <label for="category">Categoría: </label>
-                        <select id="category" required>
-                            <option value="" disabled selected>Elige una opción</option>
+                        <select name="category" id="category">
+                            <option value="" disabled>Elige una opción</option>
                             <option value="suc-cac" <%= product.category == 'suc-cac' ? 'selected' : null %>>Suculentas y cactus</option>
                             <option value="interior" <%= product.category == 'interior' ? 'selected' : null %>>De interior</option>
                             <option value="exterior" <%= product.category == 'exterior' ? 'selected' : null %>>De exterior</option>
@@ -51,7 +51,7 @@
 
                     </div>
                     
-                    <button type="submit" id="submit">Crear producto</button>
+                    <button type="submit">Editar producto</button>
 
                 </form>
 

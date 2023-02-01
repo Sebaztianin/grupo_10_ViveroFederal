@@ -3,6 +3,7 @@
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
+const methodOverride =  require('method-override'); // Para poder usar los métodos PUT y DELETE
 
 /* Importamos módulos propios de ruteo */
 const mainRoutes = require('./routers/main')
@@ -13,8 +14,9 @@ const usersRoutes = require('./routers/users')
 app.use(express.static('./public'));
 
 /* Middlewares */
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
+app.use(express.urlencoded({ extended: false })); // Para enviar datos
+app.use(express.json()); // Para enviar datos
+app.use(methodOverride('_method')); // Para poder pisar el método POST en los formularios por PUT y DELETE
 
 /* Configuramos EJS como el motor de vistas y cambiamos la carpeta de vistas a /src/views */
 app.set('view engine', 'ejs')

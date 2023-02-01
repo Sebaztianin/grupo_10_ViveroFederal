@@ -19,7 +19,7 @@
                 <h3 class="section-title">Crear producto</h3>
 
                 <!-- Formulario -->
-                <form class="new-product" action="/products/" method="post" enctype="multipart/form-data">
+                <form class="new-product" action="/products/" method="POST" enctype="multipart/form-data">
 
                     <div class="data">
     
@@ -36,7 +36,7 @@
                         <input type="file" name="image" id="image">
     
                         <label for="category">Categoría: </label>
-                        <select id="category">
+                        <select name="category"  id="category">
                             <option value="" disabled selected>Elige una opción</option>
                             <option value="suc-cac">Suculentas y cactus</option>
                             <option value="interior">De interior</option>

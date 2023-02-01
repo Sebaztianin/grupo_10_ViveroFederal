@@ -35,8 +35,30 @@
                     <!-- Detalles del producto-->
                     <div class="product-name-price">
 
+                        <!-- Descripción de la categoría -->
+                        <% let categoryDescription = '';
+                        switch (product.category) {
+                            case 'suc-cac': 
+                                categoryDescription = 'Suculentas y cactus';
+                                break;
+                            case 'interior': 
+                                categoryDescription = 'De interior';
+                                break;
+                            case 'exterior': 
+                                categoryDescription = 'De exterior';
+                                break;
+                            case 'accesories': 
+                                categoryDescription = 'Accesorios';
+                                break;
+                            case 'pots': 
+                                categoryDescription = 'Macetas';
+                                break;
+                            default:
+                                categoryDescription = 'Sin categoría';
+                        } %> 
+
                         <!-- Nombre y precio -->
-                        <p class="name"><%= product.name %></p>
+                        <p class="name"><%= product.name %> - <%= categoryDescription %></p>
                         <% if (product.discount != 0) { %>
                         <p class="price">
                             <span>$<%= toThousand(product.price) %></span>

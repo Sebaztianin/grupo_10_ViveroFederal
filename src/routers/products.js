@@ -39,6 +39,7 @@ router.post('/', uploadFile.single('image'), productsController.store);
 
 // Editar producto
 router.get('/:id/editProduct', productsController.edit);
+router.put('/:id/edit', uploadFile.single('image'), productsController.update);
 
 
 module.exports = router;
