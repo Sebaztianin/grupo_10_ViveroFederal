@@ -1,4 +1,4 @@
-Sprint 1 - retro
+Sprint 1:
 
 1. Qué hicimos bien:
 
@@ -22,7 +22,7 @@ Sprint 1 - retro
 - No posponer reuniones.
 - No procrastinar. 
 
-Sprint 2 (12/1/2023)
+Sprint 2 (12/01/2023):
 
 1. Qué hicimos bien:
 
@@ -60,21 +60,21 @@ Archivo login.html junto con todos los recursos necesarios,
 estilos de CSS e imágenes contiene formularios de Registro y Login, realizado por Camila , entregado en plazos establecidos, falta ajustes en CSS. 
 
 
-Sprint 3 y 4 (30/1/23)
+Sprint 3 y 4 (30/01/23):
 
-1. Que hicimos bien
-Nos ponemos de acuerdo muy rapido en la distribución de tareas
-Utilizamos la parte teorica y las clases del curso para poder realizar las tareas del trabajo grupal
-Respetamos los tiempos que nos propusimos en las tareas
+1. Qué hicimos bien:
+- Nos ponemos de acuerdo muy rapido en la distribución de tareas.
+- Utilizamos la parte teorica y las clases del curso para poder realizar las tareas del trabajo grupal.
+- Respetamos los tiempos que nos propusimos en las tareas.
 
-2. Que hicimos mal
-No realizar en tiempo la retro del Sprint 3
+2. Qué hicimos mal:
+- No realizar en tiempo la retro del Sprint 3
 
-3. Que deberiamos empezar a hacer
-Cumplir con las reuniones acordadas
+3. Qué deberíamos empezar a hacer:
+- Cumplir con las reuniones acordadas.
 
-4. Que deberiamos dejar de hacer
-No posponer reuniones
+4. Qué deberíamos dejar de hacer:
+- No posponer reuniones.
 
 Se entrego del Sprint 3:
 Archivo retro.md con el resultado de la retrospectiva.
@@ -89,7 +89,7 @@ Aplicacion Node,js + Express + EJS con:
 - Formulario de carga y edicion de productos
 
 
-Se entrego del Sprint 4:
+Se entregó del Sprint 4:
 - Archivo retro.md con el resultado de la retrospectiva.
 - Tablero de trabajo actualizado.
 - Archivos products.json y users.json con datos de productos y usuarios
@@ -100,5 +100,28 @@ Falta del Sprint Administracion completa de productos con
 - Creacion
 - Edicion
 - Eliminacion
+
+
+Sprint 5 (08/02/2023):
+
+1. Qué hicimos bien:
+- Terminamos rápido con las tareas del Sprint.
+- Sobró tiempo para agregar cosas opcionales.
+- Ponernos al día con los temas.
+
+2. Qué hicimos mal:
+- No dividir bien las tareas.
+- No trabajar en equipo.
+
+3. Qué deberíamos empezar a hacer:
+- Organizarse bien.
+- Utilizar el tablero (para las tareas y para las correcciones o mejoras).
+
+4. Qué deberíamos dejar de hacer:
+- Posponer reuniones.
+- Utilizar WhatsApp como único medio de comunicación.
+
+Se entregó del Sprint 4:
+- CRUD de productos.
 
 
