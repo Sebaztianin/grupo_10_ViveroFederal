@@ -55,5 +55,6 @@ let router = express.Router();
 
 router.get('/login', usersController.index);
 router.post('/register', uploadFile.single('avatar'), registerForm, usersController.register);
+router.post('/login', usersController.login);
 
 module.exports = router;

@@ -63,6 +63,29 @@ let usersController = {
 
         }
 
+    },
+
+    login: function (req, res) {
+
+        // Obtenemos id del usuario
+        let id = 0;
+        let hashedPassword;
+        for (i = 0; i < users.length; i++) {
+            if(users[i].email == req.body.email) {
+                id = users[i].id;
+                hashedPassword = users[i].password;   // Los primeros 5 users tienen password 123456 para probar.
+            } 
+        }
+
+        // Validamos contraseña
+        if (bcrypt.compareSync(req.body.password, hashedPassword)) {
+            // Cambiar lógica.
+            res.send('Usuario logeado: ' + id + '.');
+        }
+
+        // Cambiar lógica.
+        res.send('Los datos ingresados son incorrectos.');
+
     }
 
 };

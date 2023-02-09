@@ -4,7 +4,7 @@
         "firstName": "Sebastián",
         "lastName": "Braga",
         "email": "sebabraga01@gmail.com",
-        "password": "123456",
+        "password": "$2a$10$n2DQbKf0uIvB/RYH6.WY/.o6e3scnGHxGRqFS21DjitRr58AChWYq",
         "category": "cliente",
         "image": "avatar.jpg"
     },
@@ -13,7 +13,7 @@
         "firstName": "Camila Luz",
         "lastName": "Quispe",
         "email": "quispeluzcami@gmail.com",
-        "password": "123456",
+        "password": "$2a$10$n2DQbKf0uIvB/RYH6.WY/.o6e3scnGHxGRqFS21DjitRr58AChWYq",
         "category": "cliente",
         "image": "avatar.jpg"
     },
@@ -22,7 +22,7 @@
         "firstName": "Gustavo Fabian",
         "lastName": "Buscalia",
         "email": "buscaliag@gmail.com",
-        "password": "123456",
+        "password": "$2a$10$n2DQbKf0uIvB/RYH6.WY/.o6e3scnGHxGRqFS21DjitRr58AChWYq",
         "category": "cliente",
         "image": "avatar.jpg"
     },
@@ -31,7 +31,7 @@
         "firstName": "Valentino",
         "lastName": "Becerine",
         "email": "valentinobecerine@gmail.com",
-        "password": "123456",
+        "password": "$2a$10$n2DQbKf0uIvB/RYH6.WY/.o6e3scnGHxGRqFS21DjitRr58AChWYq",
         "category": "cliente",
         "image": "avatar.jpg"
     },
@@ -39,8 +39,8 @@
         "id": 5,
         "firstName": "Admin",
         "lastName": "del Sitio",
-        "email": "sebabraga01@gmail.com",
-        "password": "123456",
+        "email": "seba_braga01@hotmail.com",
+        "password": "$2a$10$n2DQbKf0uIvB/RYH6.WY/.o6e3scnGHxGRqFS21DjitRr58AChWYq",
         "category": "admin",
         "image": "avatar.jpg"
     }
