@@ -20,8 +20,8 @@
                 <form class="login" action="#" method="POST">
 
                     <!-- Campos -->
-                    <input type="text" id="username" placeholder="Usuario" required="">
-                    <input type="password" id="password" placeholder="Contraseña" required>
+                    <input type="text" id="email" name="email" placeholder="Email">
+                    <input type="password" id="password" name="password" placeholder="Contraseña">
 
                     <div class="remember-me">
                         <input type="checkbox" id="remember-me">
@@ -29,7 +29,7 @@
                     </div>
 
                     <!-- Botón -->
-                    <button type="submit" id="login">Iniciar sesión</button>
+                    <button type="submit">Iniciar sesión</button>
                     <a href="/users/login">
                         <p>¿Olvidaste tu contraseña?</p>
                     </a>
@@ -42,16 +42,27 @@
 
                 <h3 class="section-title">Registrarse</h3>
 
-                <form class="register" action="/register" method="POST">
+                <form class="register" action="/users/register" method="POST" enctype="multipart/form-data">
 
                     <!-- Campos -->
-                    <input type="text" id="username" placeholder="Usuario" required>
-                    <input type="email" id="email" placeholder="Correo" required>
-                    <input type="password" id="password" placeholder="Contraseña" required>
-                    <input type="password" id="password-confirmation" placeholder="Confirmar contraseña" required>
+                    <input type="text" id="firstName" name="firstName" placeholder="Nombre" value="<%= (locals.old && old.firstName) ? old.firstName : '' %>">
+                    <input type="text" id="lastName" name="lastName" placeholder="Apellido" value="<%= (locals.old && old.lastName) ? old.lastName : '' %>">
+                    <input type="text" id="email" name="email" placeholder="Email" value="<%= (locals.old && old.email) ? old.email : '' %>">
+                    <input type="password" id="password" name="password" placeholder="Contraseña" value="<%= (locals.old && old.password) ? old.password : '' %>">
+                    <input type="password" id="passwordConfirmation" name="passwordConfirmation" placeholder="Confirmar contraseña" value="<%= (locals.old && old.passwordConfirmation) ? old.passwordConfirmation : '' %>">
+                    <input type="file" id="avatar" name="avatar">
 
+                    <!-- Errores -->
+                    <div class="errors">
+                        <% if (locals.errors) { %>
+                        <% errors.forEach(error => { %>
+                        <p class="error"><i class="fas fa-exclamation-circle"></i> <%= error.msg %></p>
+                        <% }) %>
+                        <% } %>
+                    </div>
+                
                     <!-- Botón -->
-                    <button type="submit" id="register">Registrarme</button>
+                    <button type="submit" >Registrarme</button>
 
                 </form>
 
