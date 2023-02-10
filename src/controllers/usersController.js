@@ -37,6 +37,9 @@ let usersController = {
             // Agregar usuario a la BD
             User.create(newUser);
 
+            // Obtenemos datos del usuario creado
+            let userToLogin = User.findByField('email', req.body.email);
+
             // Seteamos el usuario de la sesión
             req.session.userLogged = userToLogin
 
