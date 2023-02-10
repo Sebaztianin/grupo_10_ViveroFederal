@@ -36,6 +36,13 @@ let registerForm = [
 	})
 ];
 
+/* Validaciones del formulario de login */
+let loginForm = [
+	body('email').notEmpty().withMessage('El email no puede estar vacío.').bail()
+		.isEmail().withMessage('Ingrese un correo válido.'),
+    body('password').notEmpty().withMessage('Debe ingresar una contraseña.')
+];
+
 /* Importamos y configuramos Multer para las imágenes */
 const multer = require('multer');
 
@@ -55,6 +62,6 @@ let router = express.Router();
 
 router.get('/login', usersController.index);
 router.post('/register', uploadFile.single('avatar'), registerForm, usersController.register);
-router.post('/login', usersController.login);
+router.post('/login', loginForm, usersController.login);
 
 module.exports = router;

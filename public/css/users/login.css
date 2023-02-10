@@ -98,6 +98,19 @@ main section.login form.login div.remember-me input {
     width: 15px;
 }
 
+main section.login form.login div.errors {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-block: 20px 10px;
+}
+
+main section.login form.login div.errors p.error {
+    margin: 3px 20px;
+    font-size: 14px;
+    color: #a84d36;
+}
+
 main section.login form.login button {
     font-family: 'Roboto', sans-serif;
     font-size: 14px;

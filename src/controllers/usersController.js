@@ -3,9 +3,8 @@ const fs = require('fs');
 const path = require('path');
 const bcrypt = require('bcryptjs');
 
-/* Creamos el path de usuarios y recuperamos el JSON parseado en users */
-const usersFilePath = path.join(__dirname, '../data/users.json');
-const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
+/* Recuperamos el modelo de usuario */
+const User = require('../models/User');
 
 /* Importamos las validaciones */
 const { validationResult } = require('express-validator');
@@ -21,30 +20,22 @@ let usersController = {
 
         // Recuperamos resultados de la validación
         let errors = validationResult(req);
-        let passwordVerification;
 
         // Consultamos si no existen errores
         if (errors.isEmpty()) {   // No hay errores, continuamos...
 
-            // Obtener id
-            let id = users[users.length - 1].id + 1;
-            let newUser = {};
+            // Creamos nuevo usuario con los datos del form
+            let newUser = {
+                firstName: req.body.firstName,
+                lastName: req.body.lastName,
+                email: req.body.email,
+                category: 'cliente',
+                password: bcrypt.hashSync(req.body.password, 10),
+                image: req.file.filename
+            };
 
-            // Agregar datos del usuario a la variable
-            newUser.id = id;
-            newUser.firstName = req.body.firstName;
-            newUser.lastName = req.body.lastName;
-            newUser.email = req.body.email;
-            newUser.category = 'cliente';
-            newUser.password = bcrypt.hashSync(req.body.password, 10);
-            newUser.image = req.file.filename;
-
-            // Agregar usuario a la lista de usuarios
-            let usersNew = users;
-            usersNew.push(newUser);
-
-            // Sobreescribir JSON con producto agregado
-            fs.writeFileSync(usersFilePath, JSON.stringify(usersNew));
+            // Agregar usuario a la BD
+            User.create(newUser);
 
             // Redireccionamos al main (deberíamos redirigir al perfil del usuario)
             res.redirect('/');
@@ -59,7 +50,7 @@ let usersController = {
             }
 
             // Volvemos al formulario con los errores y los datos viejos
-            res.render('users/login', { errors: errors.array(), old: req.body });
+            res.render('users/login', { errorsRegister: errors.array(), oldRegister: req.body });
 
         }
 
@@ -67,24 +58,52 @@ let usersController = {
 
     login: function (req, res) {
 
-        // Obtenemos id del usuario
-        let id = 0;
-        let hashedPassword;
-        for (i = 0; i < users.length; i++) {
-            if(users[i].email == req.body.email) {
-                id = users[i].id;
-                hashedPassword = users[i].password;   // Los primeros 5 users tienen password 123456 para probar.
-            } 
-        }
+        // Recuperamos resultados de la validación
+        let errors = validationResult(req);
 
-        // Validamos contraseña
-        if (bcrypt.compareSync(req.body.password, hashedPassword)) {
-            // Cambiar lógica.
-            res.send('Usuario logeado: ' + id + '.');
-        }
+        // Consultamos si no existen errores
+        if (errors.isEmpty()) {   // No hay errores, continuamos...
 
-        // Cambiar lógica.
-        res.send('Los datos ingresados son incorrectos.');
+            // Obtenemos datos del usuario
+            let userToLogin = User.findByField('email', req.body.email);
+
+            // Validamos correo
+            if (userToLogin) {
+
+                // Validamos contraseña
+                if (bcrypt.compareSync(req.body.password, userToLogin.password)) {
+
+                    // Cambiar lógica (esto debería llevar al perfil del usuario)
+                    res.send('Usuario logeado: ' + userToLogin.firstName + ' ' + userToLogin.lastName + '.');
+
+                } else {
+
+                    // Convertimos los errores a array y agregamos un error personalizado
+                    let errorsArray = errors.array();
+                    errorsArray.push({ value: "", msg: "Los datos ingresados son incorrectos.", param: "email", location: "body" });
+
+                    // Volvemos al formulario con los errores y los datos viejos
+                    res.render('users/login', { errorsLogin: errorsArray });
+
+                }
+
+            } else {
+
+                // Convertimos los errores a array y agregamos un error personalizado
+                let errorsArray = errors.array();
+                errorsArray.push({ value: "", msg: "Email no registrado.", param: "email", location: "body" });
+
+                // Volvemos al formulario con los errores y los datos viejos
+                res.render('users/login', { errorsLogin: errorsArray });
+
+            }
+
+        } else {   // Hay errores, volvemos al formulario
+
+            // Volvemos al formulario con los errores y los datos viejos
+            res.render('users/login', { errorsLogin: errors.array(), oldLogin: req.body });
+
+        }
 
     }
 

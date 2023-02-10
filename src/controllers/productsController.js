@@ -63,7 +63,7 @@ let productsController = {
             productsNew.push(newProduct);
 
             // Sobreescribir JSON con producto agregado
-            fs.writeFileSync(productsFilePath, JSON.stringify(productsNew));
+            fs.writeFileSync(productsFilePath, JSON.stringify(productsNew, null, ' '));
 
             // Redireccionamos al detalle del producto
             res.redirect('/products/detail/' + id);
@@ -123,7 +123,7 @@ let productsController = {
                 }
 
                 // Sobreescribir JSON con producto editado
-                fs.writeFileSync(productsFilePath, JSON.stringify(newProducts));
+                fs.writeFileSync(productsFilePath, JSON.stringify(newProducts, null, ' '));
 
             } else {
 
@@ -140,7 +140,7 @@ let productsController = {
                 }
 
                 // Sobreescribir JSON con producto editado
-                fs.writeFileSync(productsFilePath, JSON.stringify(newProducts));
+                fs.writeFileSync(productsFilePath, JSON.stringify(newProducts, null, ' '));
 
             }
 
@@ -184,7 +184,7 @@ let productsController = {
         let productsNew = products.filter(product => product.id != req.params.id);
 
         // Sobreescribir JSON sin el producto
-        fs.writeFileSync(productsFilePath, JSON.stringify(productsNew));
+        fs.writeFileSync(productsFilePath, JSON.stringify(productsNew, null, ' '));
 
         // Redireccionar a productos
         res.redirect('/products');
