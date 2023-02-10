@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <%- include('../partials/head.ejs') %>
+    <title>Vivero Federal: Login</title>
+    <link rel="stylesheet" href="/css/users/profile.css">
+</head>
+
+<body>
+
+    <%- include('../partials/header.ejs') %>
+
+    <main>
+
+        <section class="profile">
+
+            <h3 class="section-title">Mi perfil</h3>
+
+            <div class="profile">
+
+                <!-- Avatar -->
+                <div class="image">
+                    <img src="/images/users/<%= user.image %>" alt="Avatar del usuario">
+                </div>
+
+                <!-- Campos -->
+                <div class="data">
+                    <div class="field">
+                        <p class="title">Nombre: </p>
+                        <p class="value"><%= user.firstName + ' ' + user.lastName %></p>
+                    </div>
+                    <div class="field">
+                        <p class="title">Email: </p>
+                        <p class="value"><%= user.email %></p>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <%- include('../partials/footer.ejs') %>
+
+</body>
+
+</html>
