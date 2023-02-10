@@ -7,6 +7,10 @@ const path = require('path');
 /* Importamos módulos de ruteo */
 const usersController = require('../controllers/usersController'); 
 
+/* Importamos middlewares de chequeo de sesión */
+const authMiddleware = require('../middlewares/authMiddleware');
+const guestMiddleware = require('../middlewares/guestMiddleware');
+
 /* Importamos y configuramos las validaciones */
 const { body } = require('express-validator');
 
@@ -60,9 +64,15 @@ const uploadFile = multer({ storage: storage });
 /* Creamos el módulo y definimos las rutas para main */
 let router = express.Router();
 
-router.get('/login', usersController.index);
-router.post('/register', uploadFile.single('avatar'), registerForm, usersController.register);
+// Login
+router.get('/login', authMiddleware, usersController.index);
 router.post('/login', loginForm, usersController.login);
-router.get('/profile', usersController.profile);
+
+// Registro
+router.post('/register', uploadFile.single('avatar'), registerForm, usersController.register);
+router.get('/profile', guestMiddleware, usersController.profile);
+
+// Cerrar sesión
+router.post('/logout', usersController.logout);
 
 module.exports = router;

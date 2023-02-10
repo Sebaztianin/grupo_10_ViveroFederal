@@ -37,6 +37,7 @@ main {
 main section {
     max-width: 1280px;
     width: 100%;
+    text-align: center;
 }
 
 main h3.section-title {
@@ -96,6 +97,28 @@ main section.profile div.profile div.data div.field p.title {
     font-weight: bold;
 }
 
+main section.profile button {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    width: 90%;
+    color: #3C6255;
+    background-color: #CCD6A6;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.5s;
+}
+
+main section.profile button:hover {
+    filter: brightness(85%);
+}
+
+main section.profile button:active {
+    top: 2px;
+}
 
 
 /* Celus más grandes */

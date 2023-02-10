@@ -37,8 +37,11 @@ let usersController = {
             // Agregar usuario a la BD
             User.create(newUser);
 
+            // Seteamos el usuario de la sesión
+            req.session.userLogged = userToLogin
+
             // Llevamos al usuario a su perfil
-            res.render('users/profile', {user: userToLogin});
+            res.redirect('/users/profile');
 
         } else {   // Hay errores, volvemos al formulario
 
@@ -73,8 +76,11 @@ let usersController = {
                 // Validamos contraseña
                 if (bcrypt.compareSync(req.body.password, userToLogin.password)) {
 
+                    // Seteamos el usuario de la sesión
+                    req.session.userLogged = userToLogin
+
                     // Llevamos al usuario a su perfil
-                    res.render('users/profile', {user: userToLogin});
+                    res.redirect('/users/profile');
 
                 } else {
 
@@ -107,8 +113,13 @@ let usersController = {
 
     },
 
-    profile: function(req, res) {
-        res.render('users/profile');
+    logout: function (req, res) {
+        req.session.destroy();
+        res.redirect('/');
+    },
+
+    profile: function (req, res) {
+        res.render('users/profile', { user: req.session.userLogged });
     }
 
 };
