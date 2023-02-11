@@ -82,6 +82,9 @@ let usersController = {
                     // Seteamos el usuario de la sesión
                     req.session.userLogged = userToLogin
 
+                    // Seteamos el usuario en la cookie si lo requiere
+                    if (req.body.remember) {res.cookie('userLogged', userToLogin, {maxAge: 1000 * 60 * 60 * 24 * 30});}
+
                     // Llevamos al usuario a su perfil
                     res.redirect('/users/profile');
 
@@ -117,6 +120,7 @@ let usersController = {
     },
 
     logout: function (req, res) {
+        res.clearCookie('userLogged');
         req.session.destroy();
         res.redirect('/');
     },
