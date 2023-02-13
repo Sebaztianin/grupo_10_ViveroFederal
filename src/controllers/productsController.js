@@ -2,6 +2,9 @@
 const fs = require('fs');
 const path = require('path');
 
+/* Recuperamos el modelo de producto */
+const Product = require('../models/Product');
+
 /* Creamos el path de productos y recuperamos el JSON parseado en products */
 const productsFilePath = path.join(__dirname, '../data/products.json');
 const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
@@ -26,7 +29,7 @@ let productsController = {
         res.render('products/productDetail', { product: product, toThousand: toThousand });
     },
 
-    // Carrtito
+    // Carrito
     cart: function (req, res) {
         res.render('products/productCart');
     },
@@ -45,28 +48,21 @@ let productsController = {
         // Consultamos si no existen errores
         if (errors.isEmpty()) {   // No hay errores, continuamos...
 
-            // Obtener id
-            let id = products[products.length - 1].id + 1;
-            let newProduct = {};
+            // Creamos nuevo producto con los datos del formulario
+            let newProduct = {
+                name: req.body.name,
+                description: req.body.description,
+                price: req.body.price,
+                discount: req.body.discount,
+                category: req.body.category,
+                image: req.file.filename
+            };
 
-            // Agregar datos del producto a la variable
-            newProduct.id = id;
-            newProduct.name = req.body.name;
-            newProduct.description = req.body.description;
-            newProduct.price = req.body.price;
-            newProduct.discount = req.body.discount;
-            newProduct.category = req.body.category;
-            newProduct.image = req.file.filename;
-
-            // Agregar producto a la lista de productos
-            let productsNew = products;
-            productsNew.push(newProduct);
-
-            // Sobreescribir JSON con producto agregado
-            fs.writeFileSync(productsFilePath, JSON.stringify(productsNew, null, ' '));
+            // Agregar producto a la BD
+            let createdProduct = Product.create(newProduct);
 
             // Redireccionamos al detalle del producto
-            res.redirect('/products/detail/' + id);
+            res.redirect('/products/detail/' + createdProduct.id);
 
         } else {   // Hay errores, volvemos al formulario
 
@@ -102,52 +98,53 @@ let productsController = {
             // Validar si hay una imagen seleccionada
             if (req.file) {
 
-                // Encontrar objeto en array y actualizar sus datos.
-                let newProducts = products;
-                let imageOld = '';
-                for (i = 0; i < newProducts.length; i++) {
-                    if (newProducts[i].id == req.params.id) {
-                        newProducts[i].name = req.body.name;
-                        newProducts[i].description = req.body.description;
-                        newProducts[i].price = req.body.price;
-                        newProducts[i].discount = req.body.discount;
-                        newProducts[i].category = req.body.category;
-                        imageOld = newProducts[i].image;    // Obtengo nombre de imagen vieja para eliminarla luego
-                        newProducts[i].image = req.file.filename;
-                    }
+                // Obtengo nombre de imagen vieja para eliminarla
+                let imageOld = Product.findByPk(req.params.id).image;
+
+                // Crear objeto editado
+                let editedProduct = {
+                    id: parseInt(req.params.id), // Se utiliza parseInt para convertir a entero el :id que la ruta pasa como String
+                    name: req.body.name,
+                    description: req.body.description,
+                    price: req.body.price,
+                    discount: req.body.discount,
+                    category: req.body.category,
+                    image: req.file.filename
                 }
+
+                // Actualizo producto
+                Product.edit(editedProduct);
 
                 // Validar si imagen existe y eliminarla (unlink)
                 if (fs.existsSync(path.join(__dirname, '../../public/images/products/', imageOld))) {
                     fs.unlinkSync(path.join(__dirname, '../../public/images/products/', imageOld));
                 }
 
-                // Sobreescribir JSON con producto editado
-                fs.writeFileSync(productsFilePath, JSON.stringify(newProducts, null, ' '));
-
             } else {
 
-                // Encontrar objeto en array y actualizar sus datos
-                let newProducts = products;
-                for (i = 0; i < newProducts.length; i++) {
-                    if (newProducts[i].id == req.params.id) {
-                        newProducts[i].name = req.body.name;
-                        newProducts[i].description = req.body.description;
-                        newProducts[i].price = req.body.price;
-                        newProducts[i].discount = req.body.discount;
-                        newProducts[i].category = req.body.category;
-                    }
+                // Obtengo nombre de imagen vieja para mantener el dato, ya que esta no se cambió
+                let imageOld = Product.findByPk(req.params.id).image;
+
+                // Crear objeto editado
+                let editedProduct = {
+                    id: parseInt(req.params.id), // Se utiliza parseInt para convertir a entero el :id que la ruta pasa como String
+                    name: req.body.name,
+                    description: req.body.description,
+                    price: req.body.price,
+                    discount: req.body.discount,
+                    category: req.body.category,
+                    image: imageOld
                 }
 
-                // Sobreescribir JSON con producto editado
-                fs.writeFileSync(productsFilePath, JSON.stringify(newProducts, null, ' '));
+                // Actualizo producto
+                Product.edit(editedProduct);
 
             }
 
             // Redireccionamos al detalle del producto
             res.redirect('/products/detail/' + req.params.id);
 
-        } else {// Hay errores, volvemos al formulario
+        } else { // Hay errores, volvemos al formulario
 
             // Eliminamos archivo mal cargado si es que se seleccionó un archivo en el formulario y existe tal archivo
             if (req.file) {
@@ -168,23 +165,15 @@ let productsController = {
     destroy: function (req, res) {
 
         // Obtener nombre de la imagen
-        let imageName;
-        for (i = 0; i < products.length; i++) {
-            if (products[i].id == req.params.id) {
-                imageName = products[i].image;
-            }
-        }
+        let imageName = Product.findByPk(req.params.id).image;
 
         // Validar si imagen existe y eliminarla (unlink)
         if (fs.existsSync(path.join(__dirname, '../../public/images/products/', imageName))) {
             fs.unlinkSync(path.join(__dirname, '../../public/images/products/', imageName));
         }
 
-        // Sacar producto del array
-        let productsNew = products.filter(product => product.id != req.params.id);
-
-        // Sobreescribir JSON sin el producto
-        fs.writeFileSync(productsFilePath, JSON.stringify(productsNew, null, ' '));
+        // Eliminar producto
+        Product.delete(req.params.id);
 
         // Redireccionar a productos
         res.redirect('/products');
