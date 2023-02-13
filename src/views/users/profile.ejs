@@ -21,18 +21,18 @@
 
                 <!-- Avatar -->
                 <div class="image">
-                    <img src="/images/users/<%= user.image %>" alt="Avatar del usuario">
+                    <img src="/images/users/<%= locals.userLogged.image %>" alt="Avatar del usuario">
                 </div>
 
                 <!-- Campos -->
                 <div class="data">
                     <div class="field">
                         <p class="title">Nombre: </p>
-                        <p class="value"><%= user.firstName + ' ' + user.lastName %></p>
+                        <p class="value"><%= locals.userLogged.firstName + ' ' + locals.userLogged.lastName %></p>
                     </div>
                     <div class="field">
                         <p class="title">Email: </p>
-                        <p class="value"><%= user.email %></p>
+                        <p class="value"><%= locals.userLogged.email %></p>
                     </div>
                 </div>
 
