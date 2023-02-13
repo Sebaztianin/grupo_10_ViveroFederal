@@ -10,6 +10,7 @@ const usersController = require('../controllers/usersController');
 /* Importamos middlewares de chequeo de sesión */
 const authMiddleware = require('../middlewares/authMiddleware');
 const guestMiddleware = require('../middlewares/guestMiddleware');
+const adminAuthMiddleware = require('../middlewares/adminAuthMiddleware');
 
 /* Importamos y configuramos las validaciones */
 const { body } = require('express-validator');
@@ -74,5 +75,8 @@ router.get('/profile', guestMiddleware, usersController.profile);
 
 // Cerrar sesión
 router.post('/logout', usersController.logout);
+
+// Panel de usuarios
+router.get('/panel', adminAuthMiddleware, usersController.panel);
 
 module.exports = router;

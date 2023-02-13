@@ -113,6 +113,8 @@
                     <p class="line"></p>
 
                     <!-- Formulario de edición/eliminación -->
+                    <% if(locals.userLogged && locals.userLogged.category == 'admin') { %>
+
                     <form class="edit" action="/products/<%= product.id %>?_method=DELETE" method="POST">
                         <!-- Editar -->
                         <a class="edit-product" href="/products/<%= product.id %>/editProduct">Editar el
@@ -123,6 +125,7 @@
 
                     <p class="line"></p>
 
+                    <% } %>
 
                     <!-- Compartir -->
                     <div class="share">

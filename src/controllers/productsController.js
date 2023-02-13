@@ -5,10 +5,6 @@ const path = require('path');
 /* Recuperamos el modelo de producto */
 const Product = require('../models/Product');
 
-/* Creamos el path de productos y recuperamos el JSON parseado en products */
-const productsFilePath = path.join(__dirname, '../data/products.json');
-const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
-
 /* Importamos las validaciones */
 const { validationResult } = require('express-validator');
 
@@ -20,12 +16,13 @@ let productsController = {
 
     // Listado de productos
     index: function (req, res) {
+        let products = Product.findAll();
         res.render('products/products', { products: products, toThousand: toThousand });
     },
 
     // Detalle de productos
     detail: function (req, res) {
-        let product = products.find(product => product.id == req.params.id);
+        let product = Product.findByPk(req.params.id);
         res.render('products/productDetail', { product: product, toThousand: toThousand });
     },
 
@@ -82,7 +79,7 @@ let productsController = {
 
     // Formulario de edición de producto
     edit: function (req, res) {
-        let product = products.find(product => product.id == req.params.id);
+        let product = Product.findByPk(req.params.id);
         res.render('products/editProduct', {product: product, toThousand: toThousand});
     },
 

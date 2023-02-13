@@ -1,0 +1,99 @@
+/* Global settings */
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Roboto', sans-serif;
+    color: #3C6255;
+    background-color: #FFFBE9;
+    min-height: 100vh;
+}
+
+
+/* Eliminamos colores en los links visitados */
+
+main a:visited {
+    color: #3C6255;
+}
+
+
+/* Main */
+
+main {
+    margin: auto;
+    margin-top: 165px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main section {
+    max-width: 1280px;
+    width: 100%;
+    text-align: center;
+}
+
+main h3.section-title {
+    margin: 10px;
+    margin-block: 25px;
+    text-align: center;
+}
+
+main h3.section-title:before {
+    content: "";
+    display: inline-block;
+    border-top: 1px solid #3C6255;
+    width: 20%;
+    margin: 8px;
+}
+
+main h3.section-title:after {
+    content: "";
+    display: inline-block;
+    border-top: 1px solid #3C6255;
+    width: 20%;
+    margin: 8px;
+}
+
+
+/* Perfil */
+
+main section.profile div.list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 40px;
+}
+
+
+
+/* Celus más grandes */
+
+@media (min-width: 481px) {}
+
+
+/* Tablets y netbooks */
+
+@media (min-width: 769px) {
+
+}
+
+
+/* Notebooks*/
+
+@media (min-width: 1024px) {
+
+    /* Main */
+    main {
+        margin-top: 115px;
+    }
+
+}

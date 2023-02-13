@@ -127,6 +127,10 @@ let usersController = {
 
     profile: function (req, res) {
         res.render('users/profile');
+    },
+
+    panel: function (req, res) {
+        res.render('users/panel', );
     }
 
 };
