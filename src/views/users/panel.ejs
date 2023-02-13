@@ -17,9 +17,22 @@
 
             <h3 class="section-title">Listado de usuarios</h3>
 
+            <!-- Lista de usuarios -->
             <div class="list">
 
+                <% for (i = 0; i < users.length; i++) { %>
 
+                    <article>
+
+                        <!-- Nombre y correo del usuario -->
+                        <p class="user"><%= users[i].firstName + ' ' + users[i].lastName + ' - ' + users[i].email %></p>
+
+                        <!-- Botón de editar -->
+                        <a href="/users/editCategory/<%= users[i].id %>"><i class="fas fa-edit"></i></a>
+
+                    </article>
+
+                <% } %>
 
             </div>
 

@@ -130,7 +130,13 @@ let usersController = {
     },
 
     panel: function (req, res) {
-        res.render('users/panel', );
+        let users = User.findAll().filter(user => user.email != 'admin@gmail.com'); // Filtro el admin principal para que no sea editable
+        res.render('users/panel', {users: users});
+    },
+
+    editCategory: function (req, res) {
+        let user = User.findByPk(req.params.id); 
+        res.render('users/editCategory', {user: user});
     }
 
 };

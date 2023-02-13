@@ -78,5 +78,6 @@ router.post('/logout', usersController.logout);
 
 // Panel de usuarios
 router.get('/panel', adminAuthMiddleware, usersController.panel);
+router.get('/editCategory/:id', adminAuthMiddleware, usersController.editCategory);
 
 module.exports = router;
