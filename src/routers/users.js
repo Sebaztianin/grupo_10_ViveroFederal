@@ -5,7 +5,7 @@ const app = express();
 const path = require('path');
 
 /* Importamos módulos de ruteo */
-const usersController = require('../controllers/usersController'); 
+const usersController = require('../controllers/usersController');
 
 /* Importamos middlewares de chequeo de sesión */
 const authMiddleware = require('../middlewares/authMiddleware');
@@ -19,11 +19,11 @@ let registerForm = [
 	body('firstName').notEmpty().withMessage('El nombre no puede estar vacío.').bail()
 		.isLength({ min: 2 }).withMessage('El nombre no puede tener un largo menor a 2.'),
 	body('lastName').notEmpty().withMessage('El apellido no puede estar vacío.').bail()
-    .isLength({ min: 2 }).withMessage('El apellido no puede tener un largo menor a 2.'),
+		.isLength({ min: 2 }).withMessage('El apellido no puede tener un largo menor a 2.'),
 	body('email').notEmpty().withMessage('El email no puede estar vacío.').bail()
 		.isEmail().withMessage('Ingrese un correo válido.'),
-    body('password').notEmpty().withMessage('Debe ingresar una contraseña.').bail()
-    .isLength({ min: 8 }).withMessage('La contraseña debe contener por lo menos 8 caracteres.'),
+	body('password').notEmpty().withMessage('Debe ingresar una contraseña.').bail()
+		.isLength({ min: 8 }).withMessage('La contraseña debe contener por lo menos 8 caracteres.'),
 	body('passwordConfirmation').custom((value, { req }) => {
 		if (value != req.body.password) {
 			throw new Error('Las contraseñas no coinciden.');
@@ -31,10 +31,10 @@ let registerForm = [
 		return true;
 	}),
 	body('avatar').custom((value, { req }) => {
-		if (!req.file) {
-			throw new Error('Se requiere una imagen.');
-		} else if (path.extname(req.file.filename) != '.jpg') {
-			throw new Error('Se requiere un archivo de extensión .jpg.');
+		if (req.file) {
+			if (path.extname(req.file.filename) != '.jpg') {
+				throw new Error('Se requiere un archivo de extensión .jpg.');
+			}
 		}
 		return true;
 	})
@@ -44,7 +44,7 @@ let registerForm = [
 let loginForm = [
 	body('email').notEmpty().withMessage('El email no puede estar vacío.').bail()
 		.isEmail().withMessage('Ingrese un correo válido.'),
-    body('password').notEmpty().withMessage('Debe ingresar una contraseña.')
+	body('password').notEmpty().withMessage('Debe ingresar una contraseña.')
 ];
 
 /* Importamos y configuramos Multer para las imágenes */

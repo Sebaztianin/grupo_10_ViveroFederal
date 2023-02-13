@@ -31,7 +31,7 @@ let usersController = {
                 email: req.body.email,
                 category: 'cliente',
                 password: bcrypt.hashSync(req.body.password, 10),
-                image: req.file.filename
+                image: req.file ? req.file.filename : 'avatar.jpg'
             };
 
             // Agregar usuario a la BD
