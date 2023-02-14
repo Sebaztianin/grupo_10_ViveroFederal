@@ -41,6 +41,14 @@ let registerForm = [
 	})
 ];
 
+/* Validaciones del formulario de edición */
+let editForm = [
+	body('firstName').notEmpty().withMessage('El nombre no puede estar vacío.').bail()
+		.isLength({ min: 2 }).withMessage('El nombre no puede tener un largo menor a 2.'),
+	body('lastName').notEmpty().withMessage('El apellido no puede estar vacío.').bail()
+		.isLength({ min: 2 }).withMessage('El apellido no puede tener un largo menor a 2.')
+];
+
 /* Validaciones del formulario de login */
 let loginForm = [
 	body('email').notEmpty().withMessage('El email no puede estar vacío.').bail()
@@ -77,6 +85,10 @@ router.post('/login', loginForm, usersController.login);
 // Registro
 router.post('/register', uploadFile.single('avatar'), registerForm, usersController.register);
 router.get('/profile', guestMiddleware, usersController.profile);
+
+// Edición 
+router.put('/editProfile/:id', editForm, usersController.updateProfile);
+router.get('/editProfile/:id', guestMiddleware, usersController.editProfile);
 
 // Cerrar sesión
 router.post('/logout', usersController.logout);

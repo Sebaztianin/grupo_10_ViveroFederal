@@ -167,6 +167,48 @@ let usersController = {
 
         }
 
+    },
+
+    editProfile: function (req, res) {
+        let user = User.findByPk(req.params.id);
+        res.render('users/editProfile', { user: user });
+    },
+
+    updateProfile: function (req, res) {
+
+        // Recuperamos resultados de la validación
+        let errors = validationResult(req);
+
+        // Consultamos si no existen errores
+        if (errors.isEmpty()) {   // No hay errores, continuamos...
+
+            // Obtengo el usuario
+            let editedUser = User.findByPk(req.params.id);
+
+            // Edito el usuario
+            editedUser.firstName = req.body.firstName;
+            editedUser.lastName = req.body.lastName;
+
+            // Actualizo usuario
+            User.edit(editedUser);
+
+            // Actualizamos dato de cookie
+            req.session.userLogged = editedUser
+
+            // Si hay una cookie, actualizarla también
+            if (req.cookies.userLogged) { res.cookie('userLogged', editedUser, { maxAge: 1000 * 60 * 60 * 24 * 30 }); }
+
+            // Redireccionamos al panel
+            res.redirect('/users/profile');
+
+        } else { // Hay errores, volvemos al formulario
+
+            // Volvemos al formulario con los errores y los datos viejos
+            let user = User.findByPk(req.params.id);
+            res.render('users/editProfile', { errors: errors.array(), old: req.body, user: user });
+
+        }
+
     }
 
 };

@@ -37,7 +37,6 @@ main {
 main section {
     max-width: 1280px;
     width: 100%;
-    text-align: center;
 }
 
 main h3.section-title {
@@ -63,73 +62,60 @@ main h3.section-title:after {
 }
 
 
-/* Perfil */
+/* Formulario */
 
-main section.profile div.profile {
+main section.edit-user form.edit-user {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: 40px;
-}
-
-main section.profile div.profile div.image {
-    max-width: 30%;
-}
-
-main section.profile div.profile div.image img {
-    width: 100%;
-}
-
-main section.profile div.profile div.data {
-    width: max-content;
-}
-
-main section.profile div.profile div.data div.field {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    margin: 20px;
-}
-
-main section.profile div.profile div.data div.field p.title {
-    margin-right: 15px;
-    font-weight: bold;
-}
-
-main section.profile div.profile div.data div.field a {
-    font-family: 'Roboto', sans-serif;
-    font-size: 14px;
-    font-weight: bold;
-    text-decoration: none;
-    border: none;
-    border-radius: 5px;
-    padding: 10px;
-    width: 100%;
-    color: #3C6255;
-    background-color: #CCD6A6;
-    cursor: pointer;
-    position: relative;
-    transition: all 0.5s;
-}
-
-main section.profile div.profile div.data div.field a:hover {
-    filter: brightness(85%);
-}
-
-main section.profile div.profile div.data div.field a:active {
-    top: 2px;
-}
-
-main section.profile button {
-    font-family: 'Roboto', sans-serif;
-    font-size: 14px;
-    font-weight: bold;
-    border: none;
-    border-radius: 5px;
-    padding: 10px;
-    margin-bottom: 30px;
+    flex-direction: column;
+    align-items: center;
     width: 90%;
+    max-width: 700px;
+    margin: auto;
+}
+
+main section.edit-user form.edit-user div.data {
+    background-color: #DAE2B6;
+    border-radius: 10px;
+    padding: 15px;
+    width: 100%;
+}
+
+main section.edit-user form.edit-user div.data select {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border: #3C6255 solid 2px;
+    border-radius: 5px;
+    padding: 3px;
+    margin-inline: 3px;
+    font-weight: bold;
+    color: #3C6255;
+}
+
+main section.edit-user form.edit-user div.data input {
+    padding: 5px;
+    margin: 5px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Roboto', sans-serif;
+}
+
+main section.edit-user form.edit-user div.data textarea {
+    height: 150px;
+}
+
+main section.edit-user form.edit-user button {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 15px 0px 30px;
+    width: 100%;
     color: #3C6255;
     background-color: #CCD6A6;
     cursor: pointer;
@@ -137,12 +123,25 @@ main section.profile button {
     transition: all 0.5s;
 }
 
-main section.profile button:hover {
+main section.edit-user form.edit-user button:hover {
     filter: brightness(85%);
 }
 
-main section.profile button:active {
+main section.edit-user form.edit-user button:active {
     top: 2px;
+}
+
+main section.edit-user form.edit-user div.errors {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-block: 20px 10px;
+}
+
+main section.edit-user form.edit-user div.errors p.error {
+    margin: 3px 20px;
+    font-size: 14px;
+    color: #a84d36;
 }
 
 
@@ -153,16 +152,14 @@ main section.profile button:active {
 
 /* Tablets y netbooks */
 
-@media (min-width: 769px) {
+@media (min-width: 769px) {}
 
-}
-
-
-/* Notebooks*/
+/* Notebooks */
 
 @media (min-width: 1024px) {
 
     /* Main */
+
     main {
         margin-top: 115px;
     }
