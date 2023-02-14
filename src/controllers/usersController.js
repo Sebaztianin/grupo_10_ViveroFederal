@@ -83,7 +83,7 @@ let usersController = {
                     req.session.userLogged = userToLogin
 
                     // Seteamos el usuario en la cookie si lo requiere
-                    if (req.body.remember) {res.cookie('userLogged', userToLogin, {maxAge: 1000 * 60 * 60 * 24 * 30});}
+                    if (req.body.remember) { res.cookie('userLogged', userToLogin, { maxAge: 1000 * 60 * 60 * 24 * 30 }); }
 
                     // Llevamos al usuario a su perfil
                     res.redirect('/users/profile');
@@ -131,12 +131,42 @@ let usersController = {
 
     panel: function (req, res) {
         let users = User.findAll().filter(user => user.email != 'admin@gmail.com'); // Filtro el admin principal para que no sea editable
-        res.render('users/panel', {users: users});
+        res.render('users/panel', { users: users });
     },
 
     editCategory: function (req, res) {
-        let user = User.findByPk(req.params.id); 
-        res.render('users/editCategory', {user: user});
+        let user = User.findByPk(req.params.id);
+        res.render('users/editCategory', { user: user });
+    },
+
+    updateCategory: function (req, res) {
+
+        // Recuperamos resultados de la validación
+        let errors = validationResult(req);
+
+        // Consultamos si no existen errores
+        if (errors.isEmpty()) {   // No hay errores, continuamos...
+
+            // Obtengo el usuario
+            let editedUser = User.findByPk(req.params.id);
+
+            // Edito el usuario
+            editedUser.category = req.body.category;
+
+            // Actualizo usuario
+            User.edit(editedUser);
+
+            // Redireccionamos al panel
+            res.redirect('/users/panel');
+
+        } else { // Hay errores, volvemos al formulario
+
+            // Volvemos al formulario con los errores y los datos viejos
+            let user = User.findByPk(req.params.id);
+            res.render('users/editCategory', { errors: errors.array(), old: req.body, user: user });
+
+        }
+
     }
 
 };

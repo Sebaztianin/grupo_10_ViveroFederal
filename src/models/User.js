@@ -54,8 +54,11 @@ const User = {
     },
 
     edit: function(userData) {
-        // Crear método luego
-        return true;
+        let allUsers = this.findAll();
+        let userIndex = allUsers.findIndex(user => user.id == userData.id);
+        allUsers[userIndex] = userData;
+        fs.writeFileSync(this.fileName, JSON.stringify(allUsers, null, ' '));
+        return userData;
     }
 
 }

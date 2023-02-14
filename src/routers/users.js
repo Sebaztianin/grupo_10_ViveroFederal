@@ -48,6 +48,11 @@ let loginForm = [
 	body('password').notEmpty().withMessage('Debe ingresar una contraseña.')
 ];
 
+/* Validaciones del formulario de categoría */
+let categoryForm = [
+	body('category').notEmpty().withMessage('Debe seleccionar una categoría.')
+];
+
 /* Importamos y configuramos Multer para las imágenes */
 const multer = require('multer');
 
@@ -79,5 +84,6 @@ router.post('/logout', usersController.logout);
 // Panel de usuarios
 router.get('/panel', adminAuthMiddleware, usersController.panel);
 router.get('/editCategory/:id', adminAuthMiddleware, usersController.editCategory);
+router.put('/editCategory/:id', categoryForm, usersController.updateCategory);
 
 module.exports = router;

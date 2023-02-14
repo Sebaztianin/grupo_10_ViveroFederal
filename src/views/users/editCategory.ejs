@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <%- include('../partials/head.ejs') %>
+    <title>Vivero Federal: Editar categoría</title>
+    <link rel="stylesheet" href="/css/users/editCategory.css">
+</head>
+
+<body>
+
+    <%- include('../partials/header.ejs') %>
+
+    <main>
+
+        <section class="edit-user">
+
+            <!-- Título de la sección -->
+            <h3 class="section-title">Editar categoría</h3>
+
+            <!-- Formulario -->
+            <form class="edit-user" action="/users/editCategory/<%= user.id %>?_method=PUT" method="POST">
+
+                <div class="data">
+
+                    <label for="firstName">Nombre del usuario: </label>
+                    <input type="text" name="firstName" id="firstName" placeholder="Ej: Martín" value="<%= (locals.old && old.firstName) ? old.firstName : user.firstName %>" disabled>
+
+                    <label for="lastName">Apellido del usuario: </label>
+                    <input type="text" name="lastName" id="lastName" placeholder="Ej: Fernández" value="<%= (locals.old && old.lastName) ? old.lastName : user.lastName %>" disabled>
+
+                    <label for="email">Correo: </label>
+                    <input type="text" name="email" id="email" value="<%= user.email %>" disabled>
+
+                    <!-- Chequear si se cambió la categoría para mantener el valor tras una validación incorrecta -->
+                    <% let oldCategory;
+                    if (!locals.old || !old.category) {
+                        oldCategory = user.category
+                    } else {
+                        oldCategory = old.category
+                    } %>
+
+                    <label for="category">Categoría: </label>
+                    <select name="category" id="category">
+                        <option value="" disabled>Elige una opción</option>
+                        <option value="admin" <%= oldCategory == 'admin' ? 'selected' : null %>>Admin</option>
+                        <option value="cliente" <%= oldCategory == 'cliente' ? 'selected' : null %>>Cliente</option>
+                    </select>
+
+                </div>
+
+                <!-- Errores -->
+                <div class="errors">
+                    <% if (locals.errors) { %>
+                    <% errors.forEach(error => { %>
+                    <p class="error"><i class="fas fa-exclamation-circle"></i> <%= error.msg %></p>
+                    <% }) %>
+                    <% } %>
+                </div>
+
+                <button type="submit">Editar categoría del usuario</button>
+
+            </form>
+
+        </section>
+
+    </main>
+
+    <%- include('../partials/footer') %>
+
+</body>
+
+</html>

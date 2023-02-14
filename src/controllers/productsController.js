@@ -151,7 +151,7 @@ let productsController = {
             }
 
             // Volvemos al formulario con los errores y los datos viejos
-            let product = products.find(product => product.id == req.params.id);
+            let product = Product.findByPk(req.params.id);
             res.render('products/editProduct', {errors: errors.array(), old: req.body, product: product, toThousand: toThousand});
 
         }
