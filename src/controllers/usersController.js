@@ -30,9 +30,13 @@ let usersController = {
                 lastName: req.body.lastName,
                 email: req.body.email,
                 category: 'cliente',
-                password: bcrypt.hashSync(req.body.password, 10),
-                image: req.file ? req.file.filename : 'avatar.jpg'
+                password: bcrypt.hashSync(req.body.password, 10)
             };
+
+            // Agrego imagen si fue seleccionado un archivo.
+            if (req.file) {
+                newUser.image = req.file.filename;
+            }
 
             // Agregar usuario a la BD
             User.create(newUser);
@@ -182,26 +186,68 @@ let usersController = {
         // Consultamos si no existen errores
         if (errors.isEmpty()) {   // No hay errores, continuamos...
 
-            // Obtengo el usuario
-            let editedUser = User.findByPk(req.params.id);
+            // Validar si hay una imagen seleccionada
+            if (req.file) {
 
-            // Edito el usuario
-            editedUser.firstName = req.body.firstName;
-            editedUser.lastName = req.body.lastName;
+                // Obtengo el usuario, que luego voy a editar
+                let editedUser = User.findByPk(req.params.id);
 
-            // Actualizo usuario
-            User.edit(editedUser);
+                // Obtengo nombre de imagen vieja para eliminarla
+                let imageOld = User.findByPk(req.params.id).image;
 
-            // Actualizamos dato de cookie
-            req.session.userLogged = editedUser
+                // Edito el usuario
+                editedUser.firstName = req.body.firstName;
+                editedUser.lastName = req.body.lastName;
+                editedUser.image = req.file.filename;
 
-            // Si hay una cookie, actualizarla también
-            if (req.cookies.userLogged) { res.cookie('userLogged', editedUser, { maxAge: 1000 * 60 * 60 * 24 * 30 }); }
+                // Actualizo usuario
+                User.edit(editedUser);
 
-            // Redireccionamos al panel
-            res.redirect('/users/profile');
+                // Actualizamos dato de cookie
+                req.session.userLogged = editedUser
+
+                // Si hay una cookie, actualizarla también
+                if (req.cookies.userLogged) { res.cookie('userLogged', editedUser, { maxAge: 1000 * 60 * 60 * 24 * 30 }); }
+
+                // Validar si imagen vieja existe y eliminarla (unlink)
+                if (fs.existsSync(path.join(__dirname, '../../public/images/users/', imageOld))) {
+                    fs.unlinkSync(path.join(__dirname, '../../public/images/users/', imageOld));
+                }
+
+                // Redireccionamos al perfil
+                res.redirect('/users/profile');
+
+            } else {
+
+                // Obtengo el usuario
+                let editedUser = User.findByPk(req.params.id);
+
+                // Edito el usuario
+                editedUser.firstName = req.body.firstName;
+                editedUser.lastName = req.body.lastName;
+
+                // Actualizo usuario
+                User.edit(editedUser);
+
+                // Actualizamos dato de cookie
+                req.session.userLogged = editedUser
+
+                // Si hay una cookie, actualizarla también
+                if (req.cookies.userLogged) { res.cookie('userLogged', editedUser, { maxAge: 1000 * 60 * 60 * 24 * 30 }); }
+
+                // Redireccionamos al panel
+                res.redirect('/users/profile');
+
+            }
 
         } else { // Hay errores, volvemos al formulario
+
+            // Eliminamos archivo mal cargado si es que se seleccionó un archivo en el formulario y existe tal archivo
+            if (req.file) {
+                if (fs.existsSync(path.join(__dirname, '../../public/images/users/', req.file.filename))) {
+                    fs.unlinkSync(path.join(__dirname, '../../public/images/users/', req.file.filename));
+                }
+            }
 
             // Volvemos al formulario con los errores y los datos viejos
             let user = User.findByPk(req.params.id);

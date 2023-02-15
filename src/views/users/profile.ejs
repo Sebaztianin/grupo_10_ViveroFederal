@@ -21,7 +21,7 @@
 
                 <!-- Avatar -->
                 <div class="image">
-                    <img src="/images/users/<%= locals.userLogged.image %>" alt="Avatar del usuario">
+                    <img src="/images/users/<%= locals.userLogged.image ? locals.userLogged.image : 'avatar.jpg' %>" alt="Avatar del usuario">
                 </div>
 
                 <!-- Campos -->

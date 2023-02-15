@@ -5,8 +5,7 @@
   "lastName": "Braga",
   "email": "sebabraga01@gmail.com",
   "password": "$2a$10$n2DQbKf0uIvB/RYH6.WY/.o6e3scnGHxGRqFS21DjitRr58AChWYq",
-  "category": "admin",
-  "image": "avatar.jpg"
+  "category": "admin"
  },
  {
   "id": 2,
@@ -14,8 +13,7 @@
   "lastName": "Quispe",
   "email": "quispeluzcami@gmail.com",
   "password": "$2a$10$n2DQbKf0uIvB/RYH6.WY/.o6e3scnGHxGRqFS21DjitRr58AChWYq",
-  "category": "cliente",
-  "image": "avatar.jpg"
+  "category": "cliente"
  },
  {
   "id": 3,
@@ -23,8 +21,7 @@
   "lastName": "Buscalia",
   "email": "buscaliag@gmail.com",
   "password": "$2a$10$n2DQbKf0uIvB/RYH6.WY/.o6e3scnGHxGRqFS21DjitRr58AChWYq",
-  "category": "cliente",
-  "image": "avatar.jpg"
+  "category": "cliente"
  },
  {
   "id": 4,
@@ -32,8 +29,7 @@
   "lastName": "Becerine",
   "email": "valentinobecerine@gmail.com",
   "password": "$2a$10$n2DQbKf0uIvB/RYH6.WY/.o6e3scnGHxGRqFS21DjitRr58AChWYq",
-  "category": "cliente",
-  "image": "avatar.jpg"
+  "category": "cliente"
  },
  {
   "id": 5,
@@ -42,7 +38,7 @@
   "email": "admin@gmail.com",
   "password": "$2a$10$n2DQbKf0uIvB/RYH6.WY/.o6e3scnGHxGRqFS21DjitRr58AChWYq",
   "category": "admin",
-  "image": "avatar.jpg"
+  "image": "img-admin-1676500048292.jpg"
  },
  {
   "id": 6,

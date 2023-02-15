@@ -112,7 +112,7 @@ let productsController = {
                 // Actualizo producto
                 Product.edit(editedProduct);
 
-                // Validar si imagen existe y eliminarla (unlink)
+                // Validar si imagen vieja existe y eliminarla (unlink)
                 if (fs.existsSync(path.join(__dirname, '../../public/images/products/', imageOld))) {
                     fs.unlinkSync(path.join(__dirname, '../../public/images/products/', imageOld));
                 }

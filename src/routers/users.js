@@ -11,6 +11,7 @@ const usersController = require('../controllers/usersController');
 const authMiddleware = require('../middlewares/authMiddleware');
 const guestMiddleware = require('../middlewares/guestMiddleware');
 const adminAuthMiddleware = require('../middlewares/adminAuthMiddleware');
+const userAuthMiddleware = require('../middlewares/userAuthMiddleware');
 
 /* Importamos y configuramos las validaciones */
 const { body } = require('express-validator');
@@ -83,12 +84,12 @@ router.get('/login', authMiddleware, usersController.index);
 router.post('/login', loginForm, usersController.login);
 
 // Registro
-router.post('/register', uploadFile.single('avatar'), registerForm, usersController.register);
 router.get('/profile', guestMiddleware, usersController.profile);
+router.post('/register', uploadFile.single('avatar'), registerForm, usersController.register);
 
 // Edición 
-router.put('/editProfile/:id', editForm, usersController.updateProfile);
-router.get('/editProfile/:id', guestMiddleware, usersController.editProfile);
+router.get('/editProfile/:id', userAuthMiddleware, guestMiddleware, usersController.editProfile);
+router.put('/editProfile/:id', uploadFile.single('image'), editForm, usersController.updateProfile);
 
 // Cerrar sesión
 router.post('/logout', usersController.logout);
