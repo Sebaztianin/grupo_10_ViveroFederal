@@ -7,6 +7,9 @@ const path = require('path');
 /* Importamos módulos de ruteo */
 const productsController = require('../controllers/productsController');
 
+/* Importamos middlewares de chequeo de sesión */
+const adminAuthMiddleware = require('../middlewares/adminAuthMiddleware');
+
 /* Importamos y configuramos las validaciones */
 const { body } = require('express-validator');
 
@@ -79,11 +82,11 @@ router.get('/detail/:id', productsController.detail);
 router.get('/productCart', productsController.cart);
 
 // Crear producto
-router.get('/createProduct', productsController.create);
+router.get('/createProduct', adminAuthMiddleware, productsController.create);
 router.post('/', uploadFile.single('image'), validateCreateForm, productsController.store);
 
 // Editar producto
-router.get('/:id/editProduct', productsController.edit);
+router.get('/:id/editProduct', adminAuthMiddleware, productsController.edit);
 router.put('/:id/edit', uploadFile.single('image'), validateEditForm, productsController.update);
 
 // Eliminar producto

@@ -17,20 +17,29 @@
 
                 <h3 class="section-title">Iniciar sesión</h3>
 
-                <form class="login" action="#" method="POST">
+                <form class="login" action="/users/login" method="POST">
 
                     <!-- Campos -->
-                    <input type="text" id="email" name="email" placeholder="Email">
+                    <input type="text" id="email" name="email" placeholder="Email" value="<%= (locals.oldLogin && oldLogin.email) ? oldLogin.email : '' %>">
                     <input type="password" id="password" name="password" placeholder="Contraseña">
 
-                    <div class="remember-me">
-                        <input type="checkbox" id="remember-me">
-                        <label for="remember-me"> Recordarme</label>
+                    <div class="remember">
+                        <input type="checkbox" id="remember" name="remember">
+                        <label for="remember"> Recordarme</label>
+                    </div>
+
+                    <!-- Errores -->
+                    <div class="errors">
+                        <% if (locals.errorsLogin) { %>
+                        <% errorsLogin.forEach(error => { %>
+                        <p class="error"><i class="fas fa-exclamation-circle"></i> <%= error.msg %></p>
+                        <% }) %>
+                        <% } %>
                     </div>
 
                     <!-- Botón -->
                     <button type="submit">Iniciar sesión</button>
-                    <a href="/users/login">
+                    <a href="#">
                         <p>¿Olvidaste tu contraseña?</p>
                     </a>
 
@@ -45,17 +54,17 @@
                 <form class="register" action="/users/register" method="POST" enctype="multipart/form-data">
 
                     <!-- Campos -->
-                    <input type="text" id="firstName" name="firstName" placeholder="Nombre" value="<%= (locals.old && old.firstName) ? old.firstName : '' %>">
-                    <input type="text" id="lastName" name="lastName" placeholder="Apellido" value="<%= (locals.old && old.lastName) ? old.lastName : '' %>">
-                    <input type="text" id="email" name="email" placeholder="Email" value="<%= (locals.old && old.email) ? old.email : '' %>">
-                    <input type="password" id="password" name="password" placeholder="Contraseña" value="<%= (locals.old && old.password) ? old.password : '' %>">
-                    <input type="password" id="passwordConfirmation" name="passwordConfirmation" placeholder="Confirmar contraseña" value="<%= (locals.old && old.passwordConfirmation) ? old.passwordConfirmation : '' %>">
+                    <input type="text" id="firstName" name="firstName" placeholder="Nombre" value="<%= (locals.oldRegister && oldRegister.firstName) ? oldRegister.firstName : '' %>">
+                    <input type="text" id="lastName" name="lastName" placeholder="Apellido" value="<%= (locals.oldRegister && oldRegister.lastName) ? oldRegister.lastName : '' %>">
+                    <input type="text" id="email" name="email" placeholder="Email" value="<%= (locals.oldRegister && oldRegister.email) ? oldRegister.email : '' %>">
+                    <input type="password" id="password" name="password" placeholder="Contraseña" value="<%= (locals.oldRegister && oldRegister.password) ? oldRegister.password : '' %>">
+                    <input type="password" id="passwordConfirmation" name="passwordConfirmation" placeholder="Confirmar contraseña" value="<%= (locals.oldRegister && oldRegister.passwordConfirmation) ? oldRegister.passwordConfirmation : '' %>">
                     <input type="file" id="avatar" name="avatar">
 
                     <!-- Errores -->
                     <div class="errors">
-                        <% if (locals.errors) { %>
-                        <% errors.forEach(error => { %>
+                        <% if (locals.errorsRegister) { %>
+                        <% errorsRegister.forEach(error => { %>
                         <p class="error"><i class="fas fa-exclamation-circle"></i> <%= error.msg %></p>
                         <% }) %>
                         <% } %>

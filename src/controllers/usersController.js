@@ -3,9 +3,8 @@ const fs = require('fs');
 const path = require('path');
 const bcrypt = require('bcryptjs');
 
-/* Creamos el path de usuarios y recuperamos el JSON parseado en users */
-const usersFilePath = path.join(__dirname, '../data/users.json');
-const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
+/* Recuperamos el modelo de usuario */
+const User = require('../models/User');
 
 /* Importamos las validaciones */
 const { validationResult } = require('express-validator');
@@ -21,33 +20,35 @@ let usersController = {
 
         // Recuperamos resultados de la validación
         let errors = validationResult(req);
-        let passwordVerification;
 
         // Consultamos si no existen errores
         if (errors.isEmpty()) {   // No hay errores, continuamos...
 
-            // Obtener id
-            let id = users[users.length - 1].id + 1;
-            let newUser = {};
+            // Creamos nuevo usuario con los datos del form
+            let newUser = {
+                firstName: req.body.firstName,
+                lastName: req.body.lastName,
+                email: req.body.email,
+                category: 'cliente',
+                password: bcrypt.hashSync(req.body.password, 10)
+            };
 
-            // Agregar datos del usuario a la variable
-            newUser.id = id;
-            newUser.firstName = req.body.firstName;
-            newUser.lastName = req.body.lastName;
-            newUser.email = req.body.email;
-            newUser.category = 'cliente';
-            newUser.password = bcrypt.hashSync(req.body.password, 10);
-            newUser.image = req.file.filename;
+            // Agrego imagen si fue seleccionado un archivo.
+            if (req.file) {
+                newUser.image = req.file.filename;
+            }
 
-            // Agregar usuario a la lista de usuarios
-            let usersNew = users;
-            usersNew.push(newUser);
+            // Agregar usuario a la BD
+            User.create(newUser);
 
-            // Sobreescribir JSON con producto agregado
-            fs.writeFileSync(usersFilePath, JSON.stringify(usersNew));
+            // Obtenemos datos del usuario creado
+            let userToLogin = User.findByField('email', req.body.email);
 
-            // Redireccionamos al main (deberíamos redirigir al perfil del usuario)
-            res.redirect('/');
+            // Seteamos el usuario de la sesión
+            req.session.userLogged = userToLogin
+
+            // Llevamos al usuario a su perfil
+            res.redirect('/users/profile');
 
         } else {   // Hay errores, volvemos al formulario
 
@@ -59,7 +60,198 @@ let usersController = {
             }
 
             // Volvemos al formulario con los errores y los datos viejos
-            res.render('users/login', { errors: errors.array(), old: req.body });
+            res.render('users/login', { errorsRegister: errors.array(), oldRegister: req.body });
+
+        }
+
+    },
+
+    login: function (req, res) {
+
+        // Recuperamos resultados de la validación
+        let errors = validationResult(req);
+
+        // Consultamos si no existen errores
+        if (errors.isEmpty()) {   // No hay errores, continuamos...
+
+            // Obtenemos datos del usuario
+            let userToLogin = User.findByField('email', req.body.email);
+
+            // Validamos correo
+            if (userToLogin) {
+
+                // Validamos contraseña
+                if (bcrypt.compareSync(req.body.password, userToLogin.password)) {
+
+                    // Seteamos el usuario de la sesión
+                    req.session.userLogged = userToLogin
+
+                    // Seteamos el usuario en la cookie si lo requiere
+                    if (req.body.remember) { res.cookie('userLogged', userToLogin, { maxAge: 1000 * 60 * 60 * 24 * 30 }); }
+
+                    // Llevamos al usuario a su perfil
+                    res.redirect('/users/profile');
+
+                } else {
+
+                    // Convertimos los errores a array y agregamos un error personalizado
+                    let errorsArray = errors.array();
+                    errorsArray.push({ value: "", msg: "Los datos ingresados son incorrectos.", param: "email", location: "body" });
+
+                    // Volvemos al formulario con los errores y los datos viejos
+                    res.render('users/login', { errorsLogin: errorsArray });
+
+                }
+
+            } else {
+
+                // Convertimos los errores a array y agregamos un error personalizado
+                let errorsArray = errors.array();
+                errorsArray.push({ value: "", msg: "Email no registrado.", param: "email", location: "body" });
+
+                // Volvemos al formulario con los errores y los datos viejos
+                res.render('users/login', { errorsLogin: errorsArray });
+
+            }
+
+        } else {   // Hay errores, volvemos al formulario
+
+            // Volvemos al formulario con los errores y los datos viejos
+            res.render('users/login', { errorsLogin: errors.array(), oldLogin: req.body });
+
+        }
+
+    },
+
+    logout: function (req, res) {
+        res.clearCookie('userLogged');
+        req.session.destroy();
+        res.redirect('/');
+    },
+
+    profile: function (req, res) {
+        res.render('users/profile');
+    },
+
+    panel: function (req, res) {
+        let users = User.findAll().filter(user => user.email != 'admin@gmail.com'); // Filtro el admin principal para que no sea editable
+        res.render('users/panel', { users: users });
+    },
+
+    editCategory: function (req, res) {
+        let user = User.findByPk(req.params.id);
+        res.render('users/editCategory', { user: user });
+    },
+
+    updateCategory: function (req, res) {
+
+        // Recuperamos resultados de la validación
+        let errors = validationResult(req);
+
+        // Consultamos si no existen errores
+        if (errors.isEmpty()) {   // No hay errores, continuamos...
+
+            // Obtengo el usuario
+            let editedUser = User.findByPk(req.params.id);
+
+            // Edito el usuario
+            editedUser.category = req.body.category;
+
+            // Actualizo usuario
+            User.edit(editedUser);
+
+            // Redireccionamos al panel
+            res.redirect('/users/panel');
+
+        } else { // Hay errores, volvemos al formulario
+
+            // Volvemos al formulario con los errores y los datos viejos
+            let user = User.findByPk(req.params.id);
+            res.render('users/editCategory', { errors: errors.array(), old: req.body, user: user });
+
+        }
+
+    },
+
+    editProfile: function (req, res) {
+        let user = User.findByPk(req.params.id);
+        res.render('users/editProfile', { user: user });
+    },
+
+    updateProfile: function (req, res) {
+
+        // Recuperamos resultados de la validación
+        let errors = validationResult(req);
+
+        // Consultamos si no existen errores
+        if (errors.isEmpty()) {   // No hay errores, continuamos...
+
+            // Validar si hay una imagen seleccionada
+            if (req.file) {
+
+                // Obtengo el usuario, que luego voy a editar
+                let editedUser = User.findByPk(req.params.id);
+
+                // Obtengo nombre de imagen vieja para eliminarla
+                let imageOld = User.findByPk(req.params.id).image;
+
+                // Edito el usuario
+                editedUser.firstName = req.body.firstName;
+                editedUser.lastName = req.body.lastName;
+                editedUser.image = req.file.filename;
+
+                // Actualizo usuario
+                User.edit(editedUser);
+
+                // Actualizamos dato de cookie
+                req.session.userLogged = editedUser
+
+                // Si hay una cookie, actualizarla también
+                if (req.cookies.userLogged) { res.cookie('userLogged', editedUser, { maxAge: 1000 * 60 * 60 * 24 * 30 }); }
+
+                // Validar si imagen vieja existe y eliminarla (unlink)
+                if (fs.existsSync(path.join(__dirname, '../../public/images/users/', imageOld))) {
+                    fs.unlinkSync(path.join(__dirname, '../../public/images/users/', imageOld));
+                }
+
+                // Redireccionamos al perfil
+                res.redirect('/users/profile');
+
+            } else {
+
+                // Obtengo el usuario
+                let editedUser = User.findByPk(req.params.id);
+
+                // Edito el usuario
+                editedUser.firstName = req.body.firstName;
+                editedUser.lastName = req.body.lastName;
+
+                // Actualizo usuario
+                User.edit(editedUser);
+
+                // Actualizamos dato de cookie
+                req.session.userLogged = editedUser
+
+                // Si hay una cookie, actualizarla también
+                if (req.cookies.userLogged) { res.cookie('userLogged', editedUser, { maxAge: 1000 * 60 * 60 * 24 * 30 }); }
+
+                // Redireccionamos al panel
+                res.redirect('/users/profile');
+
+            }
+
+        } else { // Hay errores, volvemos al formulario
+
+            // Eliminamos archivo mal cargado si es que se seleccionó un archivo en el formulario y existe tal archivo
+            if (req.file) {
+                if (fs.existsSync(path.join(__dirname, '../../public/images/users/', req.file.filename))) {
+                    fs.unlinkSync(path.join(__dirname, '../../public/images/users/', req.file.filename));
+                }
+            }
+
+            // Volvemos al formulario con los errores y los datos viejos
+            let user = User.findByPk(req.params.id);
+            res.render('users/editProfile', { errors: errors.array(), old: req.body, user: user });
 
         }
 

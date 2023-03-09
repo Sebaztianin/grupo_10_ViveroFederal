@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <%- include('../partials/head.ejs') %>
+    <title>Vivero Federal: Mi perfil</title>
+    <link rel="stylesheet" href="/css/users/profile.css">
+</head>
+
+<body>
+
+    <%- include('../partials/header.ejs') %>
+
+    <main>
+
+        <section class="profile">
+
+            <h3 class="section-title">Mi perfil</h3>
+
+            <div class="profile">
+
+                <!-- Avatar -->
+                <div class="image">
+                    <img src="/images/users/<%= locals.userLogged.image ? locals.userLogged.image : 'avatar.jpg' %>" alt="Avatar del usuario">
+                </div>
+
+                <!-- Campos -->
+                <div class="data">
+                    <div class="field">
+                        <p class="title">Nombre: </p>
+                        <p class="value"><%= locals.userLogged.firstName + ' ' + locals.userLogged.lastName %></p>
+                    </div>
+                    <div class="field">
+                        <p class="title">Email: </p>
+                        <p class="value"><%= locals.userLogged.email %></p>
+                    </div>
+                    <div class="field">
+                        <a href="/users/editProfile/<%= locals.userLogged.id %>">Editar mis datos</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <form action="/users/logout" method="POST">
+
+                <div>
+                    <button type="submit">Cerrar sesión</button>
+                </div>
+
+            </form>
+
+        </section>
+
+    </main>
+
+    <%- include('../partials/footer.ejs') %>
+
+</body>
+
+</html>

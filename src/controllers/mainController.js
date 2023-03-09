@@ -1,14 +1,15 @@
 const fs = require('fs');
 const path = require('path');
 
-const productsFilePath = path.join(__dirname, '../data/products.json');
-const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
+/* Recuperamos el modelo de producto */
+const Product = require('../models/Product');
 
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
 /* Creamos el módulo y exportamos */
 let mainController = {
     index: function(req, res) {
+        let products = Product.findAll();
         res.render('main/index', {products: products, toThousand: toThousand});
     }
 };
