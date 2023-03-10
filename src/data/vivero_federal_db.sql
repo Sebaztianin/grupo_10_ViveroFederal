@@ -1,5 +1,5 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.0 
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
@@ -98,7 +98,8 @@ CREATE TABLE `users` (
   `last_name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `category` varchar(45) NOT NULL
+  `category` varchar(45) NOT NULL,
+  `image` VARCHAR(255) NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
