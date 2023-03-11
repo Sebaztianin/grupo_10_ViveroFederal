@@ -54,8 +54,8 @@
                 <form class="register" action="/users/register" method="POST" enctype="multipart/form-data">
 
                     <!-- Campos -->
-                    <input type="text" id="firstName" name="firstName" placeholder="Nombre" value="<%= (locals.oldRegister && oldRegister.firstName) ? oldRegister.firstName : '' %>">
-                    <input type="text" id="lastName" name="lastName" placeholder="Apellido" value="<%= (locals.oldRegister && oldRegister.lastName) ? oldRegister.lastName : '' %>">
+                    <input type="text" id="first_name" name="first_name" placeholder="Nombre" value="<%= (locals.oldRegister && oldRegister.firstName) ? oldRegister.firstName : '' %>">
+                    <input type="text" id="last_name" name="last_name" placeholder="Apellido" value="<%= (locals.oldRegister && oldRegister.lastName) ? oldRegister.lastName : '' %>">
                     <input type="text" id="email" name="email" placeholder="Email" value="<%= (locals.oldRegister && oldRegister.email) ? oldRegister.email : '' %>">
                     <input type="password" id="password" name="password" placeholder="Contraseña" value="<%= (locals.oldRegister && oldRegister.password) ? oldRegister.password : '' %>">
                     <input type="password" id="passwordConfirmation" name="passwordConfirmation" placeholder="Confirmar contraseña" value="<%= (locals.oldRegister && oldRegister.passwordConfirmation) ? oldRegister.passwordConfirmation : '' %>">

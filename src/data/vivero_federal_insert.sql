@@ -51,11 +51,11 @@ INSERT INTO products(id,name,price,discount,category_id,description,image) VALUE
 
 -- Usuarios
 
-INSERT INTO users(id,first_name,last_name,email,password,category,image) VALUES (1,'Sebastián','Braga','sebabraga01@gmail.com','$2a$10$n2DQbKf0uIvB/RYH6.WY/.o6e3scnGHxGRqFS21DjitRr58AChWYq','1',NULL);
-INSERT INTO users(id,first_name,last_name,email,password,category,image) VALUES (2,'Camila Luz','Quispe','quispeluzcami@gmail.com','$2a$10$n2DQbKf0uIvB/RYH6.WY/.o6e3scnGHxGRqFS21DjitRr58AChWYq','2',NULL);
-INSERT INTO users(id,first_name,last_name,email,password,category,image) VALUES (3,'Gustavo','Buscalia','buscaliag@gmail.com','$2a$10$n2DQbKf0uIvB/RYH6.WY/.o6e3scnGHxGRqFS21DjitRr58AChWYq','2',NULL);
-INSERT INTO users(id,first_name,last_name,email,password,category,image) VALUES (4,'Valentino','Becerine','valentinobecerine@gmail.com','$2a$10$n2DQbKf0uIvB/RYH6.WY/.o6e3scnGHxGRqFS21DjitRr58AChWYq','2',NULL);
-INSERT INTO users(id,first_name,last_name,email,password,category,image) VALUES (5,'Admin','del Sitio','admin@gmail.com','$2a$10$n2DQbKf0uIvB/RYH6.WY/.o6e3scnGHxGRqFS21DjitRr58AChWYq','1','img-admin-1676500048292.jpg');
-INSERT INTO users(id,first_name,last_name,email,password,category,image) VALUES (6,'Andrés','Iniesta','ainiesta@gmail.com','$2a$10$LDUj6c7jfP5UulL7fZMkxedsEHSXz5AEc0MOp8TEZk5kYcuRlp54K','2','img-iniesta-1676042688859.jpg');
+INSERT INTO users(id,first_name,last_name,email,password,category,image) VALUES (1,'Sebastián','Braga','sebabraga01@gmail.com','$2a$10$n2DQbKf0uIvB/RYH6.WY/.o6e3scnGHxGRqFS21DjitRr58AChWYq','admin',NULL);
+INSERT INTO users(id,first_name,last_name,email,password,category,image) VALUES (2,'Camila Luz','Quispe','quispeluzcami@gmail.com','$2a$10$n2DQbKf0uIvB/RYH6.WY/.o6e3scnGHxGRqFS21DjitRr58AChWYq','cliente',NULL);
+INSERT INTO users(id,first_name,last_name,email,password,category,image) VALUES (3,'Gustavo','Buscalia','buscaliag@gmail.com','$2a$10$n2DQbKf0uIvB/RYH6.WY/.o6e3scnGHxGRqFS21DjitRr58AChWYq','cliente',NULL);
+INSERT INTO users(id,first_name,last_name,email,password,category,image) VALUES (4,'Valentino','Becerine','valentinobecerine@gmail.com','$2a$10$n2DQbKf0uIvB/RYH6.WY/.o6e3scnGHxGRqFS21DjitRr58AChWYq','cliente',NULL);
+INSERT INTO users(id,first_name,last_name,email,password,category,image) VALUES (5,'Admin','del Sitio','admin@gmail.com','$2a$10$n2DQbKf0uIvB/RYH6.WY/.o6e3scnGHxGRqFS21DjitRr58AChWYq','admin','img-admin-1676500048292.jpg');
+INSERT INTO users(id,first_name,last_name,email,password,category,image) VALUES (6,'Andrés','Iniesta','ainiesta@gmail.com','$2a$10$LDUj6c7jfP5UulL7fZMkxedsEHSXz5AEc0MOp8TEZk5kYcuRlp54K','cliente','img-iniesta-1676042688859.jpg');
 
 

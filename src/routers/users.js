@@ -18,9 +18,9 @@ const { body } = require('express-validator');
 
 /* Validaciones del formulario de registración */
 let registerForm = [
-	body('firstName').notEmpty().withMessage('El nombre no puede estar vacío.').bail()
+	body('first_name').notEmpty().withMessage('El nombre no puede estar vacío.').bail()
 		.isLength({ min: 2 }).withMessage('El nombre no puede tener un largo menor a 2.'),
-	body('lastName').notEmpty().withMessage('El apellido no puede estar vacío.').bail()
+	body('last_name').notEmpty().withMessage('El apellido no puede estar vacío.').bail()
 		.isLength({ min: 2 }).withMessage('El apellido no puede tener un largo menor a 2.'),
 	body('email').notEmpty().withMessage('El email no puede estar vacío.').bail()
 		.isEmail().withMessage('Ingrese un correo válido.'),
@@ -44,9 +44,9 @@ let registerForm = [
 
 /* Validaciones del formulario de edición */
 let editForm = [
-	body('firstName').notEmpty().withMessage('El nombre no puede estar vacío.').bail()
+	body('first_name').notEmpty().withMessage('El nombre no puede estar vacío.').bail()
 		.isLength({ min: 2 }).withMessage('El nombre no puede tener un largo menor a 2.'),
-	body('lastName').notEmpty().withMessage('El apellido no puede estar vacío.').bail()
+	body('last_name').notEmpty().withMessage('El apellido no puede estar vacío.').bail()
 		.isLength({ min: 2 }).withMessage('El apellido no puede tener un largo menor a 2.')
 ];
 
@@ -79,13 +79,13 @@ const uploadFile = multer({ storage: storage });
 /* Creamos el módulo y definimos las rutas para main */
 let router = express.Router();
 
-// Login
+// Login y registro
 router.get('/login', authMiddleware, usersController.index);
 router.post('/login', loginForm, usersController.login);
-
-// Registro
-router.get('/profile', guestMiddleware, usersController.profile);
 router.post('/register', uploadFile.single('avatar'), registerForm, usersController.register);
+
+// Perfil
+router.get('/profile', guestMiddleware, usersController.profile);
 
 // Edición 
 router.get('/editProfile/:id', userAuthMiddleware, guestMiddleware, usersController.editProfile);

@@ -2,9 +2,12 @@
 const fs = require('fs');
 const path = require('path');
 const bcrypt = require('bcryptjs');
+const db = require('../database/models');
+const sequelize = db.sequelize;
+const { Op } = require("sequelize");
 
 /* Recuperamos el modelo de usuario */
-const User = require('../models/User');
+const User = db.User;
 
 /* Importamos las validaciones */
 const { validationResult } = require('express-validator');
@@ -26,8 +29,8 @@ let usersController = {
 
             // Creamos nuevo usuario con los datos del form
             let newUser = {
-                firstName: req.body.firstName,
-                lastName: req.body.lastName,
+                first_name: req.body.first_name,
+                last_name: req.body.last_name,
                 email: req.body.email,
                 category: 'cliente',
                 password: bcrypt.hashSync(req.body.password, 10)
@@ -39,16 +42,24 @@ let usersController = {
             }
 
             // Agregar usuario a la BD
-            User.create(newUser);
+            User.create(newUser)
+                .then(userCreated => {
 
-            // Obtenemos datos del usuario creado
-            let userToLogin = User.findByField('email', req.body.email);
+                    // Obtenemos datos del usuario creado
+                    User.findOne({
+                        where: { email: userCreated.email }
+                    })
+                        .then(userToLogin => {
 
-            // Seteamos el usuario de la sesión
-            req.session.userLogged = userToLogin
+                            // Seteamos el usuario de la sesión
+                            req.session.userLogged = userToLogin;
 
-            // Llevamos al usuario a su perfil
-            res.redirect('/users/profile');
+                            // Llevamos al usuario a su perfil
+                            res.redirect('/users/profile');
+
+                        });
+
+                });
 
         } else {   // Hay errores, volvemos al formulario
 
@@ -75,44 +86,49 @@ let usersController = {
         if (errors.isEmpty()) {   // No hay errores, continuamos...
 
             // Obtenemos datos del usuario
-            let userToLogin = User.findByField('email', req.body.email);
+            User.findOne({
+                where: { email: req.body.email }
+            })
+                .then(userToLogin => {
 
-            // Validamos correo
-            if (userToLogin) {
+                    // Validamos correo
+                    if (userToLogin) {
 
-                // Validamos contraseña
-                if (bcrypt.compareSync(req.body.password, userToLogin.password)) {
+                        // Validamos contraseña
+                        if (bcrypt.compareSync(req.body.password, userToLogin.password)) {
 
-                    // Seteamos el usuario de la sesión
-                    req.session.userLogged = userToLogin
+                            // Seteamos el usuario de la sesión
+                            req.session.userLogged = userToLogin
 
-                    // Seteamos el usuario en la cookie si lo requiere
-                    if (req.body.remember) { res.cookie('userLogged', userToLogin, { maxAge: 1000 * 60 * 60 * 24 * 30 }); }
+                            // Seteamos el usuario en la cookie si lo requiere
+                            if (req.body.remember) { res.cookie('userLogged', userToLogin, { maxAge: 1000 * 60 * 60 * 24 * 30 }); }
 
-                    // Llevamos al usuario a su perfil
-                    res.redirect('/users/profile');
+                            // Llevamos al usuario a su perfil
+                            res.redirect('/users/profile');
 
-                } else {
+                        } else {
 
-                    // Convertimos los errores a array y agregamos un error personalizado
-                    let errorsArray = errors.array();
-                    errorsArray.push({ value: "", msg: "Los datos ingresados son incorrectos.", param: "email", location: "body" });
+                            // Convertimos los errores a array y agregamos un error personalizado
+                            let errorsArray = errors.array();
+                            errorsArray.push({ value: "", msg: "Los datos ingresados son incorrectos.", param: "email", location: "body" });
 
-                    // Volvemos al formulario con los errores y los datos viejos
-                    res.render('users/login', { errorsLogin: errorsArray });
+                            // Volvemos al formulario con los errores y los datos viejos
+                            res.render('users/login', { errorsLogin: errorsArray });
 
-                }
+                        }
 
-            } else {
+                    } else {
 
-                // Convertimos los errores a array y agregamos un error personalizado
-                let errorsArray = errors.array();
-                errorsArray.push({ value: "", msg: "Email no registrado.", param: "email", location: "body" });
+                        // Convertimos los errores a array y agregamos un error personalizado
+                        let errorsArray = errors.array();
+                        errorsArray.push({ value: "", msg: "Email no registrado.", param: "email", location: "body" });
 
-                // Volvemos al formulario con los errores y los datos viejos
-                res.render('users/login', { errorsLogin: errorsArray });
+                        // Volvemos al formulario con los errores y los datos viejos
+                        res.render('users/login', { errorsLogin: errorsArray });
 
-            }
+                    }
+
+                });
 
         } else {   // Hay errores, volvemos al formulario
 
@@ -134,13 +150,19 @@ let usersController = {
     },
 
     panel: function (req, res) {
-        let users = User.findAll().filter(user => user.email != 'admin@gmail.com'); // Filtro el admin principal para que no sea editable
-        res.render('users/panel', { users: users });
+        User.findAll({
+            where: { email: { [Op.ne]: 'admin@gmail.com' } }        // Filtro el admin principal para que no sea editable
+        })
+            .then(users => {
+                res.render('users/panel', { users: users });
+            });
     },
 
     editCategory: function (req, res) {
-        let user = User.findByPk(req.params.id);
-        res.render('users/editCategory', { user: user });
+        User.findByPk(req.params.id)
+            .then(user => {
+                res.render('users/editCategory', { user: user });
+            });
     },
 
     updateCategory: function (req, res) {
@@ -151,31 +173,39 @@ let usersController = {
         // Consultamos si no existen errores
         if (errors.isEmpty()) {   // No hay errores, continuamos...
 
-            // Obtengo el usuario
-            let editedUser = User.findByPk(req.params.id);
-
-            // Edito el usuario
-            editedUser.category = req.body.category;
-
             // Actualizo usuario
-            User.edit(editedUser);
+            User.update({
+                category: req.body.category
+            }, {
+                where: { id: req.params.id }
+            })
+                .then(userUpdated => {
 
-            // Redireccionamos al panel
-            res.redirect('/users/panel');
+                    // Redireccionamos al panel
+                    res.redirect('/users/panel');
+
+                });
+
 
         } else { // Hay errores, volvemos al formulario
 
             // Volvemos al formulario con los errores y los datos viejos
-            let user = User.findByPk(req.params.id);
-            res.render('users/editCategory', { errors: errors.array(), old: req.body, user: user });
+            User.findByPk(req.params.id)
+                .then(user => {
+                    res.render('users/editCategory', { errors: errors.array(), old: req.body, user: user });
+                });
 
         }
 
     },
 
     editProfile: function (req, res) {
-        let user = User.findByPk(req.params.id);
-        res.render('users/editProfile', { user: user });
+
+        User.findByPk(req.params.id)
+            .then(user => {
+                res.render('users/editProfile', { user: user });
+            });
+
     },
 
     updateProfile: function (req, res) {
@@ -189,54 +219,71 @@ let usersController = {
             // Validar si hay una imagen seleccionada
             if (req.file) {
 
-                // Obtengo el usuario, que luego voy a editar
-                let editedUser = User.findByPk(req.params.id);
+                // Obtengo usuario viejo
+                User.findByPk(req.params.id)
+                    .then(userOld => {
 
-                // Obtengo nombre de imagen vieja para eliminarla
-                let imageOld = User.findByPk(req.params.id).image;
+                        // Edito el usuario
+                        User.update({
+                            first_name: req.body.first_name,
+                            last_name: req.body.last_name,
+                            image: req.file.filename
+                        }, {
+                            where: { id: userOld.id }
+                        })
+                            .then(updatedUser => {
 
-                // Edito el usuario
-                editedUser.firstName = req.body.firstName;
-                editedUser.lastName = req.body.lastName;
-                editedUser.image = req.file.filename;
+                                // Obtengo nuevos datos de usuario
+                                User.findByPk(req.params.id)
+                                    .then(updatedUser => {
 
-                // Actualizo usuario
-                User.edit(editedUser);
+                                        // Actualizamos dato de cookie
+                                        req.session.userLogged = updatedUser;
 
-                // Actualizamos dato de cookie
-                req.session.userLogged = editedUser
+                                        // Si hay una cookie, actualizarla también
+                                        if (req.cookies.userLogged) { res.cookie('userLogged', updatedUser, { maxAge: 1000 * 60 * 60 * 24 * 30 }); }
 
-                // Si hay una cookie, actualizarla también
-                if (req.cookies.userLogged) { res.cookie('userLogged', editedUser, { maxAge: 1000 * 60 * 60 * 24 * 30 }); }
+                                        // Validar si imagen vieja existe y eliminarla (unlink)
+                                        if (fs.existsSync(path.join(__dirname, '../../public/images/users/', userOld.image))) {
+                                            fs.unlinkSync(path.join(__dirname, '../../public/images/users/', userOld.image));
+                                        }
 
-                // Validar si imagen vieja existe y eliminarla (unlink)
-                if (fs.existsSync(path.join(__dirname, '../../public/images/users/', imageOld))) {
-                    fs.unlinkSync(path.join(__dirname, '../../public/images/users/', imageOld));
-                }
+                                        // Redireccionamos al perfil
+                                        res.redirect('/users/profile');
 
-                // Redireccionamos al perfil
-                res.redirect('/users/profile');
+                                    });
+
+                            });
+
+                    });
 
             } else {
 
-                // Obtengo el usuario
-                let editedUser = User.findByPk(req.params.id);
-
                 // Edito el usuario
-                editedUser.firstName = req.body.firstName;
-                editedUser.lastName = req.body.lastName;
+                User.update({
+                    first_name: req.body.first_name,
+                    last_name: req.body.last_name
+                }, {
+                    where: { id: req.params.id }
+                })
+                    .then(updatedUser => {
 
-                // Actualizo usuario
-                User.edit(editedUser);
+                        // Obtengo nuevos datos de usuario
+                        User.findByPk(req.params.id)
+                        .then(updatedUser => {
 
-                // Actualizamos dato de cookie
-                req.session.userLogged = editedUser
+                            // Actualizamos dato de cookie
+                            req.session.userLogged = updatedUser;
 
-                // Si hay una cookie, actualizarla también
-                if (req.cookies.userLogged) { res.cookie('userLogged', editedUser, { maxAge: 1000 * 60 * 60 * 24 * 30 }); }
+                            // Si hay una cookie, actualizarla también
+                            if (req.cookies.userLogged) { res.cookie('userLogged', updatedUser, { maxAge: 1000 * 60 * 60 * 24 * 30 }); }
 
-                // Redireccionamos al panel
-                res.redirect('/users/profile');
+                            // Redireccionamos al perfil
+                            res.redirect('/users/profile');
+
+                        });
+
+                    });
 
             }
 
@@ -250,8 +297,10 @@ let usersController = {
             }
 
             // Volvemos al formulario con los errores y los datos viejos
-            let user = User.findByPk(req.params.id);
-            res.render('users/editProfile', { errors: errors.array(), old: req.body, user: user });
+            User.findByPk(req.params.id)
+                .then(user => {
+                    res.render('users/editProfile', { errors: errors.array(), old: req.body, user: user });
+                });
 
         }
 
