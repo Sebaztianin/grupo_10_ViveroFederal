@@ -37,24 +37,24 @@
 
                     <!-- Chequear si se cambió la categoría para mantener el valor tras una validación incorrecta -->
                     <% let oldCategory;
-                    if (!locals.old || !old.category) {
-                        oldCategory = product.category
+                    if (!locals.old || !old.category_id) {
+                        oldCategory = product.category_id
                     } else {
-                        oldCategory = old.category
+                        oldCategory = old.category_id
                     } %>
 
-                    <label for="category">Categoría: </label>
-                    <select name="category" id="category">
+                    <label for="category_id">Categoría: </label>
+                    <select name="category_id" id="category_id">
                         <option value="" disabled>Elige una opción</option>
-                        <option value="suc-cac" <%= oldCategory == 'suc-cac' ? 'selected' : null %>>Suculentas y cactus</option>
-                        <option value="interior" <%= oldCategory == 'interior' ? 'selected' : null %>>De interior</option>
-                        <option value="exterior" <%= oldCategory == 'exterior' ? 'selected' : null %>>De exterior</option>
-                        <option value="pots" <%= oldCategory == 'pots' ? 'selected' : null %>>Macetas</option>
-                        <option value="accesories" <%= oldCategory == 'accesories' ? 'selected' : null %>>Accesorios</option>
+                        <option value="1" <%= oldCategory == 1 ? 'selected' : null %>>De interior</option>
+                        <option value="2" <%= oldCategory == 2 ? 'selected' : null %>>De exterior</option>
+                        <option value="3" <%= oldCategory == 3 ? 'selected' : null %>>Suculentas y cactus</option>
+                        <option value="4" <%= oldCategory == 4 ? 'selected' : null %>>Macetas</option>
+                        <option value="5" <%= oldCategory == 5 ? 'selected' : null %>>Accesorios</option>
                     </select>
 
                     <label for="description">Descripción: </label>
-                    <textarea name="description" id="description" placeholder="Descripción larga del producto"><%= (locals.discount && old.description) ? old.description : product.description %></textarea>
+                    <textarea name="description" id="description" placeholder="Descripción larga del producto"><%= (locals.old && old.description) ? old.description : product.description %></textarea>
 
                 </div>
 

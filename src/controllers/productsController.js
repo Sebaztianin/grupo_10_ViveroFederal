@@ -1,9 +1,12 @@
 /* Importamos los módulos a utilizar */
 const fs = require('fs');
 const path = require('path');
+const db = require('../database/models');
+const sequelize = db.sequelize;
+const { Op } = require("sequelize");
 
 /* Recuperamos el modelo de producto */
-const Product = require('../models/Product');
+const Product = db.Product;
 
 /* Importamos las validaciones */
 const { validationResult } = require('express-validator');
@@ -16,14 +19,20 @@ let productsController = {
 
     // Listado de productos
     index: function (req, res) {
-        let products = Product.findAll();
-        res.render('products/products', { products: products, toThousand: toThousand });
+        Product.findAll()
+            .then(products => {
+                res.render('products/products', { products: products, toThousand: toThousand });
+            });
     },
 
     // Detalle de productos
     detail: function (req, res) {
-        let product = Product.findByPk(req.params.id);
-        res.render('products/productDetail', { product: product, toThousand: toThousand });
+        Product.findByPk(req.params.id, {
+                include: [{association: 'category'}, {association: 'color'}, {association: 'size'}]
+        })
+            .then(product => {
+                res.render('products/productDetail', { product: product, toThousand: toThousand });
+            });
     },
 
     // Carrito
@@ -51,15 +60,19 @@ let productsController = {
                 description: req.body.description,
                 price: req.body.price,
                 discount: req.body.discount,
-                category: req.body.category,
+                category_id: req.body.category_id,
                 image: req.file.filename
             };
 
             // Agregar producto a la BD
-            let createdProduct = Product.create(newProduct);
+            Product.create(newProduct)
+                .then(createdProduct => {
 
-            // Redireccionamos al detalle del producto
-            res.redirect('/products/detail/' + createdProduct.id);
+                    // Redireccionamos al detalle del producto
+                    res.redirect('/products/detail/' + createdProduct.id);
+
+                });
+
 
         } else {   // Hay errores, volvemos al formulario
 
@@ -71,7 +84,7 @@ let productsController = {
             }
 
             // Volvemos al formulario con los errores y los datos viejos
-            res.render('products/createProduct', {errors: errors.array(), old: req.body});
+            res.render('products/createProduct', { errors: errors.array(), old: req.body });
 
         }
 
@@ -79,8 +92,10 @@ let productsController = {
 
     // Formulario de edición de producto
     edit: function (req, res) {
-        let product = Product.findByPk(req.params.id);
-        res.render('products/editProduct', {product: product, toThousand: toThousand});
+        Product.findByPk(req.params.id)
+            .then(product => {
+                res.render('products/editProduct', { product: product, toThousand: toThousand });
+            });
     },
 
     // Editar producto
@@ -152,7 +167,7 @@ let productsController = {
 
             // Volvemos al formulario con los errores y los datos viejos
             let product = Product.findByPk(req.params.id);
-            res.render('products/editProduct', {errors: errors.array(), old: req.body, product: product, toThousand: toThousand});
+            res.render('products/editProduct', { errors: errors.array(), old: req.body, product: product, toThousand: toThousand });
 
         }
 

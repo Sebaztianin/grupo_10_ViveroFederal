@@ -36,17 +36,9 @@
                 <!-- Detalles del producto-->
                 <div class="product-name-price">
 
-                    <!-- Descripción de la categoría -->
-                    <% let categoryDescription='' ; switch (product.category) { case 'suc-cac' :
-                            categoryDescription='Suculentas y cactus' ; break; case 'interior' :
-                            categoryDescription='De interior' ; break; case 'exterior' :
-                            categoryDescription='De exterior' ; break; case 'accesories' :
-                            categoryDescription='Accesorios' ; break; case 'pots' : categoryDescription='Macetas' ;
-                            break; default: categoryDescription='Sin categoría' ; } %>
-
                     <!-- Nombre y precio -->
                     <p class="name">
-                        <%= product.name %> - <%= categoryDescription %>
+                        <%= product.name %> - <%= product.category.name %>
                     </p>
                     <% if (product.discount !=0) { %>
                     <p class="price">
@@ -75,17 +67,6 @@
 
                     <!-- Tipo y cantidad -->
                     <form class="add-to-cart" action="#" method="GET">
-
-                        <div class="selection">
-                            <label for="type">Tamaño:</label>
-                            <select id="type">
-                                <option value="very-large">Muy grande</option>
-                                <option value="large">Grande</option>
-                                <option value="medium">Mediano</option>
-                                <option value="small">Chico</option>
-                                <option value="very small">Muy chico</option>
-                            </select>
-                        </div>
 
                         <div class="quantity">
                             <label>Cantidad: </label>

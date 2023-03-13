@@ -35,14 +35,14 @@
                     <label for="image">Imagen: </label>
                     <input type="file" name="image" id="image">
 
-                    <label for="category">Categoría: </label>
-                    <select name="category" id="category">
+                    <label for="category_id">Categoría: </label>
+                    <select name="category_id" id="category_id">
                         <option value="" disabled selected>Elige una opción</option>
-                        <option value="suc-cac" <%= (locals.old && old.category == 'suc-cac') ? 'selected' : '' %>>Suculentas y cactus</option>
-                        <option value="interior" <%= (locals.old && old.category == 'interior') ? 'selected' : '' %>>De interior</option>
-                        <option value="exterior" <%= (locals.old && old.category == 'exterior') ? 'selected' : '' %>>De exterior</option>
-                        <option value="pots" <%= (locals.old && old.category == 'pots') ? 'selected' : '' %>>Macetas</option>
-                        <option value="accesories" <%= (locals.old && old.category == 'accesories') ? 'selected' : '' %>>Accesorios</option>
+                        <option value="1" <%= (locals.old && old.category == 'interior') ? 'selected' : '' %>>De interior</option>
+                        <option value="2" <%= (locals.old && old.category == 'exterior') ? 'selected' : '' %>>De exterior</option>
+                        <option value="3" <%= (locals.old && old.category == 'suc-cac') ? 'selected' : '' %>>Suculentas y cactus</option>
+                        <option value="4" <%= (locals.old && old.category == 'pots') ? 'selected' : '' %>>Macetas</option>
+                        <option value="5" <%= (locals.old && old.category == 'accesories') ? 'selected' : '' %>>Accesorios</option>
                     </select>
 
                     <label for="description">Descripción: </label>
