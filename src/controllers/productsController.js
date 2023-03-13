@@ -12,7 +12,7 @@ const Product = db.Product;
 const { validationResult } = require('express-validator');
 
 /* Separador de miles para los números */
-const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+const toThousand = n => parseFloat(n).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
 /* Creamos el módulo y exportamos */
 let productsController = {
@@ -28,7 +28,7 @@ let productsController = {
     // Detalle de productos
     detail: function (req, res) {
         Product.findByPk(req.params.id, {
-                include: [{association: 'category'}, {association: 'color'}, {association: 'size'}]
+            include: [{ association: 'category' }, { association: 'color' }, { association: 'size' }]
         })
             .then(product => {
                 res.render('products/productDetail', { product: product, toThousand: toThousand });
@@ -111,50 +111,60 @@ let productsController = {
             if (req.file) {
 
                 // Obtengo nombre de imagen vieja para eliminarla
-                let imageOld = Product.findByPk(req.params.id).image;
+                Product.findByPk(req.params.id)
+                    .then(productOld => {
 
-                // Crear objeto editado
-                let editedProduct = {
-                    id: parseInt(req.params.id), // Se utiliza parseInt para convertir a entero el :id que la ruta pasa como String
-                    name: req.body.name,
-                    description: req.body.description,
-                    price: req.body.price,
-                    discount: req.body.discount,
-                    category: req.body.category,
-                    image: req.file.filename
-                }
+                        // Crear objeto editado
+                        let editedProduct = {
+                            name: req.body.name,
+                            description: req.body.description,
+                            price: req.body.price,
+                            discount: req.body.discount,
+                            category_id: req.body.category_id,
+                            image: req.file.filename
+                        }
 
-                // Actualizo producto
-                Product.edit(editedProduct);
+                        // Actualizo producto
+                        Product.update(editedProduct, {
+                            where: { id: req.params.id }
+                        })
+                            .then(updatedProduct => {
 
-                // Validar si imagen vieja existe y eliminarla (unlink)
-                if (fs.existsSync(path.join(__dirname, '../../public/images/products/', imageOld))) {
-                    fs.unlinkSync(path.join(__dirname, '../../public/images/products/', imageOld));
-                }
+                                // Validar si imagen vieja existe y eliminarla (unlink)
+                                if (productOld.image && fs.existsSync(path.join(__dirname, '../../public/images/products/', productOld.image))) {
+                                    fs.unlinkSync(path.join(__dirname, '../../public/images/products/', productOld.image));
+                                }
+
+                                // Redireccionamos al detalle del producto
+                                res.redirect('/products/detail/' + req.params.id);
+
+                            });
+
+                    });
 
             } else {
 
-                // Obtengo nombre de imagen vieja para mantener el dato, ya que esta no se cambió
-                let imageOld = Product.findByPk(req.params.id).image;
-
-                // Crear objeto editado
+                // Actualizo producto
                 let editedProduct = {
-                    id: parseInt(req.params.id), // Se utiliza parseInt para convertir a entero el :id que la ruta pasa como String
                     name: req.body.name,
                     description: req.body.description,
                     price: req.body.price,
                     discount: req.body.discount,
-                    category: req.body.category,
-                    image: imageOld
+                    category_id: req.body.category_id
                 }
 
                 // Actualizo producto
-                Product.edit(editedProduct);
+                Product.update(editedProduct, {
+                    where: { id: req.params.id }
+                })
+                    .then(updatedProduct => {
+
+                        // Redireccionamos al detalle del producto
+                        res.redirect('/products/detail/' + req.params.id);
+
+                    });
 
             }
-
-            // Redireccionamos al detalle del producto
-            res.redirect('/products/detail/' + req.params.id);
 
         } else { // Hay errores, volvemos al formulario
 
@@ -166,8 +176,10 @@ let productsController = {
             }
 
             // Volvemos al formulario con los errores y los datos viejos
-            let product = Product.findByPk(req.params.id);
-            res.render('products/editProduct', { errors: errors.array(), old: req.body, product: product, toThousand: toThousand });
+            Product.findByPk(req.params.id)
+                .then(product => {
+                    res.render('products/editProduct', { errors: errors.array(), old: req.body, product: product, toThousand: toThousand });
+                });
 
         }
 
@@ -176,19 +188,27 @@ let productsController = {
     // Eliminar producto
     destroy: function (req, res) {
 
-        // Obtener nombre de la imagen
-        let imageName = Product.findByPk(req.params.id).image;
+        // Obtengo usuario viejo
+        Product.findByPk(req.params.id)
+            .then(eliminatedProduct => {
 
-        // Validar si imagen existe y eliminarla (unlink)
-        if (fs.existsSync(path.join(__dirname, '../../public/images/products/', imageName))) {
-            fs.unlinkSync(path.join(__dirname, '../../public/images/products/', imageName));
-        }
+                // Validar si imagen existe y eliminarla (unlink)
+                if (eliminatedProduct.image && fs.existsSync(path.join(__dirname, '../../public/images/products/', eliminatedProduct.image))) {
+                    fs.unlinkSync(path.join(__dirname, '../../public/images/products/', eliminatedProduct.image));
+                }
 
-        // Eliminar producto
-        Product.delete(req.params.id);
+                // Eliminar producto
+                Product.destroy({
+                    where: {id: req.params.id}
+                })
+                    .then(eliminatedProduct => {
 
-        // Redireccionar a productos
-        res.redirect('/products');
+                        // Redireccionar a productos
+                        res.redirect('/products');
+
+                    });
+
+            });
 
     }
 

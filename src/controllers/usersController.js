@@ -98,7 +98,7 @@ let usersController = {
                         if (bcrypt.compareSync(req.body.password, userToLogin.password)) {
 
                             // Seteamos el usuario de la sesión
-                            req.session.userLogged = userToLogin
+                            req.session.userLogged = userToLogin;
 
                             // Seteamos el usuario en la cookie si lo requiere
                             if (req.body.remember) { res.cookie('userLogged', userToLogin, { maxAge: 1000 * 60 * 60 * 24 * 30 }); }
@@ -244,7 +244,7 @@ let usersController = {
                                         if (req.cookies.userLogged) { res.cookie('userLogged', updatedUser, { maxAge: 1000 * 60 * 60 * 24 * 30 }); }
 
                                         // Validar si imagen vieja existe y eliminarla (unlink)
-                                        if (fs.existsSync(path.join(__dirname, '../../public/images/users/', userOld.image))) {
+                                        if (userOld.image && fs.existsSync(path.join(__dirname, '../../public/images/users/', userOld.image))) {
                                             fs.unlinkSync(path.join(__dirname, '../../public/images/users/', userOld.image));
                                         }
 
