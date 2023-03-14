@@ -101,8 +101,12 @@
                                     <p class="discount"><%= products[i].discount %>% OFF</p>
                                     <% } %>
                                 </div>
-                                <button class="favorite"><a href="/products/detail/<%= products[i].id %>"><i class="far fa-heart"></i></a></i></button>
-                                <button class="cart"><a href="/products/productCart"><i class="fas fa-cart-plus"></i></a></button>
+                                <form action="/products/favorites/add/<%= products[i].id %>" method="POST">
+                                    <button class="favorite"><i class="far fa-heart"></i></i></button>
+                                </form>
+                                <form action="/products/productCart/add/<%= products[i].id %>" method="POST">
+                                    <button class="cart"><i class="fas fa-cart-plus"></i></button>
+                                </form>
                             </div>
                         </a>
                     </article>

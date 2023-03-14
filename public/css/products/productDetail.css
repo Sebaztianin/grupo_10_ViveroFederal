@@ -371,7 +371,7 @@ main section.related-products div.products {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-evenly;
     width: 100%;
     margin-block: 20px;
 } 

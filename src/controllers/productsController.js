@@ -30,11 +30,27 @@ let productsController = {
 
     // Detalle de productos
     detail: function (req, res) {
+
+        // Buscamos detalles del producto
         Product.findByPk(req.params.id, {
             include: [{ association: 'category' }, { association: 'color' }, { association: 'size' }]
         })
             .then(product => {
-                res.render('products/productDetail', { product: product, toThousand: toThousand });
+
+                // Buscamos detalles de productos relacionados (por ahora sólo mostramos productos de la misma categoría)
+                Product.findAll({
+                    where: {
+                        category_id: product.category_id,
+                        id: {[Op.ne]: product.id}
+                    }
+                })
+                    .then(relatedProducts => {
+
+                        // Enviamos producto y sus relacionados a la vista
+                        res.render('products/productDetail', { product: product, relatedProducts: relatedProducts, toThousand: toThousand });
+
+                    });
+
             });
     },
 
@@ -237,7 +253,7 @@ let productsController = {
 
                     // Actualizo esa fila del carrito, sumándole la cantidad seleccionada por el usuario
                     CartItem.update({
-                        quantity: cartItem.quantity + parseInt(req.body.quantity)
+                        quantity: cartItem.quantity + (req.body.quantity ? parseInt(req.body.quantity) : 1) // Controlo que exista quantity en el body, ya que si lo agrego al producto directo del listado, no lo tiene
                     }, {
                         where: { user_id: req.session.userLogged.id, product_id: req.params.id }
                     })
@@ -254,7 +270,7 @@ let productsController = {
                     CartItem.create({
                         user_id: req.session.userLogged.id,
                         product_id: req.params.id,
-                        quantity: parseInt(req.body.quantity)
+                        quantity: req.body.quantity ? parseInt(req.body.quantity) : 1 // Controlo que exista quantity en el body, ya que si agrego al producto directo del listado, no lo tiene
                     })
                         .then(cartItemInserted => {
 

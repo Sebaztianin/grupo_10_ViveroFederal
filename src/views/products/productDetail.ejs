@@ -141,13 +141,13 @@
 
             <!-- Listado -->
             <div class="products">
-                <% for (i=0; i < 4; i++) { %>
+                <% for (i=0; i < 4 && i < relatedProducts.length; i++) { %>
                 <article>
-                    <a href="/products/1">
-                        <img src="/images/products/suculenta.jpg" alt="Suculenta" class="product-img">
+                    <a href="/products/detail/<%= relatedProducts[i].id %>">
+                        <img src="/images/products/<%= relatedProducts[i].image %>" alt="<%= relatedProducts[i].name %>" class="product-img">
                         <div class="main-article">
-                            <h4 class="name">Suculenta</h4>
-                            <p class="price">$550</p>
+                            <h4 class="name"><%= relatedProducts[i].name %></h4>
+                            <p class="price">$<%= relatedProducts[i].price %></p>
                         </div>
                     </a>
                 </article>

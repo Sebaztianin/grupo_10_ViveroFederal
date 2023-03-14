@@ -197,6 +197,7 @@ main section.all-products div.list div.products article button {
     background-color: #FFFBE9;
     border: none;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 main section.all-products div.list div.products article button.favorite {
