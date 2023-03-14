@@ -109,8 +109,8 @@ main form.cart section.products div.products-list article div.article div.articl
 }
 
 main form.cart section.products div.products-list article div.article div.article-details div.quantity input {
-    width: 30px;
     height: 85%;
+    width: 55px;
     text-align: center;
     font-size: 14px;
     font-weight: bold;
@@ -121,29 +121,9 @@ main form.cart section.products div.products-list article div.article div.articl
     border-radius: 5px;
 }
 
-main form.cart section.products div.products-list article div.article div.article-details div.quantity button {
-    height: 85%;
-    text-align: center;
-    color: #3C6255;
-    background-color: #CCD6A6;
-    padding: 5px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    position: relative;
-    transition: all 0.5s;
-}
-
-main form.cart section.products div.products-list article div.article div.article-details div.quantity button:hover {
-    filter: brightness(85%);
-}
-
-main form.cart section.products div.products-list article div.article div.article-details div.quantity button.more:active {
-    bottom: 2px;
-}
-
-main form.cart section.products div.products-list article div.article div.article-details div.quantity button.less:active {
-    top: 2px;
+main form.cart section.products div.products-list article div.article div.article-details div.quantity input::-webkit-inner-spin-button,
+main form.cart section.products div.products-list article div.article div.article-details div.quantity input::-webkit-outer-spin-button {
+    opacity: 1;
 }
 
 main form.cart section.products div.products-list article div.article div.article-details div.total {
@@ -294,7 +274,7 @@ main form.cart section.submit a {
 /* Tablets y netbooks */
 
 @media (min-width: 769px) {
-    
+
     /* Más productos */
 
     main form.cart section.submit a {
@@ -314,7 +294,7 @@ main form.cart section.submit a {
         margin-top: 115px;
     }
 
-    main form.cart h3.section-title {    
+    main form.cart h3.section-title {
         margin: 10px;
         margin-block: 25px;
         text-align: center;

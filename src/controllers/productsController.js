@@ -7,6 +7,7 @@ const { Op } = require("sequelize");
 
 /* Recuperamos el modelo de producto */
 const Product = db.Product;
+const CartItem = db.CartItem;
 
 /* Importamos las validaciones */
 const { validationResult } = require('express-validator');
@@ -37,7 +38,13 @@ let productsController = {
 
     // Carrito
     cart: function (req, res) {
-        res.render('products/productCart');
+        CartItem.findAll({
+            where: { user_id: req.session.userLogged.id },
+            include: [{ association: 'product' }, { association: 'user' }]
+        })
+            .then(cartItems => {
+                res.render('products/productCart', { cartItems: cartItems, toThousand: toThousand  });
+            })
     },
 
     // Formulario de creación de producto
@@ -199,7 +206,7 @@ let productsController = {
 
                 // Eliminar producto
                 Product.destroy({
-                    where: {id: req.params.id}
+                    where: { id: req.params.id }
                 })
                     .then(eliminatedProduct => {
 
