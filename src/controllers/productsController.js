@@ -211,27 +211,75 @@ let productsController = {
     // Carrito
     cart: function (req, res) {
 
+        // Busco el carrito del usuario logeado
         CartItem.findAll({
             where: { user_id: req.session.userLogged.id },
             include: [{ association: 'product' }, { association: 'user' }]
         })
             .then(cartItems => {
-                res.render('products/productCart', { cartItems: cartItems, toThousand: toThousand  });
+                res.render('products/productCart', { cartItems: cartItems, toThousand: toThousand });
             })
-            
+
     },
 
     // Agregar al carrito
     cartAdd: function (req, res) {
-        
-        
+
+        // Busco este producto en el carrito del usuario logeado
+        CartItem.findOne({
+            where: { user_id: req.session.userLogged.id, product_id: req.params.id }
+        })
+            .then(cartItem => {
+
+                if (cartItem) { // Existe el producto
+
+                    // Actualizo esa fila del carrito, sumándole la cantidad seleccionada por el usuario
+                    CartItem.update({
+                        quantity: cartItem.quantity + parseInt(req.body.quantity)
+                    }, {
+                        where: { user_id: req.session.userLogged.id, product_id: req.params.id }
+                    })
+                        .then(cartItemUpdated => {
+
+                            // Redirecciono al carrito
+                            res.redirect('/products/productCart');
+
+                        });
+
+                } else { // No existe el producto
+
+                    // Agrego la fila al carrito
+                    CartItem.create({
+                        user_id: req.session.userLogged.id,
+                        product_id: req.params.id,
+                        quantity: parseInt(req.body.quantity)
+                    })
+                        .then(cartItemInserted => {
+
+                            // Redirecciono al carrito
+                            res.redirect('/products/productCart');
+
+                        });
+
+                }
+
+            });
+
 
     },
 
     // Sacar del carrito
     cartRemove: function (req, res) {
-        
 
+        CartItem.destroy({
+            where: { user_id: req.session.userLogged.id, product_id: req.params.id }
+        })
+            .then(cartItemDestroyed => {
+
+                // Redirecciono al carrito
+                res.redirect('/products/productCart');
+
+            });
 
     }
 

@@ -93,10 +93,10 @@ router.delete('/:id', productsController.destroy);
 router.get('/productCart', productsController.cart);
 
 // Agregar al carrito
-router.post('/productCar/add/:id', productsController.cartAdd);
+router.post('/productCart/add/:id', productsController.cartAdd);
 
 // Sacar del carrito
-router.delete('/productCar/remove/:id', productsController.cartRemove);
+router.delete('/productCart/remove/:id', productsController.cartRemove);
 
 
 module.exports = router;
