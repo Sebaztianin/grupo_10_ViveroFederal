@@ -5,8 +5,11 @@ const db = require('../database/models');
 const sequelize = db.sequelize;
 const { Op } = require("sequelize");
 
-/* Recuperamos el modelo de producto */
+/* Recuperamos los modelos que se utilizan */
 const Product = db.Product;
+const Category = db.Category;
+const Color = db.Color;
+const Size = db.Size;
 const CartItem = db.CartItem;
 
 /* Importamos las validaciones */
@@ -20,12 +23,36 @@ let productsController = {
 
     // Listado de productos
     index: function (req, res) {
-        Product.findAll({
-            include: [{ association: 'category' }, { association: 'color' }, { association: 'size' }]
-        })
-            .then(products => {
-                res.render('products/products', { products: products, toThousand: toThousand });
+
+        // Creamos filtro de query
+        let queryFilter = { include: [{ association: 'category' }, { association: 'color' }, { association: 'size' }] };
+        queryFilter.where = {};
+
+        // Agregamos filtro de categoría, color o tamaño
+        if (req.query.category) {
+            queryFilter.where.category_id = req.query.category;
+        }
+        if (req.query.color) {
+            queryFilter.where.color_id = req.query.color;
+        }
+        if (req.query.size) {
+            queryFilter.where.size_id = req.query.size;
+        }
+
+        // Recuperamos productos con filtro
+        let products = Product.findAll(queryFilter);
+
+        // Recuperamos categorías, colores y tamaños para los filtros
+        let categories = Category.findAll();
+        let colors = Color.findAll();
+        let sizes = Size.findAll();
+
+        // Promesa para cuando obtengamos todos estos datos
+        Promise.all([products, categories, colors, sizes])
+            .then(([products, categories, colors, sizes]) => {
+                res.render('products/products', { products: products, categories: categories, colors: colors, sizes: sizes, toThousand: toThousand });
             });
+
     },
 
     // Detalle de productos
@@ -41,7 +68,7 @@ let productsController = {
                 Product.findAll({
                     where: {
                         category_id: product.category_id,
-                        id: {[Op.ne]: product.id}
+                        id: { [Op.ne]: product.id }
                     }
                 })
                     .then(relatedProducts => {
@@ -52,6 +79,7 @@ let productsController = {
                     });
 
             });
+
     },
 
     // Formulario de creación de producto
@@ -106,10 +134,12 @@ let productsController = {
 
     // Formulario de edición de producto
     edit: function (req, res) {
+
         Product.findByPk(req.params.id)
             .then(product => {
                 res.render('products/editProduct', { product: product, toThousand: toThousand });
             });
+
     },
 
     // Editar producto
@@ -236,7 +266,7 @@ let productsController = {
         })
             .then(cartItems => {
                 res.render('products/productCart', { cartItems: cartItems, toThousand: toThousand });
-            })
+            });
 
     },
 

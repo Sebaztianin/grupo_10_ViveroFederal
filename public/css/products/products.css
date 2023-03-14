@@ -138,10 +138,25 @@ main section.all-products div.list div.filters a {
 
 /* Productos */
 
+main section.all-products div.list div.no-results {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+} 
+
+main section.all-products div.list div.no-results p.warning {
+    margin: 32px;
+    width: 100%;
+    text-align: center;
+} 
+
 main section.all-products div.list div.products {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    align-items: center;
     width: 100%;
 } 
 
