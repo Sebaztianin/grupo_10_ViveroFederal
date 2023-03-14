@@ -29,18 +29,18 @@ main {
     margin-top: 165px;
 }
 
-main form.cart section {
+main div.cart section {
     max-width: 1280px;
     margin: auto;
 }
 
-main form.cart h3.section-title {
+main div.cart h3.section-title {
     margin: 10px;
     margin-block: 25px;
     text-align: center;
 }
 
-main form.cart h3.section-title:before {
+main div.cart h3.section-title:before {
     content: "";
     display: inline-block;
     border-top: 1px solid #3C6255;
@@ -48,7 +48,7 @@ main form.cart h3.section-title:before {
     margin: 8px;
 }
 
-main form.cart h3.section-title:after {
+main div.cart h3.section-title:after {
     content: "";
     display: inline-block;
     border-top: 1px solid #3C6255;
@@ -56,7 +56,7 @@ main form.cart h3.section-title:after {
     margin: 8px;
 }
 
-main form.cart section.products div.products-list {
+main div.cart section.products div.products-list {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -65,7 +65,7 @@ main form.cart section.products div.products-list {
     border-radius: 5px;
 }
 
-main form.cart section.products div.products-list article {
+main div.cart section.products div.products-list article {
     display: flex;
     flex-direction: row;
     background-color: #DAE2B6;
@@ -75,12 +75,12 @@ main form.cart section.products div.products-list article {
     width: 100%;
 }
 
-main form.cart section.products div.products-list article img {
+main div.cart section.products div.products-list article img {
     width: 15%;
     border-radius: 5px;
 }
 
-main form.cart section.products div.products-list article div.article {
+main div.cart section.products div.products-list article div.article {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -88,17 +88,17 @@ main form.cart section.products div.products-list article div.article {
     padding-inline: 10px;
 }
 
-main form.cart section.products div.products-list article div.article p.name {
+main div.cart section.products div.products-list article div.article p.name {
     font-weight: bold;
     margin-bottom: auto;
 }
 
-main form.cart section.products div.products-list article div.article a {
+main div.cart section.products div.products-list article div.article a {
     text-decoration: none;
     color: #3C6255;
 }
 
-main form.cart section.products div.products-list article div.article div.article-details {
+main div.cart section.products div.products-list article div.article div.article-details {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -108,7 +108,7 @@ main form.cart section.products div.products-list article div.article div.articl
     margin-bottom: auto;
 }
 
-main form.cart section.products div.products-list article div.article div.article-details div.quantity input {
+main div.cart section.products div.products-list article div.article div.article-details div.quantity input {
     height: 85%;
     width: 55px;
     text-align: center;
@@ -121,24 +121,24 @@ main form.cart section.products div.products-list article div.article div.articl
     border-radius: 5px;
 }
 
-main form.cart section.products div.products-list article div.article div.article-details div.quantity input::-webkit-inner-spin-button,
-main form.cart section.products div.products-list article div.article div.article-details div.quantity input::-webkit-outer-spin-button {
+main div.cart section.products div.products-list article div.article div.article-details div.quantity input::-webkit-inner-spin-button,
+main div.cart section.products div.products-list article div.article div.article-details div.quantity input::-webkit-outer-spin-button {
     opacity: 1;
 }
 
-main form.cart section.products div.products-list article div.article div.article-details div.total {
+main div.cart section.products div.products-list article div.article div.article-details div.total {
     display: flex;
     flex-direction: row;
     align-items: center;
     margin-left: auto;
 }
 
-main form.cart section.products div.products-list article div.article div.article-details div.total p {
+main div.cart section.products div.products-list article div.article div.article-details div.total p {
     font-weight: bold;
     margin-inline: 10px;
 }
 
-main form.cart section.products div.products-list article div.article div.article-details div.total button {
+main div.cart section.products div.products-list article div.article div.article-details div.total button {
     word-wrap: normal;
     text-align: center;
     color: #a84d36;
@@ -151,36 +151,36 @@ main form.cart section.products div.products-list article div.article div.articl
     transition: all 0.5s;
 }
 
-main form.cart section.products div.products-list article div.article div.article-details div.total button:hover {
+main div.cart section.products div.products-list article div.article div.article-details div.total button:hover {
     filter: brightness(85%);
 }
 
-main form.cart section.products div.products-list article div.article div.article-details div.total button:active {
+main div.cart section.products div.products-list article div.article div.article-details div.total button:active {
     top: 2px;
 }
 
-main form.cart section.delivery {
+main div.cart section.delivery {
     display: flex;
     flex-direction: row;
     justify-content: right;
     margin-bottom: 15px;
 }
 
-main form.cart section.delivery label {
+main div.cart section.delivery label {
     font-weight: bold;
     color: #3C6255;
     margin-left: 20px;
     padding: 10px;
 }
 
-main form.cart section.delivery input {
+main div.cart section.delivery input {
     border: none;
     border-radius: 5px;
     background-color: white;
     padding: 10px;
 }
 
-main form.cart section.delivery button {
+main div.cart section.delivery button {
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
     font-weight: bold;
@@ -195,22 +195,22 @@ main form.cart section.delivery button {
     transition: all 0.5s;
 }
 
-main form.cart section.delivery button:hover {
+main div.cart section.delivery button:hover {
     filter: brightness(85%);
 }
 
-main form.cart section.delivery button:active {
+main div.cart section.delivery button:active {
     top: 2px;
 }
 
-main form.cart section.subtotal {
+main div.cart section.subtotal {
     display: flex;
     flex-direction: row;
     justify-content: right;
     margin-bottom: 15px;
 }
 
-main form.cart section.subtotal p.title {
+main div.cart section.subtotal p.title {
     font-weight: bold;
     margin-left: 20px;
     padding: 10px;
@@ -218,7 +218,7 @@ main form.cart section.subtotal p.title {
     border-bottom: 1px solid #3C6255;
 }
 
-main form.cart section.subtotal p.value {
+main div.cart section.subtotal p.value {
     font-weight: bold;
     margin-right: 20px;
     padding: 10px;
@@ -226,21 +226,28 @@ main form.cart section.subtotal p.value {
     border-bottom: 1px solid #3C6255;
 }
 
-main form.cart section.submit {
+main div.cart section.submit {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-bottom: 15px;
 }
 
-main form.cart section.submit button {
+main div.cart section.submit form.buy {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+main div.cart section.submit form.buy button {
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
     font-weight: bold;
     border: none;
     border-radius: 5px;
     padding: 10px;
-    margin-inline: 30px;
     width: 95%;
     color: #3C6255;
     background-color: #CCD6A6;
@@ -249,15 +256,15 @@ main form.cart section.submit button {
     transition: all 0.5s;
 }
 
-main form.cart section.submit button:hover {
+main div.cart section.submit form.buy button:hover {
     filter: brightness(85%);
 }
 
-main form.cart section.submit button:active {
+main div.cart section.submit form.buy button:active {
     top: 2px;
 }
 
-main form.cart section.submit a {
+main div.cart section.submit a {
     font-size: 14px;
     text-align: center;
     margin: 15px 0px;
@@ -277,7 +284,7 @@ main form.cart section.submit a {
 
     /* Más productos */
 
-    main form.cart section.submit a {
+    main div.cart section.submit a {
         font-size: 16px;
     }
 
@@ -294,7 +301,7 @@ main form.cart section.submit a {
         margin-top: 115px;
     }
 
-    main form.cart h3.section-title {
+    main div.cart h3.section-title {
         margin: 10px;
         margin-block: 25px;
         text-align: center;

@@ -78,9 +78,6 @@ router.get('/', productsController.index);
 // Detalle de producto
 router.get('/detail/:id', productsController.detail);
 
-// Carrito de productos
-router.get('/productCart', productsController.cart);
-
 // Crear producto
 router.get('/createProduct', adminAuthMiddleware, productsController.create);
 router.post('/', uploadFile.single('image'), validateCreateForm, productsController.store);
@@ -91,6 +88,15 @@ router.put('/:id/edit', uploadFile.single('image'), validateEditForm, productsCo
 
 // Eliminar producto
 router.delete('/:id', productsController.destroy);
+
+// Carrito de compras
+router.get('/productCart', productsController.cart);
+
+// Agregar al carrito
+router.post('/productCar/add/:id', productsController.cartAdd);
+
+// Sacar del carrito
+router.delete('/productCar/remove/:id', productsController.cartRemove);
 
 
 module.exports = router;

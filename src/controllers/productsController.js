@@ -36,17 +36,6 @@ let productsController = {
             });
     },
 
-    // Carrito
-    cart: function (req, res) {
-        CartItem.findAll({
-            where: { user_id: req.session.userLogged.id },
-            include: [{ association: 'product' }, { association: 'user' }]
-        })
-            .then(cartItems => {
-                res.render('products/productCart', { cartItems: cartItems, toThousand: toThousand  });
-            })
-    },
-
     // Formulario de creación de producto
     create: function (req, res) {
         res.render('products/createProduct');
@@ -216,6 +205,33 @@ let productsController = {
                     });
 
             });
+
+    },
+
+    // Carrito
+    cart: function (req, res) {
+
+        CartItem.findAll({
+            where: { user_id: req.session.userLogged.id },
+            include: [{ association: 'product' }, { association: 'user' }]
+        })
+            .then(cartItems => {
+                res.render('products/productCart', { cartItems: cartItems, toThousand: toThousand  });
+            })
+            
+    },
+
+    // Agregar al carrito
+    cartAdd: function (req, res) {
+        
+        
+
+    },
+
+    // Sacar del carrito
+    cartRemove: function (req, res) {
+        
+
 
     }
 
