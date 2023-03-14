@@ -38,7 +38,11 @@
 
                     <!-- Nombre y precio -->
                     <p class="name">
-                        <%= product.name %> - <%= product.category.name %>
+                        <% let productName = product.name + ' (' + product.category.name; %>
+                        <% if (product.size) { productName = productName + ', ' + product.size.name }; %>
+                        <% if (product.color) { productName = productName + ', ' + product.color.name }; %>
+                        <% productName = productName + ')'; %>
+                        <%= productName %>
                     </p>
                     <% if (product.discount !=0) { %>
                     <p class="price">

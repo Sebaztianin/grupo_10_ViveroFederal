@@ -20,7 +20,9 @@ let productsController = {
 
     // Listado de productos
     index: function (req, res) {
-        Product.findAll()
+        Product.findAll({
+            include: [{ association: 'category' }, { association: 'color' }, { association: 'size' }]
+        })
             .then(products => {
                 res.render('products/products', { products: products, toThousand: toThousand });
             });

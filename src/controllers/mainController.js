@@ -12,13 +12,15 @@ const toThousand = n => parseFloat(n).toFixed(2).toString().replace(/\B(?=(\d{3}
 
 /* Creamos el módulo y exportamos */
 let mainController = {
-    index: function(req, res) {
-        Product.findAll()
+    index: function (req, res) {
+        Product.findAll({
+            include: [{ association: 'category' }, { association: 'color' }, { association: 'size' }]
+        })
             .then(products => {
 
-            res.render('main/index', {products: products, toThousand: toThousand});
-            
-        });
+                res.render('main/index', { products: products, toThousand: toThousand });
+
+            });
     }
 };
 

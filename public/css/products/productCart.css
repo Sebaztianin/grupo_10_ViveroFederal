@@ -56,6 +56,20 @@ main div.cart h3.section-title:after {
     margin: 8px;
 }
 
+main div.cart section.products div.no-products {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+main div.cart section.products div.no-products p {
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
 main div.cart section.products div.products-list {
     display: flex;
     flex-direction: column;

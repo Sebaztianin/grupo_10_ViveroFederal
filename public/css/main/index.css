@@ -148,7 +148,14 @@ main section.top-sellers div.products article p.discount {
 }
 
 main section.top-sellers div.products article h4 {
-    margin-block: 8px;
+    margin-top: 8px;
+    margin-bottom: 4px;
+}
+
+main section.top-sellers div.products article p.detail {
+    font-size: 14px;
+    margin-top: 4px;
+    margin-bottom: 8px;
 }
 
 main section.top-sellers div.products article button {
@@ -161,13 +168,13 @@ main section.top-sellers div.products article button {
 main section.top-sellers div.products article button.favorite {
     position: absolute;
     right: 42px;
-    bottom: 63px;
+    bottom: 83px;
 }
 
 main section.top-sellers div.products article button.cart {
     position: absolute;
     right: 5px;
-    bottom: 63px;
+    bottom: 83px;
 }
 
 main section.top-sellers div.products article div.main-article i {
@@ -317,7 +324,7 @@ main section.contact ul.list {
     }
         
     main section.top-sellers div.products article button:hover {
-        bottom: 68px;
+        bottom: 88px;
     }
 
     main section.contact form.contact input,

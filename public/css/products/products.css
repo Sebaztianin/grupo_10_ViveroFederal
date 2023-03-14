@@ -182,7 +182,14 @@ main section.all-products div.list div.products p.discount {
 }
 
 main section.all-products div.list div.products h4 {
-    margin-block: 8px;
+    margin-top: 8px;
+    margin-bottom: 4px;
+}
+
+main section.all-products div.list div.products p.detail {
+    font-size: 14px;
+    margin-top: 4px;
+    margin-bottom: 8px;
 }
 
 main section.all-products div.list div.products article button {
@@ -195,13 +202,13 @@ main section.all-products div.list div.products article button {
 main section.all-products div.list div.products article button.favorite {
     position: absolute;
     right: 42px;
-    bottom: 63px;
+    bottom: 84px;
 }
 
 main section.all-products div.list div.products article button.cart {
     position: absolute;
     right: 5px;
-    bottom: 63px;
+    bottom: 84px;
 }
 
 main section.all-products div.list div.products article i {
@@ -292,7 +299,7 @@ main section.all-products div.more-products a {
     } 
         
     main section.all-products div.list div.products article button:hover {
-        bottom: 68px;
+        bottom: 88px;
     }
 
 
