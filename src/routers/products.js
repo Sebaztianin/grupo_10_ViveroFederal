@@ -75,6 +75,9 @@ let router = express.Router();
 // Listar productos
 router.get('/', productsController.index);
 
+// Buscar productos
+router.post('/search', productsController.search);
+
 // Detalle de producto
 router.get('/detail/:id', productsController.detail);
 

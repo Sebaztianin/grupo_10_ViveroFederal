@@ -38,6 +38,9 @@ let productsController = {
         if (req.query.size) {
             queryFilter.where.size_id = req.query.size;
         }
+        if (req.query.search) {
+            queryFilter.where.name = {[Op.like]: '%' + req.query.search + '%'};
+        }
 
         // Recuperamos productos con filtro
         let products = Product.findAll(queryFilter);
@@ -50,8 +53,15 @@ let productsController = {
         // Promesa para cuando obtengamos todos estos datos
         Promise.all([products, categories, colors, sizes])
             .then(([products, categories, colors, sizes]) => {
-                res.render('products/products', { products: products, categories: categories, colors: colors, sizes: sizes, toThousand: toThousand });
+                res.render('products/products', { toThousand: toThousand, products: products, categories: categories, colors: colors, sizes: sizes, search: req.query.search });
             });
+
+    },
+
+    search: function (req, res) {
+
+        // Redirecciono pasando parámetros para la query
+        res.redirect('/products?search=' + req.body.search);
 
     },
 
