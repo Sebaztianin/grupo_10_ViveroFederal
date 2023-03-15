@@ -270,18 +270,18 @@ let usersController = {
 
                         // Obtengo nuevos datos de usuario
                         User.findByPk(req.params.id)
-                        .then(updatedUser => {
+                            .then(updatedUser => {
 
-                            // Actualizamos dato de cookie
-                            req.session.userLogged = updatedUser;
+                                // Actualizamos dato de cookie
+                                req.session.userLogged = updatedUser;
 
-                            // Si hay una cookie, actualizarla también
-                            if (req.cookies.userLogged) { res.cookie('userLogged', updatedUser, { maxAge: 1000 * 60 * 60 * 24 * 30 }); }
+                                // Si hay una cookie, actualizarla también
+                                if (req.cookies.userLogged) { res.cookie('userLogged', updatedUser, { maxAge: 1000 * 60 * 60 * 24 * 30 }); }
 
-                            // Redireccionamos al perfil
-                            res.redirect('/users/profile');
+                                // Redireccionamos al perfil
+                                res.redirect('/users/profile');
 
-                        });
+                            });
 
                     });
 

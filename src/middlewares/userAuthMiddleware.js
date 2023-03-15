@@ -7,7 +7,7 @@ function userAuthMiddleware(req, res, next) {
         } else {
             res.redirect('/users/editProfile/' + req.session.userLogged.id);
         }
-    } else  {
+    } else {
         res.redirect('/users/login/');
     }
 }

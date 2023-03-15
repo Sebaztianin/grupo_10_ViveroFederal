@@ -2,95 +2,95 @@
 <html>
 
 <head>
-    <%- include('../partials/head.ejs') %>
-    <title>Vivero Federal: Carrito</title>
-    <link rel="stylesheet" href="/css/products/productCart.css">
+	<%- include('../partials/head.ejs') %>
+	<title>Vivero Federal: Carrito</title>
+	<link rel="stylesheet" href="/css/products/productCart.css">
 </head>
 
 <body>
 
-    <%- include('../partials/header.ejs') %>
+	<%- include('../partials/header.ejs') %>
 
-    <main>
+	<main>
 
-        <div class="cart">
+		<div class="cart">
 
-            <section class="products">
+			<section class="products">
 
-                <!-- Título -->
-                <h3 class="section-title">Carrito de compras</h3>
+				<!-- Título -->
+				<h3 class="section-title">Carrito de compras</h3>
 
-                <!-- Aviso de que no hay productos en carrito -->
-                <% if (cartItems.length == 0) { %>
-                    
-                <div class="no-products">
-                    <p>No hay productos en su carrito.</p>
-                    <a href="/products">Ver productos</a>
-                </div>
+				<!-- Aviso de que no hay productos en carrito -->
+				<% if (cartItems.length == 0) { %>
 
-                <% } else { %>
+				<div class="no-products">
+					<p>No hay productos en su carrito.</p>
+					<a href="/products">Ver productos</a>
+				</div>
 
-                <!-- Listado -->
-                <div class="products-list">
+				<% } else { %>
 
-                    <% let subtotal = 0; %>
-                    <% for (i = 0; i < cartItems.length; i++) { %>
-                    <% subtotal = subtotal + (cartItems[i].product.price * cartItems[i].quantity); %>
+				<!-- Listado -->
+				<div class="products-list">
 
-                    <article>
-                        <img src="/images/products/<%= cartItems[i].product.image %>" alt="Imagen del producto" class="product_img">
-                        <div class="article">
-                            <a href="/products/detail/<%= cartItems[i].product.id %>">
-                                <p class="name"><%= cartItems[i].product.name %></p>
-                            </a>
-                            <div class="article-details">
-                                <div class="quantity">
-                                    <input class="quantity-input" type="number" name="quantity" id="quantity" min="1" value="<%= cartItems[i].quantity %>">
-                                </div>
-                                <div class="total">
-                                    <p class="price">$ <%= toThousand(cartItems[i].product.price) %></p>
-                                    <form class="remove-from-cart" action="/products/productCart/remove/<%= cartItems[i].product.id %>?_method=DELETE" method="POST">
-                                        <button type="submit" name="delete"><i class="fas fa-trash"></i></button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
+					<% let subtotal = 0; %>
+					<% for (i = 0; i < cartItems.length; i++) { %>
+					<% subtotal = subtotal + (cartItems[i].product.price * cartItems[i].quantity); %>
 
-                    <% } %>
+					<article>
+						<img src="/images/products/<%= cartItems[i].product.image %>" alt="Imagen del producto" class="product_img">
+						<div class="article">
+							<a href="/products/detail/<%= cartItems[i].product.id %>">
+								<p class="name"><%= cartItems[i].product.name %></p>
+							</a>
+							<div class="article-details">
+								<div class="quantity">
+									<input class="quantity-input" type="number" name="quantity" id="quantity" min="1" value="<%= cartItems[i].quantity %>">
+								</div>
+								<div class="total">
+									<p class="price">$ <%= toThousand(cartItems[i].product.price) %></p>
+									<form class="remove-from-cart" action="/products/productCart/remove/<%= cartItems[i].product.id %>?_method=DELETE" method="POST">
+										<button type="submit" name="delete"><i class="fas fa-trash"></i></button>
+									</form>
+								</div>
+							</div>
+						</div>
+					</article>
 
-                </div>
+					<% } %>
 
-            </section>
+				</div>
 
-            <!-- Calcular envío -->
-            <section class="delivery">
-                <label id="cp">Envío: </label>
-                <input class="cp" type="number" name="cp" id="cp" min="1" placeholder="Código postal">
-                <button type="menu" name="calculate">Calcular</button>
-            </section>
+			</section>
 
-            <!-- Subtotal -->
-            <section class="subtotal">
-                <p class="title">Subtotal: </p>
-                <p class="value">$ <%= toThousand(subtotal) %></p>
-            </section>
+			<!-- Calcular envío -->
+			<section class="delivery">
+				<label id="cp">Envío: </label>
+				<input class="cp" type="number" name="cp" id="cp" min="1" placeholder="Código postal">
+				<button type="menu" name="calculate">Calcular</button>
+			</section>
 
-            <!-- Botón -->
-            <section class="submit">
-                <form class="buy" action="#" method="POST">
-                    <button type="submit" name="buy">Comprar</button>
-                </form>
-                <a href="/products">Ver más productos</a>
-            </section>
+			<!-- Subtotal -->
+			<section class="subtotal">
+				<p class="title">Subtotal: </p>
+				<p class="value">$ <%= toThousand(subtotal) %></p>
+			</section>
 
-            <% } %>
+			<!-- Botón -->
+			<section class="submit">
+				<form class="buy" action="#" method="POST">
+					<button type="submit" name="buy">Comprar</button>
+				</form>
+				<a href="/products">Ver más productos</a>
+			</section>
 
-        </div>
+			<% } %>
 
-    </main>
+		</div>
 
-    <%- include('../partials/footer.ejs') %>
+	</main>
+
+	<%- include('../partials/footer.ejs') %>
 
 </body>
 

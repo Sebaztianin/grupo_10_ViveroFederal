@@ -1,6 +1,6 @@
 module.exports = (sequelize, dataTypes) => {
 
-    let alias = 'Product'; 
+    let alias = 'Product';
 
     let cols = {
 
@@ -30,7 +30,7 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.DECIMAL(5, 2),
             allowNull: true
         },
-        
+
         image: {
             type: dataTypes.STRING,
             allowNull: true
@@ -62,7 +62,7 @@ module.exports = (sequelize, dataTypes) => {
 
     const Product = sequelize.define(alias, cols, config);
 
-    Product.associate = function(models) {
+    Product.associate = function (models) {
 
         Product.belongsTo(models.Category, {
             as: 'category',

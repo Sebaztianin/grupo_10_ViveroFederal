@@ -2,58 +2,58 @@
 <html>
 
 <head>
-    <%- include('../partials/head.ejs') %>
-    <title>Vivero Federal: Mi perfil</title>
-    <link rel="stylesheet" href="/css/users/profile.css">
+	<%- include('../partials/head.ejs') %>
+	<title>Vivero Federal: Mi perfil</title>
+	<link rel="stylesheet" href="/css/users/profile.css">
 </head>
 
 <body>
 
-    <%- include('../partials/header.ejs') %>
+	<%- include('../partials/header.ejs') %>
 
-    <main>
+	<main>
 
-        <section class="profile">
+		<section class="profile">
 
-            <h3 class="section-title">Mi perfil</h3>
+			<h3 class="section-title">Mi perfil</h3>
 
-            <div class="profile">
+			<div class="profile">
 
-                <!-- Avatar -->
-                <div class="image">
-                    <img src="/images/users/<%= locals.userLogged.image ? locals.userLogged.image : 'avatar.jpg' %>" alt="Avatar del usuario">
-                </div>
+				<!-- Avatar -->
+				<div class="image">
+					<img src="/images/users/<%= locals.userLogged.image ? locals.userLogged.image : 'avatar.jpg' %>" alt="Avatar del usuario">
+				</div>
 
-                <!-- Campos -->
-                <div class="data">
-                    <div class="field">
-                        <p class="title">Nombre: </p>
-                        <p class="value"><%= locals.userLogged.first_name + ' ' + locals.userLogged.last_name %></p>
-                    </div>
-                    <div class="field">
-                        <p class="title">Email: </p>
-                        <p class="value"><%= locals.userLogged.email %></p>
-                    </div>
-                    <div class="field">
-                        <a href="/users/editProfile/<%= locals.userLogged.id %>">Editar mis datos</a>
-                    </div>
-                </div>
+				<!-- Campos -->
+				<div class="data">
+					<div class="field">
+						<p class="title">Nombre: </p>
+						<p class="value"><%= locals.userLogged.first_name + ' ' + locals.userLogged.last_name %></p>
+					</div>
+					<div class="field">
+						<p class="title">Email: </p>
+						<p class="value"><%= locals.userLogged.email %></p>
+					</div>
+					<div class="field">
+						<a href="/users/editProfile/<%= locals.userLogged.id %>">Editar mis datos</a>
+					</div>
+				</div>
 
-            </div>
+			</div>
 
-            <form action="/users/logout" method="POST">
+			<form action="/users/logout" method="POST">
 
-                <div>
-                    <button type="submit">Cerrar sesión</button>
-                </div>
+				<div>
+					<button type="submit">Cerrar sesión</button>
+				</div>
 
-            </form>
+			</form>
 
-        </section>
+		</section>
 
-    </main>
+	</main>
 
-    <%- include('../partials/footer.ejs') %>
+	<%- include('../partials/footer.ejs') %>
 
 </body>
 

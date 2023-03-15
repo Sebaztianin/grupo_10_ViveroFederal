@@ -2,45 +2,45 @@
 <html>
 
 <head>
-    <%- include('../partials/head.ejs') %>
-        <title>Vivero Federal: Panel de usuarios</title>
-        <link rel="stylesheet" href="/css/users/panel.css">
+	<%- include('../partials/head.ejs') %>
+	<title>Vivero Federal: Panel de usuarios</title>
+	<link rel="stylesheet" href="/css/users/panel.css">
 </head>
 
 <body>
 
-    <%- include('../partials/header.ejs') %>
+	<%- include('../partials/header.ejs') %>
 
-    <main>
+	<main>
 
-        <section class="profile">
+		<section class="profile">
 
-            <h3 class="section-title">Listado de usuarios</h3>
+			<h3 class="section-title">Listado de usuarios</h3>
 
-            <!-- Lista de usuarios -->
-            <div class="list">
+			<!-- Lista de usuarios -->
+			<div class="list">
 
-                <% for (i = 0; i < users.length; i++) { %>
+				<% for (i = 0; i < users.length; i++) { %>
 
-                    <article>
+				<article>
 
-                        <!-- Nombre y correo del usuario -->
-                        <p class="user"><%= users[i].first_name + ' ' + users[i].last_name + ' - ' + users[i].email %></p>
+					<!-- Nombre y correo del usuario -->
+					<p class="user"><%= users[i].first_name + ' ' + users[i].last_name + ' - ' + users[i].email %></p>
 
-                        <!-- Botón de editar -->
-                        <a href="/users/editCategory/<%= users[i].id %>"><i class="fas fa-edit"></i></a>
+					<!-- Botón de editar -->
+					<a href="/users/editCategory/<%= users[i].id %>"><i class="fas fa-edit"></i></a>
 
-                    </article>
+				</article>
 
-                <% } %>
+				<% } %>
 
-            </div>
+			</div>
 
-        </section>
+		</section>
 
-    </main>
+	</main>
 
-    <%- include('../partials/footer.ejs') %>
+	<%- include('../partials/footer.ejs') %>
 
 </body>
 

@@ -2,137 +2,137 @@
 <html>
 
 <head>
-    <%- include('../partials/head.ejs') %>
-    <title>Vivero Federal: Home</title>
-    <link rel="stylesheet" href="/css/main/index.css">
+	<%- include('../partials/head.ejs') %>
+	<title>Vivero Federal: Home</title>
+	<link rel="stylesheet" href="/css/main/index.css">
 </head>
 
 <body>
 
-    <%- include('../partials/header.ejs') %>
+	<%- include('../partials/header.ejs') %>
 
-    <main>
+	<main>
 
-        <section class="banner">
+		<section class="banner">
 
-            <a href="#"><img src="/images/main/img-home-banner.jpg" alt="Banner de ofertas"></a>
+			<a href="#"><img src="/images/main/img-home-banner.jpg" alt="Banner de ofertas"></a>
 
-        </section>
+		</section>
 
-        <section class="categories" id="categories">
+		<section class="categories" id="categories">
 
-            <!-- Categorías -->
-            <h3 class="section-title">Categorías</h3>
+			<!-- Categorías -->
+			<h3 class="section-title">Categorías</h3>
 
-            <!-- Listado -->
-            <div class="categories-list">
-                <article>
-                    <a href="#">
-                        <img src="/images/categories/sucycac.jpg" alt="Suculentas y Cactus" class="category-img">
-                        <p class="category-name">Suculentas y Cactus</p>
-                    </a>
-                </article>
-                <article>
-                    <a href="#">
-                        <img src="/images/categories/deinterior.jpg" alt="De interior" class="category-img">
-                        <p class="category-name">De interior</p>
-                    </a>
-                </article>
-                <article>
-                    <a href="#">
-                        <img src="/images/categories/deexterior.jpg" alt="De exterior" class="category-img">
-                        <p class="category-name">De exterior</p>
-                    </a>
-                </article>
-                <article>
-                    <a href="#">
-                        <img src="/images/categories/macetas.jpg" alt="Macetas" class="category-img">
-                        <p class="category-name">Macetas</p>
-                    </a>
-                </article>
-                <article>
-                    <a href="#">
-                        <img src="/images/categories/accesorios.jpg" alt="Accesorios" class="category-img">
-                        <p class="category-name">Accesorios</p>
-                    </a>
-                </article>
-            </div>
+			<!-- Listado -->
+			<div class="categories-list">
+				<article>
+					<a href="#">
+						<img src="/images/categories/sucycac.jpg" alt="Suculentas y Cactus" class="category-img">
+						<p class="category-name">Suculentas y Cactus</p>
+					</a>
+				</article>
+				<article>
+					<a href="#">
+						<img src="/images/categories/deinterior.jpg" alt="De interior" class="category-img">
+						<p class="category-name">De interior</p>
+					</a>
+				</article>
+				<article>
+					<a href="#">
+						<img src="/images/categories/deexterior.jpg" alt="De exterior" class="category-img">
+						<p class="category-name">De exterior</p>
+					</a>
+				</article>
+				<article>
+					<a href="#">
+						<img src="/images/categories/macetas.jpg" alt="Macetas" class="category-img">
+						<p class="category-name">Macetas</p>
+					</a>
+				</article>
+				<article>
+					<a href="#">
+						<img src="/images/categories/accesorios.jpg" alt="Accesorios" class="category-img">
+						<p class="category-name">Accesorios</p>
+					</a>
+				</article>
+			</div>
 
-        </section>
+		</section>
 
-        <section class="top-sellers">
+		<section class="top-sellers">
 
-            <!-- Productos más vendidos -->
-            <h3 class="section-title">Más vendidos</h3>
+			<!-- Productos más vendidos -->
+			<h3 class="section-title">Más vendidos</h3>
 
-            <!-- Productos -->
-            <div class="products">
-                <% for (i = 0; i < products.length; i++) { %>
-                <article>
-                    <a href="/products/detail/<%= products[i].id %>">
-                        <% let productDetail = ' (' + products[i].category.name; %>
-                        <% if (products[i].size) { productDetail = productDetail + ', ' + products[i].size.name }; %>
-                        <% if (products[i].color) { productDetail = productDetail + ', ' + products[i].color.name }; %>
-                        <% productDetail = productDetail + ')'; %>
-                        <img src="/images/products/<%= products[i].image %>" alt="Imagen de <%= products[i].name %>" class="product-img">
-                        <div class="main-article">
-                            <h4 class="name"><%= products[i].name %></h4>
-                            <p class="detail"><%= productDetail %></p>
-                            <div class="price">
-                                <p class="price">$<%= toThousand(products[i].price) %></p>
-                                <% if (products[i].discount !=0) { %>
-                                <p class="discount"><%= products[i].discount %>% OFF</p>
-                                <% } %>
-                            </div>
-                            <form action="/products/favorites/add/<%= products[i].id %>" method="POST">
-                                <button class="favorite"><i class="far fa-heart"></i></i></button>
-                            </form>
-                            <form action="/products/productCart/add/<%= products[i].id %>" method="POST">
-                                <button class="cart"><i class="fas fa-cart-plus"></i></button>
-                            </form>
-                        </div>
-                    </a>
-                </article>
-                <% } %>
-            </div>
+			<!-- Productos -->
+			<div class="products">
+				<% for (i = 0; i < products.length; i++) { %>
+				<article>
+					<a href="/products/detail/<%= products[i].id %>">
+						<% let productDetail = ' (' + products[i].category.name; %>
+						<% if (products[i].size) { productDetail = productDetail + ', ' + products[i].size.name }; %>
+						<% if (products[i].color) { productDetail = productDetail + ', ' + products[i].color.name }; %>
+						<% productDetail = productDetail + ')'; %>
+						<img src="/images/products/<%= products[i].image %>" alt="Imagen de <%= products[i].name %>" class="product-img">
+						<div class="main-article">
+							<h4 class="name"><%= products[i].name %></h4>
+							<p class="detail"><%= productDetail %></p>
+							<div class="price">
+								<p class="price">$<%= toThousand(products[i].price) %></p>
+								<% if (products[i].discount !=0) { %>
+								<p class="discount"><%= products[i].discount %>% OFF</p>
+								<% } %>
+							</div>
+							<form action="/products/favorites/add/<%= products[i].id %>" method="POST">
+								<button class="favorite"><i class="far fa-heart"></i></i></button>
+							</form>
+							<form action="/products/productCart/add/<%= products[i].id %>" method="POST">
+								<button class="cart"><i class="fas fa-cart-plus"></i></button>
+							</form>
+						</div>
+					</a>
+				</article>
+				<% } %>
+			</div>
 
-        </section>
+		</section>
 
-        <section class="contact" id="contact">
+		<section class="contact" id="contact">
 
-            <!-- Contacto -->
-            <h3 class="section-title">Contacto</h3>
+			<!-- Contacto -->
+			<h3 class="section-title">Contacto</h3>
 
-            <!-- Formulario de contacto -->
-            <div class="contact-div">
+			<!-- Formulario de contacto -->
+			<div class="contact-div">
 
-                <!-- Formulario -->
-                <form class="contact" action="#" method="POST">
-                    <input type="text" id="name" placeholder="Nombre" minlength="2" required>
-                    <input type="email" id="email" placeholder="E-mail" required>
-                    <input type="number" id="phone" placeholder="Celular" minlength="8" required>
-                    <textarea name="message" placeholder="Dejanos un mensaje" required></textarea>
-                    <button id="send" type="submit">Enviar</button>
-                </form>
+				<!-- Formulario -->
+				<form class="contact" action="#" method="POST">
+					<input type="text" id="name" placeholder="Nombre" minlength="2" required>
+					<input type="email" id="email" placeholder="E-mail" required>
+					<input type="number" id="phone" placeholder="Celular" minlength="8" required>
+					<textarea name="message" placeholder="Dejanos un mensaje" required></textarea>
+					<button id="send" type="submit">Enviar</button>
+				</form>
 
-                <!-- Datos de contacto -->
-                <ul class="list" type="none">
-                    <li><a href="#"><i class="fas fa-phone"></i> +54 9 387 4522805</a></li>
-                    <li><a href="#"><i class="fas fa-envelope"></i> info@viverofederal.com.ar</a></li>
-                    <li><a href="#"><i class="fab fa-instagram"></i> viverofederal</a></li>
-                    <li><a href="#"><i class="fab fa-facebook"></i> viverofederal.ok</a></li>
-                    <li><a href="#"><i class="fab fa-twitter"></i> viverofederal.ok</a></li>
-                    <li><a href="#"><i class="fas fa-map-pin"></i> Entre Ríos 1156, Salta</a></li>
-                    <li><a href="#"><i class="fas fa-map-pin"></i> Caseros 2354, Córdoba</a></li>
-                </ul>
+				<!-- Datos de contacto -->
+				<ul class="list" type="none">
+					<li><a href="#"><i class="fas fa-phone"></i> +54 9 387 4522805</a></li>
+					<li><a href="#"><i class="fas fa-envelope"></i> info@viverofederal.com.ar</a></li>
+					<li><a href="#"><i class="fab fa-instagram"></i> viverofederal</a></li>
+					<li><a href="#"><i class="fab fa-facebook"></i> viverofederal.ok</a></li>
+					<li><a href="#"><i class="fab fa-twitter"></i> viverofederal.ok</a></li>
+					<li><a href="#"><i class="fas fa-map-pin"></i> Entre Ríos 1156, Salta</a></li>
+					<li><a href="#"><i class="fas fa-map-pin"></i> Caseros 2354, Córdoba</a></li>
+				</ul>
 
-            </div>
+			</div>
 
-        </section>
+		</section>
 
-    </main>
+	</main>
 
-    <%- include('../partials/footer') %>
+	<%- include('../partials/footer') %>
 
 </body>
 

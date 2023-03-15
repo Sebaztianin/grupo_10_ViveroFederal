@@ -2,80 +2,80 @@
 <html>
 
 <head>
-    <%- include('../partials/head.ejs') %>
-    <title>Vivero Federal: Editar producto</title>
-    <link rel="stylesheet" href="/css/products/editProduct.css">
+	<%- include('../partials/head.ejs') %>
+	<title>Vivero Federal: Editar producto</title>
+	<link rel="stylesheet" href="/css/products/editProduct.css">
 </head>
 
 <body>
 
-    <%- include('../partials/header.ejs') %>
+	<%- include('../partials/header.ejs') %>
 
-    <main>
+	<main>
 
-        <section class="create-product">
+		<section class="create-product">
 
-            <!-- Título de la sección -->
-            <h3 class="section-title">Editar producto</h3>
+			<!-- Título de la sección -->
+			<h3 class="section-title">Editar producto</h3>
 
-            <!-- Formulario -->
-            <form class="new-product" action="/products/<%= product.id %>/edit?_method=PUT" method="POST" enctype="multipart/form-data">
+			<!-- Formulario -->
+			<form class="new-product" action="/products/<%= product.id %>/edit?_method=PUT" method="POST" enctype="multipart/form-data">
 
-                <div class="data">
+				<div class="data">
 
-                    <label for="name">Nombre del producto: </label>
-                    <input type="text" name="name" id="name" placeholder="Ej: Suculenta" value="<%= (locals.old && old.name) ? old.name : product.name %>">
+					<label for="name">Nombre del producto: </label>
+					<input type="text" name="name" id="name" placeholder="Ej: Suculenta" value="<%= (locals.old && old.name) ? old.name : product.name %>">
 
-                    <label for="price">Precio: </label>
-                    <input type="number" name="price" id="price" placeholder="AR$" value="<%= (locals.old && old.price) ? old.price : product.price %>">
+					<label for="price">Precio: </label>
+					<input type="number" name="price" id="price" placeholder="AR$" value="<%= (locals.old && old.price) ? old.price : product.price %>">
 
-                    <label for="discount">Descuento: </label>
-                    <input type="number" name="discount" id="discount" placeholder="Ej: 15" value="<%= (locals.old && old.discount) ? old.discount : product.discount %>">
+					<label for="discount">Descuento: </label>
+					<input type="number" name="discount" id="discount" placeholder="Ej: 15" value="<%= (locals.old && old.discount) ? old.discount : product.discount %>">
 
-                    <label for="image">Imagen: </label>
-                    <input type="file" name="image" id="image">
+					<label for="image">Imagen: </label>
+					<input type="file" name="image" id="image">
 
-                    <!-- Chequear si se cambió la categoría para mantener el valor tras una validación incorrecta -->
-                    <% let oldCategory;
+					<!-- Chequear si se cambió la categoría para mantener el valor tras una validación incorrecta -->
+					<% let oldCategory;
                     if (!locals.old || !old.category_id) {
                         oldCategory = product.category_id
                     } else {
                         oldCategory = old.category_id
                     } %>
 
-                    <label for="category_id">Categoría: </label>
-                    <select name="category_id" id="category_id">
-                        <option value="" disabled>Elige una opción</option>
-                        <option value="1" <%= oldCategory == 1 ? 'selected' : null %>>De interior</option>
-                        <option value="2" <%= oldCategory == 2 ? 'selected' : null %>>De exterior</option>
-                        <option value="3" <%= oldCategory == 3 ? 'selected' : null %>>Suculentas y cactus</option>
-                        <option value="4" <%= oldCategory == 4 ? 'selected' : null %>>Macetas</option>
-                        <option value="5" <%= oldCategory == 5 ? 'selected' : null %>>Accesorios</option>
-                    </select>
+					<label for="category_id">Categoría: </label>
+					<select name="category_id" id="category_id">
+						<option value="" disabled>Elige una opción</option>
+						<option value="1" <%= oldCategory == 1 ? 'selected' : null %>>De interior</option>
+						<option value="2" <%= oldCategory == 2 ? 'selected' : null %>>De exterior</option>
+						<option value="3" <%= oldCategory == 3 ? 'selected' : null %>>Suculentas y cactus</option>
+						<option value="4" <%= oldCategory == 4 ? 'selected' : null %>>Macetas</option>
+						<option value="5" <%= oldCategory == 5 ? 'selected' : null %>>Accesorios</option>
+					</select>
 
-                    <label for="description">Descripción: </label>
-                    <textarea name="description" id="description" placeholder="Descripción larga del producto"><%= (locals.old && old.description) ? old.description : product.description %></textarea>
+					<label for="description">Descripción: </label>
+					<textarea name="description" id="description" placeholder="Descripción larga del producto"><%= (locals.old && old.description) ? old.description : product.description %></textarea>
 
-                </div>
+				</div>
 
-                <!-- Errores -->
-                <div class="errors">
-                    <% if (locals.errors) { %>
-                    <% errors.forEach(error => { %>
-                    <p class="error"><i class="fas fa-exclamation-circle"></i> <%= error.msg %></p>
-                    <% }) %>
-                    <% } %>
-                </div>
+				<!-- Errores -->
+				<div class="errors">
+					<% if (locals.errors) { %>
+					<% errors.forEach(error => { %>
+					<p class="error"><i class="fas fa-exclamation-circle"></i> <%= error.msg %></p>
+					<% }) %>
+					<% } %>
+				</div>
 
-                <button type="submit">Editar producto</button>
+				<button type="submit">Editar producto</button>
 
-            </form>
+			</form>
 
-        </section>
+		</section>
 
-    </main>
+	</main>
 
-    <%- include('../partials/footer') %>
+	<%- include('../partials/footer') %>
 
 </body>
 

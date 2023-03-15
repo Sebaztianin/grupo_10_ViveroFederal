@@ -1,6 +1,6 @@
 module.exports = (sequelize, dataTypes) => {
 
-    let alias = 'User'; 
+    let alias = 'User';
 
     let cols = {
 
@@ -53,7 +53,7 @@ module.exports = (sequelize, dataTypes) => {
 
     const User = sequelize.define(alias, cols, config);
 
-    User.associate = function(models) {
+    User.associate = function (models) {
 
         User.hasMany(models.CartItem, {
             as: 'cart_items',

@@ -2,160 +2,152 @@
 <html>
 
 <head>
-    <%- include('../partials/head.ejs') %>
-        <title>Vivero Federal: Productos</title>
-        <link rel="stylesheet" href="/css/products/products.css">
+	<%- include('../partials/head.ejs') %>
+	<title>Vivero Federal: Productos</title>
+	<link rel="stylesheet" href="/css/products/products.css">
 </head>
 
 <body>
 
-    <%- include('../partials/header.ejs') %>
+	<%- include('../partials/header.ejs') %>
 
-        <main>
+	<main>
 
-            <section class="all-products">
+		<section class="all-products">
 
-                <!-- Título -->
-                <h3 class="section-title">Todos los productos</h3>
+			<!-- Título -->
+			<h3 class="section-title">Todos los productos</h3>
 
-                <!-- Ordenamiento-->
-                <div class="order-by">
+			<!-- Ordenamiento-->
+			<div class="order-by">
 
-                    <label for="order-by">Ordenar por:</label>
-                    <select id="order-by">
-                        <option value="price-high">Mayor a menor</option>
-                        <option value="price-low">Menor a mayor</option>
-                        <option value="alphabetical">A - Z</option>
-                        <option value="alphabetical-descending">Z - A</option>
-                        <option value="newest">Más nuevo al más viejo</option>
-                        <option value="oldest">Más viejo al más nuevo</option>
-                        <option value="top-sellers">Más vendidos</option>
-                    </select>
+				<label for="order-by">Ordenar por:</label>
+				<select id="order-by">
+					<option value="price-high">Mayor a menor</option>
+					<option value="price-low">Menor a mayor</option>
+					<option value="alphabetical">A - Z</option>
+					<option value="alphabetical-descending">Z - A</option>
+					<option value="newest">Más nuevo al más viejo</option>
+					<option value="oldest">Más viejo al más nuevo</option>
+					<option value="top-sellers">Más vendidos</option>
+				</select>
 
-                </div>
+			</div>
 
-                <!-- Botón filtrar-->
-                <div class="filter-button">
+			<!-- Botón filtrar-->
+			<div class="filter-button">
 
-                    <a href="#">Filtrar <i class="fas fa-chevron-down"></i></a>
+				<a href="#">Filtrar <i class="fas fa-chevron-down"></i></a>
 
-                </div>
+			</div>
 
-                <!-- Listado y filtros -->
-                <div class="list">
+			<!-- Listado y filtros -->
+			<div class="list">
 
-                    <!-- Filtros -->
-                    <div class="filters">
+				<!-- Filtros -->
+				<div class="filters">
 
 
-                        <div class="categories">
-                            <p>Categoría</p>
-                            <ul>
-                                <% for (i=0; i < categories.length; i++) { %>
-                                    <li><a href="/products?category=<%= categories[i].id %>">
-                                            <%= categories[i].name %>
-                                        </a></li>
-                                    <% } %>
-                            </ul>
-                        </div>
+					<div class="categories">
+						<p>Categoría</p>
+						<ul>
+							<% for (i=0; i < categories.length; i++) { %>
+							<li><a href="/products?category=<%= categories[i].id %>">
+									<%= categories[i].name %>
+								</a></li>
+							<% } %>
+						</ul>
+					</div>
 
-                        <div class="color">
-                            <p>Color</p>
-                            <ul>
-                                <% for (i=0; i < colors.length; i++) { %>
-                                    <li><a href="/products?color=<%= colors[i].id %>">
-                                            <%= colors[i].name %>
-                                        </a></li>
-                                    <% } %>
-                            </ul>
-                        </div>
+					<div class="color">
+						<p>Color</p>
+						<ul>
+							<% for (i=0; i < colors.length; i++) { %>
+							<li><a href="/products?color=<%= colors[i].id %>">
+									<%= colors[i].name %>
+								</a></li>
+							<% } %>
+						</ul>
+					</div>
 
-                        <div class="size">
-                            <p>Tamaño</p>
-                            <ul>
-                                <% for (i=0; i < sizes.length; i++) { %>
-                                    <li><a href="/products?size=<%= sizes[i].id %>">
-                                            <%= sizes[i].name %>
-                                        </a></li>
-                                    <% } %>
-                            </ul>
-                        </div>
+					<div class="size">
+						<p>Tamaño</p>
+						<ul>
+							<% for (i=0; i < sizes.length; i++) { %>
+							<li><a href="/products?size=<%= sizes[i].id %>">
+									<%= sizes[i].name %>
+								</a></li>
+							<% } %>
+						</ul>
+					</div>
 
-                    </div>
+				</div>
 
-                    <!-- Aviso de que no hay productos en carrito -->
-                    <% if (products.length==0) { %>
-                        <div class="no-results">
-                            <p class="warning">No hay resultados para su búsqueda.</p>
-                            <a href="/products">Ver todos los productos</a>
-                        </div>
-                        <% } else { %>
+				<!-- Aviso de que no hay productos en carrito -->
+				<% if (products.length==0) { %>
+				<div class="no-results">
+					<p class="warning">No hay resultados para su búsqueda.</p>
+					<a href="/products">Ver todos los productos</a>
+				</div>
+				<% } else { %>
 
-                            <!-- Productos -->
-                            <div class="products">
+				<!-- Productos -->
+				<div class="products">
 
-                                <% for (i=0; i < products.length; i++) { %>
-                                    <article>
-                                        <a href="/products/detail/<%= products[i].id %>">
-                                            <% let productDetail=' (' + products[i].category.name; %>
-                                                <% if (products[i].size) { productDetail=productDetail + ', ' +
+					<% for (i=0; i < products.length; i++) { %>
+					<article>
+						<a href="/products/detail/<%= products[i].id %>">
+							<% let productDetail=' (' + products[i].category.name; %>
+							<% if (products[i].size) { productDetail=productDetail + ', ' +
                                                     products[i].size.name }; %>
-                                                    <% if (products[i].color) { productDetail=productDetail + ', ' +
+							<% if (products[i].color) { productDetail=productDetail + ', ' +
                                                         products[i].color.name }; %>
-                                                        <% productDetail=productDetail + ')' ; %>
-                                                            <img src="/images/products/<%= products[i].image %>"
-                                                                alt="Imagen de <%= products[i].name %>"
-                                                                class="product-img">
-                                                            <div class="main-article">
-                                                                <h4 class="name">
-                                                                    <%= products[i].name %>
-                                                                </h4>
-                                                                <p class="detail">
-                                                                    <%= productDetail %>
-                                                                </p>
-                                                                <div class="price">
-                                                                    <p class="price">$<%= toThousand(products[i].price)
+							<% productDetail=productDetail + ')' ; %>
+							<img src="/images/products/<%= products[i].image %>" alt="Imagen de <%= products[i].name %>" class="product-img">
+							<div class="main-article">
+								<h4 class="name">
+									<%= products[i].name %>
+								</h4>
+								<p class="detail">
+									<%= productDetail %>
+								</p>
+								<div class="price">
+									<p class="price">$<%= toThousand(products[i].price)
                                                                             %>
-                                                                    </p>
-                                                                    <% if (products[i].discount !=0) { %>
-                                                                        <p class="discount">
-                                                                            <%= products[i].discount %>% OFF
-                                                                        </p>
-                                                                        <% } %>
-                                                                </div>
-                                                                <form
-                                                                    action="/products/favorites/add/<%= products[i].id %>"
-                                                                    method="POST">
-                                                                    <button class="favorite"><i
-                                                                            class="far fa-heart"></i></i></button>
-                                                                </form>
-                                                                <form
-                                                                    action="/products/productCart/add/<%= products[i].id %>"
-                                                                    method="POST">
-                                                                    <button class="cart"><i
-                                                                            class="fas fa-cart-plus"></i></button>
-                                                                </form>
-                                                            </div>
-                                        </a>
-                                    </article>
-                                    <% } %>
+									</p>
+									<% if (products[i].discount !=0) { %>
+									<p class="discount">
+										<%= products[i].discount %>% OFF
+									</p>
+									<% } %>
+								</div>
+								<form action="/products/favorites/add/<%= products[i].id %>" method="POST">
+									<button class="favorite"><i class="far fa-heart"></i></i></button>
+								</form>
+								<form action="/products/productCart/add/<%= products[i].id %>" method="POST">
+									<button class="cart"><i class="fas fa-cart-plus"></i></button>
+								</form>
+							</div>
+						</a>
+					</article>
+					<% } %>
 
-                                        <div class="more-products">
-                                            <!-- Más productos -->
-                                            <a href="/products">Ver todos los productos</a>
-                                        </div>
+					<div class="more-products">
+						<!-- Más productos -->
+						<a href="/products">Ver todos los productos</a>
+					</div>
 
-                            </div>
+				</div>
 
-                            <% } %>
+				<% } %>
 
-                </div>
+			</div>
 
-            </section>
+		</section>
 
-        </main>
+	</main>
 
-        <%- include('../partials/footer.ejs') %>
+	<%- include('../partials/footer.ejs') %>
 
 </body>
 

@@ -1,6 +1,6 @@
 module.exports = (sequelize, dataTypes) => {
 
-    let alias = 'Size'; 
+    let alias = 'Size';
 
     let cols = {
 
@@ -27,7 +27,7 @@ module.exports = (sequelize, dataTypes) => {
 
     const Size = sequelize.define(alias, cols, config);
 
-    Size.associate = function(models) {
+    Size.associate = function (models) {
 
         Size.hasMany(models.Product, {
             as: 'products',

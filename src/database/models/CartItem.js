@@ -1,6 +1,6 @@
 module.exports = (sequelize, dataTypes) => {
 
-    let alias = 'CartItem'; 
+    let alias = 'CartItem';
 
     let cols = {
 
@@ -38,7 +38,7 @@ module.exports = (sequelize, dataTypes) => {
 
     const CartItem = sequelize.define(alias, cols, config);
 
-    CartItem.associate = function(models) {
+    CartItem.associate = function (models) {
 
         CartItem.belongsTo(models.Product, {
             as: 'product',

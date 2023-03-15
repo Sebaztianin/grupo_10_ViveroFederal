@@ -5,7 +5,7 @@ const app = express();
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const port = process.env.PORT || 3000;
-const methodOverride =  require('method-override'); // Para poder usar los métodos PUT y DELETE
+const methodOverride = require('method-override'); // Para poder usar los métodos PUT y DELETE
 const rememberMeMiddleware = require('./middlewares/rememberMeMiddleware'); // Middleware propio para recordar al usuario
 const globalVariableMiddleware = require('./middlewares/globalVariableMiddleware'); // Middleware propio para crear variables globales
 
@@ -21,7 +21,7 @@ app.use(express.static('./public'));
 app.use(express.urlencoded({ extended: false })); // Para enviar datos
 app.use(express.json()); // Para enviar datos
 app.use(methodOverride('_method')); // Para poder pisar el método POST en los formularios por PUT y DELETE
-app.use(session({secret: "secret", resave: true, saveUninitialized: true})); // Para usar session
+app.use(session({ secret: "secret", resave: true, saveUninitialized: true })); // Para usar session
 app.use(cookieParser()); // Para usar cookies
 app.use(rememberMeMiddleware); // Para recordar al usuario en toda la app
 app.use(globalVariableMiddleware); // Para crear variables globales
@@ -31,7 +31,7 @@ app.set('view engine', 'ejs')
 app.set('views', './src/views')
 
 /* Levantamos server */
-app.listen(port, ()=>{
+app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });
 
