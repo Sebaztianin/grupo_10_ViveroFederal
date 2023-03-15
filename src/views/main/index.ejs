@@ -26,36 +26,18 @@
 
 			<!-- Listado -->
 			<div class="categories-list">
-				<article>
-					<a href="#">
-						<img src="/images/categories/sucycac.jpg" alt="Suculentas y Cactus" class="category-img">
-						<p class="category-name">Suculentas y Cactus</p>
-					</a>
-				</article>
-				<article>
-					<a href="#">
-						<img src="/images/categories/deinterior.jpg" alt="De interior" class="category-img">
-						<p class="category-name">De interior</p>
-					</a>
-				</article>
-				<article>
-					<a href="#">
-						<img src="/images/categories/deexterior.jpg" alt="De exterior" class="category-img">
-						<p class="category-name">De exterior</p>
-					</a>
-				</article>
-				<article>
-					<a href="#">
-						<img src="/images/categories/macetas.jpg" alt="Macetas" class="category-img">
-						<p class="category-name">Macetas</p>
-					</a>
-				</article>
-				<article>
-					<a href="#">
-						<img src="/images/categories/accesorios.jpg" alt="Accesorios" class="category-img">
-						<p class="category-name">Accesorios</p>
-					</a>
-				</article>
+
+				<% for (i=0; i < categories.length && i < 5; i++) { %>
+
+                    <article>
+                        <a href="/products?category=<%= categories[i].id %>">
+                            <img src="/images/categories/<%= categories[i].image %>" alt="<%= categories[i].name %>" class="category-img">
+                            <p class="category-name"><%= categories[i].name %></p>
+                        </a>
+                    </article>
+
+				<% } %>
+
 			</div>
 
 		</section>

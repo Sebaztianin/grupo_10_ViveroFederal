@@ -4,8 +4,9 @@ const db = require('../database/models');
 const sequelize = db.sequelize;
 const { Op } = require("sequelize");
 
-/* Recuperamos el modelo de producto */
+/* Recuperamos los modelos a utilizar */
 const Product = db.Product;
+const Category = db.Category;
 
 /* Separador de miles para los números */
 const toThousand = n => parseFloat(n).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
@@ -13,14 +14,21 @@ const toThousand = n => parseFloat(n).toFixed(2).toString().replace(/\B(?=(\d{3}
 /* Creamos el módulo y exportamos */
 let mainController = {
     index: function (req, res) {
-        Product.findAll({
+
+        // Recuperamos productos 
+        let products = Product.findAll({
             include: [{ association: 'category' }, { association: 'color' }, { association: 'size' }]
-        })
-            .then(products => {
+        });
 
-                res.render('main/index', { products: products, toThousand: toThousand });
+        // Recuperamos categorías
+        let categories = Category.findAll();
 
+        // Promesa para cuando obtengamos todos estos datos
+        Promise.all([products, categories])
+            .then(([products, categories]) => {
+                res.render('main/index', { products: products, categories: categories, toThousand: toThousand });
             });
+
     }
 };
 

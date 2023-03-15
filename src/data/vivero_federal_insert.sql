@@ -2,7 +2,7 @@
 -- Colores, categorías y tamaños
 
 INSERT INTO colors(id, name) values (1, 'Naranja'), (2, 'Marrón'), (3, 'Rosa'), (4, 'Blanco'), (5, 'Rojo'), (6, 'Azul'), (7, 'Verde');
-INSERT INTO categories(id, name) values (1, 'De interior'), (2, 'De exterior'), (3, 'Suculentas y cactus'), (4, 'Macetas'), (5, 'Accesorios');
+INSERT INTO categories(id, name, image) values (1, 'De interior', 'deinterior.jpg'), (2, 'De exterior', 'deexterior.jpg'), (3, 'Suculentas y cactus', 'sucycac.jpg'), (4, 'Macetas', 'macetas.jpg'), (5, 'Accesorios', 'accesorios.jpg');
 INSERT INTO sizes(id, name) values (1, 'XS'), (2, 'S'), (3, 'M'), (4, 'L'), (5, 'XL'), (6, 'XXL');
 
 
