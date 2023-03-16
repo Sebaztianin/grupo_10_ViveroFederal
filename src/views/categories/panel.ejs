@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<%- include('../partials/head.ejs') %>
+	<title>Vivero Federal: Panel de categorías</title>
+	<link rel="stylesheet" href="/css/categories/panel.css">
+</head>
+
+<body>
+
+	<%- include('../partials/header.ejs') %>
+
+	<main>
+
+		<section class="list">
+
+			<h3 class="section-title">Panel de categorías</h3>
+
+			<!-- Lista de categorías -->
+			<div class="list">
+
+				<% for (i = 0; i < categories.length; i++) { %>
+
+				<article>
+
+					<!-- Nombre de la categoría -->
+					<p class="user"><%= categories[i].name %></p>
+
+					<!-- Botón de editar -->
+					<a href="/categories/edit/<%= categories[i].id %>"><i class="fas fa-edit"></i></a>
+
+				</article>
+
+				<% } %>
+
+				<article>
+
+					<!-- Nueva categoría -->
+					<p class="user">Nueva categoría</p>
+
+					<!-- Botón de agregar -->
+					<a href="/categories/add"><i class="fas fa-plus"></i></a>
+
+				</article>
+
+			</div>
+
+		</section>
+
+	</main>
+
+	<%- include('../partials/footer.ejs') %>
+
+</body>
+
+</html>

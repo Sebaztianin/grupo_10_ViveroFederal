@@ -81,22 +81,22 @@ let router = express.Router();
 
 // Login y registro
 router.get('/login', authMiddleware, usersController.index);
-router.post('/login', loginForm, usersController.login);
-router.post('/register', uploadFile.single('avatar'), registerForm, usersController.register);
+router.post('/login', authMiddleware, loginForm, usersController.login);
+router.post('/register', authMiddleware, uploadFile.single('avatar'), registerForm, usersController.register);
 
 // Perfil
 router.get('/profile', guestMiddleware, usersController.profile);
 
 // Edición 
 router.get('/editProfile/:id', userAuthMiddleware, guestMiddleware, usersController.editProfile);
-router.put('/editProfile/:id', uploadFile.single('image'), editForm, usersController.updateProfile);
+router.put('/editProfile/:id', userAuthMiddleware, guestMiddleware, uploadFile.single('image'), editForm, usersController.updateProfile);
 
 // Cerrar sesión
-router.post('/logout', usersController.logout);
+router.post('/logout', guestMiddleware, usersController.logout);
 
 // Panel de usuarios
 router.get('/panel', adminAuthMiddleware, usersController.panel);
 router.get('/editCategory/:id', adminAuthMiddleware, usersController.editCategory);
-router.put('/editCategory/:id', categoryForm, usersController.updateCategory);
+router.put('/editCategory/:id', adminAuthMiddleware, categoryForm, usersController.updateCategory);
 
 module.exports = router;

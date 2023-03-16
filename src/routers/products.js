@@ -9,6 +9,7 @@ const productsController = require('../controllers/productsController');
 
 /* Importamos middlewares de chequeo de sesión */
 const adminAuthMiddleware = require('../middlewares/adminAuthMiddleware');
+const guestMiddleware = require('../middlewares/guestMiddleware');
 
 /* Importamos y configuramos las validaciones */
 const { body } = require('express-validator');
@@ -83,23 +84,23 @@ router.get('/detail/:id', productsController.detail);
 
 // Crear producto
 router.get('/createProduct', adminAuthMiddleware, productsController.create);
-router.post('/', uploadFile.single('image'), validateCreateForm, productsController.store);
+router.post('/', adminAuthMiddleware, uploadFile.single('image'), validateCreateForm, productsController.store);
 
 // Editar producto
 router.get('/:id/editProduct', adminAuthMiddleware, productsController.edit);
-router.put('/:id/edit', uploadFile.single('image'), validateEditForm, productsController.update);
+router.put('/:id/edit', adminAuthMiddleware, uploadFile.single('image'), validateEditForm, productsController.update);
 
 // Eliminar producto
-router.delete('/:id', productsController.destroy);
+router.delete('/:id', adminAuthMiddleware, productsController.destroy);
 
 // Carrito de compras
-router.get('/productCart', productsController.cart);
+router.get('/productCart', guestMiddleware, productsController.cart);
 
 // Agregar al carrito
-router.post('/productCart/add/:id', productsController.cartAdd);
+router.post('/productCart/add/:id', guestMiddleware, productsController.cartAdd);
 
 // Sacar del carrito
-router.delete('/productCart/remove/:id', productsController.cartRemove);
+router.delete('/productCart/remove/:id', guestMiddleware, productsController.cartRemove);
 
 
 module.exports = router;

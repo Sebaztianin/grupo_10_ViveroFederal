@@ -12,6 +12,7 @@ const globalVariableMiddleware = require('./middlewares/globalVariableMiddleware
 /* Importamos módulos propios de ruteo */
 const mainRoutes = require('./routers/main')
 const productsRoutes = require('./routers/products')
+const categoriesRoutes = require('./routers/categories')
 const usersRoutes = require('./routers/users')
 
 /* Declaramos carpeta static */
@@ -38,5 +39,6 @@ app.listen(port, () => {
 /* Definimos rutas */
 app.use('/', mainRoutes);
 app.use('/products', productsRoutes);
+app.use('/categories', categoriesRoutes);
 app.use('/users', usersRoutes);
 

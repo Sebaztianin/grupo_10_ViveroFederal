@@ -43,7 +43,6 @@ main section {
 main h3.section-title {
     margin: 10px;
     margin-block: 25px;
-    width: 100%;
     text-align: center;
 }
 
@@ -65,41 +64,44 @@ main h3.section-title:after {
 }
 
 
-/* Opciones */
+/* Perfil */
 
-main section.options div.list {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    margin: auto;
-    margin-block: 50px;
-    justify-content: center;
-    align-items: center;
-    padding-inline: 30px;
-    width: 100%;
-    max-width: 1300px;
-}
-
-main section.options div.list a {
+main section.list div.list {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    margin: 20px;
+    margin: auto;
     justify-content: center;
-    padding: 20px;
-    padding-top: 25px;
-    width: 40%;
-    border-radius: 5px;
-    color: #3C6255;
-    text-decoration: none;
-    font-weight: bold;
+    padding-inline: 30px;
+    width: 100%;
+    max-width: 800px;
+}
+
+main section.list div.list article {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
+    padding: 15px;
+    width: 100%;
+    border-radius: 10px;
     background-color: #DAE2B6;
 }
 
-main section.options div.list a i {
-    font-size: 50px;
-    margin-bottom: 20px;
+main section.list div.list article p {
+    font-weight: bold;
 }
+
+main section.list div.list article a {
+    color: #3C6255;
+}
+
+main section.list div.list article a:visited {
+    color: #3C6255;
+}
+
 
 
 /* Celus más grandes */
@@ -110,10 +112,6 @@ main section.options div.list a i {
 /* Tablets y netbooks */
 
 @media (min-width: 769px) {
-
-    main section.options div.list a {
-        width: 25%;
-    }
 
 }
 
