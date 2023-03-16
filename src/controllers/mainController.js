@@ -13,6 +13,7 @@ const toThousand = n => parseFloat(n).toFixed(2).toString().replace(/\B(?=(\d{3}
 
 /* Creamos el módulo y exportamos */
 let mainController = {
+
     index: function (req, res) {
 
         // Recuperamos productos 
@@ -29,7 +30,14 @@ let mainController = {
                 res.render('main/index', { products: products, categories: categories, toThousand: toThousand });
             });
 
+    },
+
+    adminPanel: function (req, res) {
+
+        res.render('main/admin/panel');
+
     }
+
 };
 
 module.exports = mainController;
