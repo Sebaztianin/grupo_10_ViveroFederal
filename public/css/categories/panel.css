@@ -94,12 +94,27 @@ main section.list div.list article p {
     font-weight: bold;
 }
 
-main section.list div.list article a {
+main section.list div.list article div.buttons {
+    display: flex;
+    flex-direction: row;
+}
+
+main section.list div.list article div.buttons a {
+    color: #3C6255;
+    margin-inline: 10px;
+}
+
+main section.list div.list article div.buttons a:visited {
     color: #3C6255;
 }
 
-main section.list div.list article a:visited {
-    color: #3C6255;
+
+main section.list div.list article div.buttons button {
+    background: none;
+    border: none;
+    color: #a84d36;
+    cursor: pointer;
+    font-size: 14px;
 }
 
 

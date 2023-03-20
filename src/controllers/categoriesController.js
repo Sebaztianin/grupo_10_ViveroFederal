@@ -75,12 +75,12 @@ let categoriesController = {
     edit: function (req, res) {
 
         Category.findByPk(req.params.id)
-        .then(category => {
-            res.render('categories/editCategory', { category: category });
-        });
+            .then(category => {
+                res.render('categories/editCategory', { category: category });
+            });
 
     },
-    
+
     update: function (req, res) {
 
         // Recuperamos resultados de la validación
@@ -156,6 +156,32 @@ let categoriesController = {
                 });
 
         }
+
+    },
+
+    disable: function (req, res) {
+
+        Category.update({
+            disabled: 1
+        }, {
+            where: { id: req.params.id }
+        })
+            .then(result => {
+                res.redirect('/categories/panel')
+            });
+
+    },
+
+    enable: function (req, res) {
+
+        Category.update({
+            disabled: 0
+        }, {
+            where: { id: req.params.id }
+        })
+            .then(result => {
+                res.redirect('/categories/panel')
+            });
 
     }
 

@@ -2,55 +2,78 @@
 <html>
 
 <head>
-	<%- include('../partials/head.ejs') %>
-	<title>Vivero Federal: Panel de categorías</title>
-	<link rel="stylesheet" href="/css/categories/panel.css">
+    <%- include('../partials/head.ejs') %>
+    <title>Vivero Federal: Panel de categorías</title>
+    <link rel="stylesheet" href="/css/categories/panel.css">
 </head>
 
 <body>
 
-	<%- include('../partials/header.ejs') %>
+    <%- include('../partials/header.ejs') %>
 
-	<main>
+    <main>
 
-		<section class="list">
+        <section class="list">
 
-			<h3 class="section-title">Panel de categorías</h3>
+            <h3 class="section-title">Panel de categorías</h3>
 
-			<!-- Lista de categorías -->
-			<div class="list">
+            <!-- Lista de categorías -->
+            <div class="list">
 
-				<% for (i = 0; i < categories.length; i++) { %>
+                <% for (i = 0; i < categories.length; i++) { %>
 
-				<article>
+                <article>
 
-					<!-- Nombre de la categoría -->
-					<p class="user"><%= categories[i].name %></p>
+                    <!-- Nombre de la categoría -->
+                    <p class="user"><%= categories[i].name %></p>
 
-					<!-- Botón de editar -->
-					<a href="/categories/edit/<%= categories[i].id %>"><i class="fas fa-edit"></i></a>
+                    <div class="buttons">
 
-				</article>
+                        <!-- Botón de editar -->
+                        <a href="/categories/edit/<%= categories[i].id %>"><i class="fas fa-edit"></i></a>
 
-				<% } %>
+                        <% if (categories[i].disabled == 1) { %>
 
-				<article>
+                        <!-- Botón de habilitar -->
+                        <form action="/categories/enable/<%= categories[i].id %>?_method=PUT" method="POST">
+                            <button type="submit"><i class="fa-solid fa-toggle-off"></i></button>
 
-					<!-- Nueva categoría -->
-					<p class="user">Nueva categoría</p>
+                        </form>
 
-					<!-- Botón de agregar -->
-					<a href="/categories/add"><i class="fas fa-plus"></i></a>
+                        <% } else { %>
 
-				</article>
+                        <!-- Botón de eliminar -->
+                        <form action="/categories/delete/<%= categories[i].id %>?_method=DELETE" method="POST">
+                            <button type="submit"><i class="fa-solid fa-toggle-on"></i></button>
 
-			</div>
+                        </form>
 
-		</section>
+                        <% } %>
 
-	</main>
+                    </div>
 
-	<%- include('../partials/footer.ejs') %>
+
+                </article>
+
+                <% } %>
+
+                <article>
+
+                    <!-- Nueva categoría -->
+                    <p class="user">Nueva categoría</p>
+
+                    <!-- Botón de agregar -->
+                    <a href="/categories/add"><i class="fas fa-plus"></i></a>
+
+                </article>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <%- include('../partials/footer.ejs') %>
 
 </body>
 

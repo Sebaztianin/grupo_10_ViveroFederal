@@ -49,6 +49,10 @@ module.exports = (sequelize, dataTypes) => {
         size_id: {
             type: dataTypes.BIGINT(10).UNSIGNED,
             allowNull: true
+        },
+
+        disabled: {
+            type: dataTypes.TINYINT
         }
 
     };

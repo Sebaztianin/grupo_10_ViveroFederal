@@ -46,11 +46,11 @@
 					<label for="category_id">Categoría: </label>
 					<select name="category_id" id="category_id">
 						<option value="" disabled>Elige una opción</option>
-						<option value="1" <%= oldCategory == 1 ? 'selected' : null %>>De interior</option>
-						<option value="2" <%= oldCategory == 2 ? 'selected' : null %>>De exterior</option>
-						<option value="3" <%= oldCategory == 3 ? 'selected' : null %>>Suculentas y cactus</option>
-						<option value="4" <%= oldCategory == 4 ? 'selected' : null %>>Macetas</option>
-						<option value="5" <%= oldCategory == 5 ? 'selected' : null %>>Accesorios</option>
+						
+                        <% for (i=0; i < categories.length; i++) { %>
+                        <option value="<%= categories[i].id %>" <%= oldCategory == categories[i].id ? 'selected' : null %>><%= categories[i].name %></option>
+                        <% } %>
+						
 					</select>
 
 					<label for="description">Descripción: </label>

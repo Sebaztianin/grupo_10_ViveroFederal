@@ -39,7 +39,7 @@ let productsController = {
             queryFilter.where.size_id = req.query.size;
         }
         if (req.query.search) {
-            queryFilter.where.name = {[Op.like]: '%' + req.query.search + '%'};
+            queryFilter.where.name = { [Op.like]: '%' + req.query.search + '%' };
         }
 
         // Recuperamos productos con filtro
@@ -94,7 +94,18 @@ let productsController = {
 
     // Formulario de creación de producto
     create: function (req, res) {
-        res.render('products/createProduct');
+
+        // Recuperamos categorías, colores y tamaños para los filtros
+        let categories = Category.findAll({ where: { disabled: 0 } });
+        let colors = Color.findAll({ where: { disabled: 0 } });
+        let sizes = Size.findAll({ where: { disabled: 0 } });
+
+        // Promesa para cuando obtengamos todos estos datos
+        Promise.all([categories, colors, sizes])
+            .then(([categories, colors, sizes]) => {
+                res.render('products/createProduct', { categories: categories, colors: colors, sizes: sizes });
+            });
+
     },
 
     // Crear producto
@@ -135,8 +146,19 @@ let productsController = {
                 }
             }
 
-            // Volvemos al formulario con los errores y los datos viejos
-            res.render('products/createProduct', { errors: errors.array(), old: req.body });
+            // Recuperamos categorías, colores y tamaños para los filtros
+            let categories = Category.findAll({ where: { disabled: 0 } });
+            let colors = Color.findAll({ where: { disabled: 0 } });
+            let sizes = Size.findAll({ where: { disabled: 0 } });
+
+            // Promesa para cuando obtengamos todos estos datos
+            Promise.all([categories, colors, sizes])
+                .then(([categories, colors, sizes]) => {
+
+                    // Volvemos al formulario con los errores y los datos viejos
+                    res.render('products/createProduct', { errors: errors.array(), old: req.body, categories: categories, colors: colors, sizes: sizes });
+
+                });
 
         }
 
@@ -145,9 +167,18 @@ let productsController = {
     // Formulario de edición de producto
     edit: function (req, res) {
 
-        Product.findByPk(req.params.id)
-            .then(product => {
-                res.render('products/editProduct', { product: product, toThousand: toThousand });
+        // Recuperamos producto
+        let product = Product.findByPk(req.params.id);
+
+        // Recuperamos categorías, colores y tamaños para los filtros
+        let categories = Category.findAll({ where: { disabled: 0 } });
+        let colors = Color.findAll({ where: { disabled: 0 } });
+        let sizes = Size.findAll({ where: { disabled: 0 } });
+
+        // Promesa para cuando obtengamos todos estos datos
+        Promise.all([product, categories, colors, sizes])
+            .then(([product, categories, colors, sizes]) => {
+                res.render('products/editProduct', { product: product, categories: categories, colors: colors, sizes: sizes, toThousand: toThousand });
             });
 
     },
@@ -229,10 +260,18 @@ let productsController = {
                 }
             }
 
-            // Volvemos al formulario con los errores y los datos viejos
-            Product.findByPk(req.params.id)
-                .then(product => {
-                    res.render('products/editProduct', { errors: errors.array(), old: req.body, product: product, toThousand: toThousand });
+            // Recuperamos producto
+            let product = Product.findByPk(req.params.id);
+
+            // Recuperamos categorías, colores y tamaños para los filtros
+            let categories = Category.findAll({ where: { disabled: 0 } });
+            let colors = Color.findAll({ where: { disabled: 0 } });
+            let sizes = Size.findAll({ where: { disabled: 0 } });
+
+            // Promesa para cuando obtengamos todos estos datos
+            Promise.all([product, categories, colors, sizes])
+                .then(([product, categories, colors, sizes]) => {
+                    res.render('products/editProduct', { errors: errors.array(), old: req.body, product: product, categories: categories, colors: colors, sizes: sizes, toThousand: toThousand });
                 });
 
         }

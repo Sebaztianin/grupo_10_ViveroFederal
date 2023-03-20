@@ -19,6 +19,10 @@ module.exports = (sequelize, dataTypes) => {
         image: {
             type: dataTypes.STRING,
             allowNull: false
+        },
+
+        disabled: {
+            type: dataTypes.TINYINT
         }
 
     };

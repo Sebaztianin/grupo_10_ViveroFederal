@@ -68,5 +68,11 @@ router.post('/add', adminAuthMiddleware, uploadFile.single('image'), createForm,
 router.get('/edit/:id', adminAuthMiddleware, categoriesController.edit);
 router.put('/edit/:id', adminAuthMiddleware, uploadFile.single('image'), editForm, categoriesController.update);
 
+// Deshabilitar categoría
+router.delete('/delete/:id', adminAuthMiddleware, categoriesController.disable);
+
+// Habilitar categoría
+router.put('/enable/:id', adminAuthMiddleware, categoriesController.enable);
+
 
 module.exports = router;

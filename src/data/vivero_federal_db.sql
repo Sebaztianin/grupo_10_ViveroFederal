@@ -47,6 +47,7 @@ CREATE TABLE `categories` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
   `image` varchar(255) NOT NULL,
+  `disabled` TINYINT NOT NULL DEFAULT 0,
   `created_at` TIMESTAMP NULL DEFAULT NULL,
   `updated_at` TIMESTAMP NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -60,6 +61,7 @@ CREATE TABLE `categories` (
 CREATE TABLE `colors` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
+  `disabled` TINYINT NOT NULL DEFAULT 0,
   `created_at` TIMESTAMP NULL DEFAULT NULL,
   `updated_at` TIMESTAMP NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -80,6 +82,7 @@ CREATE TABLE `products` (
   `category_id` int(10) UNSIGNED NOT NULL,
   `color_id` int(10) UNSIGNED DEFAULT NULL,
   `size_id` int(10) UNSIGNED DEFAULT NULL,
+  `disabled` TINYINT NOT NULL DEFAULT 0,
   `created_at` TIMESTAMP NULL DEFAULT NULL,
   `updated_at` TIMESTAMP NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -94,6 +97,7 @@ CREATE TABLE `products` (
 CREATE TABLE `sizes` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
+  `disabled` TINYINT NOT NULL DEFAULT 0,
   `created_at` TIMESTAMP NULL DEFAULT NULL,
   `updated_at` TIMESTAMP NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
