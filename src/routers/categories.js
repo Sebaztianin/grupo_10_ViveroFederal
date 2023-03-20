@@ -17,10 +17,10 @@ let createForm = [
     body('name').notEmpty().withMessage('El nombre no puede estar vacío.').bail()
         .isLength({ min: 2 }).withMessage('El nombre no puede tener un largo menor a 2.'),
     body('image').custom((value, { req }) => {
-        if (req.file) {
-            if (path.extname(req.file.filename) != '.jpg') {
-                throw new Error('Se requiere un archivo de extensión .jpg.');
-            }
+        if (!req.file) {
+            throw new Error('Se requiere una imagen.');
+        } else if (path.extname(req.file.filename) != '.jpg') {
+            throw new Error('Se requiere un archivo de extensión .jpg.');
         }
         return true;
     })
@@ -64,8 +64,9 @@ router.get('/panel', adminAuthMiddleware, categoriesController.panel);
 router.get('/add', adminAuthMiddleware, categoriesController.add);
 router.post('/add', adminAuthMiddleware, uploadFile.single('image'), createForm, categoriesController.store);
 
-
 // Edición de categoría
+router.get('/edit/:id', adminAuthMiddleware, categoriesController.edit);
+router.put('/edit/:id', adminAuthMiddleware, uploadFile.single('image'), editForm, categoriesController.update);
 
 
 module.exports = router;
