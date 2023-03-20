@@ -94,7 +94,9 @@ let productsController = {
 
     // Formulario de creación de producto
     create: function (req, res) {
+
         res.render('products/createProduct');
+        
     },
 
     // Crear producto

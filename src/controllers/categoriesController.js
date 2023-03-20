@@ -26,6 +26,18 @@ let categoriesController = {
 
     },
 
+    add: function (req, res) {
+
+        res.render('categories/createCategory');
+
+    },
+
+    store: function (req, res) {
+
+        
+
+    }
+
 };
 
 module.exports = categoriesController;

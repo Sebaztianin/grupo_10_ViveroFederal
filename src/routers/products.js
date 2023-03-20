@@ -83,15 +83,15 @@ router.post('/search', productsController.search);
 router.get('/detail/:id', productsController.detail);
 
 // Crear producto
-router.get('/createProduct', adminAuthMiddleware, productsController.create);
-router.post('/', adminAuthMiddleware, uploadFile.single('image'), validateCreateForm, productsController.store);
+router.get('/add', adminAuthMiddleware, productsController.create);
+router.post('/add', adminAuthMiddleware, uploadFile.single('image'), validateCreateForm, productsController.store);
 
 // Editar producto
-router.get('/:id/editProduct', adminAuthMiddleware, productsController.edit);
-router.put('/:id/edit', adminAuthMiddleware, uploadFile.single('image'), validateEditForm, productsController.update);
+router.get('/edit/:id', adminAuthMiddleware, productsController.edit);
+router.put('/edit/:id', adminAuthMiddleware, uploadFile.single('image'), validateEditForm, productsController.update);
 
 // Eliminar producto
-router.delete('/:id', adminAuthMiddleware, productsController.destroy);
+router.delete('/delete/:id', adminAuthMiddleware, productsController.destroy);
 
 // Carrito de compras
 router.get('/productCart', guestMiddleware, productsController.cart);

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<%- include('../partials/head.ejs') %>
+	<title>Vivero Federal: Nueva categoría</title>
+	<link rel="stylesheet" href="/css/categories/createCategory.css">
+</head>
+
+<body>
+
+	<%- include('../partials/header.ejs') %>
+
+	<main>
+
+		<section class="create">
+
+			<!-- Título de la sección -->
+			<h3 class="section-title">Crear categoría</h3>
+
+			<!-- Formulario -->
+			<form class="new" action="/categories" method="POST" enctype="multipart/form-data">
+
+				<div class="data">
+
+					<label for="name">Nombre de la cateogoría: </label>
+					<input type="text" name="name" id="name" placeholder="Ej: Suculentas" value="<%= (locals.old && old.name) ? old.name : '' %>">
+
+				</div>
+
+				<!-- Errores -->
+				<div class="errors">
+					<% if (locals.errors) { %>
+					<% errors.forEach(error => { %>
+					<p class="error"><i class="fas fa-exclamation-circle"></i> <%= error.msg %></p>
+					<% }) %>
+					<% } %>
+				</div>
+
+				<button type="submit">Crear categoría</button>
+
+			</form>
+
+		</section>
+
+	</main>
+
+	<%- include('../partials/footer') %>
+
+</body>
+
+</html>

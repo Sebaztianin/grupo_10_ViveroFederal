@@ -61,6 +61,8 @@ let router = express.Router();
 router.get('/panel', adminAuthMiddleware, categoriesController.panel);
 
 // Nueva categoría
+router.get('/add', adminAuthMiddleware, categoriesController.add);
+router.post('/add', adminAuthMiddleware, uploadFile.single('image'), createForm, categoriesController.store);
 
 
 // Edición de categoría
