@@ -59,7 +59,7 @@ let loginForm = [
 
 /* Validaciones del formulario de categoría */
 let categoryForm = [
-    body('category').notEmpty().withMessage('Debe seleccionar una categoría.')
+    body('user_category_id').notEmpty().withMessage('Debe seleccionar una categoría.')
 ];
 
 /* Importamos y configuramos Multer para las imágenes */

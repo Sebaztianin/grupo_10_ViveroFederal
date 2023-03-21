@@ -25,7 +25,7 @@
 				<article>
 
 					<!-- Nombre y correo del usuario -->
-					<p class="user"><%= users[i].first_name + ' ' + users[i].last_name + ' - ' + users[i].email + ' - '  + users[i].category %></p>
+					<p class="user"><%= users[i].first_name + ' ' + users[i].last_name + ' - ' + users[i].email + ' - '  + users[i].user_category.name %></p>
 
 					<!-- Botón de editar -->
 					<a href="/users/editCategory/<%= users[i].id %>"><i class="fas fa-edit"></i></a>

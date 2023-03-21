@@ -32,9 +32,9 @@ module.exports = (sequelize, dataTypes) => {
             allowNull: false
         },
 
-        category: {
-            type: dataTypes.STRING(45),
-            allowNull: false
+        user_category_id: {
+            type: dataTypes.BIGINT(10).UNSIGNED,
+            allowNull: true
         },
 
         image: {
@@ -58,6 +58,11 @@ module.exports = (sequelize, dataTypes) => {
         User.hasMany(models.CartItem, {
             as: 'cart_items',
             foreignKey: 'user_id'
+        });
+
+        User.belongsTo(models.UserCategory, {
+            as: 'user_category',
+            foreignKey: 'user_category_id'
         });
 
     };

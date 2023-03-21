@@ -20,7 +20,7 @@
 			<div class="right-icons">
 				<a href="/users/login"><i class="fas fa-user"></i></a>
 				<a href="/products/productCart"><i class="fas fa-shopping-cart"></i></a>
-				<% if(locals.userLogged && locals.userLogged.category == 'admin') { %>
+				<% if(locals.userLogged && locals.userLogged.user_category_id == 1) { %>
 				<a href="/admin/panel"><i class="fas fa-columns"></i></a>
 				<% } %>
 			</div>

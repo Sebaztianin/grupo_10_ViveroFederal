@@ -34,17 +34,18 @@
 
 					<!-- Chequear si se cambió la categoría para mantener el valor tras una validación incorrecta -->
 					<% let oldCategory;
-                    if (!locals.old || !old.category) {
-                        oldCategory = user.category
+                    if (!locals.old || !old.user_category_id) {
+                        oldCategory = user.user_category_id
                     } else {
-                        oldCategory = old.category
+                        oldCategory = old.user_category_id
                     } %>
 
-					<label for="category">Categoría: </label>
-					<select name="category" id="category">
+					<label for="user_category_id">Categoría: </label>
+					<select name="user_category_id" id="user_category_id">
 						<option value="" disabled>Elige una opción</option>
-						<option value="admin" <%= oldCategory == 'admin' ? 'selected' : null %>>Admin</option>
-						<option value="cliente" <%= oldCategory == 'cliente' ? 'selected' : null %>>Cliente</option>
+						<% for (i=0; i < user_categories.length; i ++) { %>
+						<option value="<%= user_categories[i].id %>" <%= oldCategory == user_categories[i].id ? 'selected' : null %>><%= user_categories[i].name %></option>
+						<% } %>
 					</select>
 
 				</div>

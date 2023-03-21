@@ -8,6 +8,7 @@ const { Op } = require("sequelize");
 
 /* Recuperamos el modelo de usuario */
 const User = db.User;
+const UserCategory = db.UserCategory;
 
 /* Importamos las validaciones */
 const { validationResult } = require('express-validator');
@@ -16,7 +17,7 @@ const { validationResult } = require('express-validator');
 let usersController = {
 
     index: function (req, res) {
-        res.render('users/login');
+        res.render('users/login'); // No necesito llevar las categorías porque automáticamente le pone categoría cliente
     },
 
     register: function (req, res) {
@@ -32,7 +33,7 @@ let usersController = {
                 first_name: req.body.first_name,
                 last_name: req.body.last_name,
                 email: req.body.email,
-                category: 'cliente',
+                user_category_id: 2,
                 password: bcrypt.hashSync(req.body.password, 10)
             };
 
@@ -47,6 +48,7 @@ let usersController = {
 
                     // Obtenemos datos del usuario creado
                     User.findOne({
+                        include: [{ association: 'user_category' }],
                         where: { email: userCreated.email }
                     })
                         .then(userToLogin => {
@@ -87,6 +89,7 @@ let usersController = {
 
             // Obtenemos datos del usuario
             User.findOne({
+                include: [{ association: 'user_category' }],
                 where: { email: req.body.email }
             })
                 .then(userToLogin => {
@@ -151,6 +154,7 @@ let usersController = {
 
     panel: function (req, res) {
         User.findAll({
+            include: [{ association: 'user_category' }],
             where: { email: { [Op.ne]: 'admin@gmail.com' } }        // Filtro el admin principal para que no sea editable
         })
             .then(users => {
@@ -159,10 +163,19 @@ let usersController = {
     },
 
     editCategory: function (req, res) {
-        User.findByPk(req.params.id)
-            .then(user => {
-                res.render('users/editCategory', { user: user });
+
+        // Recupero tabla de categorías
+        let user_categories = UserCategory.findAll({ where: { disabled: 0 } });
+        let user = User.findByPk(req.params.id, {
+            include: [{ association: 'user_category' }],
+        });
+
+        // Vuelvo al formulario luego de obtener los datos
+        Promise.all([user_categories, user])
+            .then(([user_categories, user]) => {
+                res.render('users/editCategory', { user: user, user_categories: user_categories });
             });
+
     },
 
     updateCategory: function (req, res) {
@@ -175,7 +188,7 @@ let usersController = {
 
             // Actualizo usuario
             User.update({
-                category: req.body.category
+                user_category_id: req.body.user_category_id
             }, {
                 where: { id: req.params.id }
             })
@@ -189,10 +202,16 @@ let usersController = {
 
         } else { // Hay errores, volvemos al formulario
 
-            // Volvemos al formulario con los errores y los datos viejos
-            User.findByPk(req.params.id)
-                .then(user => {
-                    res.render('users/editCategory', { errors: errors.array(), old: req.body, user: user });
+            // Recupero tabla de categorías
+            let user_categories = UserCategory.findAll({ where: { disabled: 0 } });
+            let user = User.findByPk(req.params.id, {
+                include: [{ association: 'user_category' }],
+            });
+
+            // Vuelvo al formulario luego de obtener los datos
+            Promise.all([user_categories, user])
+                .then(([user_categories, user]) => {
+                    res.render('users/editCategory', { errors: errors.array(), old: req.body, user: user, user_categories: user_categories });
                 });
 
         }
@@ -201,9 +220,16 @@ let usersController = {
 
     editProfile: function (req, res) {
 
-        User.findByPk(req.params.id)
-            .then(user => {
-                res.render('users/editProfile', { user: user });
+        // Recupero tabla de categorías
+        let user_categories = UserCategory.findAll({ where: { disabled: 0 } });
+        let user = User.findByPk(req.params.id, {
+            include: [{ association: 'user_category' }],
+        });
+
+        // Vuelvo al formulario luego de obtener los datos
+        Promise.all([user_categories, user])
+            .then(([user_categories, user]) => {
+                res.render('users/editProfile', { user: user, user_categories: user_categories });
             });
 
     },
@@ -220,7 +246,9 @@ let usersController = {
             if (req.file) {
 
                 // Obtengo usuario viejo
-                User.findByPk(req.params.id)
+                User.findByPk(req.params.id, {
+                    include: [{ association: 'user_category' }],
+                })
                     .then(userOld => {
 
                         // Edito el usuario
@@ -234,7 +262,9 @@ let usersController = {
                             .then(updatedUser => {
 
                                 // Obtengo nuevos datos de usuario
-                                User.findByPk(req.params.id)
+                                User.findByPk(req.params.id, {
+                                    include: [{ association: 'user_category' }],
+                                })
                                     .then(updatedUser => {
 
                                         // Actualizamos dato de cookie
@@ -269,7 +299,9 @@ let usersController = {
                     .then(updatedUser => {
 
                         // Obtengo nuevos datos de usuario
-                        User.findByPk(req.params.id)
+                        User.findByPk(req.params.id, {
+                            include: [{ association: 'user_category' }],
+                        })
                             .then(updatedUser => {
 
                                 // Actualizamos dato de cookie
@@ -296,10 +328,16 @@ let usersController = {
                 }
             }
 
-            // Volvemos al formulario con los errores y los datos viejos
-            User.findByPk(req.params.id)
-                .then(user => {
-                    res.render('users/editProfile', { errors: errors.array(), old: req.body, user: user });
+            // Recupero tabla de categorías
+            let user_categories = UserCategory.findAll({ where: { disabled: 0 } });
+            let user = User.findByPk(req.params.id, {
+                include: [{ association: 'user_category' }],
+            });
+
+            // Vuelvo al formulario luego de obtener los datos
+            Promise.all([user_categories, user])
+                .then(([user_categories, user]) => {
+                    res.render('users/editProfile', { errors: errors.array(), old: req.body, user: user, user_categories: user_categories });
                 });
 
         }
