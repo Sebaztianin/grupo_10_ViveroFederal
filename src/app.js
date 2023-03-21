@@ -14,6 +14,7 @@ const mainRoutes = require('./routers/main');
 const productsRoutes = require('./routers/products');
 const categoriesRoutes = require('./routers/categories');
 const colorsRoutes = require('./routers/colors');
+const sizesRoutes = require('./routers/sizes');
 const usersRoutes = require('./routers/users');
 
 /* Declaramos carpeta static */
@@ -29,8 +30,8 @@ app.use(rememberMeMiddleware); // Para recordar al usuario en toda la app
 app.use(globalVariableMiddleware); // Para crear variables globales
 
 /* Configuramos EJS como el motor de vistas y cambiamos la carpeta de vistas a /src/views */
-app.set('view engine', 'ejs')
-app.set('views', './src/views')
+app.set('view engine', 'ejs');
+app.set('views', './src/views');
 
 /* Levantamos server */
 app.listen(port, () => {
@@ -42,5 +43,6 @@ app.use('/', mainRoutes);
 app.use('/products', productsRoutes);
 app.use('/categories', categoriesRoutes);
 app.use('/colors', colorsRoutes);
+app.use('/sizes', sizesRoutes);
 app.use('/users', usersRoutes);
 
