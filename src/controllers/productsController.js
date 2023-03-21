@@ -124,6 +124,8 @@ let productsController = {
                 price: req.body.price,
                 discount: req.body.discount,
                 category_id: req.body.category_id,
+                color_id: (req.body.color_id != '') ? req.body.color_id : null,
+                size_id: (req.body.size_id != '') ? req.body.size_id : null,
                 image: req.file.filename
             };
 
@@ -206,6 +208,8 @@ let productsController = {
                             price: req.body.price,
                             discount: req.body.discount,
                             category_id: req.body.category_id,
+                            color_id: (req.body.color_id != '') ? req.body.color_id : null,
+                            size_id: (req.body.size_id != '') ? req.body.size_id : null,
                             image: req.file.filename
                         }
 
@@ -235,7 +239,9 @@ let productsController = {
                     description: req.body.description,
                     price: req.body.price,
                     discount: req.body.discount,
-                    category_id: req.body.category_id
+                    category_id: req.body.category_id,
+                    color_id: (req.body.color_id != '') ? req.body.color_id : null,
+                    size_id: (req.body.size_id != '') ? req.body.size_id : null
                 }
 
                 // Actualizo producto

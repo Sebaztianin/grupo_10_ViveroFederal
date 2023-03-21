@@ -2,80 +2,116 @@
 <html>
 
 <head>
-	<%- include('../partials/head.ejs') %>
-	<title>Vivero Federal: Editar producto</title>
-	<link rel="stylesheet" href="/css/products/editProduct.css">
+    <%- include('../partials/head.ejs') %>
+    <title>Vivero Federal: Editar producto</title>
+    <link rel="stylesheet" href="/css/products/editProduct.css">
 </head>
 
 <body>
 
-	<%- include('../partials/header.ejs') %>
+    <%- include('../partials/header.ejs') %>
 
-	<main>
+    <main>
 
-		<section class="create-product">
+        <section class="create-product">
 
-			<!-- Título de la sección -->
-			<h3 class="section-title">Editar producto</h3>
+            <!-- Título de la sección -->
+            <h3 class="section-title">Editar producto</h3>
 
-			<!-- Formulario -->
-			<form class="new-product" action="/products/edit/<%= product.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+            <!-- Formulario -->
+            <form class="new-product" action="/products/edit/<%= product.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
 
-				<div class="data">
+                <div class="data">
 
-					<label for="name">Nombre del producto: </label>
-					<input type="text" name="name" id="name" placeholder="Ej: Suculenta" value="<%= (locals.old && old.name) ? old.name : product.name %>">
+                    <label for="name">Nombre del producto: </label>
+                    <input type="text" name="name" id="name" placeholder="Ej: Suculenta" value="<%= (locals.old && old.name) ? old.name : product.name %>">
 
-					<label for="price">Precio: </label>
-					<input type="number" name="price" id="price" placeholder="AR$" value="<%= (locals.old && old.price) ? old.price : product.price %>">
+                    <label for="price">Precio: </label>
+                    <input type="number" name="price" id="price" placeholder="AR$" value="<%= (locals.old && old.price) ? old.price : product.price %>">
 
-					<label for="discount">Descuento: </label>
-					<input type="number" name="discount" id="discount" placeholder="Ej: 15" value="<%= (locals.old && old.discount) ? old.discount : product.discount %>">
+                    <label for="discount">Descuento: </label>
+                    <input type="number" name="discount" id="discount" placeholder="Ej: 15" value="<%= (locals.old && old.discount) ? old.discount : product.discount %>">
 
-					<label for="image">Imagen: </label>
-					<input type="file" name="image" id="image">
+                    <label for="image">Imagen: </label>
+                    <input type="file" name="image" id="image">
 
-					<!-- Chequear si se cambió la categoría para mantener el valor tras una validación incorrecta -->
-					<% let oldCategory;
-                    if (!locals.old || !old.category_id) {
-                        oldCategory = product.category_id
-                    } else {
-                        oldCategory = old.category_id
-                    } %>
+                    <!-- Chequear si se cambió la categoría para mantener el valor tras una validación incorrecta -->
+                    <% let oldCategory; %>
+                    <% if (!locals.old || !old.category_id) { %>
+                    <% 		oldCategory = product.category_id %>
+                    <% } else { %>
+                    <% 		oldCategory = old.category_id %>
+                    <% } %>
 
-					<label for="category_id">Categoría: </label>
-					<select name="category_id" id="category_id">
-						<option value="" disabled>Elige una opción</option>
-						
+                    <label for="category_id">Categoría: </label>
+                    <select name="category_id" id="category_id">
+                        <option value="" disabled>Elige una opción</option>
+
                         <% for (i=0; i < categories.length; i++) { %>
                         <option value="<%= categories[i].id %>" <%= oldCategory == categories[i].id ? 'selected' : null %>><%= categories[i].name %></option>
                         <% } %>
-						
-					</select>
 
-					<label for="description">Descripción: </label>
-					<textarea name="description" id="description" placeholder="Descripción larga del producto"><%= (locals.old && old.description) ? old.description : product.description %></textarea>
+                    </select>
 
-				</div>
+                    <!-- Chequear si se cambió el color para mantener el valor tras una validación incorrecta -->
+                    <% let oldColor; %>
+                    <% if (!locals.old || !old.color_id) { %>
+                    <% 		oldColor = product.color_id %>
+                    <% } else { %>
+                    <% 		oldColor = old.color_id %>
+                    <% } %>
 
-				<!-- Errores -->
-				<div class="errors">
-					<% if (locals.errors) { %>
-					<% errors.forEach(error => { %>
-					<p class="error"><i class="fas fa-exclamation-circle"></i> <%= error.msg %></p>
-					<% }) %>
-					<% } %>
-				</div>
+                    <label for="color_id">Color: </label>
+                    <select name="color_id" id="color_id">
+                        <option value="">Elige una opción</option>
 
-				<button type="submit">Editar producto</button>
+                        <% for (i=0; i < colors.length; i++) { %>
+                        <option value="<%= colors[i].id %>" <%= oldColor == colors[i].id ? 'selected' : null %>><%= colors[i].name %></option>
+                        <% } %>
 
-			</form>
+                    </select>
 
-		</section>
+                    <!-- Chequear si se cambió el tamaño para mantener el valor tras una validación incorrecta -->
+                    <% let oldSize; %>
+                    <% if (!locals.old || !old.size_id) { %>
+                    <% 		oldSize = product.size_id %>
+                    <% } else { %>
+                    <% 		oldSize = old.size_id %>
+                    <% } %>
 
-	</main>
+                    <label for="size_id">Tamaño: </label>
+                    <select name="size_id" id="size_id">
+                        <option value="">Elige una opción</option>
 
-	<%- include('../partials/footer') %>
+                        <% for (i=0; i < sizes.length; i++) { %>
+                        <option value="<%= sizes[i].id %>" <%= oldSize == sizes[i].id ? 'selected' : null %>><%= sizes[i].name %></option>
+                        <% } %>
+
+                    </select>
+
+                    <label for="description">Descripción: </label>
+                    <textarea name="description" id="description" placeholder="Descripción larga del producto"><%= (locals.old && old.description) ? old.description : product.description %></textarea>
+
+                </div>
+
+                <!-- Errores -->
+                <div class="errors">
+                    <% if (locals.errors) { %>
+                    <% errors.forEach(error => { %>
+                    <p class="error"><i class="fas fa-exclamation-circle"></i> <%= error.msg %></p>
+                    <% }) %>
+                    <% } %>
+                </div>
+
+                <button type="submit">Editar producto</button>
+
+            </form>
+
+        </section>
+
+    </main>
+
+    <%- include('../partials/footer') %>
 
 </body>
 

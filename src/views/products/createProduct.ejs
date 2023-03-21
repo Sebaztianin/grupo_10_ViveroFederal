@@ -45,6 +45,26 @@
 
                     </select>
 
+                    <label for="color_id">Color: </label>
+                    <select name="color_id" id="color_id">
+                        <option value="" selected>Elige una opción</option>
+
+                        <% for (i=0; i < colors.length; i++) { %>
+                        <option value="<%= colors[i].id %>" <%= (locals.old && old.color_id == colors[i].id) ? 'selected' : '' %>><%= colors[i].name %></option>
+                        <% } %>
+
+                    </select>
+
+                    <label for="size_id">Tamaño: </label>
+                    <select name="size_id" id="size_id">
+                        <option value="" selected>Elige una opción</option>
+
+                        <% for (i=0; i < sizes.length; i++) { %>
+                        <option value="<%= sizes[i].id %>" <%= (locals.old && old.size_id == sizes[i].id) ? 'selected' : '' %>><%= sizes[i].name %></option>
+                        <% } %>
+
+                    </select>
+
                     <label for="description">Descripción: </label>
                     <textarea name="description" id="description" placeholder="Descripción larga del producto"><%= (locals.old && old.description) ? old.description : '' %></textarea>
 
