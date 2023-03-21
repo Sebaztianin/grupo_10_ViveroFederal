@@ -18,7 +18,8 @@ let mainController = {
 
         // Recuperamos productos 
         let products = Product.findAll({
-            include: [{ association: 'category' }, { association: 'color' }, { association: 'size' }]
+            include: [{ association: 'category' }, { association: 'color' }, { association: 'size' }],
+            where: { disabled: 0 }
         });
 
         // Recuperamos categorías

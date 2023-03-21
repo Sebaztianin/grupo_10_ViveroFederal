@@ -59,12 +59,20 @@ main h3.section-title:after {
 
 /* Banner */
 
+main section.banner {
+    margin-bottom: 30px;
+}
+
 main section.banner img {
     width: 100%;
 }
 
 
 /* Categorías */
+
+main section.categories {
+    margin-bottom: 30px;
+}
 
 main section.categories div.categories-list {
     display: flex;
@@ -105,6 +113,10 @@ main section.categories div.categories-list p {
 
 
 /* Más vendidos */
+
+main section.top-sellers {
+    margin-bottom: 30px;
+}
 
 main section.top-sellers div.products {
     display: flex;
@@ -186,6 +198,10 @@ main section.top-sellers div.products article div.main-article i {
 
 
 /* Contacto */
+
+main section.contact {
+    margin-bottom: 30px;
+}
 
 main section.contact div.contact-div {
     display: flex;

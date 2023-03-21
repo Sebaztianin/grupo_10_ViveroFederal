@@ -26,7 +26,7 @@ let productsController = {
 
         // Creamos filtro de query
         let queryFilter = { include: [{ association: 'category' }, { association: 'color' }, { association: 'size' }] };
-        queryFilter.where = {};
+        queryFilter.where = { disabled: 0 };
 
         // Agregamos filtro de categoría, color o tamaño
         if (req.query.category) {
@@ -46,14 +46,37 @@ let productsController = {
         let products = Product.findAll(queryFilter);
 
         // Recuperamos categorías, colores y tamaños para los filtros
-        let categories = Category.findAll();
-        let colors = Color.findAll();
-        let sizes = Size.findAll();
+        let categories = Category.findAll({ where: { disabled: 0 } });
+        let colors = Color.findAll({ where: { disabled: 0 } });
+        let sizes = Size.findAll({ where: { disabled: 0 } });
 
         // Promesa para cuando obtengamos todos estos datos
         Promise.all([products, categories, colors, sizes])
             .then(([products, categories, colors, sizes]) => {
                 res.render('products/products', { toThousand: toThousand, products: products, categories: categories, colors: colors, sizes: sizes, search: req.query.search });
+            });
+
+    },
+
+    // Panel de productos
+    panel: function (req, res) {
+
+        // Creamos filtro de query
+        let queryFilter = { include: [{ association: 'category' }, { association: 'color' }, { association: 'size' }] };
+        queryFilter.where = {}; // Acá debo mostrar deshabilitados por si los quiero habilitar de nuevo
+
+        // Recuperamos productos con filtro
+        let products = Product.findAll(queryFilter);
+
+        // Recuperamos categorías, colores y tamaños para los filtros
+        let categories = Category.findAll({ where: { disabled: 0 } });
+        let colors = Color.findAll({ where: { disabled: 0 } });
+        let sizes = Size.findAll({ where: { disabled: 0 } });
+
+        // Promesa para cuando obtengamos todos estos datos
+        Promise.all([products, categories, colors, sizes])
+            .then(([products, categories, colors, sizes]) => {
+                res.render('products/panel', { products: products, categories: categories, colors: colors, sizes: sizes });
             });
 
     },
@@ -284,29 +307,32 @@ let productsController = {
 
     },
 
-    // Eliminar producto
-    destroy: function (req, res) {
+    // Deshabilitar producto
+    disable: function (req, res) {
 
-        // Obtengo usuario viejo
-        Product.findByPk(req.params.id)
-            .then(eliminatedProduct => {
+        // Marco como deshabilitado en BD
+        Product.update({
+            disabled: 1
+        }, {
+            where: { id: req.params.id }
+        })
+            .then(result => {
+                res.redirect('/products/panel')
+            });
 
-                // Validar si imagen existe y eliminarla (unlink)
-                if (eliminatedProduct.image && fs.existsSync(path.join(__dirname, '../../public/images/products/', eliminatedProduct.image))) {
-                    fs.unlinkSync(path.join(__dirname, '../../public/images/products/', eliminatedProduct.image));
-                }
+    },
 
-                // Eliminar producto
-                Product.destroy({
-                    where: { id: req.params.id }
-                })
-                    .then(eliminatedProduct => {
+    // Habilitar producto
+    enable: function (req, res) {
 
-                        // Redireccionar a productos
-                        res.redirect('/products');
-
-                    });
-
+        // Marco como habilitado en BD
+        Product.update({
+            disabled: 0
+        }, {
+            where: { id: req.params.id }
+        })
+            .then(result => {
+                res.redirect('/products/panel')
             });
 
     },

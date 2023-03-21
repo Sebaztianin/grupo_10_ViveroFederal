@@ -82,6 +82,9 @@ router.post('/search', productsController.search);
 // Detalle de producto
 router.get('/detail/:id', productsController.detail);
 
+// Panel de productos
+router.get('/panel', productsController.panel);
+
 // Crear producto
 router.get('/add', adminAuthMiddleware, productsController.create);
 router.post('/add', adminAuthMiddleware, uploadFile.single('image'), validateCreateForm, productsController.store);
@@ -90,8 +93,11 @@ router.post('/add', adminAuthMiddleware, uploadFile.single('image'), validateCre
 router.get('/edit/:id', adminAuthMiddleware, productsController.edit);
 router.put('/edit/:id', adminAuthMiddleware, uploadFile.single('image'), validateEditForm, productsController.update);
 
-// Eliminar producto
-router.delete('/delete/:id', adminAuthMiddleware, productsController.destroy);
+// Deshabilitar producto
+router.delete('/delete/:id', adminAuthMiddleware, productsController.disable);
+
+// Habilitar el producto
+router.put('/enable/:id', adminAuthMiddleware, productsController.enable);
 
 // Carrito de compras
 router.get('/productCart', guestMiddleware, productsController.cart);
