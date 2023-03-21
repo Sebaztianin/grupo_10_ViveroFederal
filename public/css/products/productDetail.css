@@ -241,7 +241,7 @@ main section.product-details div.details div.product-name-price form a {
     color: #3C6255;
 }
 
-main section.product-details div.details div.product-name-price form button {
+main section.product-details div.details div.product-name-price form button.add-to-cart {
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
     font-weight: bold;
@@ -256,7 +256,7 @@ main section.product-details div.details div.product-name-price form button {
     transition: all 0.5s;
 }
 
-main section.product-details div.details div.product-name-price form button:hover {
+main section.product-details div.details div.product-name-price form button.add-to-cart:hover {
     filter: brightness(85%);
 }
 
@@ -267,18 +267,25 @@ main section.product-details div.details div.product-name-price form button.add-
 
 /* Añadir a favorito */
 
-main section.product-details div.details div.product-name-price form a.favorite {
+main section.product-details div.details div.product-name-price form.add-to-favorites button.favorite {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: bold;
     text-align: center;
     margin-block: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #3C6255;
 }
 
-main section.product-details div.details div.product-name-price form a.favorite i {
+main section.product-details div.details div.product-name-price form.add-to-favorites button.favorite i {
     position: relative;
     bottom: 0px;
     transition: all 0.5s;
 }
 
-main section.product-details div.details div.product-name-price form a.favorite:hover i {
+main section.product-details div.details div.product-name-price form.add-to-favorites button.favorite:hover i {
     bottom: 5px;
 }
 

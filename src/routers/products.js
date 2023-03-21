@@ -108,5 +108,14 @@ router.post('/productCart/add/:id', guestMiddleware, productsController.cartAdd)
 // Sacar del carrito
 router.delete('/productCart/remove/:id', guestMiddleware, productsController.cartRemove);
 
+// Favoritos
+router.get('/favorites', guestMiddleware, productsController.favorites);
+
+// Agregar a favoritos
+router.post('/favorites/add/:id', guestMiddleware, productsController.favoritesAdd);
+
+// Quitar de favoritos
+router.delete('/favorites/remove/:id', guestMiddleware, productsController.favoritesRemove);
+
 
 module.exports = router;

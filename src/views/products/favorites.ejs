@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <%- include('../partials/head.ejs') %>
+    <title>Vivero Federal: Favoritos</title>
+    <link rel="stylesheet" href="/css/products/favorites.css">
+</head>
+
+<body>
+
+    <%- include('../partials/header.ejs') %>
+
+    <main>
+
+        <div class="cart">
+
+            <section class="products">
+
+                <!-- Título -->
+                <h3 class="section-title">Mis favoritos</h3>
+
+                <!-- Aviso de que no hay productos en favoritos -->
+                <% if (favorites.length == 0) { %>
+
+                <div class="no-products">
+                    <p>No hay productos en sus favoritos.</p>
+                    <a href="/products">Ver productos</a>
+                </div>
+
+                <% } else { %>
+
+                <!-- Listado -->
+                <div class="products-list">
+
+                    <% for (i = 0; i < favorites.length; i++) { %>
+                    <% let finalPrice = 0; %>
+
+                    <!-- Calculo precio con descuento -->
+                    <% if (favorites[i].product.discount) { %>
+                    <% 		finalPrice = favorites[i].product.price - (favorites[i].product.price * favorites[i].product.discount/100) %>
+                    <% } else { %>
+                    <% 		finalPrice = favorites[i].product.price %>
+                    <% } %>
+
+                    <article>
+						<a href="/products/detail/<%= favorites[i].product.id %>">
+							<img src="/images/products/<%= favorites[i].product.image %>" alt="Imagen de <%= favorites[i].product.name %>" class="product-img">
+							<div class="main-article">
+								<h4 class="name">
+									<%= favorites[i].product.name %>
+								</h4>
+								<div class="price">
+									<p class="price">$<%= toThousand(favorites[i].product.price)
+                                                                            %>
+									</p>
+									<% if (favorites[i].product.discount !=0) { %>
+									<p class="discount">
+										<%= favorites[i].product.discount %>% OFF
+									</p>
+									<% } %>
+								</div>
+								<form action="/products/favorites/remove/<%= favorites[i].product.id %>?_method=DELETE" method="POST">
+									<button class="favorite"><i class="fas fa-trash"></i></i></button>
+								</form>
+								<form action="/products/productCart/add/<%= favorites[i].product.id %>" method="POST">
+									<button class="cart"><i class="fas fa-cart-plus"></i></button>
+								</form>
+							</div>
+						</a>
+                    </article>
+
+                    <% } %>
+
+                </div>
+
+            </section>
+
+            <% } %>
+
+        </div>
+
+    </main>
+
+    <%- include('../partials/footer.ejs') %>
+
+</body>
+
+</html>

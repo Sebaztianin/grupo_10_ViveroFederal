@@ -11,6 +11,7 @@ const Category = db.Category;
 const Color = db.Color;
 const Size = db.Size;
 const CartItem = db.CartItem;
+const Favorite = db.Favorite;
 
 /* Importamos las validaciones */
 const { validationResult } = require('express-validator');
@@ -394,7 +395,6 @@ let productsController = {
 
             });
 
-
     },
 
     // Sacar del carrito
@@ -407,6 +407,68 @@ let productsController = {
 
                 // Redirecciono al carrito
                 res.redirect('/products/productCart');
+
+            });
+
+    },
+
+    // Favoritos
+    favorites: function (req, res) {
+
+        // Obtengo favoritos, incluyendo productos asociados
+        Favorite.findAll({
+            where: { user_id: req.session.userLogged.id },
+            include: [{ association: 'product' }, { association: 'user' }]
+        })
+            .then(favorites => {
+                res.render('products/favorites', { favorites: favorites, toThousand: toThousand });
+            });
+
+    },
+
+    // Agregar a favoritos
+    favoritesAdd: function (req, res) {
+
+        // Busco este producto en los favoritos del usuario logeado
+        Favorite.findOne({
+            where: { user_id: req.session.userLogged.id, product_id: req.params.id }
+        })
+            .then(favorite => {
+
+                if (favorite) { // Existe el producto en favoritos
+
+                    // Redirecciono a favoritos
+                    res.redirect('/products/favorites');
+
+                } else { // No existe el producto
+
+                    // Agrego el producto a favoritos
+                    Favorite.create({
+                        user_id: req.session.userLogged.id,
+                        product_id: req.params.id
+                    })
+                        .then(favoriteInserted => {
+
+                            // Redirecciono al carrito
+                            res.redirect('/products/favorites');
+
+                        });
+
+                }
+
+            });
+    },
+
+    // Sacar de favoritos
+    favoritesRemove: function (req, res) {
+
+        Favorite.destroy({
+            where: { user_id: req.session.userLogged.id, product_id: req.params.id }
+        })
+            .then(favoriteDestroyed => {
+
+                // Redirecciono al carrito
+                res.redirect('/products/favorites');
 
             });
 
