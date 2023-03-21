@@ -10,10 +10,11 @@ const rememberMeMiddleware = require('./middlewares/rememberMeMiddleware'); // M
 const globalVariableMiddleware = require('./middlewares/globalVariableMiddleware'); // Middleware propio para crear variables globales
 
 /* Importamos módulos propios de ruteo */
-const mainRoutes = require('./routers/main')
-const productsRoutes = require('./routers/products')
-const categoriesRoutes = require('./routers/categories')
-const usersRoutes = require('./routers/users')
+const mainRoutes = require('./routers/main');
+const productsRoutes = require('./routers/products');
+const categoriesRoutes = require('./routers/categories');
+const colorsRoutes = require('./routers/colors');
+const usersRoutes = require('./routers/users');
 
 /* Declaramos carpeta static */
 app.use(express.static('./public'));
@@ -40,5 +41,6 @@ app.listen(port, () => {
 app.use('/', mainRoutes);
 app.use('/products', productsRoutes);
 app.use('/categories', categoriesRoutes);
+app.use('/colors', colorsRoutes);
 app.use('/users', usersRoutes);
 

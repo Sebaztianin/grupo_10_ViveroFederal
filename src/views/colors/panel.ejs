@@ -3,8 +3,8 @@
 
 <head>
     <%- include('../partials/head.ejs') %>
-    <title>Vivero Federal: Panel de categorías</title>
-    <link rel="stylesheet" href="/css/categories/panel.css">
+    <title>Vivero Federal: Panel de colores</title>
+    <link rel="stylesheet" href="/css/colors/panel.css">
 </head>
 
 <body>
@@ -15,27 +15,27 @@
 
         <section class="list">
 
-            <h3 class="section-title">Panel de categorías</h3>
+            <h3 class="section-title">Panel de colores</h3>
 
-            <!-- Lista de categorías -->
+            <!-- Listado -->
             <div class="list">
 
-                <% for (i = 0; i < categories.length; i++) { %>
+                <% for (i = 0; i < colors.length; i++) { %>
 
                 <article>
 
-                    <!-- Nombre de la categoría -->
-                    <p class="user"><%= categories[i].name %></p>
+                    <!-- Nombre del elemento -->
+                    <p class="user"><%= colors[i].name %></p>
 
                     <div class="buttons">
 
                         <!-- Botón de editar -->
-                        <a href="/categories/edit/<%= categories[i].id %>"><i class="fas fa-edit"></i></a>
+                        <a href="/colors/edit/<%= colors[i].id %>"><i class="fas fa-edit"></i></a>
 
-                        <% if (categories[i].disabled == 1) { %>
+                        <% if (colors[i].disabled == 1) { %>
 
                         <!-- Botón de habilitar -->
-                        <form action="/categories/enable/<%= categories[i].id %>?_method=PUT" method="POST">
+                        <form action="/colors/enable/<%= colors[i].id %>?_method=PUT" method="POST">
                             <button type="submit"><i class="fa-solid fa-toggle-off"></i></button>
 
                         </form>
@@ -43,7 +43,7 @@
                         <% } else { %>
 
                         <!-- Botón de eliminar -->
-                        <form action="/categories/delete/<%= categories[i].id %>?_method=DELETE" method="POST">
+                        <form action="/colors/delete/<%= colors[i].id %>?_method=DELETE" method="POST">
                             <button type="submit"><i class="fa-solid fa-toggle-on"></i></button>
 
                         </form>
@@ -58,11 +58,11 @@
 
                 <article>
 
-                    <!-- Nueva categoría -->
-                    <p class="user">Nueva categoría</p>
+                    <!-- Nuevo -->
+                    <p class="user">Nuevo color</p>
 
                     <!-- Botón de agregar -->
-                    <a href="/categories/add"><i class="fas fa-plus"></i></a>
+                    <a href="/colors/add"><i class="fas fa-plus"></i></a>
 
                 </article>
 

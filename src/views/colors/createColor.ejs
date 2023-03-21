@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<%- include('../partials/head.ejs') %>
+	<title>Vivero Federal: Nuevo color</title>
+	<link rel="stylesheet" href="/css/colors/createColor.css">
+</head>
+
+<body>
+
+	<%- include('../partials/header.ejs') %>
+
+	<main>
+
+		<section class="create">
+
+			<!-- Título de la sección -->
+			<h3 class="section-title">Crear color</h3>
+
+			<!-- Formulario -->
+			<form class="new" action="/colors/add" method="POST">
+
+				<div class="data">
+
+					<label for="name">Nombre del color: </label>
+					<input type="text" name="name" id="name" placeholder="Ej: Rojo" value="<%= (locals.old && old.name) ? old.name : '' %>">
+                    
+				</div>
+
+				<!-- Errores -->
+				<div class="errors">
+					<% if (locals.errors) { %>
+					<% errors.forEach(error => { %>
+					<p class="error"><i class="fas fa-exclamation-circle"></i> <%= error.msg %></p>
+					<% }) %>
+					<% } %>
+				</div>
+
+				<button type="submit">Crear color</button>
+
+			</form>
+
+		</section>
+
+	</main>
+
+	<%- include('../partials/footer') %>
+
+</body>
+
+</html>

@@ -40,18 +40,18 @@ let categoriesController = {
         // Consultamos si no existen errores
         if (errors.isEmpty()) {   // No hay errores, continuamos...
 
-            // Creamos nuevo producto con los datos del formulario
+            // Creamos nueva categoría con los datos del formulario
             let newCategory = {
                 name: req.body.name,
                 image: req.file.filename
             };
 
-            // Agregar producto a la BD
+            // Agregar categoría a la BD
             Category.create(newCategory)
                 .then(createdCategory => {
 
-                    // Redireccionamos al detalle del producto
-                    res.redirect('/categories/panel/');
+                    // Redireccionamos al panel
+                    res.redirect('/categories/panel');
 
                 });
 
