@@ -20,6 +20,7 @@ SET time_zone = "+00:00";
 --
 -- Database: `vivero_federal_db`
 --
+DROP DATABASE IF EXISTS `vivero_federal_db`;
 CREATE DATABASE IF NOT EXISTS `vivero_federal_db` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `vivero_federal_db`;
 
