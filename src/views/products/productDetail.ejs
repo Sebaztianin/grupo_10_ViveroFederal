@@ -97,7 +97,7 @@
                     <p class="line"></p>
 
                     <!-- Formulario de edición/eliminación -->
-                    <% if(locals.userLogged && locals.userLogged.category == 'admin') { %>
+                    <% if(locals.userLogged && locals.userLogged.user_category_id == 1) { %>
 
                     <form class="edit" action="/products/delete/<%= product.id %>?_method=DELETE" method="POST">
                         <!-- Editar -->
