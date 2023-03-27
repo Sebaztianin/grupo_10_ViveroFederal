@@ -47,39 +47,43 @@
 				<!-- Filtros -->
 				<div class="filters">
 
-
 					<div class="categories">
 						<p>Categoría</p>
 						<ul>
 							<% for (i=0; i < categories.length; i++) { %>
-							<li><a href="/products?category=<%= categories[i].id %>">
+							<li><a href="<%= categories[i].id %>">
 									<%= categories[i].name %>
-								</a></li>
+								</a>
+                            </li>
 							<% } %>
 						</ul>
 					</div>
 
-					<div class="color">
+					<div class="colors">
 						<p>Color</p>
 						<ul>
 							<% for (i=0; i < colors.length; i++) { %>
-							<li><a href="/products?color=<%= colors[i].id %>">
+							<li><a href="<%= colors[i].id %>">
 									<%= colors[i].name %>
-								</a></li>
+								</a>
+                            </li>
 							<% } %>
 						</ul>
 					</div>
 
-					<div class="size">
+					<div class="sizes">
 						<p>Tamaño</p>
 						<ul>
 							<% for (i=0; i < sizes.length; i++) { %>
-							<li><a href="/products?size=<%= sizes[i].id %>">
+							<li><a href="<%= sizes[i].id %>">
 									<%= sizes[i].name %>
-								</a></li>
+								</a>
+                            </li>
 							<% } %>
 						</ul>
 					</div>
+
+					<a class="clean" href="/products">Limpiar filtros</a>
 
 				</div>
 

@@ -54,7 +54,7 @@ let productsController = {
         // Promesa para cuando obtengamos todos estos datos
         Promise.all([products, categories, colors, sizes])
             .then(([products, categories, colors, sizes]) => {
-                res.render('products/products', { toThousand: toThousand, products: products, categories: categories, colors: colors, sizes: sizes, search: req.query.search });
+                res.render('products/products', { toThousand: toThousand, products: products, categories: categories, colors: colors, sizes: sizes, query: req.query });
             });
 
     },

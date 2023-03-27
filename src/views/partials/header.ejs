@@ -40,7 +40,7 @@
 
 		<!-- Barra de búsqueda -->
 		<form class="search-form" action="/products/search" method="POST">
-			<input class="search-input" type="text" name="search" placeholder="Buscar plantas o accesorios..." value="<%= (locals.search && search) ? search : '' %>" required>
+			<input class="search-input" type="text" name="search" placeholder="Buscar plantas o accesorios..." value="<%= (locals.query && query.search) ? query.search : '' %>" required>
 			<button class="search-button" type="submit"><i class="fa fa-search"></i></button>
 		</form>
 

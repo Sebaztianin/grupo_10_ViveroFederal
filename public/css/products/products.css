@@ -135,6 +135,12 @@ main section.all-products div.list div.filters a {
     color: #3C6255;
 } 
 
+main section.all-products div.list div.filters a.clean {
+    text-decoration: underline;
+    font-size: 14px;
+    color: #3C6255;
+} 
+
 
 /* Productos */
 
