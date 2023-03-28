@@ -1,7 +1,7 @@
 
 // Convertimos el querystring en un objeto
-let search = window.location.search.substring(1);
-let query = search ? JSON.parse('{"' + decodeURI(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g, '":"') + '"}') : '';
+let querystring = window.location.search.substring(1);
+let query = querystring ? JSON.parse('{"' + decodeURI(querystring).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g, '":"') + '"}') : '';
 
 // Obtengo los elementos a de los filtros
 let categoriesItems = document.querySelectorAll('div.filters div.categories ul li a');
@@ -15,8 +15,8 @@ if (!query.category) { // No hay un parámetro seleccionado
     categoriesItems.forEach(category => {
 
         // Agrego al href lo que sigue
-        if (search) {
-            category.setAttribute('href', '/products?category=' + category.getAttribute('href') + '&' + search);
+        if (querystring) {
+            category.setAttribute('href', '/products?category=' + category.getAttribute('href') + '&' + querystring);
         } else {
             category.setAttribute('href', '/products?category=' + category.getAttribute('href'));
         }
@@ -45,8 +45,8 @@ if (!query.color) { // No hay un parámetro seleccionado
     colorsItems.forEach(color => {
 
         // Agrego al href lo que sigue
-        if (search) {
-            color.setAttribute('href', '/products?color=' + color.getAttribute('href') + '&' + search);
+        if (querystring) {
+            color.setAttribute('href', '/products?color=' + color.getAttribute('href') + '&' + querystring);
         } else {
             color.setAttribute('href', '/products?color=' + color.getAttribute('href'));
         }
@@ -75,8 +75,8 @@ if (!query.size) { // No hay un parámetro seleccionado
     sizesItems.forEach(size => {
 
         // Agrego al href lo que sigue
-        if (search) {
-            size.setAttribute('href', '/products?size=' + size.getAttribute('href') + '&' + search);
+        if (querystring) {
+            size.setAttribute('href', '/products?size=' + size.getAttribute('href') + '&' + querystring);
         } else {
             size.setAttribute('href', '/products?size=' + size.getAttribute('href'));
         }

@@ -43,6 +43,16 @@ let productsController = {
             queryFilter.where.name = { [Op.like]: '%' + req.query.search + '%' };
         }
 
+        // Paginación
+        let pageSize = 12;
+
+        if (req.query.page && req.query.page != 1) {
+            queryFilter.limit = (req.query.page - 1) * pageSize;
+            queryFilter.offset = (req.query.page - 1) * pageSize;
+        } else {
+            queryFilter.limit = pageSize
+        }
+
         // Recuperamos productos con filtro
         let products = Product.findAll(queryFilter);
 
