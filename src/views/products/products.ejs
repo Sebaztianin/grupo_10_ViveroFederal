@@ -89,10 +89,12 @@
 
 				<!-- Aviso de que no hay productos en carrito -->
 				<% if (products.length==0) { %>
+
 				<div class="no-results">
 					<p class="warning">No hay resultados para su búsqueda.</p>
 					<a href="/products">Ver todos los productos</a>
 				</div>
+                
 				<% } else { %>
 
 				<!-- Productos -->
@@ -137,9 +139,9 @@
 					<% } %>
 
 					<div class="pages">
-						<a href="#"><i class="fa-solid fa-arrow-left"></i></a>
+						<a class="prevPage" href="<%= prevPage %>"><i class="fa-solid fa-arrow-left"></i></a>
                         <p>Página <%= query.page %></p>
-						<a href="#"><i class="fa-solid fa-arrow-right"></i></a>
+						<a class="nextPage" href="<%= nextPage %>"><i class="fa-solid fa-arrow-right"></i></a>
 					</div>
 
 					<div class="more-products">

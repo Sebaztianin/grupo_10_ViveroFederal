@@ -44,15 +44,17 @@ let productsController = {
         }
 
         // Paginación
-        let pageSize = 12;
+        let pageSize = 8;
 
+        // Verifico que haya un número de página ingresado, sino lo seteo en 1
         if (!req.query.page) { req.query.page = 1 };
 
+        // Inserto filtros y offset
         if (req.query.page != 1) {
-            queryFilter.limit = (req.query.page - 1) * pageSize;
+            queryFilter.limit = pageSize + 1;
             queryFilter.offset = (req.query.page - 1) * pageSize;
         } else {
-            queryFilter.limit = pageSize
+            queryFilter.limit = pageSize + 1;
         }
 
         // Recuperamos productos con filtro
@@ -66,7 +68,21 @@ let productsController = {
         // Promesa para cuando obtengamos todos estos datos
         Promise.all([products, categories, colors, sizes])
             .then(([products, categories, colors, sizes]) => {
-                res.render('products/products', { toThousand: toThousand, products: products, categories: categories, colors: colors, sizes: sizes, query: req.query });
+
+
+                // Defino página siguiente y anterior, si las hay
+                let prevPage = req.query.page - 1;
+                let nextPage = 0;
+
+                // Remuevo último elemento y verifico si existe
+                let lastProduct = products.splice(pageSize, 1);
+                if (lastProduct.length != 0) {
+                    nextPage = parseInt(req.query.page) + 1; // Existe, así que hay otra página
+                }
+
+                // Renderizo
+                res.render('products/products', { toThousand: toThousand, products: products, categories: categories, colors: colors, sizes: sizes, query: req.query, nextPage: nextPage, prevPage: prevPage });
+
             });
 
     },
