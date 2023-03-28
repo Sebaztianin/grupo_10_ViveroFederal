@@ -46,7 +46,9 @@ let productsController = {
         // Paginación
         let pageSize = 12;
 
-        if (req.query.page && req.query.page != 1) {
+        if (!req.query.page) { req.query.page = 1 };
+
+        if (req.query.page != 1) {
             queryFilter.limit = (req.query.page - 1) * pageSize;
             queryFilter.offset = (req.query.page - 1) * pageSize;
         } else {
