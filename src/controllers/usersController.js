@@ -153,13 +153,54 @@ let usersController = {
     },
 
     panel: function (req, res) {
-        User.findAll({
-            include: [{ association: 'user_category' }],
-            where: { email: { [Op.ne]: 'admin@gmail.com' } }        // Filtro el admin principal para que no sea editable
-        })
+
+        // Creamos filtro
+        let queryFilter = { include: [{ association: 'user_category' }] };
+        queryFilter.where = {};
+
+        // Aplicamos filtro de query si existe
+        if (req.query.searchPanel) {
+            queryFilter.where = {
+                [Op.or]:
+                    [
+                        {
+                            first_name:
+                            {
+                                [Op.like]: '%' + req.query.searchPanel + '%'
+                            }
+                        },
+                        {
+                            last_name:
+                            {
+                                [Op.like]: '%' + req.query.searchPanel + '%'
+                            }
+                        },
+                        {
+                            email:
+                            {
+                                [Op.like]: '%' + req.query.searchPanel + '%'
+                            }
+                        }
+                    ]
+            }
+        }
+
+        // Agrego un filtro al where para que no aparezca admin principal, el cual no debe ser editable
+        queryFilter.where.email = { [Op.ne]: 'admin@gmail.com' };
+
+        // Buscamos usuarios que cumplen con el filtro
+        User.findAll(queryFilter)
             .then(users => {
-                res.render('users/panel', { users: users });
+                res.render('users/panel', { users: users, query: req.query });
             });
+
+    },
+
+    panelSearch: function (req, res) {
+
+        // Redirecciono pasando parámetros para la query
+        res.redirect('/users/panel?searchPanel=' + req.body.searchPanel);
+
     },
 
     editCategory: function (req, res) {

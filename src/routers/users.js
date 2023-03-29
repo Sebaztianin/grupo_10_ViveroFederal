@@ -98,5 +98,6 @@ router.post('/logout', guestMiddleware, usersController.logout);
 router.get('/panel', adminAuthMiddleware, usersController.panel);
 router.get('/editCategory/:id', adminAuthMiddleware, usersController.editCategory);
 router.put('/editCategory/:id', adminAuthMiddleware, categoryForm, usersController.updateCategory);
+router.post('/panel/search', adminAuthMiddleware, usersController.panelSearch);
 
 module.exports = router;

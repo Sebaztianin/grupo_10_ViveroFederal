@@ -25,7 +25,7 @@ let productsController = {
     // Listado de productos
     index: function (req, res) {
 
-        // Creamos filtro de query
+        // Creamos filtro
         let queryFilter = { include: [{ association: 'category' }, { association: 'color' }, { association: 'size' }] };
         queryFilter.where = { disabled: 0 };
 
