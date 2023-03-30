@@ -19,7 +19,8 @@ let mainController = {
         // Recuperamos productos 
         let products = Product.findAll({
             include: [{ association: 'category' }, { association: 'color' }, { association: 'size' }],
-            where: { disabled: 0 }
+            where: { disabled: 0 },
+            limit: 12     // Limito los productos a 12. Se le debería dar una lógica de productos nuevos o algo así
         });
 
         // Recuperamos categorías

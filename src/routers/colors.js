@@ -27,8 +27,9 @@ let editForm = [
 /* Creamos el módulo y definimos las rutas para main */
 let router = express.Router();
 
-// Listado
+// Panel de colores
 router.get('/panel', adminAuthMiddleware, colorsController.panel);
+router.post('/panel/search', adminAuthMiddleware, colorsController.panelSearch);
 
 // Nuevo
 router.get('/add', adminAuthMiddleware, colorsController.add);
