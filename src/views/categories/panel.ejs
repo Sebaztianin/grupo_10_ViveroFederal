@@ -17,8 +17,24 @@
 
             <h3 class="section-title">Panel de categorías</h3>
 
+			<!-- Barra de búsqueda -->
+			<form class="search" action="/categories/panel/search" method="POST">
+				<input class="search-input" type="text" name="searchPanel" placeholder="Buscar..." value="<%= (locals.query && query.searchPanel) ? query.searchPanel : '' %>" required>
+				<button class="search-button" type="submit"><i class="fa fa-search"></i></button>
+			</form>
+
             <!-- Lista de categorías -->
             <div class="list">
+
+                <article>
+
+                    <!-- Nueva categoría -->
+                    <p class="user">Nueva categoría</p>
+
+                    <!-- Botón de agregar -->
+                    <a href="/categories/add"><i class="fas fa-plus"></i></a>
+
+                </article>
 
                 <% for (i = 0; i < categories.length; i++) { %>
 
@@ -56,16 +72,16 @@
 
                 <% } %>
 
-                <article>
+            </div>
 
-                    <!-- Nueva categoría -->
-                    <p class="user">Nueva categoría</p>
+			<div class="pages">
+				<a class="prevPage" href="<%= prevPage %>"><i class="fa-solid fa-arrow-left"></i></a>
+				<p>Página <%= query.page %></p>
+				<a class="nextPage" href="<%= nextPage %>"><i class="fa-solid fa-arrow-right"></i></a>
+			</div>
 
-                    <!-- Botón de agregar -->
-                    <a href="/categories/add"><i class="fas fa-plus"></i></a>
-
-                </article>
-
+            <div class="all-elements">
+                <a  href="/categories/panel">Ver todas las categorías</a>
             </div>
 
         </section>
@@ -75,5 +91,7 @@
     <%- include('../partials/footer.ejs') %>
 
 </body>
+
+<script src="/js/categories/panel.js"></script>
 
 </html>

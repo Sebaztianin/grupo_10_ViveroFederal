@@ -17,12 +17,55 @@ let categoriesController = {
 
     panel: function (req, res) {
 
-        Category.findAll()
+        // Creamos filtro
+        let queryFilter = {};
+        queryFilter.where = {}; // Acá debo mostrar deshabilitados por si los quiero habilitar de nuevo
+
+        // Aplicamos filtro de query si existe
+        if (req.query.searchPanel) {
+            queryFilter.where.name = { [Op.like]: '%' + req.query.searchPanel + '%' };
+        }
+
+        // Paginación
+        let pageSize = 8;
+
+        // Verifico que haya un número de página ingresado, sino lo seteo en 1
+        if (!req.query.page) { req.query.page = 1 };
+
+        // Filtros y offset
+        if (req.query.page != 1) {
+            queryFilter.limit = pageSize + 1;
+            queryFilter.offset = (req.query.page - 1) * pageSize;
+        } else {
+            queryFilter.limit = pageSize + 1;
+        }
+
+        // Recuperamos elementos con filtro
+        Category.findAll(queryFilter)
             .then(categories => {
 
-                res.render('categories/panel', { categories: categories });
+                // Defino página siguiente y anterior, si las hay
+                let prevPage = req.query.page - 1;
+                let nextPage = 0;
+
+                // Remuevo último elemento y verifico si existe
+                let lastCategory = categories.splice(pageSize, 1);
+                if (lastCategory.length != 0) {
+                    nextPage = parseInt(req.query.page) + 1; // Existe, así que hay otra página
+                }
+
+                // Renderizo
+                res.render('categories/panel', { categories: categories, query: req.query, prevPage: prevPage, nextPage: nextPage });
 
             });
+
+    },
+
+    // Búsqueda en panel
+    panelSearch: function (req, res) {
+
+        // Redirecciono pasando parámetros para la query
+        res.redirect('/categories/panel?searchPanel=' + req.body.searchPanel);
 
     },
 

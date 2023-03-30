@@ -57,8 +57,9 @@ const uploadFile = multer({ storage: storage });
 /* Creamos el módulo y definimos las rutas para main */
 let router = express.Router();
 
-// Listado de categorías
+// Panel de categorías
 router.get('/panel', adminAuthMiddleware, categoriesController.panel);
+router.post('/panel/search', adminAuthMiddleware, categoriesController.panelSearch);
 
 // Nueva categoría
 router.get('/add', adminAuthMiddleware, categoriesController.add);
