@@ -46,3 +46,7 @@ app.use('/colors', colorsRoutes);
 app.use('/sizes', sizesRoutes);
 app.use('/users', usersRoutes);
 
+// Para hacer los 404 not found más bonitos
+app.use((req, res, next) => { 
+    res.status(404).render('main/notFound');
+});

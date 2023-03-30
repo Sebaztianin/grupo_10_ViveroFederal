@@ -1,0 +1,66 @@
+/* Global settings*/
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Roboto', sans-serif;
+    color: #3C6255;
+    background-color: #FFFBE9;
+    min-height: 100vh;
+}
+
+
+/* Eliminamos colores en los links visitados */
+
+main a:visited {
+    color: #3C6255;
+}
+
+
+/* Main */
+
+main {
+    margin-top: 165px;
+}
+
+main div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 1280px;
+    margin-top: 10%;
+}
+
+main div p {
+    margin-bottom: 30px;
+}
+
+
+/* Celus más grandes */
+
+@media (min-width: 481px) {}
+
+
+/* Tablets y netbooks */
+
+@media (min-width: 769px) {}
+
+
+/* Notebooks */
+
+@media (min-width: 1024px) {
+
+    /* Main */
+
+    main {
+        margin-top: 115px;
+    }
+
+}
