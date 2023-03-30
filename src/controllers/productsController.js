@@ -49,7 +49,7 @@ let productsController = {
         // Verifico que haya un número de página ingresado, sino lo seteo en 1
         if (!req.query.page) { req.query.page = 1 };
 
-        // Inserto filtros y offset
+        // Filtros y offset
         if (req.query.page != 1) {
             queryFilter.limit = pageSize + 1;
             queryFilter.offset = (req.query.page - 1) * pageSize;
@@ -89,9 +89,44 @@ let productsController = {
     // Panel de productos
     panel: function (req, res) {
 
-        // Creamos filtro de query
+        // Creamos filtro
         let queryFilter = { include: [{ association: 'category' }, { association: 'color' }, { association: 'size' }] };
         queryFilter.where = {}; // Acá debo mostrar deshabilitados por si los quiero habilitar de nuevo
+
+        // Aplicamos filtro de query si existe
+        if (req.query.searchPanel) {
+            queryFilter.where = {
+                [Op.or]:
+                    [
+                        {
+                            name:
+                            {
+                                [Op.like]: '%' + req.query.searchPanel + '%'
+                            }
+                        },
+                        {
+                            description:
+                            {
+                                [Op.like]: '%' + req.query.searchPanel + '%'
+                            }
+                        }
+                    ]
+            }
+        }
+
+        // Paginación
+        let pageSize = 8;
+
+        // Verifico que haya un número de página ingresado, sino lo seteo en 1
+        if (!req.query.page) { req.query.page = 1 };
+
+        // Filtros y offset
+        if (req.query.page != 1) {
+            queryFilter.limit = pageSize + 1;
+            queryFilter.offset = (req.query.page - 1) * pageSize;
+        } else {
+            queryFilter.limit = pageSize + 1;
+        }
 
         // Recuperamos productos con filtro
         let products = Product.findAll(queryFilter);
@@ -104,8 +139,29 @@ let productsController = {
         // Promesa para cuando obtengamos todos estos datos
         Promise.all([products, categories, colors, sizes])
             .then(([products, categories, colors, sizes]) => {
-                res.render('products/panel', { products: products, categories: categories, colors: colors, sizes: sizes });
+                
+                // Defino página siguiente y anterior, si las hay
+                let prevPage = req.query.page - 1;
+                let nextPage = 0;
+
+                // Remuevo último elemento y verifico si existe
+                let lastProduct = products.splice(pageSize, 1);
+                if (lastProduct.length != 0) {
+                    nextPage = parseInt(req.query.page) + 1; // Existe, así que hay otra página
+                }
+
+                // Renderizo
+                res.render('products/panel', { products: products, categories: categories, colors: colors, sizes: sizes, query: req.query, prevPage: prevPage, nextPage: nextPage });
+
             });
+
+    },
+
+    // Búsqueda en panel
+    panelSearch: function (req, res) {
+
+        // Redirecciono pasando parámetros para la query
+        res.redirect('/products/panel?searchPanel=' + req.body.searchPanel);
 
     },
 

@@ -194,7 +194,7 @@ let usersController = {
         // Verifico que haya un número de página ingresado, sino lo seteo en 1
         if (!req.query.page) { req.query.page = 1 };
 
-        // Inserto filtros y offset
+        // Filtros y offset
         if (req.query.page != 1) {
             queryFilter.limit = pageSize + 1;
             queryFilter.offset = (req.query.page - 1) * pageSize;
@@ -223,6 +223,7 @@ let usersController = {
 
     },
 
+    // Búsqueda en panel
     panelSearch: function (req, res) {
 
         // Redirecciono pasando parámetros para la query

@@ -134,10 +134,6 @@ main section.profile div.list article a:visited {
     color: #3C6255;
 }
 
-main section.profile div.all-elements {
-    margin-block: 20px;
-}
-
 
 /* Páginas */
 
@@ -148,7 +144,7 @@ main section.profile div.pages {
     align-items: center;
     width: 100%;
     text-align: center;
-    margin-top: 30px;
+    margin-top: 15px;
 }
 
 main section.profile div.pages a {
@@ -156,6 +152,11 @@ main section.profile div.pages a {
     text-align: center;
     margin: 15px;
     color: #3C6255;
+}
+
+main section.profile div.all-elements {
+    margin-top: 10px;
+    margin-bottom: 30px;
 }
 
 

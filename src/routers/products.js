@@ -84,6 +84,7 @@ router.get('/detail/:id', productsController.detail);
 
 // Panel de productos
 router.get('/panel', productsController.panel);
+router.post('/panel/search', adminAuthMiddleware, productsController.panelSearch);
 
 // Crear producto
 router.get('/add', adminAuthMiddleware, productsController.create);
