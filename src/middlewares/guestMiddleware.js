@@ -2,7 +2,7 @@
 
 function guestMiddleware(req, res, next) {
     if (req.session.userLogged == undefined) {
-        res.redirect('/users/login');
+        res.redirect('/users/login?warning=notLogged');
     } else {
         next();
     }

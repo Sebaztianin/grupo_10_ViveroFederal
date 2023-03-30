@@ -5,10 +5,10 @@ function userAuthMiddleware(req, res, next) {
         if (req.session.userLogged.id == req.params.id) {
             next();
         } else {
-            res.redirect('/users/editProfile/' + req.session.userLogged.id);
+            res.redirect('/users/editProfile/' + req.session.userLogged.id + '?warning=notUser');
         }
     } else {
-        res.redirect('/users/login/');
+        res.redirect('/users/login?warning=notLogged');
     }
 }
 
