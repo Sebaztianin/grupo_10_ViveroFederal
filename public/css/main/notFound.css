@@ -26,7 +26,7 @@ main a:visited {
 /* Main */
 
 main {
-    margin-top: 165px;
+    margin: auto;
 }
 
 main div {
@@ -35,7 +35,7 @@ main div {
     justify-content: center;
     align-items: center;
     max-width: 1280px;
-    margin-top: 10%;
+    margin-top: 30%;
 }
 
 main div p {
