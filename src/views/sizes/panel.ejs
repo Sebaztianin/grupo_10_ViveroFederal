@@ -17,8 +17,24 @@
 
             <h3 class="section-title">Panel de tamaños</h3>
 
+			<!-- Barra de búsqueda -->
+			<form class="search" action="/sizes/panel/search" method="POST">
+				<input class="search-input" type="text" name="searchPanel" placeholder="Buscar..." value="<%= (locals.query && query.searchPanel) ? query.searchPanel : '' %>" required>
+				<button class="search-button" type="submit"><i class="fa fa-search"></i></button>
+			</form>
+
             <!-- Listado -->
             <div class="list">
+
+                <article>
+
+                    <!-- Nuevo -->
+                    <p class="user">Nuevo tamaño</p>
+
+                    <!-- Botón de agregar -->
+                    <a href="/sizes/add"><i class="fas fa-plus"></i></a>
+
+                </article>
 
                 <% for (i = 0; i < sizes.length; i++) { %>
 
@@ -56,16 +72,16 @@
 
                 <% } %>
 
-                <article>
+            </div>
 
-                    <!-- Nuevo -->
-                    <p class="user">Nuevo tamaño</p>
+			<div class="pages">
+				<a class="prevPage" href="<%= prevPage %>"><i class="fa-solid fa-arrow-left"></i></a>
+				<p>Página <%= query.page %></p>
+				<a class="nextPage" href="<%= nextPage %>"><i class="fa-solid fa-arrow-right"></i></a>
+			</div>
 
-                    <!-- Botón de agregar -->
-                    <a href="/sizes/add"><i class="fas fa-plus"></i></a>
-
-                </article>
-
+            <div class="all-elements">
+                <a  href="/sizes/panel">Ver todos los tamaños</a>
             </div>
 
         </section>
@@ -75,5 +91,7 @@
     <%- include('../partials/footer.ejs') %>
 
 </body>
+
+<script src="/js/sizes/panel.js"></script>
 
 </html>

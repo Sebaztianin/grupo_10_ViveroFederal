@@ -27,8 +27,9 @@ let editForm = [
 /* Creamos el módulo y definimos las rutas para main */
 let router = express.Router();
 
-// Listado
+// Panel de tamaños
 router.get('/panel', adminAuthMiddleware, sizesController.panel);
+router.post('/panel/search', adminAuthMiddleware, sizesController.panelSearch);
 
 // Nuevo
 router.get('/add', adminAuthMiddleware, sizesController.add);

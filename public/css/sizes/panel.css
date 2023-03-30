@@ -70,16 +70,47 @@ main h3.section-title:after {
 
 /* Perfil */
 
+main section.list {
+    width: 100%;
+    max-width: 800px;
+}
+
+main section.list form.search {
+    width: 95%;
+    margin: auto;
+    margin-bottom: 15px;
+    text-align: center;
+    position: relative;
+}
+
+main section.list form.search input {
+    font-size: 14px;
+    padding: 5px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    background-color: white;
+}
+
+main section.list form.search button {
+    border: none;
+    background: none;
+    position: absolute;
+    right: 5px;
+    top: 6px;
+    cursor: pointer;
+    animation: move-right 10s infinite;
+    animation-delay: 3s;
+}
+
 main section.list div.list {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     margin: auto;
-    margin-bottom: 30px;
     justify-content: center;
     padding-inline: 30px;
-    width: 100%;
-    max-width: 800px;
+    width: 95%;
 }
 
 main section.list div.list article {
@@ -88,8 +119,8 @@ main section.list div.list article {
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    margin: 10px;
     padding: 15px;
+    margin-block: 10px;
     width: 100%;
     border-radius: 10px;
     background-color: #DAE2B6;
@@ -122,6 +153,30 @@ main section.list div.list article div.buttons button {
     font-size: 14px;
 }
 
+
+/* Páginas */
+
+main section.list div.pages {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+    margin-top: 15px;
+}
+
+main section.list div.pages a {
+    font-size: 14px;
+    text-align: center;
+    margin: 15px;
+    color: #3C6255;
+}
+
+main section.list div.all-elements {
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
 
 
 /* Celus más grandes */
