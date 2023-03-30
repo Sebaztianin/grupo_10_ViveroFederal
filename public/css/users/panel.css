@@ -139,6 +139,25 @@ main section.profile div.all-elements {
 }
 
 
+/* Páginas */
+
+main section.profile div.pages {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+}
+
+main section.profile div.pages a {
+    font-size: 14px;
+    text-align: center;
+    margin: 15px;
+    color: #3C6255;
+}
+
 
 /* Celus más grandes */
 

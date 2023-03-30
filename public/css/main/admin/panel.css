@@ -88,7 +88,7 @@ main section.options div.list a {
     justify-content: center;
     padding: 20px;
     padding-top: 25px;
-    width: 40%;
+    width: 80%;
     border-radius: 5px;
     color: #3C6255;
     text-decoration: none;
@@ -104,7 +104,13 @@ main section.options div.list a i {
 
 /* Celus más grandes */
 
-@media (min-width: 481px) {}
+@media (min-width: 481px) {
+
+    main section.options div.list a {
+        width: 40%;
+    }
+
+}
 
 
 /* Tablets y netbooks */

@@ -188,10 +188,37 @@ let usersController = {
         // Agrego un filtro al where para que no aparezca admin principal, el cual no debe ser editable
         queryFilter.where.email = { [Op.ne]: 'admin@gmail.com' };
 
+        // Paginación
+        let pageSize = 8;
+
+        // Verifico que haya un número de página ingresado, sino lo seteo en 1
+        if (!req.query.page) { req.query.page = 1 };
+
+        // Inserto filtros y offset
+        if (req.query.page != 1) {
+            queryFilter.limit = pageSize + 1;
+            queryFilter.offset = (req.query.page - 1) * pageSize;
+        } else {
+            queryFilter.limit = pageSize + 1;
+        }
+
         // Buscamos usuarios que cumplen con el filtro
         User.findAll(queryFilter)
             .then(users => {
-                res.render('users/panel', { users: users, query: req.query });
+
+                // Defino página siguiente y anterior, si las hay
+                let prevPage = req.query.page - 1;
+                let nextPage = 0;
+
+                // Remuevo último elemento y verifico si existe
+                let lastUser = users.splice(pageSize, 1);
+                if (lastUser.length != 0) {
+                    nextPage = parseInt(req.query.page) + 1; // Existe, así que hay otra página
+                }
+
+                // Renderizo 
+                res.render('users/panel', { users: users, query: req.query, prevPage: prevPage, nextPage: nextPage });
+
             });
 
     },

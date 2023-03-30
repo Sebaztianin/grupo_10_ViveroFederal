@@ -69,7 +69,6 @@ let productsController = {
         Promise.all([products, categories, colors, sizes])
             .then(([products, categories, colors, sizes]) => {
 
-
                 // Defino página siguiente y anterior, si las hay
                 let prevPage = req.query.page - 1;
                 let nextPage = 0;
