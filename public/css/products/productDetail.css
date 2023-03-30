@@ -338,6 +338,10 @@ main section.product-details div.details div.product-name-price form button.dele
     top: 2px;
 }
 
+main section.product-details div.details div.product-name-price form button.delete:hover {
+    filter: brightness(85%);
+}
+
 
 /* Compartir */
 
