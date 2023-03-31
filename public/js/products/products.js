@@ -1,4 +1,3 @@
-
 // Trabajamos con la query
 let query = new URLSearchParams(location.search);
 

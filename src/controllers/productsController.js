@@ -95,23 +95,7 @@ let productsController = {
 
         // Aplicamos filtro de query si existe
         if (req.query.searchPanel) {
-            queryFilter.where = {
-                [Op.or]:
-                    [
-                        {
-                            name:
-                            {
-                                [Op.like]: '%' + req.query.searchPanel + '%'
-                            }
-                        },
-                        {
-                            description:
-                            {
-                                [Op.like]: '%' + req.query.searchPanel + '%'
-                            }
-                        }
-                    ]
-            }
+            queryFilter.where.name = { [Op.like]: '%' + req.query.searchPanel + '%' };
         }
 
         // Paginación
