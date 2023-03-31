@@ -124,6 +124,7 @@ main section.profile div.list article {
 
 main section.profile div.list article p {
     font-weight: bold;
+    max-width: 90%;
 }
 
 main section.profile div.list article a {

@@ -128,6 +128,7 @@ main section.list div.list article {
 
 main section.list div.list article p {
     font-weight: bold;
+    max-width: 80%;
 }
 
 main section.list div.list article div.buttons {
