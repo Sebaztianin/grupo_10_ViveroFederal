@@ -29,7 +29,7 @@
                 <article>
 
                     <!-- Nuevo -->
-                    <p class="user">Nuevo producto</p>
+                    <a href="/products/add" class="user">Nuevo producto</a>
 
                     <!-- Botón de agregar -->
                     <a href="/products/add"><i class="fas fa-plus"></i></a>
@@ -45,7 +45,7 @@
                     <% if (products[i].size) { productName = productName + ', ' + products[i].size.name }; %>
                     <% if (products[i].color) { productName = productName + ', ' + products[i].color.name }; %>
                     <% productName = productName + ')'; %>
-                    <p class="user"><%= productName %></p>
+                    <a href="/products/detail/<%= products[i].id %>" class="user"><%= productName %></a>
 
                     <div class="buttons">
 

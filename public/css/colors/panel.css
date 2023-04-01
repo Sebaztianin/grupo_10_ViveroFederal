@@ -131,6 +131,12 @@ main section.list div.list article p {
     max-width: 80%;
 }
 
+main section.list div.list article a {
+    font-weight: bold;
+    text-decoration: none;
+    max-width: 80%;
+}
+
 main section.list div.list article div.buttons {
     display: flex;
     flex-direction: row;

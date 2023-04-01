@@ -126,8 +126,9 @@ main section.list div.list article {
     background-color: #DAE2B6;
 }
 
-main section.list div.list article p {
+main section.list div.list article a {
     font-weight: bold;
+    text-decoration: none;
     max-width: 80%;
 }
 
