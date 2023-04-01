@@ -68,6 +68,8 @@
 
 					<p class="line"></p>
 
+					<% if (!product.disabled == 1) { %>
+
 					<!-- Tipo y cantidad -->
 					<form class="add-to-cart" action="/products/productCart/add/<%= product.id %>" method="POST">
 
@@ -93,6 +95,12 @@
 					<form class="add-to-favorites" action="/products/favorites/add/<%= product.id %>" method="POST">
 						<button class="favorite">Añadir a favoritos <i class="fas fa-heart"></i></button>
 					</form>
+
+					<% } else { %>
+
+                        <p class="unavailable">Este producto no está disponible</p>
+
+					<% } %>
 
 					<p class="line"></p>
 

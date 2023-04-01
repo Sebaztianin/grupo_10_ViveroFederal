@@ -369,6 +369,13 @@ main section.product-details div.details div.product-name-price div.share i:hove
     transform: rotate(360deg);
 }
 
+main section.product-details div.details div.product-name-price p.unavailable {
+    width: 100%;
+    font-weight: bold;
+    padding: 15px;
+    text-align: center;
+}
+
 
 /* Descripción */
 
