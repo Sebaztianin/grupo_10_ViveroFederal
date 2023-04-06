@@ -203,7 +203,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `password`, `user_category_id`, `image`, `created_at`, `updated_at`) VALUES
-(1, 'Sebastián', 'Braga', 'sebabraga01@gmail.com', '$2a$10$n2DQbKf0uIvB/RYH6.WY/.o6e3scnGHxGRqFS21DjitRr58AChWYq', 1, NULL, NULL, NULL),
+(1, 'Sebastián', 'Braga', 'sebabraga01@gmail.com', '$2a$10$n2DQbKf0uIvB/RYH6.WY/.o6e3scnGHxGRqFS21DjitRr58AChWYq', 2, NULL, NULL, NULL),
 (2, 'Camila Luz', 'Quispe', 'quispeluzcami@gmail.com', '$2a$10$n2DQbKf0uIvB/RYH6.WY/.o6e3scnGHxGRqFS21DjitRr58AChWYq', 2, NULL, NULL, NULL),
 (3, 'Gustavo', 'Buscalia', 'buscaliag@gmail.com', '$2a$10$n2DQbKf0uIvB/RYH6.WY/.o6e3scnGHxGRqFS21DjitRr58AChWYq', 2, NULL, NULL, NULL),
 (4, 'Valentino', 'Becerine', 'valentinobecerine@gmail.com', '$2a$10$n2DQbKf0uIvB/RYH6.WY/.o6e3scnGHxGRqFS21DjitRr58AChWYq', 2, NULL, NULL, NULL),

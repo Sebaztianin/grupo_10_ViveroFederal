@@ -14,14 +14,12 @@ const { body } = require('express-validator');
 
 /* Validaciones del formulario de registración */
 let createForm = [
-    body('name').notEmpty().withMessage('El nombre no puede estar vacío.').bail()
-        .isLength({ min: 2 }).withMessage('El nombre no puede tener un largo menor a 2.')
+    body('name').notEmpty().withMessage('El nombre no puede estar vacío.')
 ];
 
 /* Validaciones del formulario de edición */
 let editForm = [
-    body('name').notEmpty().withMessage('El nombre no puede estar vacío.').bail()
-        .isLength({ min: 2 }).withMessage('El nombre no puede tener un largo menor a 2.')
+    body('name').notEmpty().withMessage('El nombre no puede estar vacío.')
 ];
 
 /* Creamos el módulo y definimos las rutas para main */

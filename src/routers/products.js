@@ -38,14 +38,14 @@ let validateCreateForm = [
 /* Validaciones del formulario de edición de productos */
 let validateEditForm = [
     body('name').notEmpty().withMessage('El nombre no puede estar vacío.').bail()
-        .isLength({ min: 2 }).withMessage('El nombre no puede tener un largo menor a 2.'),
+        .isLength({ min: 5 }).withMessage('El nombre no puede tener un largo menor a 5.'),
     body('price').notEmpty().withMessage('El precio no puede estar vacío.').bail()
         .isFloat().withMessage('El precio debe ser un número.'),
     body('discount').notEmpty().withMessage('El descuento no puede estar vacío.').bail()
         .isFloat({ min: 0, max: 100 }).withMessage('El descuento debe ser un número entre 0 y 100.'),
     body('category_id').notEmpty().withMessage('Debe seleccionar una categoría.'),
     body('description').notEmpty().withMessage('La descripción no puede estar vacia.').bail()
-        .isLength({ min: 10 }).withMessage('La descripción no puede tener un largo menor a 10.'),
+        .isLength({ min: 20 }).withMessage('La descripción no puede tener un largo menor a 20.'),
     body('image').custom((value, { req }) => {
         if (req.file) {
             if (path.extname(req.file.filename) != '.jpg') {
