@@ -34,7 +34,10 @@ let registerForm = [
     }),
     body('avatar').custom((value, { req }) => {
         if (req.file) {
-            if (path.extname(req.file.filename) != '.jpg') {
+            if (path.extname(req.file.filename) != '.jpg' 
+            && path.extname(req.file.filename) != '.jpeg' 
+            && path.extname(req.file.filename) != '.png' 
+            && path.extname(req.file.filename) != '.gif') {
                 throw new Error('Se requiere un archivo de extensión .jpg.');
             }
         }

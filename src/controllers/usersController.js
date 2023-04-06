@@ -28,38 +28,67 @@ let usersController = {
         // Consultamos si no existen errores
         if (errors.isEmpty()) {   // No hay errores, continuamos...
 
-            // Creamos nuevo usuario con los datos del form
-            let newUser = {
-                first_name: req.body.first_name,
-                last_name: req.body.last_name,
-                email: req.body.email,
-                user_category_id: 2,
-                password: bcrypt.hashSync(req.body.password, 10)
-            };
+            // Verifico que el correo no exista
+            User.findOne({
+                where: { email: req.body.email }
+            })
+                .then(userRegistered => {
 
-            // Agrego imagen si fue seleccionado un archivo.
-            if (req.file) {
-                newUser.image = req.file.filename;
-            }
+                    // Validamos correo
+                    if (userRegistered) { // Correo en uso
 
-            // Agregar usuario a la BD
-            User.create(newUser)
-                .then(userCreated => {
+                        // Convertimos los errores a array y agregamos un error personalizado
+                        let errorsArray = errors.array();
+                        errorsArray.push({ value: "", msg: "El correo ya se encuentra registrado.", param: "email", location: "body" });
 
-                    // Obtenemos datos del usuario creado
-                    User.findOne({
-                        include: [{ association: 'user_category' }],
-                        where: { email: userCreated.email }
-                    })
-                        .then(userToLogin => {
+                        // Eliminamos archivo mal cargado si es que se seleccionó un archivo en el formulario y existe tal archivo
+                        if (req.file) {
+                            if (fs.existsSync(path.join(__dirname, '../../public/images/users/', req.file.filename))) {
+                                fs.unlinkSync(path.join(__dirname, '../../public/images/users/', req.file.filename));
+                            }
+                        }
 
-                            // Seteamos el usuario de la sesión
-                            req.session.userLogged = userToLogin;
+                        // Volvemos al formulario con los errores y los datos viejos
+                        res.render('users/login', { errorsRegister: errorsArray, oldRegister: req.body });
 
-                            // Llevamos al usuario a su perfil
-                            res.redirect('/users/profile');
+                    } else { // El correo no está en uso
 
-                        });
+                        // Creamos nuevo usuario con los datos del form
+                        let newUser = {
+                            first_name: req.body.first_name,
+                            last_name: req.body.last_name,
+                            email: req.body.email,
+                            user_category_id: 2,
+                            password: bcrypt.hashSync(req.body.password, 10)
+                        };
+
+                        // Agrego imagen si fue seleccionado un archivo.
+                        if (req.file) {
+                            newUser.image = req.file.filename;
+                        }
+
+                        // Agregar usuario a la BD
+                        User.create(newUser)
+                            .then(userCreated => {
+
+                                // Obtenemos datos del usuario creado
+                                User.findOne({
+                                    include: [{ association: 'user_category' }],
+                                    where: { email: userCreated.email }
+                                })
+                                    .then(userToLogin => {
+
+                                        // Seteamos el usuario de la sesión
+                                        req.session.userLogged = userToLogin;
+
+                                        // Llevamos al usuario a su perfil
+                                        res.redirect('/users/profile');
+
+                                    });
+
+                            });
+
+                    }
 
                 });
 
