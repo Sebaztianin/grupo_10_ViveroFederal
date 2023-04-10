@@ -25,7 +25,7 @@ let registerForm = [
     body('email').notEmpty().withMessage('El email no puede estar vacío.').bail()
         .isEmail().withMessage('Ingrese un correo válido.'),
     body('password').notEmpty().withMessage('Debe ingresar una contraseña.').bail()
-        .isLength({ min: 8 }).withMessage('La contraseña debe contener por lo menos 8 caracteres.'),
+        .isStrongPassword().withMessage('La contraseña debe contener por lo menos 8 caracteres, una mayúscula, una minúscula, un número y un caracter especial.').bail(),
     body('passwordConfirmation').custom((value, { req }) => {
         if (value != req.body.password) {
             throw new Error('Las contraseñas no coinciden.');
