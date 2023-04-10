@@ -1,0 +1,216 @@
+/* Global settings*/
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Roboto', sans-serif;
+    color: #3C6255;
+    background-color: #FFFBE9;
+    min-height: 100vh;
+}
+
+
+/* Eliminamos colores en los links visitados */
+
+main a:visited {
+    color: #3C6255;
+}
+
+
+/* Main */
+
+main {
+    margin-top: 165px;
+}
+
+main div.cart section {
+    max-width: 1280px;
+    margin: auto;
+    margin-bottom: 30px;
+}
+
+main div.cart h3.section-title {
+    margin: 10px;
+    margin-block: 25px;
+    text-align: center;
+}
+
+main div.cart h3.section-title:before {
+    content: "";
+    display: inline-block;
+    border-top: 1px solid #3C6255;
+    width: 20%;
+    margin: 8px;
+}
+
+main div.cart h3.section-title:after {
+    content: "";
+    display: inline-block;
+    border-top: 1px solid #3C6255;
+    width: 20%;
+    margin: 8px;
+}
+
+main div.cart section.products div.no-products {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+main div.cart section.products div.no-products p {
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+main div.cart section.products div.products-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: auto;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+main div.cart section.products div.products-list article {
+    padding: 10px;
+    width: 100%;
+    margin: 2%;
+    align-self: center;
+    background-color: #DAE2B6;
+    border-radius: 5px;
+} 
+
+main div.cart section.products div.products-list article img {
+    width: 100%;
+    border-radius: 10px;
+} 
+
+main div.cart section.products div.products-list article a {
+    text-decoration: none;
+    color: #3C6255;
+} 
+
+main div.cart section.products div.products-list div.main-article {
+    position: relative;
+}
+
+main div.cart section.products div.products-list div.price {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+main div.cart section.products div.products-list p.discount {
+    font-weight: bold;
+    margin-right: 10px;
+    color: #57917c;
+}
+
+main div.cart section.products div.products-list h4 {
+    margin-top: 8px;
+    margin-bottom: 4px;
+}
+
+main div.cart section.products div.products-list article button {
+    opacity: 0.7;
+    background-color: #FFFBE9;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+main div.cart section.products div.products-list article button.favorite {
+    position: absolute;
+    right: 42px;
+    bottom: 58px;
+}
+
+main div.cart section.products div.products-list article button.cart {
+    position: absolute;
+    right: 5px;
+    bottom: 58px;
+}
+
+main div.cart section.products div.products-list article i {
+    padding: 5px;
+    font-size: 20px;
+    color: #3C6255;
+}
+
+
+/* Celus más grandes */
+
+@media (min-width: 481px) {}
+
+
+/* Tablets y netbooks */
+
+@media (min-width: 769px) {
+
+    /* Productos */
+
+    main div.cart section.products div.products-list article {
+        width: 32.23%;
+        margin: 5px;
+    } 
+
+    main div.cart section.products div.products-list article {
+        box-shadow: 0px 0px 0px rgb(100, 100, 100);
+        transition: all 0.5s;
+    } 
+    
+    main div.cart section.products div.products-list article:hover {
+        box-shadow: 0px 0px 10px rgb(100, 100, 100);
+    } 
+
+    main div.cart section.products div.products-list article button {
+        opacity: 0.25;
+        transition: all 0.5s;
+    }
+    
+    main div.cart section.products div.products-list article:hover button {
+        opacity: 1;
+    } 
+        
+    main div.cart section.products div.products-list article button:hover {
+        bottom: 63px;
+    }
+
+}
+
+
+/* Notebooks */
+
+@media (min-width: 1024px) {
+
+    /* Main */
+
+    main {
+        margin-top: 115px;
+    }
+
+    main div.cart h3.section-title {
+        margin: 10px;
+        margin-block: 25px;
+        text-align: center;
+    }
+
+    /* Productos */
+
+    main div.cart section.products div.products-list article {
+        width: 24.2%;
+        margin: 5px;
+    } 
+
+}

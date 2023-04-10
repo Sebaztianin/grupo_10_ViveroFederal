@@ -19,7 +19,7 @@
             <h3 class="section-title">Editar producto</h3>
 
             <!-- Formulario -->
-            <form class="new-product" action="/products/<%= product.id %>/edit?_method=PUT" method="POST" enctype="multipart/form-data">
+            <form class="new-product" action="/products/edit/<%= product.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
 
                 <div class="data">
 
@@ -36,25 +36,61 @@
                     <input type="file" name="image" id="image">
 
                     <!-- Chequear si se cambió la categoría para mantener el valor tras una validación incorrecta -->
-                    <% let oldCategory;
-                    if (!locals.old || !old.category) {
-                        oldCategory = product.category
-                    } else {
-                        oldCategory = old.category
-                    } %>
+                    <% let oldCategory; %>
+                    <% if (!locals.old || !old.category_id) { %>
+                    <% 		oldCategory = product.category_id %>
+                    <% } else { %>
+                    <% 		oldCategory = old.category_id %>
+                    <% } %>
 
-                    <label for="category">Categoría: </label>
-                    <select name="category" id="category">
+                    <label for="category_id">Categoría: </label>
+                    <select name="category_id" id="category_id">
                         <option value="" disabled>Elige una opción</option>
-                        <option value="suc-cac" <%= oldCategory == 'suc-cac' ? 'selected' : null %>>Suculentas y cactus</option>
-                        <option value="interior" <%= oldCategory == 'interior' ? 'selected' : null %>>De interior</option>
-                        <option value="exterior" <%= oldCategory == 'exterior' ? 'selected' : null %>>De exterior</option>
-                        <option value="pots" <%= oldCategory == 'pots' ? 'selected' : null %>>Macetas</option>
-                        <option value="accesories" <%= oldCategory == 'accesories' ? 'selected' : null %>>Accesorios</option>
+
+                        <% for (i=0; i < categories.length; i++) { %>
+                        <option value="<%= categories[i].id %>" <%= oldCategory == categories[i].id ? 'selected' : null %>><%= categories[i].name %></option>
+                        <% } %>
+
+                    </select>
+
+                    <!-- Chequear si se cambió el color para mantener el valor tras una validación incorrecta -->
+                    <% let oldColor; %>
+                    <% if (!locals.old || !old.color_id) { %>
+                    <% 		oldColor = product.color_id %>
+                    <% } else { %>
+                    <% 		oldColor = old.color_id %>
+                    <% } %>
+
+                    <label for="color_id">Color: </label>
+                    <select name="color_id" id="color_id">
+                        <option value="">Elige una opción</option>
+
+                        <% for (i=0; i < colors.length; i++) { %>
+                        <option value="<%= colors[i].id %>" <%= oldColor == colors[i].id ? 'selected' : null %>><%= colors[i].name %></option>
+                        <% } %>
+
+                    </select>
+
+                    <!-- Chequear si se cambió el tamaño para mantener el valor tras una validación incorrecta -->
+                    <% let oldSize; %>
+                    <% if (!locals.old || !old.size_id) { %>
+                    <% 		oldSize = product.size_id %>
+                    <% } else { %>
+                    <% 		oldSize = old.size_id %>
+                    <% } %>
+
+                    <label for="size_id">Tamaño: </label>
+                    <select name="size_id" id="size_id">
+                        <option value="">Elige una opción</option>
+
+                        <% for (i=0; i < sizes.length; i++) { %>
+                        <option value="<%= sizes[i].id %>" <%= oldSize == sizes[i].id ? 'selected' : null %>><%= sizes[i].name %></option>
+                        <% } %>
+
                     </select>
 
                     <label for="description">Descripción: </label>
-                    <textarea name="description" id="description" placeholder="Descripción larga del producto"><%= (locals.discount && old.description) ? old.description : product.description %></textarea>
+                    <textarea name="description" id="description" placeholder="Descripción larga del producto"><%= (locals.old && old.description) ? old.description : product.description %></textarea>
 
                 </div>
 

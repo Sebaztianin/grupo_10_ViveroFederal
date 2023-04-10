@@ -19,7 +19,7 @@
             <h3 class="section-title">Crear producto</h3>
 
             <!-- Formulario -->
-            <form class="new-product" action="/products/" method="POST" enctype="multipart/form-data">
+            <form class="new-product" action="/products/add" method="POST" enctype="multipart/form-data">
 
                 <div class="data">
 
@@ -35,14 +35,34 @@
                     <label for="image">Imagen: </label>
                     <input type="file" name="image" id="image">
 
-                    <label for="category">Categoría: </label>
-                    <select name="category" id="category">
+                    <label for="category_id">Categoría: </label>
+                    <select name="category_id" id="category_id">
                         <option value="" disabled selected>Elige una opción</option>
-                        <option value="suc-cac" <%= (locals.old && old.category == 'suc-cac') ? 'selected' : '' %>>Suculentas y cactus</option>
-                        <option value="interior" <%= (locals.old && old.category == 'interior') ? 'selected' : '' %>>De interior</option>
-                        <option value="exterior" <%= (locals.old && old.category == 'exterior') ? 'selected' : '' %>>De exterior</option>
-                        <option value="pots" <%= (locals.old && old.category == 'pots') ? 'selected' : '' %>>Macetas</option>
-                        <option value="accesories" <%= (locals.old && old.category == 'accesories') ? 'selected' : '' %>>Accesorios</option>
+
+                        <% for (i=0; i < categories.length; i++) { %>
+                        <option value="<%= categories[i].id %>" <%= (locals.old && old.category_id == categories[i].id) ? 'selected' : '' %>><%= categories[i].name %></option>
+                        <% } %>
+
+                    </select>
+
+                    <label for="color_id">Color: </label>
+                    <select name="color_id" id="color_id">
+                        <option value="" selected>Elige una opción</option>
+
+                        <% for (i=0; i < colors.length; i++) { %>
+                        <option value="<%= colors[i].id %>" <%= (locals.old && old.color_id == colors[i].id) ? 'selected' : '' %>><%= colors[i].name %></option>
+                        <% } %>
+
+                    </select>
+
+                    <label for="size_id">Tamaño: </label>
+                    <select name="size_id" id="size_id">
+                        <option value="" selected>Elige una opción</option>
+
+                        <% for (i=0; i < sizes.length; i++) { %>
+                        <option value="<%= sizes[i].id %>" <%= (locals.old && old.size_id == sizes[i].id) ? 'selected' : '' %>><%= sizes[i].name %></option>
+                        <% } %>
+
                     </select>
 
                     <label for="description">Descripción: </label>

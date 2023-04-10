@@ -2,46 +2,64 @@
 <html>
 
 <head>
-    <%- include('../partials/head.ejs') %>
-        <title>Vivero Federal: Panel de usuarios</title>
-        <link rel="stylesheet" href="/css/users/panel.css">
+	<%- include('../partials/head.ejs') %>
+	<title>Vivero Federal: Panel de usuarios</title>
+	<link rel="stylesheet" href="/css/users/panel.css">
 </head>
 
 <body>
 
-    <%- include('../partials/header.ejs') %>
+	<%- include('../partials/header.ejs') %>
 
-    <main>
+	<main>
 
-        <section class="profile">
+		<section class="profile">
 
-            <h3 class="section-title">Listado de usuarios</h3>
+			<h3 class="section-title">Panel de usuarios</h3>
 
-            <!-- Lista de usuarios -->
-            <div class="list">
+			<!-- Barra de búsqueda -->
+			<form class="search" action="/users/panel/search" method="POST">
+				<input class="search-input" type="text" name="searchPanel" placeholder="Buscar..." value="<%= (locals.query && query.searchPanel) ? query.searchPanel : '' %>" required>
+				<button class="search-button" type="submit"><i class="fa fa-search"></i></button>
+			</form>
 
-                <% for (i = 0; i < users.length; i++) { %>
+			<!-- Lista de usuarios -->
+			<div class="list">
 
-                    <article>
+				<% for (i = 0; i < users.length; i++) { %>
 
-                        <!-- Nombre y correo del usuario -->
-                        <p class="user"><%= users[i].firstName + ' ' + users[i].lastName + ' - ' + users[i].email %></p>
+				<article>
 
-                        <!-- Botón de editar -->
-                        <a href="/users/editCategory/<%= users[i].id %>"><i class="fas fa-edit"></i></a>
+					<!-- Nombre y correo del usuario -->
+					<p class="user"><%= users[i].first_name + ' ' + users[i].last_name + ' - ' + users[i].email + ' - '  + users[i].user_category.name %></p>
 
-                    </article>
+					<!-- Botón de editar -->
+					<a href="/users/editCategory/<%= users[i].id %>"><i class="fas fa-edit"></i></a>
 
-                <% } %>
+				</article>
 
+				<% } %>
+
+			</div>
+
+			<div class="pages">
+				<a class="prevPage" href="<%= prevPage %>"><i class="fa-solid fa-arrow-left"></i></a>
+				<p>Página <%= query.page %></p>
+				<a class="nextPage" href="<%= nextPage %>"><i class="fa-solid fa-arrow-right"></i></a>
+			</div>
+
+            <div class="all-elements">
+                <a  href="/users/panel">Ver todos los usuarios</a>
             </div>
 
-        </section>
+		</section>
 
-    </main>
+	</main>
 
-    <%- include('../partials/footer.ejs') %>
+	<%- include('../partials/footer.ejs') %>
 
 </body>
+
+<script src="/js/users/panel.js"></script>
 
 </html>

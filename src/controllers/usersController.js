@@ -2,9 +2,13 @@
 const fs = require('fs');
 const path = require('path');
 const bcrypt = require('bcryptjs');
+const db = require('../database/models');
+const sequelize = db.sequelize;
+const { Op } = require("sequelize");
 
 /* Recuperamos el modelo de usuario */
-const User = require('../models/User');
+const User = db.User;
+const UserCategory = db.UserCategory;
 
 /* Importamos las validaciones */
 const { validationResult } = require('express-validator');
@@ -13,7 +17,7 @@ const { validationResult } = require('express-validator');
 let usersController = {
 
     index: function (req, res) {
-        res.render('users/login');
+        res.render('users/login'); // No necesito llevar las categorías porque automáticamente le pone categoría cliente
     },
 
     register: function (req, res) {
@@ -24,31 +28,69 @@ let usersController = {
         // Consultamos si no existen errores
         if (errors.isEmpty()) {   // No hay errores, continuamos...
 
-            // Creamos nuevo usuario con los datos del form
-            let newUser = {
-                firstName: req.body.firstName,
-                lastName: req.body.lastName,
-                email: req.body.email,
-                category: 'cliente',
-                password: bcrypt.hashSync(req.body.password, 10)
-            };
+            // Verifico que el correo no exista
+            User.findOne({
+                where: { email: req.body.email }
+            })
+                .then(userRegistered => {
 
-            // Agrego imagen si fue seleccionado un archivo.
-            if (req.file) {
-                newUser.image = req.file.filename;
-            }
+                    // Validamos correo
+                    if (userRegistered) { // Correo en uso
 
-            // Agregar usuario a la BD
-            User.create(newUser);
+                        // Convertimos los errores a array y agregamos un error personalizado
+                        let errorsArray = errors.array();
+                        errorsArray.push({ value: "", msg: "El correo ya se encuentra registrado.", param: "email", location: "body" });
 
-            // Obtenemos datos del usuario creado
-            let userToLogin = User.findByField('email', req.body.email);
+                        // Eliminamos archivo mal cargado si es que se seleccionó un archivo en el formulario y existe tal archivo
+                        if (req.file) {
+                            if (fs.existsSync(path.join(__dirname, '../../public/images/users/', req.file.filename))) {
+                                fs.unlinkSync(path.join(__dirname, '../../public/images/users/', req.file.filename));
+                            }
+                        }
 
-            // Seteamos el usuario de la sesión
-            req.session.userLogged = userToLogin
+                        // Volvemos al formulario con los errores y los datos viejos
+                        res.render('users/login', { errorsRegister: errorsArray, oldRegister: req.body });
 
-            // Llevamos al usuario a su perfil
-            res.redirect('/users/profile');
+                    } else { // El correo no está en uso
+
+                        // Creamos nuevo usuario con los datos del form
+                        let newUser = {
+                            first_name: req.body.first_name,
+                            last_name: req.body.last_name,
+                            email: req.body.email,
+                            user_category_id: 2,
+                            password: bcrypt.hashSync(req.body.password, 10)
+                        };
+
+                        // Agrego imagen si fue seleccionado un archivo.
+                        if (req.file) {
+                            newUser.image = req.file.filename;
+                        }
+
+                        // Agregar usuario a la BD
+                        User.create(newUser)
+                            .then(userCreated => {
+
+                                // Obtenemos datos del usuario creado
+                                User.findOne({
+                                    include: [{ association: 'user_category' }],
+                                    where: { email: userCreated.email }
+                                })
+                                    .then(userToLogin => {
+
+                                        // Seteamos el usuario de la sesión
+                                        req.session.userLogged = userToLogin;
+
+                                        // Llevamos al usuario a su perfil
+                                        res.redirect('/users/profile');
+
+                                    });
+
+                            });
+
+                    }
+
+                });
 
         } else {   // Hay errores, volvemos al formulario
 
@@ -75,44 +117,50 @@ let usersController = {
         if (errors.isEmpty()) {   // No hay errores, continuamos...
 
             // Obtenemos datos del usuario
-            let userToLogin = User.findByField('email', req.body.email);
+            User.findOne({
+                include: [{ association: 'user_category' }],
+                where: { email: req.body.email }
+            })
+                .then(userToLogin => {
 
-            // Validamos correo
-            if (userToLogin) {
+                    // Validamos correo
+                    if (userToLogin) {
 
-                // Validamos contraseña
-                if (bcrypt.compareSync(req.body.password, userToLogin.password)) {
+                        // Validamos contraseña
+                        if (bcrypt.compareSync(req.body.password, userToLogin.password)) {
 
-                    // Seteamos el usuario de la sesión
-                    req.session.userLogged = userToLogin
+                            // Seteamos el usuario de la sesión
+                            req.session.userLogged = userToLogin;
 
-                    // Seteamos el usuario en la cookie si lo requiere
-                    if (req.body.remember) { res.cookie('userLogged', userToLogin, { maxAge: 1000 * 60 * 60 * 24 * 30 }); }
+                            // Seteamos el usuario en la cookie si lo requiere
+                            if (req.body.remember) { res.cookie('userLogged', userToLogin, { maxAge: 1000 * 60 * 60 * 24 * 30 }); }
 
-                    // Llevamos al usuario a su perfil
-                    res.redirect('/users/profile');
+                            // Llevamos al usuario a su perfil
+                            res.redirect('/users/profile');
 
-                } else {
+                        } else {
 
-                    // Convertimos los errores a array y agregamos un error personalizado
-                    let errorsArray = errors.array();
-                    errorsArray.push({ value: "", msg: "Los datos ingresados son incorrectos.", param: "email", location: "body" });
+                            // Convertimos los errores a array y agregamos un error personalizado
+                            let errorsArray = errors.array();
+                            errorsArray.push({ value: "", msg: "Los datos ingresados son incorrectos.", param: "email", location: "body" });
 
-                    // Volvemos al formulario con los errores y los datos viejos
-                    res.render('users/login', { errorsLogin: errorsArray });
+                            // Volvemos al formulario con los errores y los datos viejos
+                            res.render('users/login', { errorsLogin: errorsArray });
 
-                }
+                        }
 
-            } else {
+                    } else {
 
-                // Convertimos los errores a array y agregamos un error personalizado
-                let errorsArray = errors.array();
-                errorsArray.push({ value: "", msg: "Email no registrado.", param: "email", location: "body" });
+                        // Convertimos los errores a array y agregamos un error personalizado
+                        let errorsArray = errors.array();
+                        errorsArray.push({ value: "", msg: "Email no registrado.", param: "email", location: "body" });
 
-                // Volvemos al formulario con los errores y los datos viejos
-                res.render('users/login', { errorsLogin: errorsArray });
+                        // Volvemos al formulario con los errores y los datos viejos
+                        res.render('users/login', { errorsLogin: errorsArray });
 
-            }
+                    }
+
+                });
 
         } else {   // Hay errores, volvemos al formulario
 
@@ -134,13 +182,98 @@ let usersController = {
     },
 
     panel: function (req, res) {
-        let users = User.findAll().filter(user => user.email != 'admin@gmail.com'); // Filtro el admin principal para que no sea editable
-        res.render('users/panel', { users: users });
+
+        // Creamos filtro
+        let queryFilter = { include: [{ association: 'user_category' }] };
+        queryFilter.where = {};
+
+        // Aplicamos filtro de query si existe
+        if (req.query.searchPanel) {
+            queryFilter.where = {
+                [Op.or]:
+                    [
+                        {
+                            first_name:
+                            {
+                                [Op.like]: '%' + req.query.searchPanel + '%'
+                            }
+                        },
+                        {
+                            last_name:
+                            {
+                                [Op.like]: '%' + req.query.searchPanel + '%'
+                            }
+                        },
+                        {
+                            email:
+                            {
+                                [Op.like]: '%' + req.query.searchPanel + '%'
+                            }
+                        }
+                    ]
+            }
+        }
+
+        // Agrego un filtro al where para que no aparezca admin principal, el cual no debe ser editable
+        queryFilter.where.email = { [Op.ne]: 'admin@gmail.com' };
+
+        // Paginación
+        let pageSize = 8;
+
+        // Verifico que haya un número de página ingresado, sino lo seteo en 1
+        if (!req.query.page) { req.query.page = 1 };
+
+        // Filtros y offset
+        if (req.query.page != 1) {
+            queryFilter.limit = pageSize + 1;
+            queryFilter.offset = (req.query.page - 1) * pageSize;
+        } else {
+            queryFilter.limit = pageSize + 1;
+        }
+
+        // Buscamos usuarios que cumplen con el filtro
+        User.findAll(queryFilter)
+            .then(users => {
+
+                // Defino página siguiente y anterior, si las hay
+                let prevPage = req.query.page - 1;
+                let nextPage = 0;
+
+                // Remuevo último elemento y verifico si existe
+                let lastUser = users.splice(pageSize, 1);
+                if (lastUser.length != 0) {
+                    nextPage = parseInt(req.query.page) + 1; // Existe, así que hay otra página
+                }
+
+                // Renderizo 
+                res.render('users/panel', { users: users, query: req.query, prevPage: prevPage, nextPage: nextPage });
+
+            });
+
+    },
+
+    // Búsqueda en panel
+    panelSearch: function (req, res) {
+
+        // Redirecciono pasando parámetros para la query
+        res.redirect('/users/panel?searchPanel=' + req.body.searchPanel);
+
     },
 
     editCategory: function (req, res) {
-        let user = User.findByPk(req.params.id);
-        res.render('users/editCategory', { user: user });
+
+        // Recupero tabla de categorías
+        let user_categories = UserCategory.findAll({ where: { disabled: 0 } });
+        let user = User.findByPk(req.params.id, {
+            include: [{ association: 'user_category' }],
+        });
+
+        // Vuelvo al formulario luego de obtener los datos
+        Promise.all([user_categories, user])
+            .then(([user_categories, user]) => {
+                res.render('users/editCategory', { user: user, user_categories: user_categories });
+            });
+
     },
 
     updateCategory: function (req, res) {
@@ -151,31 +284,52 @@ let usersController = {
         // Consultamos si no existen errores
         if (errors.isEmpty()) {   // No hay errores, continuamos...
 
-            // Obtengo el usuario
-            let editedUser = User.findByPk(req.params.id);
-
-            // Edito el usuario
-            editedUser.category = req.body.category;
-
             // Actualizo usuario
-            User.edit(editedUser);
+            User.update({
+                user_category_id: req.body.user_category_id
+            }, {
+                where: { id: req.params.id }
+            })
+                .then(userUpdated => {
 
-            // Redireccionamos al panel
-            res.redirect('/users/panel');
+                    // Redireccionamos al panel
+                    res.redirect('/users/panel');
+
+                });
+
 
         } else { // Hay errores, volvemos al formulario
 
-            // Volvemos al formulario con los errores y los datos viejos
-            let user = User.findByPk(req.params.id);
-            res.render('users/editCategory', { errors: errors.array(), old: req.body, user: user });
+            // Recupero tabla de categorías
+            let user_categories = UserCategory.findAll({ where: { disabled: 0 } });
+            let user = User.findByPk(req.params.id, {
+                include: [{ association: 'user_category' }],
+            });
+
+            // Vuelvo al formulario luego de obtener los datos
+            Promise.all([user_categories, user])
+                .then(([user_categories, user]) => {
+                    res.render('users/editCategory', { errors: errors.array(), old: req.body, user: user, user_categories: user_categories });
+                });
 
         }
 
     },
 
     editProfile: function (req, res) {
-        let user = User.findByPk(req.params.id);
-        res.render('users/editProfile', { user: user });
+
+        // Recupero tabla de categorías
+        let user_categories = UserCategory.findAll({ where: { disabled: 0 } });
+        let user = User.findByPk(req.params.id, {
+            include: [{ association: 'user_category' }],
+        });
+
+        // Vuelvo al formulario luego de obtener los datos
+        Promise.all([user_categories, user])
+            .then(([user_categories, user]) => {
+                res.render('users/editProfile', { user: user, user_categories: user_categories });
+            });
+
     },
 
     updateProfile: function (req, res) {
@@ -189,54 +343,77 @@ let usersController = {
             // Validar si hay una imagen seleccionada
             if (req.file) {
 
-                // Obtengo el usuario, que luego voy a editar
-                let editedUser = User.findByPk(req.params.id);
+                // Obtengo usuario viejo
+                User.findByPk(req.params.id, {
+                    include: [{ association: 'user_category' }],
+                })
+                    .then(userOld => {
 
-                // Obtengo nombre de imagen vieja para eliminarla
-                let imageOld = User.findByPk(req.params.id).image;
+                        // Edito el usuario
+                        User.update({
+                            first_name: req.body.first_name,
+                            last_name: req.body.last_name,
+                            image: req.file.filename
+                        }, {
+                            where: { id: userOld.id }
+                        })
+                            .then(updatedUser => {
 
-                // Edito el usuario
-                editedUser.firstName = req.body.firstName;
-                editedUser.lastName = req.body.lastName;
-                editedUser.image = req.file.filename;
+                                // Obtengo nuevos datos de usuario
+                                User.findByPk(req.params.id, {
+                                    include: [{ association: 'user_category' }],
+                                })
+                                    .then(updatedUser => {
 
-                // Actualizo usuario
-                User.edit(editedUser);
+                                        // Actualizamos dato de cookie
+                                        req.session.userLogged = updatedUser;
 
-                // Actualizamos dato de cookie
-                req.session.userLogged = editedUser
+                                        // Si hay una cookie, actualizarla también
+                                        if (req.cookies.userLogged) { res.cookie('userLogged', updatedUser, { maxAge: 1000 * 60 * 60 * 24 * 30 }); }
 
-                // Si hay una cookie, actualizarla también
-                if (req.cookies.userLogged) { res.cookie('userLogged', editedUser, { maxAge: 1000 * 60 * 60 * 24 * 30 }); }
+                                        // Validar si imagen vieja existe y eliminarla (unlink)
+                                        if (userOld.image && fs.existsSync(path.join(__dirname, '../../public/images/users/', userOld.image))) {
+                                            fs.unlinkSync(path.join(__dirname, '../../public/images/users/', userOld.image));
+                                        }
 
-                // Validar si imagen vieja existe y eliminarla (unlink)
-                if (fs.existsSync(path.join(__dirname, '../../public/images/users/', imageOld))) {
-                    fs.unlinkSync(path.join(__dirname, '../../public/images/users/', imageOld));
-                }
+                                        // Redireccionamos al perfil
+                                        res.redirect('/users/profile');
 
-                // Redireccionamos al perfil
-                res.redirect('/users/profile');
+                                    });
+
+                            });
+
+                    });
 
             } else {
 
-                // Obtengo el usuario
-                let editedUser = User.findByPk(req.params.id);
-
                 // Edito el usuario
-                editedUser.firstName = req.body.firstName;
-                editedUser.lastName = req.body.lastName;
+                User.update({
+                    first_name: req.body.first_name,
+                    last_name: req.body.last_name
+                }, {
+                    where: { id: req.params.id }
+                })
+                    .then(updatedUser => {
 
-                // Actualizo usuario
-                User.edit(editedUser);
+                        // Obtengo nuevos datos de usuario
+                        User.findByPk(req.params.id, {
+                            include: [{ association: 'user_category' }],
+                        })
+                            .then(updatedUser => {
 
-                // Actualizamos dato de cookie
-                req.session.userLogged = editedUser
+                                // Actualizamos dato de cookie
+                                req.session.userLogged = updatedUser;
 
-                // Si hay una cookie, actualizarla también
-                if (req.cookies.userLogged) { res.cookie('userLogged', editedUser, { maxAge: 1000 * 60 * 60 * 24 * 30 }); }
+                                // Si hay una cookie, actualizarla también
+                                if (req.cookies.userLogged) { res.cookie('userLogged', updatedUser, { maxAge: 1000 * 60 * 60 * 24 * 30 }); }
 
-                // Redireccionamos al panel
-                res.redirect('/users/profile');
+                                // Redireccionamos al perfil
+                                res.redirect('/users/profile');
+
+                            });
+
+                    });
 
             }
 
@@ -249,9 +426,17 @@ let usersController = {
                 }
             }
 
-            // Volvemos al formulario con los errores y los datos viejos
-            let user = User.findByPk(req.params.id);
-            res.render('users/editProfile', { errors: errors.array(), old: req.body, user: user });
+            // Recupero tabla de categorías
+            let user_categories = UserCategory.findAll({ where: { disabled: 0 } });
+            let user = User.findByPk(req.params.id, {
+                include: [{ association: 'user_category' }],
+            });
+
+            // Vuelvo al formulario luego de obtener los datos
+            Promise.all([user_categories, user])
+                .then(([user_categories, user]) => {
+                    res.render('users/editProfile', { errors: errors.array(), old: req.body, user: user, user_categories: user_categories });
+                });
 
         }
 

@@ -2,184 +2,195 @@
 <html>
 
 <head>
-    <%- include('../partials/head.ejs') %>
-    <title>Vivero Federal: <%= product.name %>
-    </title>
-    <link rel="stylesheet" href="/css/products/productDetail.css">
+	<%- include('../partials/head.ejs') %>
+	<title>Vivero Federal: <%= product.name %>
+	</title>
+	<link rel="stylesheet" href="/css/products/productDetail.css">
 </head>
 
 <body>
 
-    <%- include('../partials/header.ejs') %>
+	<%- include('../partials/header.ejs') %>
 
-    <main>
+	<main>
 
-        <section class="product-details">
+		<section class="product-details">
 
-            <!-- Título -->
-            <h3 class="section-title">Detalle del producto</h3>
+			<!-- Título -->
+			<h3 class="section-title">Detalle del producto</h3>
 
-            <!-- Datos básicos-->
-            <div class="details">
+			<!-- Datos básicos-->
+			<div class="details">
 
-                <!-- Imágenes -->
-                <div class="product-images">
-                    <div class="side-images">
-                        <img src="/images/products/<%= product.image %>" alt="Imagen de <%= product.name %>" class="product-img">
-                        <img src="/images/products/<%= product.image %>" alt="Imagen de <%= product.name %>" class="product-img">
-                    </div>
-                    <div class="big-image">
-                        <img src="/images/products/<%= product.image %>" alt="Imagen de <%= product.name %>" class="product_main_img">
-                    </div>
-                </div>
+				<!-- Imágenes -->
+				<div class="product-images">
+					<div class="side-images">
+						<img src="/images/products/<%= product.image %>" alt="Imagen de <%= product.name %>" class="product-img">
+						<img src="/images/products/<%= product.image %>" alt="Imagen de <%= product.name %>" class="product-img">
+					</div>
+					<div class="big-image">
+						<img src="/images/products/<%= product.image %>" alt="Imagen de <%= product.name %>" class="product_main_img">
+					</div>
+				</div>
 
-                <!-- Detalles del producto-->
-                <div class="product-name-price">
+				<!-- Detalles del producto-->
+				<div class="product-name-price">
 
-                    <!-- Descripción de la categoría -->
-                    <% let categoryDescription='' ; switch (product.category) { case 'suc-cac' :
-                            categoryDescription='Suculentas y cactus' ; break; case 'interior' :
-                            categoryDescription='De interior' ; break; case 'exterior' :
-                            categoryDescription='De exterior' ; break; case 'accesories' :
-                            categoryDescription='Accesorios' ; break; case 'pots' : categoryDescription='Macetas' ;
-                            break; default: categoryDescription='Sin categoría' ; } %>
+					<!-- Nombre y precio -->
+					<p class="name">
+						<% let productName = product.name + ' (' + product.category.name; %>
+						<% if (product.size) { productName = productName + ', ' + product.size.name }; %>
+						<% if (product.color) { productName = productName + ', ' + product.color.name }; %>
+						<% productName = productName + ')'; %>
+						<%= productName %>
+					</p>
+					<% if (product.discount !=0) { %>
+					<p class="price">
+						<span>$<%= toThousand(product.price) %></span>
+						<b>
+							<%= product.discount %>% OFF
+						</b>
+					</p>
+					<% } %>
+					<h2 class="final-price">$<%= toThousand(product.price - (product.price * product.discount/100)) %>
+					</h2>
 
-                    <!-- Nombre y precio -->
-                    <p class="name">
-                        <%= product.name %> - <%= categoryDescription %>
-                    </p>
-                    <% if (product.discount !=0) { %>
-                    <p class="price">
-                        <span>$<%= toThousand(product.price) %></span>
-                        <b>
-                            <%= product.discount %>% OFF
-                        </b>
-                    </p>
-                    <% } %>
-                    <h2 class="final-price">$<%= toThousand(product.price - (product.price *
-                                            product.discount/100)) %>
-                    </h2>
+					<!-- Medios de pago -->
+					<div class="payment-methods">
+						<a href="#">Ver medios de pago</a>
+						<div class="icons">
+							<i class="fab fa-cc-visa"></i>
+							<i class="fab fa-cc-mastercard"></i>
+							<i class="fab fa-cc-amex"></i>
+							<i class="fas fa-credit-card"></i>
+						</div>
+					</div>
 
-                    <!-- Medios de pago -->
-                    <div class="payment-methods">
-                        <a href="#">Ver medios de pago</a>
-                        <div class="icons">
-                            <i class="fab fa-cc-visa"></i>
-                            <i class="fab fa-cc-mastercard"></i>
-                            <i class="fab fa-cc-amex"></i>
-                            <i class="fas fa-credit-card"></i>
-                        </div>
-                    </div>
+					<p class="line"></p>
 
-                    <p class="line"></p>
+					<% if (!product.disabled == 1) { %>
 
-                    <!-- Tipo y cantidad -->
-                    <form class="add-to-cart" action="#" method="GET">
+					<!-- Tipo y cantidad -->
+					<form class="add-to-cart" action="/products/productCart/add/<%= product.id %>" method="POST">
 
-                        <div class="selection">
-                            <label for="type">Tamaño:</label>
-                            <select id="type">
-                                <option value="very-large">Muy grande</option>
-                                <option value="large">Grande</option>
-                                <option value="medium">Mediano</option>
-                                <option value="small">Chico</option>
-                                <option value="very small">Muy chico</option>
-                            </select>
-                        </div>
+						<div class="quantity">
+							<label>Cantidad: </label>
+							<input class="quantity-input" type="number" name="quantity" id="quantity" min="1" value="1">
+						</div>
 
-                        <div class="quantity">
-                            <label>Cantidad: </label>
-                            <button class="less" type="button" name="less" id="less"><i class="fas fa-minus"></i></button>
-                            <input class="quantity-input" type="text" name="quantity" id="quantity" value="20">
-                            <button class="more" type="button" name="more" id="more"><i class="fas fa-plus"></i></button>
-                        </div>
+						<!-- Medios de envío -->
+						<div class="shipping">
+							<a href="#">Ver medios de envío</a>
+							<i class="fas fa-truck"></i>
+						</div>
 
-                        <!-- Medios de envío -->
-                        <div class="shipping">
-                            <a href="#">Ver medios de envío</a>
-                            <i class="fas fa-truck"></i>
-                        </div>
+						<p class="line"></p>
 
-                        <p class="line"></p>
+						<!-- Agregar al carrito -->
+						<button class="add-to-cart" type="submit" name="add-to-cart" id="add-to-cart">Añadir al carrito</button>
 
-                        <!-- Agregar al carrito -->
-                        <button class="add-to-cart" type="submit" name="add-to-cart" id="add-to-cart">Añadir al carrito</button>
+					</form>
 
-                        <!-- Añadir a favoritos -->
-                        <a class="favorite" href="#">Añadir a favoritos <i class="far fa-heart"></i></a>
+					<!-- Añadir a favoritos -->
+					<form class="add-to-favorites" action="/products/favorites/add/<%= product.id %>" method="POST">
+						<button class="favorite">Añadir a favoritos <i class="fas fa-heart"></i></button>
+					</form>
 
-                    </form>
+					<% } else { %>
 
-                    <p class="line"></p>
+                        <p class="unavailable">Este producto no está disponible</p>
 
-                    <!-- Formulario de edición/eliminación -->
-                    <% if(locals.userLogged && locals.userLogged.category == 'admin') { %>
+					<% } %>
 
-                    <form class="edit" action="/products/<%= product.id %>?_method=DELETE" method="POST">
-                        <!-- Editar -->
-                        <a class="edit-product" href="/products/<%= product.id %>/editProduct">Editar el
-                            producto</a>
-                        <!-- Eliminar -->
-                        <button type="submit" class="delete">Eliminar el producto</button>
-                    </form>
+					<p class="line"></p>
 
-                    <p class="line"></p>
+					<!-- Formulario de edición/eliminación -->
+					<% if(locals.userLogged && locals.userLogged.user_category_id == 1) { %>
 
-                    <% } %>
+					<% if (product.disabled == 1) { %>
 
-                    <!-- Compartir -->
-                    <div class="share">
-                        <p>Compartir: </p>
-                        <div class="share-icons">
-                            <a href="#"><i class="fab fa-facebook"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fas fa-share-alt"></i></a>
-                        </div>
-                    </div>
+					<form class="edit" action="/products/enable/<%= product.id %>?_method=PUT" method="POST">
 
-                </div>
+						<!-- Editar -->
+						<a class="edit-product" href="/products/edit/<%= product.id %>">Editar el producto</a>
 
-            </div>
+						<!-- Eliminar -->
+						<button class="delete" type="submit">Habilitar producto</button>
 
-            <!-- Descripción -->
-            <div class="description">
-                <p class="title">Descripción</p>
-                <p class="text">
-                    <%= product.description %>
-                </p>
-            </div>
+					</form>
 
-        </section>
+					<% } else { %>
 
-        <section class="related-products">
+					<!-- Botón de eliminar -->
+					<form class="edit" action="/products/delete/<%= product.id %>?_method=DELETE" method="POST">
 
-            <!-- Productos relacionados -->
-            <h3 class="section-title">Productos relacionados</h3>
+						<!-- Editar -->
+						<a class="edit-product" href="/products/edit/<%= product.id %>">Editar el producto</a>
 
-            <!-- Listado -->
-            <div class="products">
-                <% for (i=0; i < 4; i++) { %>
-                <article>
-                    <a href="/products/1">
-                        <img src="/images/products/suculenta.jpg" alt="Suculenta" class="product-img">
-                        <div class="main-article">
-                            <h4 class="name">Suculenta</h4>
-                            <p class="price">$550</p>
-                        </div>
-                    </a>
-                </article>
-                <% } %>
+						<!-- Eliminar -->
+						<button class="delete" type="submit">Deshabilitar producto</button>
 
-            </div>
+					</form>
 
-            <div class="more-products">
-                <!-- Más productos -->
-                <a href="/products">Ver más productos relacionados</a>
-            </div>
+					<% } %>
 
-        </section>
+					<p class="line"></p>
 
-        <!-- <section class="additional-information">
+					<% } %>
+
+					<!-- Compartir -->
+					<div class="share">
+						<p>Compartir: </p>
+						<div class="share-icons">
+							<a href="#"><i class="fab fa-facebook"></i></a>
+							<a href="#"><i class="fab fa-twitter"></i></a>
+							<a href="#"><i class="fas fa-share-alt"></i></a>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+
+			<!-- Descripción -->
+			<div class="description">
+				<p class="title">Descripción</p>
+				<p class="text">
+					<%= product.description %>
+				</p>
+			</div>
+
+		</section>
+
+		<section class="related-products">
+
+			<!-- Productos relacionados -->
+			<h3 class="section-title">Productos relacionados</h3>
+
+			<!-- Listado -->
+			<div class="products">
+				<% for (i=0; i < 4 && i < relatedProducts.length; i++) { %>
+				<article>
+					<a href="/products/detail/<%= relatedProducts[i].id %>">
+						<img src="/images/products/<%= relatedProducts[i].image %>" alt="<%= relatedProducts[i].name %>" class="product-img">
+						<div class="main-article">
+							<h4 class="name"><%= relatedProducts[i].name %></h4>
+							<p class="price">$<%= relatedProducts[i].price %></p>
+						</div>
+					</a>
+				</article>
+				<% } %>
+
+			</div>
+
+			<div class="more-products">
+				<!-- Más productos -->
+				<a href="/products">Ver más productos relacionados</a>
+			</div>
+
+		</section>
+
+		<!-- <section class="additional-information">
                 <article>
                     <div class="icono-anuncio-complementario"><i class="fas fa-phone-alt"></i></i></div>
                     <h4>ASESORAMIENTO Y VENTAS</h4>
@@ -197,10 +208,12 @@
                 </article>
             </section> -->
 
-    </main>
+	</main>
 
-    <%- include('../partials/footer') %>
+	<%- include('../partials/footer') %>
 
 </body>
+
+<script src="/js/products/productDetail.js"></script>
 
 </html>

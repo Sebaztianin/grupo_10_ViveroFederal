@@ -1,0 +1,136 @@
+/* Global settings */
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Roboto', sans-serif;
+    color: #3C6255;
+    background-color: #FFFBE9;
+    min-height: 100vh;
+}
+
+
+/* Eliminamos colores en los links visitados */
+
+main a:visited {
+    color: #3C6255;
+}
+
+
+/* Main */
+
+main {
+    margin: auto;
+    margin-top: 165px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main section {
+    max-width: 1280px;
+    width: 100%;
+    text-align: center;
+}
+
+main h3.section-title {
+    margin: 10px;
+    margin-block: 25px;
+    width: 100%;
+    text-align: center;
+}
+
+main h3.section-title:before {
+    content: "";
+    display: inline-block;
+    border-top: 1px solid #3C6255;
+    width: 20%;
+    margin: 8px;
+}
+
+main h3.section-title:after {
+    content: "";
+    display: inline-block;
+    border-top: 1px solid #3C6255;
+    width: 20%;
+    margin: 8px;
+    align-items: center;
+}
+
+
+/* Opciones */
+
+main section.options div.list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: auto;
+    margin-block: 50px;
+    justify-content: center;
+    align-items: center;
+    padding-inline: 30px;
+    width: 100%;
+    max-width: 1300px;
+}
+
+main section.options div.list a {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 20px;
+    justify-content: center;
+    padding: 20px;
+    padding-top: 25px;
+    width: 80%;
+    border-radius: 5px;
+    color: #3C6255;
+    text-decoration: none;
+    font-weight: bold;
+    background-color: #DAE2B6;
+}
+
+main section.options div.list a i {
+    font-size: 50px;
+    margin-bottom: 20px;
+}
+
+
+/* Celus más grandes */
+
+@media (min-width: 481px) {
+
+    main section.options div.list a {
+        width: 40%;
+    }
+
+}
+
+
+/* Tablets y netbooks */
+
+@media (min-width: 769px) {
+
+    main section.options div.list a {
+        width: 25%;
+    }
+
+}
+
+
+/* Notebooks*/
+
+@media (min-width: 1024px) {
+
+    /* Main */
+    main {
+        margin-top: 115px;
+    }
+
+}

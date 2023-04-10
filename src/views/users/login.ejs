@@ -2,85 +2,87 @@
 <html>
 
 <head>
-    <%- include('../partials/head.ejs') %>
-        <title>Vivero Federal: Login</title>
-        <link rel="stylesheet" href="/css/users/login.css">
+	<%- include('../partials/head.ejs') %>
+	<title>Vivero Federal: Login</title>
+	<link rel="stylesheet" href="/css/users/login.css">
 </head>
 
 <body>
 
-    <%- include('../partials/header.ejs') %>
+	<%- include('../partials/header.ejs') %>
 
-        <main>
+	<main>
 
-            <section class="login">
+		<section class="login">
 
-                <h3 class="section-title">Iniciar sesión</h3>
+			<h3 class="section-title">Iniciar sesión</h3>
 
-                <form class="login" action="/users/login" method="POST">
+			<form class="login" action="/users/login" method="POST">
 
-                    <!-- Campos -->
-                    <input type="text" id="email" name="email" placeholder="Email" value="<%= (locals.oldLogin && oldLogin.email) ? oldLogin.email : '' %>">
-                    <input type="password" id="password" name="password" placeholder="Contraseña">
+				<!-- Campos -->
+				<input type="text" id="email" name="email" placeholder="Email" value="<%= (locals.oldLogin && oldLogin.email) ? oldLogin.email : '' %>">
+				<input type="password" id="password" name="password" placeholder="Contraseña">
 
-                    <div class="remember">
-                        <input type="checkbox" id="remember" name="remember">
-                        <label for="remember"> Recordarme</label>
-                    </div>
+				<div class="remember">
+					<input type="checkbox" id="remember" name="remember">
+					<label for="remember"> Recordarme</label>
+				</div>
 
-                    <!-- Errores -->
-                    <div class="errors">
-                        <% if (locals.errorsLogin) { %>
-                        <% errorsLogin.forEach(error => { %>
-                        <p class="error"><i class="fas fa-exclamation-circle"></i> <%= error.msg %></p>
-                        <% }) %>
-                        <% } %>
-                    </div>
+				<!-- Errores -->
+				<div class="errors">
+					<% if (locals.errorsLogin) { %>
+					<% errorsLogin.forEach(error => { %>
+					<p class="error"><i class="fas fa-exclamation-circle"></i> <%= error.msg %></p>
+					<% }) %>
+					<% } %>
+				</div>
 
-                    <!-- Botón -->
-                    <button type="submit">Iniciar sesión</button>
-                    <a href="#">
-                        <p>¿Olvidaste tu contraseña?</p>
-                    </a>
+				<!-- Botón -->
+				<button type="submit">Iniciar sesión</button>
+				<a href="#">
+					<p>¿Olvidaste tu contraseña?</p>
+				</a>
 
-                </form>
+			</form>
 
-            </section>
+		</section>
 
-            <section class="register">
+		<section class="register">
 
-                <h3 class="section-title">Registrarse</h3>
+			<h3 class="section-title">Registrarse</h3>
 
-                <form class="register" action="/users/register" method="POST" enctype="multipart/form-data">
+			<form class="register" action="/users/register" method="POST" enctype="multipart/form-data">
 
-                    <!-- Campos -->
-                    <input type="text" id="firstName" name="firstName" placeholder="Nombre" value="<%= (locals.oldRegister && oldRegister.firstName) ? oldRegister.firstName : '' %>">
-                    <input type="text" id="lastName" name="lastName" placeholder="Apellido" value="<%= (locals.oldRegister && oldRegister.lastName) ? oldRegister.lastName : '' %>">
-                    <input type="text" id="email" name="email" placeholder="Email" value="<%= (locals.oldRegister && oldRegister.email) ? oldRegister.email : '' %>">
-                    <input type="password" id="password" name="password" placeholder="Contraseña" value="<%= (locals.oldRegister && oldRegister.password) ? oldRegister.password : '' %>">
-                    <input type="password" id="passwordConfirmation" name="passwordConfirmation" placeholder="Confirmar contraseña" value="<%= (locals.oldRegister && oldRegister.passwordConfirmation) ? oldRegister.passwordConfirmation : '' %>">
-                    <input type="file" id="avatar" name="avatar">
+				<!-- Campos -->
+				<input type="text" id="first_name" name="first_name" placeholder="Nombre" value="<%= (locals.oldRegister && oldRegister.firstName) ? oldRegister.firstName : '' %>">
+				<input type="text" id="last_name" name="last_name" placeholder="Apellido" value="<%= (locals.oldRegister && oldRegister.lastName) ? oldRegister.lastName : '' %>">
+				<input type="text" id="email" name="email" placeholder="Email" value="<%= (locals.oldRegister && oldRegister.email) ? oldRegister.email : '' %>">
+				<input type="password" id="password" name="password" placeholder="Contraseña" value="<%= (locals.oldRegister && oldRegister.password) ? oldRegister.password : '' %>">
+				<input type="password" id="passwordConfirmation" name="passwordConfirmation" placeholder="Confirmar contraseña" value="<%= (locals.oldRegister && oldRegister.passwordConfirmation) ? oldRegister.passwordConfirmation : '' %>">
+				<input type="file" id="avatar" name="avatar">
 
-                    <!-- Errores -->
-                    <div class="errors">
-                        <% if (locals.errorsRegister) { %>
-                        <% errorsRegister.forEach(error => { %>
-                        <p class="error"><i class="fas fa-exclamation-circle"></i> <%= error.msg %></p>
-                        <% }) %>
-                        <% } %>
-                    </div>
-                
-                    <!-- Botón -->
-                    <button type="submit" >Registrarme</button>
+				<!-- Errores -->
+				<div class="errors">
+					<% if (locals.errorsRegister) { %>
+					<% errorsRegister.forEach(error => { %>
+					<p class="error"><i class="fas fa-exclamation-circle"></i> <%= error.msg %></p>
+					<% }) %>
+					<% } %>
+				</div>
 
-                </form>
+				<!-- Botón -->
+				<button type="submit">Registrarme</button>
 
-            </section>
+			</form>
 
-        </main>
+		</section>
 
-        <%- include('../partials/footer.ejs') %>
+	</main>
+
+	<%- include('../partials/footer.ejs') %>
 
 </body>
+
+<script src="/js/users/login.js"></script>
 
 </html>

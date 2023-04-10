@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<%- include('../partials/head.ejs') %>
+	<title>Vivero Federal: Editar tamaño</title>
+	<link rel="stylesheet" href="/css/sizes/editSize.css">
+</head>
+
+<body>
+
+	<%- include('../partials/header.ejs') %>
+
+	<main>
+
+		<section class="create">
+
+			<!-- Título de la sección -->
+			<h3 class="section-title">Editar tamaño</h3>
+
+			<!-- Formulario -->
+			<form class="new" action="/sizes/edit/<%= size.id %>?_method=PUT" method="POST">
+
+				<div class="data">
+
+					<label for="name">Nombre del tamaño: </label>
+					<input type="text" name="name" id="name" placeholder="Ej: XXS" value="<%= (locals.old && old.name) ? old.name : size.name %>">
+                    
+				</div>
+
+				<!-- Errores -->
+				<div class="errors">
+					<% if (locals.errors) { %>
+					<% errors.forEach(error => { %>
+					<p class="error"><i class="fas fa-exclamation-circle"></i> <%= error.msg %></p>
+					<% }) %>
+					<% } %>
+				</div>
+
+				<button type="submit">Editar tamaño</button>
+
+			</form>
+
+		</section>
+
+	</main>
+
+	<%- include('../partials/footer') %>
+
+</body>
+
+</html>

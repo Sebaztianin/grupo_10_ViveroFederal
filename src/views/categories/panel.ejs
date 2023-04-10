@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <%- include('../partials/head.ejs') %>
+    <title>Vivero Federal: Panel de categorías</title>
+    <link rel="stylesheet" href="/css/categories/panel.css">
+</head>
+
+<body>
+
+    <%- include('../partials/header.ejs') %>
+
+    <main>
+
+        <section class="list">
+
+            <h3 class="section-title">Panel de categorías</h3>
+
+			<!-- Barra de búsqueda -->
+			<form class="search" action="/categories/panel/search" method="POST">
+				<input class="search-input" type="text" name="searchPanel" placeholder="Buscar..." value="<%= (locals.query && query.searchPanel) ? query.searchPanel : '' %>" required>
+				<button class="search-button" type="submit"><i class="fa fa-search"></i></button>
+			</form>
+
+            <!-- Lista de categorías -->
+            <div class="list">
+
+                <article>
+
+                    <!-- Nueva categoría -->
+                    <a href="/categories/add" class="user">Nueva categoría</a>
+
+                    <!-- Botón de agregar -->
+                    <a href="/categories/add"><i class="fas fa-plus"></i></a>
+
+                </article>
+
+                <% for (i = 0; i < categories.length; i++) { %>
+
+                <article>
+
+                    <!-- Nombre de la categoría -->
+                    <p class="user"><%= categories[i].name %></p>
+
+                    <div class="buttons">
+
+                        <!-- Botón de editar -->
+                        <a href="/categories/edit/<%= categories[i].id %>"><i class="fas fa-edit"></i></a>
+
+                        <% if (categories[i].disabled == 1) { %>
+
+                        <!-- Botón de habilitar -->
+                        <form action="/categories/enable/<%= categories[i].id %>?_method=PUT" method="POST">
+                            <button type="submit"><i class="fa-solid fa-toggle-off"></i></button>
+
+                        </form>
+
+                        <% } else { %>
+
+                        <!-- Botón de eliminar -->
+                        <form action="/categories/delete/<%= categories[i].id %>?_method=DELETE" method="POST">
+                            <button type="submit"><i class="fa-solid fa-toggle-on"></i></button>
+
+                        </form>
+
+                        <% } %>
+
+                    </div>
+
+                </article>
+
+                <% } %>
+
+            </div>
+
+			<div class="pages">
+				<a class="prevPage" href="<%= prevPage %>"><i class="fa-solid fa-arrow-left"></i></a>
+				<p>Página <%= query.page %></p>
+				<a class="nextPage" href="<%= nextPage %>"><i class="fa-solid fa-arrow-right"></i></a>
+			</div>
+
+            <div class="all-elements">
+                <a  href="/categories/panel">Ver todas las categorías</a>
+            </div>
+
+        </section>
+
+    </main>
+
+    <%- include('../partials/footer.ejs') %>
+
+</body>
+
+<script src="/js/categories/panel.js"></script>
+
+</html>

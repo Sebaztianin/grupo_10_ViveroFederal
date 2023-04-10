@@ -64,7 +64,40 @@ main h3.section-title:after {
 }
 
 
-/* Perfil */
+/* Listado */
+
+main section.profile {
+    width: 100%;
+    max-width: 800px;
+}
+
+main section.profile form.search {
+    width: 95%;
+    margin: auto;
+    margin-bottom: 15px;
+    text-align: center;
+    position: relative;
+}
+
+main section.profile form.search input {
+    font-size: 14px;
+    padding: 5px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    background-color: white;
+}
+
+main section.profile form.search button {
+    border: none;
+    background: none;
+    position: absolute;
+    right: 5px;
+    top: 6px;
+    cursor: pointer;
+    animation: move-right 10s infinite;
+    animation-delay: 3s;
+}
 
 main section.profile div.list {
     display: flex;
@@ -73,8 +106,7 @@ main section.profile div.list {
     margin: auto;
     justify-content: center;
     padding-inline: 30px;
-    width: 100%;
-    max-width: 800px;
+    width: 95%;
 }
 
 main section.profile div.list article {
@@ -83,8 +115,8 @@ main section.profile div.list article {
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    margin: 10px;
     padding: 15px;
+    margin-block: 10px;
     width: 100%;
     border-radius: 10px;
     background-color: #DAE2B6;
@@ -92,6 +124,7 @@ main section.profile div.list article {
 
 main section.profile div.list article p {
     font-weight: bold;
+    max-width: 90%;
 }
 
 main section.profile div.list article a {
@@ -102,6 +135,30 @@ main section.profile div.list article a:visited {
     color: #3C6255;
 }
 
+
+/* Páginas */
+
+main section.profile div.pages {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+    margin-top: 15px;
+}
+
+main section.profile div.pages a {
+    font-size: 14px;
+    text-align: center;
+    margin: 15px;
+    color: #3C6255;
+}
+
+main section.profile div.all-elements {
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
 
 
 /* Celus más grandes */

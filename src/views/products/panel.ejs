@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <%- include('../partials/head.ejs') %>
+    <title>Vivero Federal: Panel de tamaños</title>
+    <link rel="stylesheet" href="/css/products/panel.css">
+</head>
+
+<body>
+
+    <%- include('../partials/header.ejs') %>
+
+    <main>
+
+        <section class="list">
+
+            <h3 class="section-title">Panel de productos</h3>
+
+			<!-- Barra de búsqueda -->
+			<form class="search" action="/products/panel/search" method="POST">
+				<input class="search-input" type="text" name="searchPanel" placeholder="Buscar..." value="<%= (locals.query && query.searchPanel) ? query.searchPanel : '' %>" required>
+				<button class="search-button" type="submit"><i class="fa fa-search"></i></button>
+			</form>
+
+            <!-- Listado -->
+            <div class="list">
+
+                <article>
+
+                    <!-- Nuevo -->
+                    <a href="/products/add" class="user">Nuevo producto</a>
+
+                    <!-- Botón de agregar -->
+                    <a href="/products/add"><i class="fas fa-plus"></i></a>
+
+                </article>
+                
+                <% for (i = 0; i < products.length; i++) { %>
+
+                <article>
+
+                    <!-- Nombre del elemento -->
+                    <% let productName = products[i].name + ' (' + products[i].category.name; %>
+                    <% if (products[i].size) { productName = productName + ', ' + products[i].size.name }; %>
+                    <% if (products[i].color) { productName = productName + ', ' + products[i].color.name }; %>
+                    <% productName = productName + ')'; %>
+                    <a href="/products/detail/<%= products[i].id %>" class="user"><%= productName %></a>
+
+                    <div class="buttons">
+
+                        <!-- Botón de editar -->
+                        <a href="/products/edit/<%= products[i].id %>"><i class="fas fa-edit"></i></a>
+
+                        <% if (products[i].disabled == 1) { %>
+
+                        <!-- Botón de habilitar -->
+                        <form action="/products/enable/<%= products[i].id %>?_method=PUT" method="POST">
+                            <button type="submit"><i class="fa-solid fa-toggle-off"></i></button>
+
+                        </form>
+
+                        <% } else { %>
+
+                        <!-- Botón de eliminar -->
+                        <form action="/products/delete/<%= products[i].id %>?_method=DELETE" method="POST">
+                            <button type="submit"><i class="fa-solid fa-toggle-on"></i></button>
+
+                        </form>
+
+                        <% } %>
+
+                    </div>
+
+                </article>
+
+                <% } %>
+
+            </div>
+
+			<div class="pages">
+				<a class="prevPage" href="<%= prevPage %>"><i class="fa-solid fa-arrow-left"></i></a>
+				<p>Página <%= query.page %></p>
+				<a class="nextPage" href="<%= nextPage %>"><i class="fa-solid fa-arrow-right"></i></a>
+			</div>
+
+            <div class="all-elements">
+                <a  href="/products/panel">Ver todos los productos</a>
+            </div>
+
+        </section>
+
+    </main>
+
+    <%- include('../partials/footer.ejs') %>
+
+</body>
+
+<script src="/js/products/panel.js"></script>
+
+</html>

@@ -193,7 +193,7 @@ main section.product-details div.details div.product-name-price form div.quantit
 }
 
 main section.product-details div.details div.product-name-price form div.quantity input {
-    width: 30px;
+    width: 55px;
     height: 26px;
     text-align: center;
     font-size: 14px;
@@ -205,29 +205,9 @@ main section.product-details div.details div.product-name-price form div.quantit
     border-radius: 5px;
 }
 
-main section.product-details div.details div.product-name-price form div.quantity button {
-    height: 25px;
-    text-align: center;
-    color: #3C6255;
-    background-color: #CCD6A6;
-    padding: 5px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    position: relative;
-    transition: all 0.5s;
-}
-
-main section.product-details div.details div.product-name-price form div.quantity button:hover {
-    filter: brightness(85%);
-}
-
-main section.product-details div.details div.product-name-price form div.quantity button.more:active {
-    bottom: 2px;
-}
-
-main section.product-details div.details div.product-name-price form div.quantity button.less:active {
-    top: 2px;
+main section.product-details div.details div.product-name-price form div.quantity input::-webkit-inner-spin-button,
+main section.product-details div.details div.product-name-price form div.quantity input::-webkit-outer-spin-button {
+    opacity: 1;
 }
 
 
@@ -261,7 +241,7 @@ main section.product-details div.details div.product-name-price form a {
     color: #3C6255;
 }
 
-main section.product-details div.details div.product-name-price form button {
+main section.product-details div.details div.product-name-price form button.add-to-cart {
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
     font-weight: bold;
@@ -276,7 +256,7 @@ main section.product-details div.details div.product-name-price form button {
     transition: all 0.5s;
 }
 
-main section.product-details div.details div.product-name-price form button:hover {
+main section.product-details div.details div.product-name-price form button.add-to-cart:hover {
     filter: brightness(85%);
 }
 
@@ -287,18 +267,25 @@ main section.product-details div.details div.product-name-price form button.add-
 
 /* Añadir a favorito */
 
-main section.product-details div.details div.product-name-price form a.favorite {
+main section.product-details div.details div.product-name-price form.add-to-favorites button.favorite {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: bold;
     text-align: center;
     margin-block: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #3C6255;
 }
 
-main section.product-details div.details div.product-name-price form a.favorite i {
+main section.product-details div.details div.product-name-price form.add-to-favorites button.favorite i {
     position: relative;
     bottom: 0px;
     transition: all 0.5s;
 }
 
-main section.product-details div.details div.product-name-price form a.favorite:hover i {
+main section.product-details div.details div.product-name-price form.add-to-favorites button.favorite:hover i {
     bottom: 5px;
 }
 
@@ -333,12 +320,26 @@ main section.product-details div.details div.product-name-price form.edit a.edit
 }
 
 main section.product-details div.details div.product-name-price form button.delete {
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    margin-block: 5px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.5s;
     color: #a84d36;
     background-color: #ec9a8b;
 }
 
 main section.product-details div.details div.product-name-price form button.delete:active {
     top: 2px;
+}
+
+main section.product-details div.details div.product-name-price form button.delete:hover {
+    filter: brightness(85%);
 }
 
 
@@ -368,6 +369,13 @@ main section.product-details div.details div.product-name-price div.share i:hove
     transform: rotate(360deg);
 }
 
+main section.product-details div.details div.product-name-price p.unavailable {
+    width: 100%;
+    font-weight: bold;
+    padding: 15px;
+    text-align: center;
+}
+
 
 /* Descripción */
 
@@ -391,7 +399,7 @@ main section.related-products div.products {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: center;
     width: 100%;
     margin-block: 20px;
 } 
@@ -400,6 +408,7 @@ main section.related-products div.products article {
     padding: 10px;
     width: 20%;
     align-self: center;
+    margin: 20px;
     background-color: #DAE2B6;
     border-radius: 5px;
     box-shadow: 0px 0px 0px rgb(100, 100, 100);

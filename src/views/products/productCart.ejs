@@ -13,55 +13,60 @@
 
     <main>
 
-        <form class="cart" action="#" method="GET">
+        <div class="cart">
 
             <section class="products">
 
                 <!-- Título -->
                 <h3 class="section-title">Carrito de compras</h3>
 
+                <!-- Aviso de que no hay productos en carrito -->
+                <% if (cartItems.length == 0) { %>
+
+                <div class="no-products">
+                    <p>No hay productos en su carrito.</p>
+                    <a href="/products">Ver productos</a>
+                </div>
+
+                <% } else { %>
+
                 <!-- Listado -->
                 <div class="products-list">
 
+                    <% let subtotal = 0; %>
+                    <% for (i = 0; i < cartItems.length; i++) { %>
+					<% let finalPrice = 0; %>
+
+                    <!-- Calculo precio con descuento -->
+                    <% if (cartItems[i].product.discount) { %>
+					<% 		finalPrice = cartItems[i].product.price - (cartItems[i].product.price * cartItems[i].product.discount/100) %>
+                    <% } else { %>
+					<% 		finalPrice = cartItems[i].product.price %>
+					<% } %>
+
+                    <% subtotal = subtotal + (finalPrice * cartItems[i].quantity); %>
+
                     <article>
-                        <img src="/images/products/suculenta.jpg" alt="Suculenta" class="product_img">
+                        <img src="/images/products/<%= cartItems[i].product.image %>" alt="Imagen del producto" class="product_img">
                         <div class="article">
-                            <a href="/products/detail/1">
-                                <p class="name">Suculenta</p>
+                            <a href="/products/detail/<%= cartItems[i].product.id %>">
+                                <p class="name"><%= cartItems[i].product.name %></p>
                             </a>
                             <div class="article-details">
                                 <div class="quantity">
-                                    <button class="less" type="button" name="less" id="less"><i class="fas fa-minus"></i></button>
-                                    <input class="quantity-input" type="text" name="quantity" id="quantity" value="15">
-                                    <button class="more" type="button" name="more" id="more"><i class="fas fa-plus"></i></button>
+                                    <input class="quantity-input" type="number" name="quantity" id="quantity" min="1" value="<%= cartItems[i].quantity %>">
                                 </div>
                                 <div class="total">
-                                    <p class="price">$550</p>
-                                    <button type="button" name="delete"><i class="fas fa-trash"></i></button>
+                                    <p class="price">$ <%= toThousand(finalPrice) %></p>
+                                    <form class="remove-from-cart" action="/products/productCart/remove/<%= cartItems[i].product.id %>?_method=DELETE" method="POST">
+                                        <button type="submit" name="delete"><i class="fas fa-trash"></i></button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
                     </article>
 
-                    <article>
-                        <img src="/images/products/cactus.jpg" alt="Cactus" class="product_img">
-                        <div class="article">
-                            <a href="/products/detail/1">
-                                <p class="name">Cactus</p>
-                            </a>
-                            <div class="article-details">
-                                <div class="quantity">
-                                    <button type="button" name="more"><i class="fas fa-minus"></i></button>
-                                    <input class="quantity-input" type="text" name="quantity" id="quantity" value="20">
-                                    <button type="button" name="less"><i class="fas fa-plus"></i></button>
-                                </div>
-                                <div class="total">
-                                    <p class="price">$800</p>
-                                    <button type="button" name="delete"><i class="fas fa-trash"></i></button>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
+                    <% } %>
 
                 </div>
 
@@ -70,23 +75,27 @@
             <!-- Calcular envío -->
             <section class="delivery">
                 <label id="cp">Envío: </label>
-                <input class="cp" type="number" name="cp" id="cp" placeholder="Código postal">
+                <input class="cp" type="number" name="cp" id="cp" min="1" placeholder="Código postal">
                 <button type="menu" name="calculate">Calcular</button>
             </section>
 
             <!-- Subtotal -->
             <section class="subtotal">
                 <p class="title">Subtotal: </p>
-                <p class="value">$ 1.350</p>
+                <p class="value">$ <%= toThousand(subtotal) %></p>
             </section>
 
             <!-- Botón -->
             <section class="submit">
-                <button type="submit" name="buy">Comprar</button>
+                <form class="buy" action="#" method="POST">
+                    <button type="submit" name="buy">Comprar</button>
+                </form>
                 <a href="/products">Ver más productos</a>
             </section>
 
-        </form>
+            <% } %>
+
+        </div>
 
     </main>
 

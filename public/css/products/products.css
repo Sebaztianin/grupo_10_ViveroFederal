@@ -135,13 +135,34 @@ main section.all-products div.list div.filters a {
     color: #3C6255;
 } 
 
+main section.all-products div.list div.filters a.clean {
+    text-decoration: underline;
+    font-size: 14px;
+    color: #3C6255;
+} 
+
 
 /* Productos */
+
+main section.all-products div.list div.no-results {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+} 
+
+main section.all-products div.list div.no-results p.warning {
+    margin: 32px;
+    width: 100%;
+    text-align: center;
+} 
 
 main section.all-products div.list div.products {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    align-items: center;
     width: 100%;
 } 
 
@@ -182,7 +203,14 @@ main section.all-products div.list div.products p.discount {
 }
 
 main section.all-products div.list div.products h4 {
-    margin-block: 8px;
+    margin-top: 8px;
+    margin-bottom: 4px;
+}
+
+main section.all-products div.list div.products p.detail {
+    font-size: 14px;
+    margin-top: 4px;
+    margin-bottom: 8px;
 }
 
 main section.all-products div.list div.products article button {
@@ -190,23 +218,44 @@ main section.all-products div.list div.products article button {
     background-color: #FFFBE9;
     border: none;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 main section.all-products div.list div.products article button.favorite {
     position: absolute;
     right: 42px;
-    bottom: 63px;
+    bottom: 84px;
 }
 
 main section.all-products div.list div.products article button.cart {
     position: absolute;
     right: 5px;
-    bottom: 63px;
+    bottom: 84px;
 }
 
 main section.all-products div.list div.products article i {
     padding: 5px;
     font-size: 20px;
+    color: #3C6255;
+}
+
+
+/* Páginas */
+
+main section.all-products div.pages {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+}
+
+main section.all-products div.pages a {
+    font-size: 14px;
+    text-align: center;
+    margin: 15px;
     color: #3C6255;
 }
 
@@ -292,7 +341,7 @@ main section.all-products div.more-products a {
     } 
         
     main section.all-products div.list div.products article button:hover {
-        bottom: 68px;
+        bottom: 88px;
     }
 
 
