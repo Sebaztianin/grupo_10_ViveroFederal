@@ -26,10 +26,13 @@ let validateCreateForm = [
     body('description').notEmpty().withMessage('La descripción no puede estar vacia.').bail()
         .isLength({ min: 10 }).withMessage('La descripción no puede tener un largo menor a 10.'),
     body('image').custom((value, { req }) => {
-        if (!req.file) {
-            throw new Error('Se requiere una imagen.');
-        } else if (path.extname(req.file.filename) != '.jpg') {
-            throw new Error('Se requiere un archivo de extensión .jpg.');
+        if (req.file) {
+            if (path.extname(req.file.filename) != '.jpg'
+                && path.extname(req.file.filename) != '.jpeg'
+                && path.extname(req.file.filename) != '.png'
+                && path.extname(req.file.filename) != '.gif') {
+                throw new Error('Se requiere un archivo de alguna de las siguientes extensiones: jpg, jpeg, png o gif.');
+            }
         }
         return true;
     })
@@ -48,8 +51,11 @@ let validateEditForm = [
         .isLength({ min: 20 }).withMessage('La descripción no puede tener un largo menor a 20.'),
     body('image').custom((value, { req }) => {
         if (req.file) {
-            if (path.extname(req.file.filename) != '.jpg') {
-                throw new Error('Se requiere un archivo de extensión .jpg.');
+            if (path.extname(req.file.filename) != '.jpg'
+                && path.extname(req.file.filename) != '.jpeg'
+                && path.extname(req.file.filename) != '.png'
+                && path.extname(req.file.filename) != '.gif') {
+                throw new Error('Se requiere un archivo de alguna de las siguientes extensiones: jpg, jpeg, png o gif.');
             }
         }
         return true;

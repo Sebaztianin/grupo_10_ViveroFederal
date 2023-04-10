@@ -34,11 +34,11 @@ let registerForm = [
     }),
     body('avatar').custom((value, { req }) => {
         if (req.file) {
-            if (path.extname(req.file.filename) != '.jpg' 
-            && path.extname(req.file.filename) != '.jpeg' 
-            && path.extname(req.file.filename) != '.png' 
-            && path.extname(req.file.filename) != '.gif') {
-                throw new Error('Se requiere un archivo de extensión .jpg.');
+            if (path.extname(req.file.filename) != '.jpg'
+                && path.extname(req.file.filename) != '.jpeg'
+                && path.extname(req.file.filename) != '.png'
+                && path.extname(req.file.filename) != '.gif') {
+                throw new Error('Se requiere un archivo de alguna de las siguientes extensiones: jpg, jpeg, png o gif.');
             }
         }
         return true;
@@ -50,7 +50,18 @@ let editForm = [
     body('first_name').notEmpty().withMessage('El nombre no puede estar vacío.').bail()
         .isLength({ min: 2 }).withMessage('El nombre no puede tener un largo menor a 2.'),
     body('last_name').notEmpty().withMessage('El apellido no puede estar vacío.').bail()
-        .isLength({ min: 2 }).withMessage('El apellido no puede tener un largo menor a 2.')
+        .isLength({ min: 2 }).withMessage('El apellido no puede tener un largo menor a 2.'),
+    body('avatar').custom((value, { req }) => {
+        if (req.file) {
+            if (path.extname(req.file.filename) != '.jpg'
+                && path.extname(req.file.filename) != '.jpeg'
+                && path.extname(req.file.filename) != '.png'
+                && path.extname(req.file.filename) != '.gif') {
+                throw new Error('Se requiere un archivo de alguna de las siguientes extensiones: jpg, jpeg, png o gif.');
+            }
+        }
+        return true;
+    })
 ];
 
 /* Validaciones del formulario de login */
