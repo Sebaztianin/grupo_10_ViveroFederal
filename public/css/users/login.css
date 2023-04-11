@@ -73,12 +73,27 @@ main section.login form.login {
     margin: auto;
 }
 
-main section.login form.login input {
+main section.login form.login div.field {
+    width: 100%;
+    position: relative;
+}
+
+main section.login form.login div.field input {
     padding: 5px;
     margin: 5px;
     width: 100%;
-    border: none;
+    border: 2px solid transparent;
     border-radius: 5px;
+}
+
+main section.login form.login div.field p.live-error {
+    position: absolute;
+    padding: 7px;
+    top: 5px;
+    right: 5px;
+    text-align: right;
+    font-size: 12px;
+    color: #a84d36;
 }
 
 main section.login form.login div.remember {
@@ -155,12 +170,27 @@ main section.register form.register {
     margin-bottom: 15px;
 }
 
-main section.register form.register input {
+main section.register form.register div.field {
+    width: 100%;
+    position: relative;
+}
+
+main section.register form.register div.field input {
     padding: 5px;
     margin: 5px;
     width: 100%;
-    border: none;
+    border: 2px solid transparent;
     border-radius: 5px;
+}
+
+main section.register form.register div.field p.live-error {
+    position: absolute;
+    padding: 7px;
+    top: 5px;
+    right: 5px;
+    text-align: right;
+    font-size: 12px;
+    color: #a84d36;
 }
 
 main section.register form.register div.errors {
@@ -212,7 +242,11 @@ main section.register form.register button:active {
 
     /* Login */
 
-    main section.login form.login input {
+    main section.login form.login div.field input {
+        font-size: 14px;
+    }
+
+    main section.login form.login div.field p.live-error {
         font-size: 14px;
     }
 
@@ -227,7 +261,11 @@ main section.register form.register button:active {
 
     /* Registro */
     
-    main section.register form.register input {
+    main section.register form.register div.field input {
+        font-size: 14px;
+    }
+    
+    main section.register form.register div.field p.live-error {
         font-size: 14px;
     }
 

@@ -1,42 +1,37 @@
-// Convertimos el querystring en un objeto
-let querystring = window.location.search.substring(1);
-let query = querystring ? JSON.parse('{"' + decodeURI(querystring).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g, '":"') + '"}') : '';
-
-// Rearmo querystring sin el parámetro de la página
-querystring = '';
-Object.keys(query).forEach(param => {
-    if (param != 'page') {querystring = querystring + param + '=' + query[param] + '&'}
-});
-
-// Saco el último &
-querystring = querystring.substring(0, querystring.length - 1);
+// Trabajamos con la query
+let query = new URLSearchParams(location.search);
 
 // Obtengo los elementos de la paginación
 let prevPage = document.querySelector('section.profile div.pages a.prevPage');
 let nextPage = document.querySelector('section.profile div.pages a.nextPage');
 
+// Saco el atributo page del query
+query.delete('page');
+
 // Si es igual a 0, osea, no hay otro elemento, desactivo el botón. Si es distinto de 0, seteo href
 if (prevPage.getAttribute("href") == 0) {
     prevPage.style.display = "none";
 } else {
-    
-    if (querystring) {
-        prevPage.setAttribute('href', '/users/panel?page=' + prevPage.getAttribute("href") + '&' + querystring);
-    } else {
-        prevPage.setAttribute('href', '/users/panel?page=' + prevPage.getAttribute("href"));
-    }
-    
-}
+
+    // Agrego al href lo que sigue
+    query.append('page', prevPage.getAttribute('href'));
+    prevPage.setAttribute('href', '/users/panel?' + query.toString());
+
+    // Saco de query para operar con el que sigue
+    query.delete('page');
+
+} 
 
 // Si es igual a 0, osea, no hay otro elemento, desactivo el botón. Si es distinto de 0, seteo href
 if (nextPage.getAttribute('href') == 0) {
     nextPage.style.display = 'none';
 } else {
-    
-    if (querystring) {
-        nextPage.setAttribute('href', '/users/panel?page=' + nextPage.getAttribute("href") + '&' + querystring);
-    } else {
-        nextPage.setAttribute('href', '/users/panel?page=' + nextPage.getAttribute("href"));
-    }
 
-}
+    // Agrego al href lo que sigue
+    query.append('page', nextPage.getAttribute('href'));
+    nextPage.setAttribute('href', '/users/panel?' + query.toString());
+
+    // Saco de query para operar con el que sigue
+    query.delete('page');
+
+} 

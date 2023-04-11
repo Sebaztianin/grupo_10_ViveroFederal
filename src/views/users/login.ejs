@@ -20,8 +20,12 @@
 			<form class="login" action="/users/login" method="POST">
 
 				<!-- Campos -->
-				<input type="text" id="email" name="email" placeholder="Email" value="<%= (locals.oldLogin && oldLogin.email) ? oldLogin.email : '' %>">
-				<input type="password" id="password" name="password" placeholder="Contraseña">
+				<div class="field">
+					<input type="text" id="email" name="email" placeholder="Email" value="<%= (locals.oldLogin && oldLogin.email) ? oldLogin.email : '' %>">
+				</div>
+				<div class="field">
+					<input type="password" id="password" name="password" placeholder="Contraseña">
+				</div>
 
 				<div class="remember">
 					<input type="checkbox" id="remember" name="remember">
@@ -54,12 +58,29 @@
 			<form class="register" action="/users/register" method="POST" enctype="multipart/form-data">
 
 				<!-- Campos -->
-				<input type="text" id="first_name" name="first_name" placeholder="Nombre" value="<%= (locals.oldRegister && oldRegister.firstName) ? oldRegister.firstName : '' %>">
-				<input type="text" id="last_name" name="last_name" placeholder="Apellido" value="<%= (locals.oldRegister && oldRegister.lastName) ? oldRegister.lastName : '' %>">
-				<input type="text" id="email" name="email" placeholder="Email" value="<%= (locals.oldRegister && oldRegister.email) ? oldRegister.email : '' %>">
-				<input type="password" id="password" name="password" placeholder="Contraseña" value="<%= (locals.oldRegister && oldRegister.password) ? oldRegister.password : '' %>">
-				<input type="password" id="passwordConfirmation" name="passwordConfirmation" placeholder="Confirmar contraseña" value="<%= (locals.oldRegister && oldRegister.passwordConfirmation) ? oldRegister.passwordConfirmation : '' %>">
-				<input type="file" id="avatar" name="avatar">
+				<div class="field">
+					<input type="text" id="first_name" name="first_name" placeholder="Nombre" value="<%= (locals.oldRegister && oldRegister.firstName) ? oldRegister.firstName : '' %>">
+					<p class="live-error" id="first_name"></p>
+				</div>
+				<div class="field">
+					<input type="text" id="last_name" name="last_name" placeholder="Apellido" value="<%= (locals.oldRegister && oldRegister.lastName) ? oldRegister.lastName : '' %>">
+					<p class="live-error" id="last_name"></p>
+				</div>
+				<div class="field">
+					<input type="text" id="email" name="email" placeholder="Email" value="<%= (locals.oldRegister && oldRegister.email) ? oldRegister.email : '' %>">
+					<p class="live-error" id="email"></p>
+				</div>
+				<div class="field">
+					<input type="password" id="password" name="password" placeholder="Contraseña" value="<%= (locals.oldRegister && oldRegister.password) ? oldRegister.password : '' %>">
+					<p class="live-error" id="password"></p>
+				</div>
+				<div class="field">
+					<input type="password" id="passwordConfirmation" name="passwordConfirmation" placeholder="Confirmar contraseña" value="<%= (locals.oldRegister && oldRegister.passwordConfirmation) ? oldRegister.passwordConfirmation : '' %>">
+					<p class="live-error" id="passwordConfirmation"></p>
+				</div>
+				<div class="field">
+					<input type="file" id="avatar" name="avatar">
+				</div>
 
 				<!-- Errores -->
 				<div class="errors">
@@ -83,6 +104,7 @@
 
 </body>
 
+<script src="https://unpkg.com/validator@latest/validator.min.js"></script>
 <script src="/js/users/login.js"></script>
 
 </html>
