@@ -15,20 +15,108 @@ if (query.has('warning') && query.get('warning') == 'notUser') {
 }
 
 
+// Elementos para validación del login
+let loginForm = document.querySelector('section.login form.login');
+let email_login = document.querySelector('section.login input#email');
+let error_email_login = document.querySelector('section.login p#email');
+let password_login = document.querySelector('section.login input#password');
+let error_password_login = document.querySelector('section.login p#password');
+let loginErrors = document.querySelector('section.login div.errors');
+
+// Validaciones al enviar el formulario
+loginForm.addEventListener('submit', event => {
+
+    // Limpiamos errores anteriores
+    loginErrors.innerHTML = '';
+
+    // Creamos array de errores
+    let errors = [];
+
+    // Validación para campo vacío y formato
+    if (email_login.value == '') {
+        errors.push('El email no puede estar vacío.');
+    } else if (!validator.isEmail(email_login.value)) {
+        errors.push('El email debe tener un formato válido.');
+    }
+
+    // Validación para campo vacío y formato
+    if (password_login.value == '') {
+        errors.push('La contraseña no puede estar vacía.');
+    }
+
+    // Prevenir default y mostrar errores
+    if (errors.length > 0) {
+
+        // Evito que se mande el formulario
+        event.preventDefault();
+
+        // Muestro errores del front
+        loginErrors.style.display = 'flex';
+        errors.forEach(error => {
+            loginErrors.innerHTML += '<p class="error"><i class="fas fa-exclamation-circle"></i> ' + error + '</p>'
+        });
+
+    }
+
+});
+
+email_login.addEventListener('blur', function () {
+
+    if (this.value == '') {
+        email_login.style.border = '2px solid #a84d36';
+        error_email_login.innerText = 'El email no puede estar vacío.';
+    } else if (!validator.isEmail(this.value)) {
+        email_login.style.border = '2px solid #a84d36';
+        error_email_login.innerText = 'El email debe tener un formato válido.';
+    } else {
+        email_login.style.border = '';
+        error_email_login.innerText = '';
+    }
+
+});
+
+password_login.addEventListener('blur', function () {
+
+    if (this.value == '') {
+        password_login.style.border = '2px solid #a84d36';
+        error_password_login.innerText = 'La contraseña no puede estar vacía.';
+    } else {
+        password_login.style.border = '';
+        error_password_login.innerText = '';
+    }
+
+});
+
+// Escondemos botones al clickearlos
+email_login.addEventListener('click', function () {
+
+    error_email_login.innerText = '';
+    this.style.border = '';
+
+});
+
+password_login.addEventListener('click', function () {
+
+    error_password_login.innerText = '';
+    this.style.border = '';
+
+});
+
+
 // Elementos para validación del registro
 let registerForm = document.querySelector('section.register form.register');
-let first_name = document.querySelector('section.register input#first_name');
-let error_first_name = document.querySelector('section.register p#first_name');
-let last_name = document.querySelector('section.register input#last_name');
-let error_last_name = document.querySelector('section.register p#last_name');
-let email = document.querySelector('section.register input#email');
-let error_email = document.querySelector('section.register p#email');
-let password = document.querySelector('section.register input#password');
-let error_password = document.querySelector('section.register p#password');
-let passwordConfirmation = document.querySelector('section.register input#passwordConfirmation');
-let error_passwordConfirmation = document.querySelector('section.register p#passwordConfirmation');
-let avatar = document.querySelector('section.register input#avatar');
-let error_avatar = document.querySelector('section.register p#avatar');
+let first_name_register = document.querySelector('section.register input#first_name');
+let error_first_name_register = document.querySelector('section.register p#first_name');
+let last_name_register = document.querySelector('section.register input#last_name');
+let error_last_name_register = document.querySelector('section.register p#last_name');
+let email_register = document.querySelector('section.register input#email');
+let error_email_register = document.querySelector('section.register p#email');
+let password_register = document.querySelector('section.register input#password');
+let error_password_register = document.querySelector('section.register p#password');
+let passwordConfirmation_register = document.querySelector('section.register input#passwordConfirmation');
+let error_passwordConfirmation_register = document.querySelector('section.register p#passwordConfirmation');
+let avatar_register = document.querySelector('section.register input#avatar');
+let error_avatar_register = document.querySelector('section.register p#avatar');
 let registerErrors = document.querySelector('section.register div.errors');
 
 // Validaciones al enviar el formulario
@@ -41,16 +129,16 @@ registerForm.addEventListener('submit', event => {
     let errors = [];
 
     // Validación para campo vacío y longitud
-    if (first_name.value == '') {
+    if (first_name_register.value == '') {
         errors.push('El nombre no puede estar vacío.');
-    } else if (first_name.value.length < 3) {
+    } else if (first_name_register.value.length < 3) {
         errors.push('El nombre debe contener más de 2 caracteres.');
     }
 
     // Validación para campo vacío y longitud
-    if (last_name.value == '') {
+    if (last_name_register.value == '') {
         errors.push('El apellido no puede estar vacío.');
-    } else if (last_name.value.length < 3) {
+    } else if (last_name_register.value.length < 3) {
         errors.push('El apellido debe contener más de 2 caracteres.');
     }
 
@@ -69,14 +157,14 @@ registerForm.addEventListener('submit', event => {
     }
 
     // Validación para campo vacío y coincidencia
-    if (passwordConfirmation.value == '') {
+    if (passwordConfirmation_register.value == '') {
         errors.push('La confirmación de la contraseña no puede estar vacía.');
-    } else if (password.value != passwordConfirmation.value) {
+    } else if (password.value != passwordConfirmation_register.value) {
         errors.push('Las contraseñas no coinciden.')
     }
 
     // Obtenemos la extensión del archivo de imagen
-    let file = avatar.value.split('.');
+    let file = avatar_register.value.split('.');
     let extension = file[file.length - 1];
 
     // Validamos la imagen
@@ -87,7 +175,6 @@ registerForm.addEventListener('submit', event => {
         extension != '') {
         errors.push('Extensiones aceptadas: jpg, jpeg, png o gif.');
     }
-
 
     // Prevenir default y mostrar errores
     if (errors.length > 0) {
@@ -106,82 +193,82 @@ registerForm.addEventListener('submit', event => {
 });
 
 // Validaciones en tiempo real
-first_name.addEventListener('blur', function () {
+first_name_register.addEventListener('blur', function () {
 
     if (this.value == '') {
-        first_name.style.border = '2px solid #a84d36';
-        error_first_name.innerText = 'El nombre no puede estar vacío.';
+        first_name_register.style.border = '2px solid #a84d36';
+        error_first_name_register.innerText = 'El nombre no puede estar vacío.';
     } else if (this.value.length < 3) {
-        first_name.style.border = '2px solid #a84d36';
-        error_first_name.innerText = 'El nombre debe contener más de 2 caracteres.';
+        first_name_register.style.border = '2px solid #a84d36';
+        error_first_name_register.innerText = 'El nombre debe contener más de 2 caracteres.';
     } else {
-        first_name.style.border = '';
-        error_first_name.innerText = '';
+        first_name_register.style.border = '';
+        error_first_name_register.innerText = '';
     }
 
 });
 
-last_name.addEventListener('blur', function () {
+last_name_register.addEventListener('blur', function () {
 
     if (this.value == '') {
-        last_name.style.border = '2px solid #a84d36';
-        error_last_name.innerText = 'El apellido no puede estar vacío.';
+        last_name_register.style.border = '2px solid #a84d36';
+        error_last_name_register.innerText = 'El apellido no puede estar vacío.';
     } else if (this.value.length < 3) {
-        last_name.style.border = '2px solid #a84d36';
-        error_last_name.innerText = 'El apellido debe contener más de 2 caracteres.';
+        last_name_register.style.border = '2px solid #a84d36';
+        error_last_name_register.innerText = 'El apellido debe contener más de 2 caracteres.';
     } else {
-        last_name.style.border = '';
-        error_last_name.innerText = '';
+        last_name_register.style.border = '';
+        error_last_name_register.innerText = '';
     }
 
 });
 
-email.addEventListener('blur', function () {
+email_register.addEventListener('blur', function () {
 
     if (this.value == '') {
-        email.style.border = '2px solid #a84d36';
-        error_email.innerText = 'El email no puede estar vacío.';
+        email_register.style.border = '2px solid #a84d36';
+        error_email_register.innerText = 'El email no puede estar vacío.';
     } else if (!validator.isEmail(this.value)) {
-        email.style.border = '2px solid #a84d36';
-        error_email.innerText = 'El email debe tener un formato válido.';
+        email_register.style.border = '2px solid #a84d36';
+        error_email_register.innerText = 'El email debe tener un formato válido.';
     } else {
-        email.style.border = '';
-        error_email.innerText = '';
+        email_register.style.border = '';
+        error_email_register.innerText = '';
     }
 
 });
 
-password.addEventListener('blur', function () {
+password_register.addEventListener('blur', function () {
 
     if (this.value == '') {
-        password.style.border = '2px solid #a84d36';
-        error_password.innerText = 'La contraseña no puede estar vacía.';
+        password_register.style.border = '2px solid #a84d36';
+        error_password_register.innerText = 'La contraseña no puede estar vacía.';
     } else if (!validator.isStrongPassword(this.value)) {
-        password.style.border = '2px solid #a84d36';
-        error_password.innerText = 'La contraseña debe contener por lo menos 8 caracteres, una mayúscula, una minúscula, un número y un caracter especial.';
+        password_register.style.border = '2px solid #a84d36';
+        error_password_register.innerText = 'Formato incorrecto.';
     } else {
-        password.style.border = '';
-        error_password.innerText = '';
+        password_register.style.border = '';
+        error_password_register.innerText = '';
     }
 
 });
 
-passwordConfirmation.addEventListener('blur', function () {
+passwordConfirmation_register.addEventListener('blur', function () {
 
     if (this.value == '') {
-        passwordConfirmation.style.border = '2px solid #a84d36';
-        error_passwordConfirmation.innerText = 'La confirmación de la contraseña no puede estar vacía.';
+        passwordConfirmation_register.style.border = '2px solid #a84d36';
+        error_passwordConfirmation_register.innerText = 'La confirmación de la contraseña no puede estar vacía.';
     } else if (this.value != password.value) {
-        passwordConfirmation.style.border = '2px solid #a84d36';
-        error_passwordConfirmation.innerText = 'Las contraseñas no coinciden.';
+        passwordConfirmation_register.style.border = '2px solid #a84d36';
+        error_passwordConfirmation_register.innerText = 'Las contraseñas no coinciden.';
     } else {
-        passwordConfirmation.style.border = '';
-        error_passwordConfirmation.innerText = '';
+        passwordConfirmation_register.style.border = '';
+        error_passwordConfirmation_register.innerText = '';
     }
 
 });
 
-avatar.addEventListener('change', function () {
+avatar_register.addEventListener('change', function () {
 
     // Obtenemos la extensión del archivo
     let file = this.value.split('.');
@@ -193,11 +280,48 @@ avatar.addEventListener('change', function () {
         extension != 'png' &&
         extension != 'gif' &&
         extension != '') {
-        avatar.style.border = '2px solid #a84d36';
-        error_avatar.innerText = 'Extensiones aceptadas: jpg, jpeg, png o gif.';
+        avatar_register.style.border = '2px solid #a84d36';
+        error_avatar_register.innerText = 'Extensiones aceptadas: jpg, jpeg, png o gif.';
     } else {
-        avatar.style.border = '';
-        error_avatar.innerText = '';
+        avatar_register.style.border = '';
+        error_avatar_register.innerText = '';
     }
 
 });
+
+// Escondemos botones al clickearlos
+first_name_register.addEventListener('click', function () {
+
+    error_first_name_register.innerText = '';
+    this.style.border = '';
+
+});
+
+last_name_register.addEventListener('click', function () {
+
+    error_last_name_register.innerText = '';
+    this.style.border = '';
+
+});
+
+email_register.addEventListener('click', function () {
+
+    error_email_register.innerText = '';
+    this.style.border = '';
+
+});
+
+password_register.addEventListener('click', function () {
+
+    error_password_register.innerText = '';
+    this.style.border = '';
+
+});
+
+passwordConfirmation_register.addEventListener('click', function () {
+
+    error_passwordConfirmation_register.innerText = '';
+    this.style.border = '';
+
+});
+

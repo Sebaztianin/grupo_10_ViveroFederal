@@ -22,9 +22,11 @@
 				<!-- Campos -->
 				<div class="field">
 					<input type="text" id="email" name="email" placeholder="Email" value="<%= (locals.oldLogin && oldLogin.email) ? oldLogin.email : '' %>">
+					<p class="live-error" id="email"></p>
 				</div>
 				<div class="field">
 					<input type="password" id="password" name="password" placeholder="Contraseña">
+					<p class="live-error" id="password"></p>
 				</div>
 
 				<div class="remember">

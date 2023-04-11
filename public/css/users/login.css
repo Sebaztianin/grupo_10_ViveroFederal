@@ -88,12 +88,15 @@ main section.login form.login div.field input {
 
 main section.login form.login div.field p.live-error {
     position: absolute;
-    padding: 7px;
+    margin: 5px;
+    padding: 2px;
     top: 5px;
-    right: 5px;
+    right: 0px;
     text-align: right;
     font-size: 12px;
+    background-color: white;
     color: #a84d36;
+    pointer-events: none;
 }
 
 main section.login form.login div.remember {
@@ -185,12 +188,15 @@ main section.register form.register div.field input {
 
 main section.register form.register div.field p.live-error {
     position: absolute;
-    padding: 7px;
+    margin: 5px;
+    padding: 2px;
     top: 5px;
-    right: 5px;
+    right: 0px;
     text-align: right;
     font-size: 12px;
+    background-color: white;
     color: #a84d36;
+    pointer-events: none;
 }
 
 main section.register form.register div.field p#avatar {
