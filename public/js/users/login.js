@@ -27,6 +27,8 @@ let password = document.querySelector('section.register input#password');
 let error_password = document.querySelector('section.register p#password');
 let passwordConfirmation = document.querySelector('section.register input#passwordConfirmation');
 let error_passwordConfirmation = document.querySelector('section.register p#passwordConfirmation');
+let avatar = document.querySelector('section.register input#avatar');
+let error_avatar = document.querySelector('section.register p#avatar');
 let registerErrors = document.querySelector('section.register div.errors');
 
 // Validaciones al enviar el formulario
@@ -72,6 +74,20 @@ registerForm.addEventListener('submit', event => {
     } else if (password.value != passwordConfirmation.value) {
         errors.push('Las contraseñas no coinciden.')
     }
+
+    // Obtenemos la extensión del archivo de imagen
+    let file = avatar.value.split('.');
+    let extension = file[file.length - 1];
+
+    // Validamos la imagen
+    if (extension != 'jpg' &&
+        extension != 'jpeg' &&
+        extension != 'png' &&
+        extension != 'gif' &&
+        extension != '') {
+        errors.push('Extensiones aceptadas: jpg, jpeg, png o gif.');
+    }
+
 
     // Prevenir default y mostrar errores
     if (errors.length > 0) {
@@ -161,6 +177,27 @@ passwordConfirmation.addEventListener('blur', function () {
     } else {
         passwordConfirmation.style.border = '';
         error_passwordConfirmation.innerText = '';
+    }
+
+});
+
+avatar.addEventListener('change', function () {
+
+    // Obtenemos la extensión del archivo
+    let file = this.value.split('.');
+    let extension = file[file.length - 1];
+
+    // Validamos
+    if (extension != 'jpg' &&
+        extension != 'jpeg' &&
+        extension != 'png' &&
+        extension != 'gif' &&
+        extension != '') {
+        avatar.style.border = '2px solid #a84d36';
+        error_avatar.innerText = 'Extensiones aceptadas: jpg, jpeg, png o gif.';
+    } else {
+        avatar.style.border = '';
+        error_avatar.innerText = '';
     }
 
 });

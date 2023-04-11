@@ -193,6 +193,11 @@ main section.register form.register div.field p.live-error {
     color: #a84d36;
 }
 
+main section.register form.register div.field p#avatar {
+    top: 7px;
+    font-size: 14px;
+}
+
 main section.register form.register div.errors {
     display: flex;
     flex-direction: column;
