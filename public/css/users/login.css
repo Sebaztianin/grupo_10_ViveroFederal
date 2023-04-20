@@ -116,6 +116,10 @@ main section.login form.login div.remember input {
     width: 15px;
 }
 
+main section.login form.login div.remember input#remember {
+    margin-inline: 5px;
+}
+
 main section.login form.login div.errors {
     display: flex;
     flex-direction: column;
@@ -195,6 +199,20 @@ main section.register form.register div.field p.live-error {
     text-align: right;
     font-size: 12px;
     background-color: white;
+    color: #a84d36;
+    pointer-events: none;
+}
+
+main section.register form.register div.field p.live-error-image {
+    position: absolute;
+    margin: 5px;
+    margin-block: 6px;
+    padding: 2px;
+    top: 5px;
+    right: 0px;
+    text-align: right;
+    font-size: 12px;
+    background-color: #FFFBE9;
     color: #a84d36;
     pointer-events: none;
 }
@@ -279,6 +297,11 @@ main section.register form.register button:active {
     main section.register form.register div.field p.live-error {
         font-size: 14px;
     }
+    
+    main section.register form.register div.field p.live-image {
+        font-size: 14px;
+    }
+
 
     main section.register form.register button {
         font-size: 14px;
