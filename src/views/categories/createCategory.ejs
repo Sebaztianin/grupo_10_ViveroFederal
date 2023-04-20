@@ -23,12 +23,18 @@
 
 				<div class="data">
 
-					<label for="name">Nombre de la categoría: </label>
-					<input type="text" name="name" id="name" placeholder="Ej: Suculentas" value="<%= (locals.old && old.name) ? old.name : '' %>">
+					<div class="field">
+						<label for="name">Nombre de la categoría: </label>
+						<input type="text" name="name" id="name" placeholder="Ej: Suculentas" value="<%= (locals.old && old.name) ? old.name : '' %>">
+						<p class="live-error" id="name"></p>
+					</div>
 
-					<label for="image">Imagen: </label>
-					<input type="file" name="image" id="image">
-                    
+					<div class="field">
+						<label for="image">Imagen: </label>
+						<input type="file" name="image" id="image">
+						<p class="live-error-image" id="image"></p>
+					</div>
+
 				</div>
 
 				<!-- Errores -->
@@ -51,5 +57,8 @@
 	<%- include('../partials/footer') %>
 
 </body>
+
+<script src="https://unpkg.com/validator@latest/validator.min.js"></script>
+<script src="/js/categories/createCategory.js"></script>
 
 </html>

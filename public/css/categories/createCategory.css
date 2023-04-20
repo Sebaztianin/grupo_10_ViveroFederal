@@ -80,7 +80,27 @@ main section.create form.new div.data {
     width: 100%;
 }
 
-main section.create form.new div.data select {
+main section.create form.new div.data div.field {
+    width: 100%;
+    position: relative;
+}
+
+main section.create form.new div.data div.field label {
+    font-size: 14px;
+}
+
+main section.create form.new div.data div.field input {
+    padding: 5px;
+    margin: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    font-family: 'Roboto', sans-serif;
+}
+
+main section.create form.new div.data div.field select {
     display: block;
     margin-top: 10px;
     margin-bottom: 20px;
@@ -92,20 +112,30 @@ main section.create form.new div.data select {
     color: #3C6255;
 }
 
-main section.create form.new div.data input,
-main section.create form.new div.data textarea {
-    padding: 5px;
+main section.create form.new div.data div.field p.live-error {
+    position: absolute;
     margin: 5px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    width: 100%;
-    border: none;
-    border-radius: 5px;
-    font-family: 'Roboto', sans-serif;
+    padding: 2px;
+    top: 30px;
+    right: 0px;
+    text-align: right;
+    font-size: 12px;
+    background-color: white;
+    color: #a84d36;
+    pointer-events: none;
 }
 
-main section.create form.new div.data textarea {
-    height: 150px;
+main section.create form.new div.data div.field p.live-error-image {
+    position: absolute;
+    margin: 5px;
+    padding: 2px;
+    top: 32px;
+    right: 0px;
+    text-align: right;
+    font-size: 12px;
+    background-color: #DAE2B6;
+    color: #a84d36;
+    pointer-events: none;
 }
 
 main section.create form.new button {
@@ -153,7 +183,29 @@ main section.create form.new div.errors p.error {
 
 /* Tablets y netbooks */
 
-@media (min-width: 769px) {}
+@media (min-width: 769px) {
+
+    main section.create form.new div.data div.field label {
+        font-size: 16px;
+    }
+
+    main section.create form.new div.data div.field input {
+        font-size: 14px;
+    }
+
+    main section.create form.new div.data div.field p.live-error {
+        font-size: 14px;
+    }
+
+    main section.create form.new div.data div.field p.live-error-image {
+        font-size: 14px;
+    }
+
+    main section.create form.new button {
+        font-size: 14px;
+    }
+
+}
 
 /* Notebooks */
 
