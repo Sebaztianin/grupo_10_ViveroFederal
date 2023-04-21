@@ -65,7 +65,7 @@ form.addEventListener('submit', event => {
     // Validación para campo vacío
     if (category_id.value == '') {
         errors.push('Debe seleccionar una categoría.');
-    } 
+    }
 
     // Validación para campo vacío y longitud
     if (description.value == '') {
@@ -141,7 +141,7 @@ image.addEventListener('change', function () {
     // Obtenemos la extensión del archivo
     let file = this.value.split('.');
     let extension = file[file.length - 1];
-
+    
     // Validamos
     if (extension != 'jpg' &&
         extension != 'jpeg' &&
