@@ -23,9 +23,12 @@
 
 				<div class="data">
 
-					<label for="name">Nombre del color: </label>
-					<input type="text" name="name" id="name" placeholder="Ej: Rojo" value="<%= (locals.old && old.name) ? old.name : color.name %>">
-                    
+					<div class="field">
+						<label for="name">Nombre del color: </label>
+						<input type="text" name="name" id="name" placeholder="Ej: Rojo" value="<%= (locals.old && old.name) ? old.name : color.name %>">
+						<p class="live-error" id="name"></p>
+					</div>
+
 				</div>
 
 				<!-- Errores -->
@@ -48,5 +51,8 @@
 	<%- include('../partials/footer') %>
 
 </body>
+
+<script src="https://unpkg.com/validator@latest/validator.min.js"></script>
+<script src="/js/colors/editColor.js"></script>
 
 </html>
