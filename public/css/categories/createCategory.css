@@ -83,6 +83,7 @@ main section.create form.new div.data {
 main section.create form.new div.data div.field {
     width: 100%;
     position: relative;
+    margin-bottom: 10px;
 }
 
 main section.create form.new div.data div.field label {
