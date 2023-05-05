@@ -207,8 +207,7 @@ INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `password`, `user
 (2, 'Camila Luz', 'Quispe', 'quispeluzcami@gmail.com', '$2a$10$n2DQbKf0uIvB/RYH6.WY/.o6e3scnGHxGRqFS21DjitRr58AChWYq', 2, NULL, NULL, NULL),
 (3, 'Gustavo', 'Buscalia', 'buscaliag@gmail.com', '$2a$10$n2DQbKf0uIvB/RYH6.WY/.o6e3scnGHxGRqFS21DjitRr58AChWYq', 2, NULL, NULL, NULL),
 (4, 'Valentino', 'Becerine', 'valentinobecerine@gmail.com', '$2a$10$n2DQbKf0uIvB/RYH6.WY/.o6e3scnGHxGRqFS21DjitRr58AChWYq', 2, NULL, NULL, NULL),
-(5, 'Admin', 'del Sitio', 'admin@gmail.com', '$2a$10$n2DQbKf0uIvB/RYH6.WY/.o6e3scnGHxGRqFS21DjitRr58AChWYq', 1, 'img-admin-1676500048292.jpg', NULL, NULL),
-(6, 'Andrés', 'Iniesta', 'ainiesta@gmail.com', '$2a$10$LDUj6c7jfP5UulL7fZMkxedsEHSXz5AEc0MOp8TEZk5kYcuRlp54K', 2, 'img-iniesta-1676042688859.jpg', NULL, NULL);
+(5, 'Admin', 'del Sitio', 'admin@gmail.com', '$2a$10$n2DQbKf0uIvB/RYH6.WY/.o6e3scnGHxGRqFS21DjitRr58AChWYq', 1, 'img-admin-1676500048292.jpg', NULL, NULL);
 
 -- --------------------------------------------------------
 
