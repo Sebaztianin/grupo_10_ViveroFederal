@@ -20,7 +20,7 @@ form.addEventListener('submit', event => {
         errors.push('El nombre debe contener, al menos, 2 caracteres.');
     }
 
-    // Prevenir default y mostrar errores
+    // Prevenir default y mostrar los errores
     if (errors.length > 0) {
 
         // Evito que se mande el formulario
