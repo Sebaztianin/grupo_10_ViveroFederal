@@ -2,9 +2,10 @@
 /* Importamos módulos */
 const express = require('express');
 const app = express();
+const cors = require('cors');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3002;
 const methodOverride = require('method-override'); // Para poder usar los métodos PUT y DELETE
 const rememberMeMiddleware = require('./middlewares/rememberMeMiddleware'); // Middleware propio para recordar al usuario
 const globalVariableMiddleware = require('./middlewares/globalVariableMiddleware'); // Middleware propio para crear variables globales
@@ -19,6 +20,13 @@ const usersRoutes = require('./routers/users');
 const productsApiRoutes = require('./routers/api/products.js');
 const usersApiRoutes = require('./routers/api/users.js');
 
+/* Configuramos EJS como el motor de vistas y cambiamos la carpeta de vistas a /src/views */
+app.set('view engine', 'ejs');
+app.set('views', './src/views');
+
+/* Para poder hacer consultas a la API */
+app.use(cors());
+
 /* Declaramos carpeta static */
 app.use(express.static('./public'));
 
@@ -30,10 +38,6 @@ app.use(session({ secret: "secret", resave: true, saveUninitialized: true })); /
 app.use(cookieParser()); // Para usar cookies
 app.use(rememberMeMiddleware); // Para recordar al usuario en toda la app
 app.use(globalVariableMiddleware); // Para crear variables globales
-
-/* Configuramos EJS como el motor de vistas y cambiamos la carpeta de vistas a /src/views */
-app.set('view engine', 'ejs');
-app.set('views', './src/views');
 
 /* Levantamos server */
 app.listen(port, () => {

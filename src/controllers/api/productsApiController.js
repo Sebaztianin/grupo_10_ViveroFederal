@@ -71,12 +71,12 @@ let apiProductsController = {
                         status: 200,
                         count: productsCount,
                         url: '/api/products',
-                        countByCategory: productsByCategory,
                         page: req.query.page.toString(),
                         pageSize: pageSize,
                         prev: prevPage != 0 ? '/api/products?page=' + prevPage : null,
                         next: nextPage != 0 ? '/api/products?page=' + nextPage : null
                     },
+                    countByCategory: productsByCategory,
                     products: products
                 }
 
