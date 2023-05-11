@@ -2,6 +2,7 @@
 const fs = require('fs');
 const db = require('../../database/models');
 const sequelize = db.sequelize;
+const { Op } = require("sequelize");
 
 /* Recuperamos los modelos que se utilizan */
 const Product = db.Product;
@@ -25,6 +26,11 @@ let apiProductsController = {
         queryFilter.order = [
             ['created_at', 'DESC']
         ];
+
+        // Filtro para el buscador
+        if (req.query.search) {
+            queryFilter.where.name = { [Op.like]: '%' + req.query.search + '%' };
+        }
 
         // Paginación
         let pageSize = 10;
@@ -69,6 +75,12 @@ let apiProductsController = {
                     nextPage = parseInt(req.query.page) + 1; // Existe, así que hay otra página
                 }
 
+                // Revisamos si hay una búsqueda para agregar el parámetro a la url de las páginas
+                let search = '';
+                if (req.query.search) {
+                    search = 'search=' + req.query.search + '&';
+                }
+
                 // Respuesta
                 let respuesta = {
                     meta: {
@@ -77,8 +89,8 @@ let apiProductsController = {
                         url: '/api/products',
                         page: req.query.page.toString(),
                         pageSize: pageSize,
-                        prev: prevPage != 0 ? '/api/products?page=' + prevPage : null,
-                        next: nextPage != 0 ? '/api/products?page=' + nextPage : null
+                        prev: prevPage != 0 ? '/api/products?' + search + 'page=' + prevPage : null,
+                        next: nextPage != 0 ? '/api/products?' + search + 'page=' + nextPage : null
                     },
                     countByCategory: productsByCategory,
                     products: products
