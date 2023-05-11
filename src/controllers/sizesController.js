@@ -30,7 +30,7 @@ let sizesController = {
         let pageSize = 8;
 
         // Verifico que haya un número de página ingresado, sino lo seteo en 1
-        if (!req.query.page) { req.query.page = 1 };
+        if (!req.query.page || req.query.page < 1) { req.query.page = 1 };
 
         // Filtros y offset
         if (req.query.page != 1) {

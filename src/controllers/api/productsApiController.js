@@ -19,14 +19,18 @@ let apiProductsController = {
             'id',
             'name',
             'description',
+            'created_at',
             [sequelize.fn('concat', '/api/products/', sequelize.col('product.id')), 'detail'] // Agrego la URL del detalle del producto
+        ];
+        queryFilter.order = [
+            ['created_at', 'DESC']
         ];
 
         // Paginación
         let pageSize = 10;
 
         // Verifico que haya un número de página ingresado, sino lo seteo en 1
-        if (!req.query.page) { req.query.page = 1 };
+        if (!req.query.page || req.query.page < 1) { req.query.page = 1 };
 
         // Filtros y offset
         if (req.query.page != 1) {
