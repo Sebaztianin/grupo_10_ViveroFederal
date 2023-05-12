@@ -119,7 +119,7 @@ let usersController = {
             // Obtenemos datos del usuario
             User.findOne({
                 include: [{ association: 'user_category' }],
-                where: { email: req.body.email }
+                where: { email: req.body.emailLogin }
             })
                 .then(userToLogin => {
 
@@ -127,7 +127,7 @@ let usersController = {
                     if (userToLogin) {
 
                         // Validamos contraseña
-                        if (bcrypt.compareSync(req.body.password, userToLogin.password)) {
+                        if (bcrypt.compareSync(req.body.passwordLogin, userToLogin.password)) {
 
                             // Seteamos el usuario de la sesión
                             req.session.userLogged = userToLogin;

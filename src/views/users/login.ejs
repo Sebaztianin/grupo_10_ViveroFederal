@@ -21,12 +21,12 @@
 
 				<!-- Campos -->
 				<div class="field">
-					<input type="text" id="email" name="email" placeholder="Email" value="<%= (locals.oldLogin && oldLogin.email) ? oldLogin.email : '' %>">
-					<p class="live-error" id="email"></p>
+					<input type="text" id="emailLogin" name="emailLogin" placeholder="Email" value="<%= (locals.oldLogin && oldLogin.email) ? oldLogin.email : '' %>">
+					<p class="live-error" id="emailLogin"></p>
 				</div>
 				<div class="field">
-					<input type="password" id="password" name="password" placeholder="Contraseña">
-					<p class="live-error" id="password"></p>
+					<input type="password" id="passwordLogin" name="passwordLogin" placeholder="Contraseña">
+					<p class="live-error" id="passwordLogin"></p>
 				</div>
 
 				<div class="remember">
@@ -83,6 +83,7 @@
 				<div class="field">
 					<input type="file" id="avatar" name="avatar">
 					<p class="live-error-image" id="avatar"></p>
+                    <p class="input-info">Seleccione un archivo para el avatar.</p>
 				</div>
 
 				<!-- Errores -->

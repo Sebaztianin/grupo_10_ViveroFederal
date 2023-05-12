@@ -217,6 +217,20 @@ main section.register form.register div.field p.live-error-image {
     pointer-events: none;
 }
 
+main section.register form.register div.field p.input-info {
+    position: absolute;
+    margin: 5px;
+    margin-block: 8px;
+    padding: 2px;
+    padding-inline: 9px;
+    top: 5px;
+    left: 98px;
+    text-align: right;
+    font-size: 12px;
+    background-color: #FFFBE9;
+    pointer-events: none;
+}
+
 main section.register form.register div.field p#avatar {
     top: 7px;
     font-size: 14px;
@@ -295,6 +309,10 @@ main section.register form.register button:active {
     }
     
     main section.register form.register div.field p.live-error {
+        font-size: 14px;
+    }
+    
+    main section.register form.register div.field p.input-info {
         font-size: 14px;
     }
     
