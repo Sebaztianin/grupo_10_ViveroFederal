@@ -129,6 +129,20 @@ main section.edit-user form.edit-user div.data div.field p.live-error {
     pointer-events: none;
 }
 
+main section.edit-user form.edit-user div.data div.field p.input-info {
+    position: absolute;
+    margin: 5px;
+    margin-block: 8px;
+    padding: 2px;
+    padding-inline: 9px;
+    top: 30px;
+    left: 98px;
+    text-align: right;
+    font-size: 12px;
+    background-color: #DAE2B6;
+    pointer-events: none;
+}
+
 main section.edit-user form.edit-user div.data div.field p.live-error-image {
     position: absolute;
     margin: 5px;
@@ -198,6 +212,10 @@ main section.edit-user form.edit-user div.errors p.error {
     }
 
     main section.edit-user form.edit-user div.data div.field p.live-error {
+        font-size: 14px;
+    }
+
+    main section.edit-user form.edit-user div.data div.field p.input-info {
         font-size: 14px;
     }
 

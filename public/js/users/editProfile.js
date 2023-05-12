@@ -22,6 +22,7 @@ let last_name_edit = document.querySelector('section.edit-user input#last_name')
 let error_last_name_edit = document.querySelector('section.edit-user p#last_name');
 let image_edit = document.querySelector('section.edit-user input#image');
 let error_image_edit = document.querySelector('section.edit-user p#image');
+let input_info_image_edit = document.querySelector('section.edit-user p.input-info');
 let editErrors = document.querySelector('section.edit-user div.errors');
 
 // Validaciones al enviar el formulario
@@ -113,6 +114,9 @@ image_edit.addEventListener('change', function () {
     // Obtenemos la extensión del archivo
     let file = this.value.split('.');
     let extension = file[file.length - 1];
+    file = this.value.split('\\');
+    let fileName = file[file.length - 1];
+    input_info_image_edit.innerText = file != '' ? fileName : 'Ningún archivo seleccionado.' ;
 
     // Validamos
     if (extension != 'jpg' &&

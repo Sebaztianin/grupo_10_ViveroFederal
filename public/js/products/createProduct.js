@@ -8,6 +8,7 @@ let discount = document.querySelector('section.create-product input#discount');
 let error_discount = document.querySelector('section.create-product p#discount');
 let image = document.querySelector('section.create-product input#image');
 let error_image = document.querySelector('section.create-product p#image');
+let input_info_image = document.querySelector('section.create-product p.input-info');
 let category_id = document.querySelector('section.create-product select#category_id');
 let error_category_id = document.querySelector('section.create-product p#category_id');
 let description = document.querySelector('section.create-product textarea#description');
@@ -141,6 +142,9 @@ image.addEventListener('change', function () {
     // Obtenemos la extensión del archivo
     let file = this.value.split('.');
     let extension = file[file.length - 1];
+    file = this.value.split('\\');
+    let fileName = file[file.length - 1];
+    input_info_image.innerText = file != '' ? fileName : 'Ningún archivo seleccionado.' ;
     
     // Validamos
     if (extension != 'jpg' &&
