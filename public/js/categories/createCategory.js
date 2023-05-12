@@ -4,6 +4,7 @@ let name = document.querySelector('section.create input#name');
 let error_name = document.querySelector('section.create p#name');
 let image = document.querySelector('section.create input#image');
 let error_image = document.querySelector('section.create p#image');
+let input_info_image = document.querySelector('section.create p.input-info');
 let formErrors = document.querySelector('section.create div.errors');
 
 // Validaciones al enviar el formulario
@@ -77,6 +78,9 @@ image.addEventListener('change', function () {
     // Obtenemos la extensión del archivo
     let file = this.value.split('.');
     let extension = file[file.length - 1];
+    file = this.value.split('\\');
+    let fileName = file[file.length - 1];
+    input_info_image.innerText = file != '' ? fileName : 'Ningún archivo seleccionado.' ;
 
     // Validamos
     if (extension != 'jpg' &&
