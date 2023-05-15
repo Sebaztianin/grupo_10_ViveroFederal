@@ -17,6 +17,9 @@ const colorsRoutes = require('./routers/colors');
 const sizesRoutes = require('./routers/sizes');
 const usersRoutes = require('./routers/users');
 const productsApiRoutes = require('./routers/api/products.js');
+const usersApiRoutes = require('./routers/api/users.js');
+    
+
 
 /* Declaramos carpeta static */
 app.use(express.static('./public'));
@@ -49,6 +52,12 @@ app.use('/users', usersRoutes);
 
 /* Rutas de la API */
 app.use('/api/products', productsApiRoutes);
+app.use('/api/users', usersApiRoutes);
+app.use('/api', (req, res, next) => {
+    res.render('api/index')
+});
+
+
 
 // Para hacer los 404 not found más bonitos
 app.use((req, res, next) => { 
