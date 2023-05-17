@@ -21,7 +21,7 @@ let validateCreateForm = [
     body('price').notEmpty().withMessage('El precio no puede estar vacío.').bail()
         .isFloat({ gt: 0 }).withMessage('El precio debe ser un número positivo.'),
     body('discount').notEmpty().withMessage('El descuento no puede estar vacío.').bail()
-        .isFloat({ gt: 0, lt: 100 }).withMessage('El descuento debe ser un número entre 0 y 100.'),
+        .isFloat({ ge: 0, lt: 100 }).withMessage('El descuento debe ser un número entre 0 y 100.'),
     body('category_id').notEmpty().withMessage('Debe seleccionar una categoría.'),
     body('description').notEmpty().withMessage('La descripción no puede estar vacia.').bail()
         .isLength({ min: 20 }).withMessage('La descripción no puede tener un largo menor a 20.'),
@@ -47,7 +47,7 @@ let validateEditForm = [
     body('price').notEmpty().withMessage('El precio no puede estar vacío.').bail()
         .isFloat({ gt: 0 }).withMessage('El precio debe ser un número positivo.'),
     body('discount').notEmpty().withMessage('El descuento no puede estar vacío.').bail()
-        .isFloat({ gt: 0, lt: 100 }).withMessage('El descuento debe ser un número entre 0 y 100.'),
+        .isFloat({ ge: 0, lt: 100 }).withMessage('El descuento debe ser un número entre 0 y 100.'),
     body('category_id').notEmpty().withMessage('Debe seleccionar una categoría.'),
     body('description').notEmpty().withMessage('La descripción no puede estar vacia.').bail()
         .isLength({ min: 20 }).withMessage('La descripción no puede tener un largo menor a 20.'),

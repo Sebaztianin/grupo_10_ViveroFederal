@@ -41,7 +41,7 @@ form.addEventListener('submit', event => {
     // Validación para campo vacío y valores
     if (discount.value == '') {
         errors.push('El descuento no puede estar vacío.');
-    } else if (!validator.isFloat(discount.value, { gt: 0, lt: 100 })) {
+    } else if (!validator.isFloat(discount.value, { ge: 0, lt: 100 })) {
         errors.push('El descuento debe ser un número entre 0 y 100.');
     }
 
@@ -122,7 +122,7 @@ discount.addEventListener('blur', function () {
     if (this.value == '') {
         discount.style.border = '2px solid #a84d36';
         error_discount.innerText = 'El descuento no puede estar vacío.';
-    } else if (!validator.isFloat(discount.value, { gt: 0, lt: 100 })) {
+    } else if (!validator.isFloat(discount.value, { ge: 0, lt: 100 })) {
         discount.style.border = '2px solid #a84d36';
         error_discount.innerText = 'El descuento debe ser un número entre 0 y 100.';
     } else {
