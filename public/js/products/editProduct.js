@@ -49,11 +49,6 @@ form.addEventListener('submit', event => {
     let file = image.value.split('.');
     let extension = file[file.length - 1];
 
-    // Validamos que haya una imagen seleccionada
-    if (!extension) {
-        errors.push('Se requiere una imagen.');
-    }
-
     // Validamos la imagen seleccionada
     if (extension != 'jpg' &&
         extension != 'jpeg' &&

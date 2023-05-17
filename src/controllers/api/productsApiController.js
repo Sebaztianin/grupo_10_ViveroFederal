@@ -54,9 +54,9 @@ let apiProductsController = {
 
         // Recuperamos productos por categoría, acá hacemos una query pura a la BD para hacerlo más simple
         let productsByCategory = sequelize.query(
-            'select categories.name category, count(categories.name) totalProducts from products ' +
-            'inner join categories ' +
-            'on products.category_id = categories.id ' +
+            'select categories.name category, ' +
+            '(select count(products.name) from products where products.category_id = categories.id) totalProducts ' +
+            'from categories ' +
             'group by categories.name ',
             { type: sequelize.QueryTypes.SELECT } // Este atributo indica a sequelize que no traiga la metadata de la consulta
         );

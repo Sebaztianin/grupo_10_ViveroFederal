@@ -59,8 +59,6 @@ let validateEditForm = [
                 && path.extname(req.file.filename) != '.gif') {
                 throw new Error('Se requiere un archivo de alguna de las siguientes extensiones: jpg, jpeg, png o gif.');
             }
-        } else {
-            throw new Error('Se requiere una imagen.');
         }
         return true;
     })

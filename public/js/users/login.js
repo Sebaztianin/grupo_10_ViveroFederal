@@ -160,7 +160,7 @@ registerForm.addEventListener('submit', event => {
     // Validación para campo vacío y coincidencia
     if (passwordConfirmation_register.value == '') {
         errors.push('La confirmación de la contraseña no puede estar vacía.');
-    } else if (password.value != passwordConfirmation_register.value) {
+    } else if (password_register.value != passwordConfirmation_register.value) {
         errors.push('Las contraseñas no coinciden.')
     }
 
