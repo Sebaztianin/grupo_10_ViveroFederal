@@ -23,25 +23,39 @@
 
 				<div class="data">
 
-					<label for="first_name">Nombre del usuario: </label>
-					<input type="text" name="first_name" id="first_name" placeholder="Ej: Martín" value="<%= (locals.old && old.first_name) ? old.first_name : user.first_name %>">
+					<div class="field">
+						<label for="first_name">Nombre del usuario: </label>
+						<input type="text" name="first_name" id="first_name" placeholder="Ej: Martín" value="<%= (locals.old && old.first_name) ? old.first_name : user.first_name %>">
+                        <p class="live-error" id="first_name"></p>
+					</div>
 
-					<label for="last_name">Apellido del usuario: </label>
-					<input type="text" name="last_name" id="last_name" placeholder="Ej: Fernández" value="<%= (locals.old && old.last_name) ? old.last_name : user.last_name %>">
+					<div class="field">
+						<label for="last_name">Apellido del usuario: </label>
+						<input type="text" name="last_name" id="last_name" placeholder="Ej: Fernández" value="<%= (locals.old && old.last_name) ? old.last_name : user.last_name %>">
+                        <p class="live-error" id="last_name"></p>
+					</div>
 
-					<label for="email">Correo: </label>
-					<input type="text" name="email" id="email" value="<%= user.email %>" disabled>
+					<div class="field">
+						<label for="email">Correo: </label>
+						<input type="text" name="email" id="email" value="<%= user.email %>" disabled>
+					</div>
 
-					<label for="user_category_id">Categoría: </label>
-					<select name="user_category_id" id="user_category_id" disabled>
-						<option value="" disabled>Elige una opción</option>
-						<% for (i=0; i < user_categories.length; i ++) { %>
-						<option value="<%= user_categories[i].id %>"><%= user_categories[i].name %></option>
-						<% } %>
-					</select>
+					<div class="field">
+						<label for="user_category_id">Categoría: </label>
+						<select name="user_category_id" id="user_category_id" disabled>
+							<option value="" disabled>Elige una opción</option>
+							<% for (i=0; i < user_categories.length; i ++) { %>
+							<option value="<%= user_categories[i].id %>"><%= user_categories[i].name %></option>
+							<% } %>
+						</select>
+					</div>
 
-					<label for="image">Avatar: </label>
-					<input type="file" name="image" id="image">
+					<div class="field">
+						<label for="image">Avatar: </label>
+						<input type="file" name="image" id="image">
+                        <p class="live-error-image" id="image"></p>
+                        <p class="input-info">Seleccione un archivo para el avatar.</p>
+					</div>
 
 				</div>
 
@@ -66,6 +80,7 @@
 
 </body>
 
+<script src="https://unpkg.com/validator@latest/validator.min.js"></script>
 <script src="/js/users/editProfile.js"></script>
 
 </html>

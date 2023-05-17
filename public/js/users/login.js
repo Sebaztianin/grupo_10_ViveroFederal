@@ -17,10 +17,10 @@ if (query.has('warning') && query.get('warning') == 'notUser') {
 
 // Elementos para validación del login
 let loginForm = document.querySelector('section.login form.login');
-let email_login = document.querySelector('section.login input#email');
-let error_email_login = document.querySelector('section.login p#email');
-let password_login = document.querySelector('section.login input#password');
-let error_password_login = document.querySelector('section.login p#password');
+let email_login = document.querySelector('section.login input#emailLogin');
+let error_email_login = document.querySelector('section.login p#emailLogin');
+let password_login = document.querySelector('section.login input#passwordLogin');
+let error_password_login = document.querySelector('section.login p#passwordLogin');
 let loginErrors = document.querySelector('section.login div.errors');
 
 // Validaciones al enviar el formulario
@@ -87,7 +87,7 @@ password_login.addEventListener('blur', function () {
 
 });
 
-// Escondemos botones al clickearlos
+// Escondemos errores al clickearlos
 email_login.addEventListener('click', function () {
 
     error_email_login.innerText = '';
@@ -117,6 +117,7 @@ let passwordConfirmation_register = document.querySelector('section.register inp
 let error_passwordConfirmation_register = document.querySelector('section.register p#passwordConfirmation');
 let avatar_register = document.querySelector('section.register input#avatar');
 let error_avatar_register = document.querySelector('section.register p#avatar');
+let input_info_avatar_register = document.querySelector('section.register p.input-info');
 let registerErrors = document.querySelector('section.register div.errors');
 
 // Validaciones al enviar el formulario
@@ -273,6 +274,9 @@ avatar_register.addEventListener('change', function () {
     // Obtenemos la extensión del archivo
     let file = this.value.split('.');
     let extension = file[file.length - 1];
+    file = this.value.split('\\');
+    let fileName = file[file.length - 1];
+    input_info_avatar_register.innerText = file != '' ? fileName : 'Ningún archivo seleccionado.' ;
 
     // Validamos
     if (extension != 'jpg' &&

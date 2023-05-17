@@ -66,9 +66,9 @@ let editForm = [
 
 /* Validaciones del formulario de login */
 let loginForm = [
-    body('email').notEmpty().withMessage('El email no puede estar vacío.').bail()
+    body('emailLogin').notEmpty().withMessage('El email no puede estar vacío.').bail()
         .isEmail().withMessage('Ingrese un correo válido.'),
-    body('password').notEmpty().withMessage('Debe ingresar una contraseña.')
+    body('passwordLogin').notEmpty().withMessage('Debe ingresar una contraseña.')
 ];
 
 /* Validaciones del formulario de categoría */

@@ -119,7 +119,7 @@ let usersController = {
             // Obtenemos datos del usuario
             User.findOne({
                 include: [{ association: 'user_category' }],
-                where: { email: req.body.email }
+                where: { email: req.body.emailLogin }
             })
                 .then(userToLogin => {
 
@@ -127,7 +127,7 @@ let usersController = {
                     if (userToLogin) {
 
                         // Validamos contraseña
-                        if (bcrypt.compareSync(req.body.password, userToLogin.password)) {
+                        if (bcrypt.compareSync(req.body.passwordLogin, userToLogin.password)) {
 
                             // Seteamos el usuario de la sesión
                             req.session.userLogged = userToLogin;
@@ -221,7 +221,7 @@ let usersController = {
         let pageSize = 8;
 
         // Verifico que haya un número de página ingresado, sino lo seteo en 1
-        if (!req.query.page) { req.query.page = 1 };
+        if (!req.query.page || req.query.page < 1) { req.query.page = 1 };
 
         // Filtros y offset
         if (req.query.page != 1) {
