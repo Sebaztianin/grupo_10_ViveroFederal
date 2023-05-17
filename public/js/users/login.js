@@ -144,16 +144,16 @@ registerForm.addEventListener('submit', event => {
     }
 
     // Validación para campo vacío y formato
-    if (email.value == '') {
+    if (email_register.value == '') {
         errors.push('El email no puede estar vacío.');
-    } else if (!validator.isEmail(email.value)) {
+    } else if (!validator.isEmail(email_register.value)) {
         errors.push('El email debe tener un formato válido.');
     }
 
     // Validación para campo vacío y formato
-    if (password.value == '') {
+    if (password_register.value == '') {
         errors.push('La contraseña no puede estar vacía.');
-    } else if (!validator.isStrongPassword(password.value)) {
+    } else if (!validator.isStrongPassword(password_register.value)) {
         errors.push('La contraseña debe contener por lo menos 8 caracteres, una mayúscula, una minúscula, un número y un caracter especial.');
     }
 
