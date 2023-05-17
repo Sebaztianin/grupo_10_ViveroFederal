@@ -105,29 +105,45 @@ let apiProductsController = {
     // Detalle de producto
     detail: function (req, res) {
 
-        // Buscamos detalles del producto
-        Product.findByPk(req.params.id, {
-            include: [{ association: 'category' }, { association: 'color' }, { association: 'size' }],
-            attributes: {
-                include: [
-                    [sequelize.fn('concat', '/images/products/', sequelize.col('product.image')), 'imageUrl'] // Agregamos la URL de la imagen del producto
-                ]
-            }
-        })
-            .then(product => {
+        if (req.params.id) {
 
-                // Respuesta
-                let respuesta = {
-                    meta: {
-                        status: 200,
-                        url: '/api/products/' + product.id
-                    },
-                    product: product
+            // Buscamos detalles del producto
+            Product.findByPk(req.params.id, {
+                include: [{ association: 'category' }, { association: 'color' }, { association: 'size' }],
+                attributes: {
+                    include: [
+                        [sequelize.fn('concat', '/images/products/', sequelize.col('product.image')), 'imageUrl'] // Agregamos la URL de la imagen del producto
+                    ]
                 }
+            })
+                .then(product => {
 
-                res.json(respuesta);
+                    // Respuesta
+                    let respuesta = {
+                        meta: {
+                            status: 200,
+                            url: '/api/products/' + product.id
+                        },
+                        product: product
+                    }
 
-            });
+                    res.json(respuesta);
+
+                });
+
+        } else {
+
+            // Respuesta
+            let respuesta = {
+                meta: {
+                    status: 404,
+                    error: 'Not found'
+                }
+            }
+
+            res.json(respuesta);
+
+        }
 
     }
 
