@@ -2,6 +2,8 @@
 let form = document.querySelector('section.create form.new');
 let name = document.querySelector('section.create input#name');
 let error_name = document.querySelector('section.create p#name');
+let image = document.querySelector('section.create input#image');
+let error_image = document.querySelector('section.create p#image');
 let formErrors = document.querySelector('section.create div.errors');
 
 // Validaciones al enviar el formulario
@@ -18,6 +20,24 @@ form.addEventListener('submit', event => {
         errors.push('El nombre no puede estar vacío.');
     } else if (name.value.length < 2) {
         errors.push('El nombre debe contener, al menos, 2 caracteres.');
+    }
+
+    // Obtenemos la extensión del archivo de imagen
+    let file = image.value.split('.');
+    let extension = file[file.length - 1];
+
+    // Validamos que haya una imagen seleccionada
+    if (!extension) {
+        errors.push('Se requiere una imagen.');
+    }
+
+    // Validamos la imagen seleccionada
+    if (extension != 'jpg' &&
+        extension != 'jpeg' &&
+        extension != 'png' &&
+        extension != 'gif' &&
+        extension != '') {
+        errors.push('Extensiones aceptadas: jpg, jpeg, png o gif.');
     }
 
     // Prevenir default y mostrar errores
@@ -52,3 +72,23 @@ name.addEventListener('blur', function () {
 
 });
 
+image.addEventListener('change', function () {
+
+    // Obtenemos la extensión del archivo
+    let file = this.value.split('.');
+    let extension = file[file.length - 1];
+
+    // Validamos
+    if (extension != 'jpg' &&
+        extension != 'jpeg' &&
+        extension != 'png' &&
+        extension != 'gif' &&
+        extension != '') {
+        image.style.border = '2px solid #a84d36';
+        error_image.innerText = 'Extensiones aceptadas: jpg, jpeg, png o gif.';
+    } else {
+        image.style.border = '';
+        error_image.innerText = '';
+    }
+
+});
