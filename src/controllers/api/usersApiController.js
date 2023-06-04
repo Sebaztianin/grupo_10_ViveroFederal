@@ -85,7 +85,7 @@ let apiUsersController = {
             attributes: {
                 include:
                     [
-                        [sequelize.fn('concat', '/images/users/', sequelize.col('user.image')), 'imageUrl'] // Agregamos la URL de la imagen del usuario
+                        [sequelize.fn('concat', '/images/users/', sequelize.col('User.image')), 'imageUrl'] // Agregamos la URL de la imagen del usuario
                     ],
                 exclude: ['password', 'user_category_id'] // Excluímos contraseña y categoría de la consulta
             }
