@@ -2,13 +2,13 @@ module.exports = {
 
     "development": {
         "username": "root",
-        "password": "BHVav4kvhEBi7lIhkKBK",
+        "password": "RuhaFlZI7GZUfUm4QVyX",
         "database": "vivero_federal_db",
-        "host": "containers-us-west-50.railway.app",
-        "port": "7757",
+        "host": "containers-us-west-159.railway.app",
+        "port": "6166",
         "dialect": "mysql"
     },
-    
+
     "test": {
         "username": "root",
         "password": null,

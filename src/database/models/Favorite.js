@@ -24,6 +24,7 @@ module.exports = (sequelize, dataTypes) => {
     };
 
     let config = {
+        tableName: 'favorites',
         timestamps: true,
         createdAt: 'created_at',
         updatedAt: 'updated_at',
