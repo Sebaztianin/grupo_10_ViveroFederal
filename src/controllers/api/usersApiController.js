@@ -20,7 +20,7 @@ let apiUsersController = {
             'first_name',
             'last_name',
             'email',
-            [sequelize.fn('concat', '/api/users/', sequelize.col('user.id')), 'detail'] // Agrego la URL del detalle del usuario
+            [sequelize.fn('concat', '/api/users/', sequelize.col('User.id')), 'detail'] // Agrego la URL del detalle del usuario
         ];
 
         // Paginación

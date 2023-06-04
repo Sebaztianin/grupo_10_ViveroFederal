@@ -21,7 +21,7 @@ let apiProductsController = {
             'name',
             'description',
             'created_at',
-            [sequelize.fn('concat', '/api/products/', sequelize.col('product.id')), 'detail'] // Agrego la URL del detalle del producto
+            [sequelize.fn('concat', '/api/products/', sequelize.col('Product.id')), 'detail'] // Agrego la URL del detalle del producto
         ];
         queryFilter.order = [
             ['created_at', 'DESC']
@@ -112,7 +112,7 @@ let apiProductsController = {
                 include: [{ association: 'category' }, { association: 'color' }, { association: 'size' }],
                 attributes: {
                     include: [
-                        [sequelize.fn('concat', '/images/products/', sequelize.col('product.image')), 'imageUrl'] // Agregamos la URL de la imagen del producto
+                        [sequelize.fn('concat', '/images/products/', sequelize.col('Product.image')), 'imageUrl'] // Agregamos la URL de la imagen del producto
                     ]
                 }
             })
