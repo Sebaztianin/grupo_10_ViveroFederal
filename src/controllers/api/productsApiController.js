@@ -56,8 +56,7 @@ let apiProductsController = {
         let productsByCategory = sequelize.query(
             'select categories.name category, ' +
             '(select count(products.name) from products where products.category_id = categories.id) totalProducts ' +
-            'from categories ' +
-            'group by categories.name ',
+            'from categories ',
             { type: sequelize.QueryTypes.SELECT } // Este atributo indica a sequelize que no traiga la metadata de la consulta
         );
 
