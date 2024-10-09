@@ -5,10 +5,13 @@ const app = express();
 const cors = require('cors');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
-const port = process.env.PORT || 3002;
+const port = process.env.PORT || 3000;
 const methodOverride = require('method-override'); // Para poder usar los métodos PUT y DELETE
 const rememberMeMiddleware = require('./middlewares/rememberMeMiddleware'); // Middleware propio para recordar al usuario
 const globalVariableMiddleware = require('./middlewares/globalVariableMiddleware'); // Middleware propio para crear variables globales
+
+/* Importamos variables de entorno */
+require('dotenv').config();
 
 /* Importamos módulos propios de ruteo */
 const mainRoutes = require('./routers/main');
